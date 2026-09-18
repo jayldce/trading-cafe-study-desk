@@ -173,6 +173,8 @@ function renderMarkdown(md, ctx = {}) {
       // ```svg blocks are diagrams authored in knowledge/*.md; they render as figures, not as source.
       if (lang === "svg") out.push(`<figure class="diagram">${code.join("\n")}</figure>`);
       else if (lang === "bias-worksheet") out.push('<div class="bias-sheet" data-bias-sheet></div>');
+      else if (lang === "review-signals") out.push('<div class="review-signals" data-review-signals></div>');
+      else if (lang === "review-summary") out.push('<div class="review-summary" data-review-summary></div>');
       else out.push(`<pre><code>${esc(code.join("\n"))}</code></pre>`);
       continue;
     }
@@ -234,6 +236,9 @@ function inline(text, ctx) {
   const codes = [];
   let s = text.replace(/`([^`]+)`/g, (_, c) => { codes.push(c); return `\uE000${codes.length - 1}\uE000`; });
   s = esc(s);
+  // Images first, or the link rule below would swallow the [alt](url) part. Only our own chart folders are allowed.
+  s = s.replace(/!\[([^\]]*)\]\(((?:data\/reviews|data\/frames)\/[^)\s]+)\)/g, (_, alt, url) =>
+    `<button type="button" class="thumb chart-img" data-src="${url}" data-caption="${alt}"><img loading="lazy" src="${url}" alt="${alt}"></button>`);
   s = s.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (_, label, url) => linkHTML(label, url.replace(/&amp;/g, "&")));
   s = s.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
   s = s.replace(/(^|[\s(“"])\*([^*\s][^*]*?)\*(?=[\s.,;:)!?”"]|$)/g, "$1<em>$2</em>");
@@ -950,6 +955,93 @@ function mountBiasSheets(root) {
   });
 }
 
+
+/* ---------------- chart reviews (knowledge/reviews/*.md + data/reviews/*.json from tools/market-review.py) ---------------- */
+const fmtPx = (n) => Number(n).toLocaleString("en-IN", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+const rText = (r) => `${r > 0 ? "+" : r < 0 ? "−" : ""}${Math.abs(r).toFixed(2)}R`;
+const RESULT = { target: ["hit 2R", "w"], stop: ["stopped", "l"], time: ["timed out", ""] };
+async function reviewFacts(r) { return r.facts ? JSON.parse(await getText(r.facts)) : null; }
+
+function signalsHTML(f) {
+  if (!f || !f.signals || !f.signals.length) return '<p class="empty">The scanner found no setups on this day.</p>';
+  const sig = f.signals;
+  const net = sig.reduce((a, g) => a + g.r, 0);
+  const rows = sig.map((g) => {
+    const [label, cls] = RESULT[g.result];
+    return `<tr><td class="num">${esc(g.code + g.n)}</td><td class="num">${esc(g.time)}</td><td>${esc(g.setup)}</td>
+      <td>${g.dir === "long" ? "▲ long" : "▼ short"}</td><td class="num">${fmtPx(g.entry)}</td><td class="num">${fmtPx(g.stop)}</td>
+      <td class="num">${g.risk}</td><td class="res ${cls}">${label} <small>${esc(g.exit_time)}</small></td>
+      <td class="num res ${g.r > 0 ? "w" : g.r < 0 ? "l" : ""}">${rText(g.r)}</td><td class="why">${esc(g.text)}</td></tr>`;
+  }).join("");
+  const hits = sig.filter((g) => g.result === "target").length, stops = sig.filter((g) => g.result === "stop").length;
+  return `<p class="record"><b>${sig.length}</b> setups · <b class="w">${hits} hit 2R</b> · <b class="l">${stops} stopped</b> · ${sig.length - hits - stops} timed out · net <b class="${net >= 0 ? "w" : "l"}">${rText(net)}</b></p>
+    <div class="tablewrap"><table class="signals"><thead><tr><th>#</th><th>Time</th><th>Setup</th><th>Side</th><th>Entry</th><th>Stop</th><th>Risk</th><th>Result</th><th>R</th><th>Why it qualified</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+}
+
+async function summaryHTML() {
+  const reviews = DATA.manifest.reviews || [];
+  const facts = (await Promise.all(reviews.map(reviewFacts))).filter(Boolean);
+  const bySetup = {}, byType = {};
+  for (const f of facts) {
+    const type = f.day_type.replace(/ (up|down)$/, "");
+    const t = (byType[type] ||= { days: 0, n: 0, r: 0 });
+    t.days++;
+    for (const g of f.signals || []) {
+      const s = (bySetup[g.code] ||= { name: g.setup, n: 0, hit: 0, stop: 0, r: 0 });
+      s.n++; s.r += g.r; if (g.result === "target") s.hit++; if (g.result === "stop") s.stop++;
+      t.n++; t.r += g.r;
+    }
+  }
+  const setupRows = Object.entries(bySetup).sort().map(([code, s]) => `<tr><td>${esc(code)} · ${esc(s.name)}</td><td class="num">${s.n}</td>
+    <td class="num w">${s.hit}</td><td class="num l">${s.stop}</td><td class="num">${s.n - s.hit - s.stop}</td>
+    <td class="num res ${s.r >= 0 ? "w" : "l"}">${rText(s.r)}</td><td class="num">${rText(s.r / s.n)}</td></tr>`).join("");
+  const typeRows = Object.entries(byType).map(([type, t]) => `<tr><td>${esc(type)}</td><td class="num">${t.days}</td><td class="num">${t.n}</td>
+    <td class="num res ${t.r >= 0 ? "w" : "l"}">${rText(t.r)}</td><td class="num">${t.n ? rText(t.r / t.n) : "—"}</td></tr>`).join("");
+  return `<h3>By setup, across ${facts.length} sessions</h3>
+    <div class="tablewrap"><table class="signals"><thead><tr><th>Setup</th><th>Signals</th><th>Hit 2R</th><th>Stopped</th><th>Timed out</th><th>Net</th><th>Per trade</th></tr></thead><tbody>${setupRows}</tbody></table></div>
+    <h3>By day type</h3>
+    <div class="tablewrap"><table class="signals"><thead><tr><th>Day type</th><th>Days</th><th>Signals</th><th>Net</th><th>Per trade</th></tr></thead><tbody>${typeRows}</tbody></table></div>`;
+}
+
+async function mountReviewBlocks(root, facts) {
+  for (const el of $$("[data-review-signals]", root)) el.innerHTML = signalsHTML(facts);
+  for (const el of $$("[data-review-summary]", root)) el.innerHTML = await summaryHTML();
+}
+
+async function viewReviews() {
+  const reviews = [...(DATA.manifest.reviews || [])].reverse();
+  const md = await getText("knowledge/reviews/index.md");
+  const facts = await Promise.all(reviews.map(reviewFacts));
+  app.innerHTML = `
+    <div class="page-head"><div><p class="eyebrow">Nifty, one session per page · ${reviews.length} reviewed</p><h1>Chart reviews</h1></div></div>
+    <ul class="review-list">${reviews.map((r, k) => {
+      const f = facts[k];
+      const sig = f?.signals || [];
+      const net = sig.reduce((a, g) => a + g.r, 0);
+      const title = r.title.includes("—") ? r.title.split("—").slice(1).join("—").trim() : r.title;
+      return `<li><a href="#/review/${esc(r.date)}">
+        <span class="day-date">${esc(fmtDate(r.date, { day: "numeric", month: "short" }))}<small>${esc(fmtDate(r.date, { weekday: "long" }))}</small></span>
+        <span class="day-title">${esc(title)}<small>${f ? `${esc(f.day_type)} · range ${Math.round(f.range)} pts · gap ${f.gap > 0 ? "+" : ""}${Math.round(f.gap)} · ${sig.length} setups, net ${rText(net)}` : ""}</small></span>
+      </a></li>`;
+    }).join("")}</ul>
+    <article class="prose" id="doc">${renderMarkdown(md.replace(/^# .*\n/, ""))}</article>`;
+  await mountReviewBlocks(app, null);
+}
+
+async function viewReview(date) {
+  const list = DATA.manifest.reviews || [];
+  const k = list.findIndex((r) => r.date === date);
+  if (k < 0) { app.innerHTML = '<p class="empty">No review for that day yet.</p>'; return; }
+  const r = list[k], prev = list[k - 1], next = list[k + 1];
+  const [md, facts] = await Promise.all([getText(r.notes), reviewFacts(r)]);
+  app.innerHTML = `
+    <nav class="daynav">${prev ? `<a href="#/review/${prev.date}">← ${esc(fmtDate(prev.date))}</a>` : "<span></span>"}
+      <a href="#/reviews">All reviews</a>${next ? `<a href="#/review/${next.date}">${esc(fmtDate(next.date))} →</a>` : "<span></span>"}</nav>
+    <article class="prose review" id="doc">${renderMarkdown(md)}</article>`;
+  await mountReviewBlocks(app, facts);
+  wireThumbs(app);
+}
+
 /* ---------------- levels ---------------- */
 const LINE_TYPES = [["base", "Base"], ["barrier", "Barrier"], ["stop", "Stop"], ["target", "Target"]];
 function priceNum(x) {
@@ -1091,6 +1183,8 @@ const ROUTES = [
   [/^#?\/?$/, "start", () => viewStart()],
   [/^#\/levelup$/, "levelup", () => viewLevelUp()],
   [/^#\/smart$/, "smart", () => viewSmart()],
+  [/^#\/reviews$/, "reviews", () => viewReviews()],
+  [/^#\/review\/(\d{4}-\d{2}-\d{2})$/, "reviews", (m) => viewReview(m[1])],
   [/^#\/smart\/(\d+)$/, "smart", (m) => viewSmartLesson(m[1])],
   [/^#\/levels$/, "levels", () => viewLevels()],
   [/^#\/levels\/practice$/, "levels", () => viewLevelsPractice()],
