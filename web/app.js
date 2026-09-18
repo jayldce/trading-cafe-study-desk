@@ -172,6 +172,7 @@ function renderMarkdown(md, ctx = {}) {
       while (i < lines.length && !lines[i].trim().startsWith("```")) code.push(lines[i++]);
       // ```svg blocks are diagrams authored in knowledge/*.md; they render as figures, not as source.
       if (lang === "svg") out.push(`<figure class="diagram">${code.join("\n")}</figure>`);
+      else if (lang === "bias-worksheet") out.push('<div class="bias-sheet" data-bias-sheet></div>');
       else out.push(`<pre><code>${esc(code.join("\n"))}</code></pre>`);
       continue;
     }
@@ -289,7 +290,7 @@ async function viewStart() {
   const verified = mine.filter((t) => t.verified === "frame" || t.verified === "said").length;
   const learned = store.get("learned", []).filter((t) => DATA.conceptTitles.includes(t)).length;
   const { flat: smcLessons } = await smartCourse();
-  const smcSeen = store.get("smcDone", []).filter((x) => smcLessons.some((l) => l.title === x)).length;
+  const smcSeen = [...smcDone()].filter((k) => smcLessons.some((l) => l.label === k)).length;
   const quiz = store.get("quiz", { seen: 0, correct: 0 });
   const latest = [...DATA.manifest.streams].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 3);
 
@@ -759,7 +760,10 @@ async function smartCourse() {
   return COURSE;
 }
 
-function smcDone() { return new Set(store.get("smcDone", [])); }
+// Lessons are tracked by title without their number, so renumbering the course keeps your ticks.
+// Older entries stored the numbered title ("5.2 The five gates"); strip the number when reading them.
+const lessonKey = (title) => String(title).replace(/^[\d.]+\s+/, "");
+function smcDone() { return new Set(store.get("smcDone", []).map(lessonKey)); }
 function smcProgressHTML(done, total) {
   const pct = total ? Math.round((done / total) * 100) : 0;
   return `<div class="progress" role="img" aria-label="${done} of ${total} lessons done"><span style="width:${pct}%"></span></div>`;
@@ -768,7 +772,7 @@ function smcProgressHTML(done, total) {
 async function viewSmart() {
   const { intro, modules, flat } = await smartCourse();
   const done = smcDone();
-  const next = flat.find((l) => !done.has(l.title)) || flat[0];
+  const next = flat.find((l) => !done.has(l.label)) || flat[0];
   const started = done.size > 0;
   app.innerHTML = `
     <div class="page-head">
@@ -788,7 +792,7 @@ async function viewSmart() {
         <h2>${esc(m.title)}</h2>
         ${m.lead ? `<div class="prose">${renderMarkdown(m.lead)}</div>` : ""}
         <ol class="lesson-list">${m.lessons.map((l) => `
-          <li class="${done.has(l.title) ? "is-done" : ""}">
+          <li class="${done.has(l.label) ? "is-done" : ""}">
             <a href="#/smart/${l.index}">
               <span class="ln">${esc(l.num || "•")}</span>
               <span class="lt">${esc(l.label)}</span>
@@ -815,30 +819,135 @@ async function viewSmartLesson(raw) {
         <div class="prose" id="lesson">${renderMarkdown(l.body)}</div>
         <div class="lesson-foot">
           ${prev ? `<a class="btn" href="#/smart/${prev.index}">← ${esc(prev.num || "Back")}</a>` : '<a class="btn" href="#/smart">← Contents</a>'}
-          <button type="button" class="learned-toggle" id="smc-done" aria-pressed="${done.has(l.title)}">${done.has(l.title) ? "Done ✓" : "Mark done"}</button>
+          <button type="button" class="learned-toggle" id="smc-done" aria-pressed="${done.has(l.label)}">${done.has(l.label) ? "Done ✓" : "Mark done"}</button>
           ${next ? `<a class="btn primary" href="#/smart/${next.index}">${esc(next.num)} ${esc(next.label)} →</a>` : '<a class="btn primary" href="#/smart">Back to contents</a>'}
         </div>
       </article>
       <aside class="toc" aria-label="This module">
         <p class="eyebrow">${esc(l.module.title)}</p>
-        ${l.module.lessons.map((x) => `<a href="#/smart/${x.index}" class="${x.index === i ? "here" : ""}${done.has(x.title) ? " is-done" : ""}">${esc(x.num)} ${esc(x.label)}</a>`).join("")}
+        ${l.module.lessons.map((x) => `<a href="#/smart/${x.index}" class="${x.index === i ? "here" : ""}${done.has(x.label) ? " is-done" : ""}">${esc(x.num)} ${esc(x.label)}</a>`).join("")}
         <p class="eyebrow" style="margin-top:18px"><a href="#/smart">All modules</a></p>
       </aside>
     </div>`;
+  mountBiasSheets(app);
   $$("#lesson p").forEach((para) => {
     const label = para.querySelector("strong")?.textContent;
     if (para.firstElementChild?.tagName === "STRONG" && label) para.classList.add("field-" + slugify(label));
   });
   $("#smc-done").addEventListener("click", () => {
     const set = smcDone();
-    set.has(l.title) ? set.delete(l.title) : set.add(l.title);
+    set.has(l.label) ? set.delete(l.label) : set.add(l.label);
     store.set("smcDone", [...set]);
-    const on = set.has(l.title);
+    const on = set.has(l.label);
     const btn = $("#smc-done");
     btn.setAttribute("aria-pressed", String(on));
     btn.textContent = on ? "Done ✓" : "Mark done";
   });
   wireThumbs(app);
+}
+
+
+/* ---------------- morning bias worksheet (```bias-worksheet in smart-money.md, lesson 5.2) ---------------- */
+const BIAS_LEVELS = [
+  ["pdh", "Yesterday's high"], ["pdl", "Yesterday's low"], ["pdc", "Yesterday's close"],
+  ["open", "Pre-open or open price"], ["above", "Next zone above (Y)"], ["below", "Next zone below (Z)"],
+  ["stop", "Your usual stop, index points"],
+];
+const BIAS_CHOICES = {
+  structure: ["Daily structure, last 5–10 days", [["1", "Higher highs and higher lows"], ["0", "Overlapping — a range"], ["-1", "Lower highs and lower lows"]]],
+  global: ["Crude and global tone", [["1", "Supportive"], ["0", "Mixed or unknown"], ["-1", "Negative (e.g. crude rising)"]]],
+};
+const fmtLevel = (n) => n.toLocaleString("en-IN", { maximumFractionDigits: 2 });
+
+function biasRead(v) {
+  const n = (k) => { const x = parseFloat(v[k]); return Number.isFinite(x) ? x : null; };
+  const [pdh, pdl, pdc, open, above, below, stop] = ["pdh", "pdl", "pdc", "open", "above", "below", "stop"].map(n);
+  const rows = [];
+  let loc = 0;
+  if (open != null && pdh != null && pdl != null) {
+    loc = open > pdh ? 2 : open < pdl ? -2 : 0;
+    rows.push([loc, open > pdh ? "Opening above yesterday's high" : open < pdl ? "Opening below yesterday's low" : "Opening inside yesterday's range — range first"]);
+  } else rows.push([0, "Open vs yesterday: fill in yesterday's high, low and the open"]);
+  const st = parseInt(v.structure ?? "0", 10) || 0;
+  rows.push([st, `Daily structure: ${BIAS_CHOICES.structure[1].find(([k]) => k === String(st))[1].toLowerCase()}`]);
+  let room = 0;
+  if (open != null && above != null && below != null && stop != null && stop > 0) {
+    const up = above - open, down = open - below, upOk = up >= 2 * stop, downOk = down >= 2 * stop;
+    room = upOk && !downOk ? 1 : downOk && !upOk ? -1 : 0;
+    rows.push([room, `Room: ${fmtLevel(up)} pts up, ${fmtLevel(down)} pts down (need ${fmtLevel(2 * stop)})`]);
+  } else rows.push([0, "Room: fill in the zones above and below, and your stop"]);
+  const gl = parseInt(v.global ?? "0", 10) || 0;
+  rows.push([gl, `Crude and global tone: ${BIAS_CHOICES.global[1].find(([k]) => k === String(gl))[1].toLowerCase()}`]);
+  const score = loc + st + room + gl;
+  // X: the nearest of yesterday's levels to the open, unless you typed your own.
+  const cands = [pdh, pdl, pdc].filter((x) => x != null);
+  const auto = open != null && cands.length ? cands.reduce((a, b) => (Math.abs(b - open) < Math.abs(a - open) ? b : a)) : null;
+  const X = n("x") ?? auto;
+  const L = (x, fallback) => (x == null ? fallback : fmtLevel(x));
+  let verdict, sentence;
+  if (score >= 3) {
+    verdict = "Favour calls";
+    sentence = `Above ${L(X, "X")} I favour calls toward ${L(above, "Y")}. Below ${L(X, "X")} I take puts only after a clean break, toward ${L(below, "Z")}.`;
+  } else if (score <= -3) {
+    verdict = "Favour puts";
+    sentence = `Below ${L(X, "X")} I favour puts toward ${L(below, "Z")}. Above ${L(X, "X")} I take calls only after a clean break, toward ${L(above, "Y")}.`;
+  } else {
+    verdict = "Range day";
+    sentence = `Between ${L(below, "A")} and ${L(above, "B")} it's a range: calls near ${L(below, "A")}, puts near ${L(above, "B")}, nothing in the middle. A clean break of either edge makes it a trend day.`;
+  }
+  if ((v.standdown || "").trim()) sentence += ` Stand down: ${v.standdown.trim()}.`;
+  return { rows, score, verdict, sentence, auto };
+}
+
+function mountBiasSheets(root) {
+  $$("[data-bias-sheet]", root).forEach((el) => {
+    const todayISO = new Date().toLocaleDateString("en-CA");
+    let date = todayISO;
+    const sheets = () => store.get("biasSheets", {});
+    const opts = (k) => BIAS_CHOICES[k][1].map(([val, label]) => `<option value="${val}">${esc(label)}</option>`).join("");
+    el.innerHTML = `
+      <div class="bs-head"><div><p class="eyebrow">Morning worksheet</p><h3>Build today's bias</h3></div>
+        <label class="bs-date">Date <input type="date" data-date value="${todayISO}"></label></div>
+      <div class="bs-grid">
+        ${BIAS_LEVELS.map(([k, label]) => `<label>${esc(label)}<input type="number" step="any" inputmode="decimal" data-k="${k}"></label>`).join("")}
+        <label>Your X (optional)<input type="number" step="any" inputmode="decimal" data-k="x" placeholder="auto"></label>
+        ${Object.entries(BIAS_CHOICES).map(([k, [label]]) => `<label>${esc(label)}<select data-k="${k}">${opts(k)}</select></label>`).join("")}
+        <label class="bs-wide">Stand down (events and times)<input type="text" data-k="standdown" placeholder="e.g. RBI policy 10:00, US CPI 18:00"></label>
+      </div>
+      <div class="bs-out" aria-live="polite"></div>
+      <div class="bs-actions"><button type="button" class="btn primary" data-copy>Copy sentence</button>
+        <button type="button" class="btn" data-clear>Clear this day</button>
+        <span class="bs-note">Saved in this browser only.</span></div>`;
+    const fields = $$("[data-k]", el);
+    const load = () => {
+      const v = sheets()[date] || {};
+      fields.forEach((f) => { f.value = v[f.dataset.k] ?? (f.tagName === "SELECT" ? "0" : ""); });
+    };
+    const read = () => Object.fromEntries(fields.map((f) => [f.dataset.k, f.value]));
+    const show = () => {
+      const v = read(), r = biasRead(v);
+      $("[data-k='x']", el).placeholder = r.auto != null ? `auto: ${fmtLevel(r.auto)}` : "auto";
+      const cls = r.score >= 3 ? "bull" : r.score <= -3 ? "bear" : "range";
+      $(".bs-out", el).innerHTML = `
+        <ul class="bs-factors">${r.rows.map(([pts, text]) => `<li><b class="${pts > 0 ? "w" : pts < 0 ? "l" : ""}">${pts > 0 ? "+" : ""}${pts}</b> ${esc(text)}</li>`).join("")}</ul>
+        <p class="bs-verdict ${cls}">Score ${r.score > 0 ? "+" : ""}${r.score} · <strong>${r.verdict}</strong></p>
+        <blockquote class="bs-sentence">${esc(r.sentence)}</blockquote>`;
+      return r;
+    };
+    const save = () => { const all = sheets(); all[date] = read(); store.set("biasSheets", all); };
+    fields.forEach((f) => f.addEventListener("input", () => { save(); show(); }));
+    $("[data-date]", el).addEventListener("change", (e) => { date = e.target.value || todayISO; load(); show(); });
+    $("[data-copy]", el).addEventListener("click", async (e) => {
+      const btn = e.currentTarget;
+      try { await navigator.clipboard.writeText(show().sentence); btn.textContent = "Copied"; }
+      catch { btn.textContent = "Select the sentence to copy"; }
+      setTimeout(() => { btn.textContent = "Copy sentence"; }, 1600);
+    });
+    $("[data-clear]", el).addEventListener("click", () => {
+      const all = sheets(); delete all[date]; store.set("biasSheets", all); load(); show();
+    });
+    load(); show();
+  });
 }
 
 /* ---------------- levels ---------------- */

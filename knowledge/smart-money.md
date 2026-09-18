@@ -507,7 +507,7 @@ Do this between 9:00 and 9:15, on the **index** chart, in this order:
 4. **The two biggest OI strikes**, one above and one below (Lesson 4.2).
 5. **The overnight gap.** Mark yesterday's close; an unfilled gap is both a pool and a target.
 6. **The most recent untouched order block** on the 15-minute chart.
-7. **Write one sentence of bias:** "Above X I favour longs toward Y; below X I favour puts toward Z."
+7. **Write one sentence of bias:** "Above X I favour longs toward Y; below X I favour puts toward Z." How to build it is the next lesson, 5.2.
 
 That's five to seven lines. If your chart has twenty, you haven't made a decision — you've made a decoration.
 
@@ -520,7 +520,81 @@ Because a written sentence is falsifiable. When price crosses X, you know instan
 
 **Drill:** do this for five sessions using the Days tab (draw the map from the 9:20 frame, then read the day note to see what happened).
 
-### 5.2 The five gates
+### 5.2 Building your bias
+**Goal:** turn "what do I think today?" into a two-sided plan you can write in one sentence before 9:15.
+
+A bias is **not a prediction**. It's a plan with one line where your view flips (X), and the next target on each side (Y and Z). Chinmay Sir's own routine says the same: global cues set expectations for *volatility, not direction*, and his rule is to trade whichever side confirms, whatever the bias. On 11-Sep his bias was bearish and his best trade was a call [▶ 11-Sep](https://www.youtube.com/watch?v=qTDwaNEZ2RY&t=180s). So the job isn't to guess. It's to find X, Y and Z, then let the market choose.
+
+**Step 1 — Where is price opening, relative to yesterday?** This is the factor that matters most.
+
+| Opening… | Lean |
+|---|---|
+| Above yesterday's high, and holding | Bullish |
+| Below yesterday's low, and holding | Bearish |
+| Inside yesterday's range | **Range first** — trade the edges until one breaks |
+| A big gap either way | Wait for the opening range; big gaps often give some of it back first |
+
+**Step 2 — What's the higher-timeframe structure?** On the daily (or 1-hour) chart, look at the last 5–10 days: higher highs and higher lows, lower highs and lower lows, or overlapping candles. When it agrees with step 1 the lean gets stronger; when it disagrees, treat the day as a range.
+
+**Step 3 — How many points are "on the table"?** This is straight from his routine [▶ 11-Sep](https://www.youtube.com/watch?v=qTDwaNEZ2RY&t=480s): find the next higher-timeframe zone above and below. If the next resistance is 30 points away and support is 200 away, there's no room for longs however bullish you feel. **Rule:** if one side has less than about twice your usual stop of room, don't favour it today.
+
+**Step 4 — Pick X, the line where you're honestly wrong.** Usually the nearest of yesterday's close, yesterday's high or low, or a make-or-break zone. The test: if price is on the other side of X, would you admit your view is wrong? If not, it isn't X.
+
+**Step 5 — Pick Y and Z, the next pool in each direction.** Take them from your map in 5.1: yesterday's high or low, a round number, the biggest OI strike, the gap fill.
+
+**Step 6 — Check the modifiers.** These change your *size and caution*, not your direction:
+- **Global cues** (US close, Asia, GIFT Nifty): expect a gap and more volatility, not a direction.
+- **Crude:** rising is read as bearish for India.
+- **IV / India VIX:** above normal means wider swings and pricier options — smaller size, and skip the jodi.
+- **Event calendar:** RBI, inflation data, US data around 6 PM IST, results of big index stocks. Mark them as no-trade windows (7.3 is what happens otherwise).
+- **Expiry day:** expect pinning near the biggest OI strike in the afternoon (4.2) and fast theta.
+
+**Step 7 — Score it in thirty seconds.**
+
+| Factor | Bull | Bear |
+|---|---|---|
+| Open vs yesterday (step 1) | +2 | −2 |
+| Daily structure (step 2) | +1 | −1 |
+| Room to the next zone (step 3) | +1 | −1 |
+| Crude and global tone | +1 | −1 |
+
+**+3 or more:** favour calls; take puts only after a clean break below X. **−3 or less:** the mirror image. **−2 to +2:** a range day — trade only the edges, and hold no bias until the opening range breaks.
+
+**Step 8 — Write it down.**
+
+```
+Trend day:  Above X I favour calls toward Y. Below X I favour puts toward Z.
+            Stand down: [event / time].
+Range day:  Between A and B it's a range. Calls near A, puts near B,
+            nothing in the middle. A clean break of either edge makes it a trend day.
+```
+
+**Step 9 — After the open, check it once.** At about 9:30, once the opening range has formed, ask whether price is *holding* beyond X or being rejected. Update the sentence once if you must, then leave it alone. Rewriting it every ten minutes is the same as having no bias.
+
+**Worked example 1 — his stream, 17 Sep, Sensex expiry.** His pre-open read [▶ 09:11](https://www.youtube.com/watch?v=njvG_Pr9CpM&t=600s): yesterday's zone ran from a 74,250 base to 74,480–74,500 resistance, the open was 74,182 just below it, about 200 points of room down to 74,000, globals mixed, crude at a key zone, expiry day. The sentence: *"Below 74,250 I favour puts toward 74,000. A reclaim of 74,250 flips me to calls toward 74,480–74,500. Expiry — expect afternoon pinning."* His first trade was a put (+9.3); then Sensex reclaimed the zone and his best morning trade was the 74100 CE (+106.5) as it ran to about 74,535. The market went above X, and the sentence had already said what to do there.
+
+**Worked example 2 — Nifty, 18 Sep.** Yesterday's high 23,363.25, low 23,195.05, close 23,270.60. The open was 23,334.70: a 64-point gap up, but still *inside* yesterday's range and only 29 points under its high. Score: open inside the range 0, daily structure a range after the 15-Sep drop 0, room up only 29 points against 64 down to the gap fill −1, globals not counted 0 — total −1, **a range day**. The sentence: *"Between the opening-range low 23,292 and yesterday's high 23,363 it's a range, nothing in the middle. A clean break above 23,363 makes it a call day toward 23,400; a break below 23,292 toward the gap fill at 23,270."*
+
+What happened: at 09:33–09:35 price poked below 23,292 to 23,286.8 but never displaced down — the next candle was a 24-point rally, so the put side never qualified. Nifty then spent four hours between about 23,287 and 23,342. At 14:28 it broke above 23,363, ran to 23,389 (close to the 23,400 target), and at 15:00 dropped back under 23,363 in one candle. The sentence kept you out of the middle all day and pointed at the one side that finally moved.
+
+**Four mistakes to avoid.** Taking your bias from headlines, Telegram or chat (price location first, news second). Using too many factors — four are enough; more just gives you reasons never to act. Refusing to flip at X — X exists so that you do. And letting the bias force a trade: it tells you which side to *look at first*; you still need all five gates in 5.3.
+
+```bias-worksheet
+```
+
+<details>
+<summary>Check yourself: your score is +3, but at 9:25 price closes below X and the next candle closes lower still. What now?</summary>
+Flip. Price on the other side of X, *holding*, is exactly the condition you wrote down in advance for being wrong. Your bias hasn't failed — it has done its job by telling you, without any debate, that puts are now the side to look at first. The only real failure would be ignoring it because you "felt bullish" at 9:00.
+</details>
+
+<details>
+<summary>Check yourself: the score is 0. Is that a wasted morning?</summary>
+No — "range day" is a bias too, and often the most profitable one to identify, because it tells you what *not* to do: no breakout buying in the middle, no chasing. On 18 Sep a score of −1 would have kept you out of four hours of chop and pointed at the one level (yesterday's high) that finally broke.
+</details>
+
+**Drill:** fill in the worksheet above every morning for two weeks, before 9:15. At the close, write one line: did price hold beyond X or flip it, and which side actually paid?
+
+### 5.3 The five gates
 **Goal:** one checklist that decides every entry. All five, or no trade.
 
 ```
@@ -547,7 +621,7 @@ No. Gate 5 fails: you pay the spread twice, so a 16-point target is really 10. E
 
 **Drill:** print the five gates and tick them out loud for the next twenty setups you look at — including the ones you don't take.
 
-### 5.3 Targets and management
+### 5.4 Targets and management
 **Goal:** exit by plan, in the same language as the entry.
 
 **Where targets belong:** at the *next pool of opposite liquidity*, not at a round number of points. If you're long from a swept low, your target is where the shorts' stops are — the equal highs, the previous day's high, the unfilled FVG above.
@@ -574,7 +648,7 @@ Book most of it. "No pool nearby" means nothing is pulling price your way; you'r
 
 **Drill:** on ten past trades in the Trade log tab, check whether the first target sat at a real pool or at a round number.
 
-### 5.4 When to stand down
+### 5.5 When to stand down
 **Goal:** a written no-trade list, because the money saved is identical to money made.
 
 Stand down when:
@@ -595,7 +669,7 @@ Nothing. Log it, screenshot it, and paper-trade it. The setup may well work — 
 
 **Drill:** write your own no-trade list on one card and keep it beside the screen for a week.
 
-### 5.5 Sizing: turning premium points into risk
+### 5.6 Sizing: turning premium points into risk
 **Goal:** make the stop distance decide your size, every time.
 
 ```
@@ -675,7 +749,7 @@ No — four samples tell you essentially nothing. Either widen the sample (more 
 
 **Week 2 — Sequence spotting.** Still no trades. Each session, find and label three complete five-beat sequences (3.1). Note which beat you *would* have entered on. Success = you can name the beat in real time, not in hindsight.
 
-**Week 3 — Paper trading the five gates.** Take only setups where all five gates pass (5.2). Record entry, stop, target, model letter and result in a sheet. Cap at 2 trades a day. Success = fewer than 10 trades for the week and every one has a written invalidation.
+**Week 3 — Paper trading the five gates.** Take only setups where all five gates pass (5.3). Record entry, stop, target, model letter and result in a sheet. Cap at 2 trades a day. Success = fewer than 10 trades for the week and every one has a written invalidation.
 
 **Week 4 — Smallest real size.** One lot. Same rules, same cap, same journal. The goal is not profit; it's finding out which rules you break when real money is involved. Success = zero broken rules.
 
@@ -814,7 +888,7 @@ Below the shakeout low — which is exactly why he entered *after* it. If you we
 
 After, 14:06 — the price the loss was verified against: `data/frames/ayYEP_dKaLY/050600.jpg`
 
-**Which lesson this is.** Three at once. A sweep needs stops taken **and then rejected** (3.1, beat 4). A third test is a weak zone, not a strong one (2.6). And an event inside your holding time is a stand-down (5.4) — news lands on demand and supply zones, which is his own observation [▶](https://www.youtube.com/watch?v=2gndmZYrtPw&t=1200s).
+**Which lesson this is.** Three at once. A sweep needs stops taken **and then rejected** (3.1, beat 4). A third test is a weak zone, not a strong one (2.6). And an event inside your holding time is a stand-down (5.5) — news lands on demand and supply zones, which is his own observation [▶](https://www.youtube.com/watch?v=2gndmZYrtPw&t=1200s).
 
 **What to avoid:** taking the entry because the *location* was perfect. Location is gate 1 of five. [▶ the entry](https://www.youtube.com/watch?v=ayYEP_dKaLY&t=17700s)
 
@@ -840,7 +914,7 @@ Two ways, both mechanical. Check the day's results calendar before the session a
 
 The mark at 14:21: `data/frames/JBPc4_cTou4/052000.jpg`
 
-**Which lesson this is.** A discount entry at the base of the leg (2.5), a pre-named trigger instead of a chase (3.2 — his own rule against resting trigger orders), and the management ladder from 5.3: partials, then a stop trailed under each new higher low rather than to breakeven.
+**Which lesson this is.** A discount entry at the base of the leg (2.5), a pre-named trigger instead of a chase (3.2 — his own rule against resting trigger orders), and the management ladder from 5.4: partials, then a stop trailed under each new higher low rather than to breakeven.
 
 **Be honest about this one.** He never stated a final exit on stream, so the log marks it at the 14:21 frame while the position was clearly still open. The 147 is a mark-to-frame number, not a booked one — and this single trade is the second-largest in the whole log, which is exactly the kind of outlier that flatters an average. [▶ morning trigger](https://www.youtube.com/watch?v=JBPc4_cTou4&t=1140s) · [▶ the roll](https://www.youtube.com/watch?v=JBPc4_cTou4&t=6240s)
 
@@ -864,7 +938,7 @@ Late afternoon, still pinned: `data/frames/sj_SDOjZFSI/053400.jpg`
 
 **Which lesson this is.** Pinning near heavy open interest (4.2) and the option mechanics that fake structure on a premium chart (4.3). A straddle needs the range to break; a pin is the opposite of a break.
 
-**What to copy:** he cut it before the stop rather than praying. And notice the sequence — three wins, then a trade taken in the worst hour of the day. The stand-down list (5.4) exists for exactly that moment. [▶](https://www.youtube.com/watch?v=sj_SDOjZFSI&t=20220s)
+**What to copy:** he cut it before the stop rather than praying. And notice the sequence — three wins, then a trade taken in the worst hour of the day. The stand-down list (5.5) exists for exactly that moment. [▶](https://www.youtube.com/watch?v=sj_SDOjZFSI&t=20220s)
 
 <details>
 <summary>Check yourself: same idea, same strike, but IV is 27 instead of 13. Better or worse?</summary>
@@ -899,7 +973,7 @@ Look at each one and decide: trade, wait, or stand down. Then open the answer.
 
 <details>
 <summary>D — no chart needed: you're long from a sweep, up 1.2R, it's 3:10 PM, and there's no pool above you until the previous day's high 40 points away</summary>
-**Book most of it.** Two reasons. The closing-auction window is its own regime — his own observation is that premiums sit flat and then move fast (4.4) — and there's no nearby liquidity pulling price your way, so you're holding a decaying instrument on hope (5.3). Keep at most a small runner with a trail under the last higher low.
+**Book most of it.** Two reasons. The closing-auction window is its own regime — his own observation is that premiums sit flat and then move fast (4.4) — and there's no nearby liquidity pulling price your way, so you're holding a decaying instrument on hope (5.4). Keep at most a small runner with a trail under the last higher low.
 </details>
 
 **Drill:** every evening this week, screenshot one chart from the day and write which of A, B, C or D it was. Ten of these and you'll start seeing them live.
@@ -932,7 +1006,7 @@ And the sweep at 10:43, which looked identical to 25 Aug but faded: `data/frames
 [▶ raw breakout](https://www.youtube.com/watch?v=qTDwaNEZ2RY&t=1980s) · [▶ third attempt](https://www.youtube.com/watch?v=qTDwaNEZ2RY&t=3780s) · [▶ the sweep](https://www.youtube.com/watch?v=qTDwaNEZ2RY&t=6300s) · [▶ aggressive reversal](https://www.youtube.com/watch?v=qTDwaNEZ2RY&t=10200s)
 
 <details>
-<summary>Check yourself: which of the five would the five gates (5.2) have blocked?</summary>
+<summary>Check yourself: which of the five would the five gates (5.3) have blocked?</summary>
 The 09:35 raw breakout fails gate 3 — no displacement, no follow-up candle. The 11:52 aggressive reversal fails gate 3 too, since he entered before the confirmation trigger above 161 traded. Skipping both would have turned +27.5 into +40 on the same day, from three trades instead of five.
 </details>
 
