@@ -9,6 +9,7 @@ Add new concepts as streams are processed; add examples to existing ones rather 
 **What:** the first candle that closes above a level is the *breakout candle*. The next candle, if it holds above, is the *follow-up*.
 **Why it matters:** breakout candles often trap buyers. Price pokes above, stops trigger, then it reverses. Waiting for the follow-up filters out many false breakouts, at the cost of a slightly worse price.
 **His words:** to avoid false breakouts, watch the follow-up zone patiently.
+**Crowded trade (18-Sep):** every retail trader sees the same breakout, so the trap is heavy; buying the break itself makes you "the liquidity that buys the top". Enter on the first pullback or the follow-up instead. [▶ 18-Sep](https://www.youtube.com/watch?v=EPh5qxWEUhU&t=4020s)
 **Watch:** [▶ 10:23 recap of the winning trade](https://www.youtube.com/watch?v=qTDwaNEZ2RY&t=4860s) · [▶ 09:24 why breakouts trap](https://www.youtube.com/watch?v=qTDwaNEZ2RY&t=1320s)
 
 ### "Small candles at one level → blast" / barcode pattern
@@ -105,7 +106,8 @@ Sell the expiring ATM call and put, buy the same strikes in the next expiry. The
 
 ### When spot and options stop tracking each other
 Two live examples where the usual link broke: a **T+0 cash settlement pilot** (6-Aug) that let large last-minute cash orders whip spot while options barely moved, and a **stock hitting its price band** (7-Aug), which froze spot ticks while options kept trading. When you notice this, trust the option chart and reduce size.
-**Watch:** [▶ 6-Aug](https://www.youtube.com/watch?v=VRl6SfYXXiQ&t=4560s) · [▶ 7-Aug](https://www.youtube.com/watch?v=ayYEP_dKaLY&t=13320s)
+On 18-Sep the gap showed up differently: on the 12:42–13:00 leg Nifty moved well but the options hadn't yet reached their earlier distribution zone, so the spot move wasn't reflected in premium and there was nothing to buy yet.
+**Watch:** [▶ 6-Aug](https://www.youtube.com/watch?v=VRl6SfYXXiQ&t=4560s) · [▶ 7-Aug](https://www.youtube.com/watch?v=ayYEP_dKaLY&t=13320s) · [▶ 18-Sep](https://www.youtube.com/watch?v=EPh5qxWEUhU&t=12900s)
 
 ### Gamma blasts vs volatility spikes
 Two different reasons a premium can suddenly jump:
@@ -132,10 +134,12 @@ Buying far-OTM options for ₹20–30 hoping for a many-times return. He present
 
 ### Lot sizing across Nifty and Sensex
 Don't cut your Sensex lots just because its premium is about double Nifty's. Once you account for index level and lot size, the rupee P&L per point ends up similar, so size by rupee risk, not by premium.
-**Watch:** [▶ 29-Jul](https://www.youtube.com/watch?v=aWD9ZCXlChk&t=13140s)
+**Sizing by capital (18-Sep):** with about ₹1 lakh use 2 lots while learning and at most 5 once experienced; credit spreads only make sense above roughly ₹10 lakh.
+**Watch:** [▶ 29-Jul](https://www.youtube.com/watch?v=aWD9ZCXlChk&t=13140s) · [▶ 18-Sep](https://www.youtube.com/watch?v=EPh5qxWEUhU&t=720s)
 
 ### Box days ("Test match" markets)
 Some days price coils in a tight range for hours. He stops forcing trades and mentally treats the session like a slow Test match rather than a T20: a few small losses are the acceptable cost of not overtrading. He also names the trap that makes box days expensive: after 30–60 minutes of watching nothing happen, you feel urgency to jump in the moment any candle moves, and repeated often enough that becomes a habit of impulsive entries.
+**18-Sep example:** the Nifty range stayed ~30–40 points all morning, the lowest delta he'd seen in a month, and the second half was equally dull. He took three trades (+~12.5, −7.6, ~−9), then stood aside from ~11:00 with no new trade by the 13:25 close. [▶ 18-Sep](https://www.youtube.com/watch?v=EPh5qxWEUhU&t=15480s)
 **Watch:** [▶ 27-Jul box day](https://www.youtube.com/watch?v=XYoKV_bXMD8&t=4320s) · [▶ 27-Jul idle-screen FOMO](https://www.youtube.com/watch?v=XYoKV_bXMD8&t=4680s)
 
 ### "Tappa": his word for a bounce
@@ -217,7 +221,8 @@ A range where price is soaking up all the supply (or demand) before the next leg
 
 ### Reading OI as a change, not a number
 A single OI snapshot tells you little. Look at how OI shifted over the last ~30 minutes around a consolidation: writers adding at a strike means they're defending it, and writers covering means they're giving up. Intraday OI confirms; it doesn't predict.
-**Watch:** [▶ 4-Sep](https://www.youtube.com/watch?v=YtqPA0aKkzE&t=6780s)
+On 18-Sep he added that he watches OI only in a 30–45 minute sideways window, comparing put-writer additions against call-writer removals around 23300/23350; overall PCR (0.91 → 0.93 that day) is distorted by far-OTM hedges.
+**Watch:** [▶ 4-Sep](https://www.youtube.com/watch?v=YtqPA0aKkzE&t=6780s) · [▶ 18-Sep](https://www.youtube.com/watch?v=EPh5qxWEUhU&t=13740s)
 
 ### Credit spreads and iron condors (his side strategy)
 Besides scalping, he runs defined-risk option-*selling* structures (credit spreads, iron condor/fly) himself. He suggests them to viewers who want steadier, smaller returns rather than the stress of buying scalps. He doesn't teach them on stream.
@@ -254,3 +259,27 @@ A bounce after a big move can come from two different sources of buying: stop-lo
 ### Trail by structure, not by a fixed number of points
 He moves the stop to the last swing low under each fresh higher high, rather than a fixed distance behind price. On 17-Sep the 74100 CE trail went 404 → 420 → 449 → 482 as each new high formed, and the 74800 PE's went 329 → 360 → 405. A fixed 20-point trail would have been shaken out in the chop the PE sat through for 18 minutes after entry; a structure trail only moves when the market proves itself.
 **Watch:** [▶ 17-Sep](https://www.youtube.com/watch?v=njvG_Pr9CpM&t=11880s)
+
+### Strength comes with a trap
+Real momentum starts after one side has been trapped at a zone: stops hunted below a low, then a break of the trendline that catches the other side. If the reversal happens before that hunt, the move has no strength behind it and tends to die in the range. That's why he refuses call reversals until 23300 is dipped below and rejected.
+**Watch:** [▶ 18-Sep](https://www.youtube.com/watch?v=EPh5qxWEUhU&t=4200s)
+
+### Fresh resistance
+After a consolidation makes a fresh low, the upper edge of that consolidation becomes "fresh resistance". Puts can't show strength until price clears it, and entries near the top of a consolidation tend to get rejected. On 18-Sep the 23400 PE's 155–156 zone was exactly that: it spiked to ~159 above it, then fell back to ~148 (about −9 on the trade).
+**Watch:** [▶ 18-Sep](https://www.youtube.com/watch?v=EPh5qxWEUhU&t=4680s)
+
+### Reversals are judged by reward vs risk
+A reversal always shows a small stop, which is why it feels safe. The real question is what the next distribution zone pays. A 13–14-pt stop needs a ~30-pt rally; 6 pts of risk against ~14 of reward (about 1:2) is borderline; 7–8 pts of reward isn't worth the trade.
+**Watch:** [▶ 18-Sep 10:33](https://www.youtube.com/watch?v=EPh5qxWEUhU&t=5160s) · [▶ 18-Sep 11:08](https://www.youtube.com/watch?v=EPh5qxWEUhU&t=7260s)
+
+### Market phases (why sellers, buyers and jodis take turns)
+His history lesson: dead markets (2017–18) favoured option sellers who sold straddles and slept; momentum and high VIX (2020) favoured buyers and jodis; the last one to one-and-a-half months favoured expiry-day jodis until Thursday's premium melt-down. Pick the structure for the current phase instead of loyalty to one style.
+**Watch:** [▶ 18-Sep](https://www.youtube.com/watch?v=EPh5qxWEUhU&t=6660s)
+
+### Liquidity parked in a mega IPO
+He expected sluggish markets while a very large IPO (NSE's, opening the following Monday) soaked up cash, and said to wait for price to start moving again after listing. This is his explanation for thin volumes that morning, not a tested rule.
+**Watch:** [▶ 18-Sep](https://www.youtube.com/watch?v=EPh5qxWEUhU&t=660s)
+
+### Futures vs options for scalping
+He stopped trading futures after 2022–23 because the breakeven is about 16 points after STT and other charges; 200–300 point swings might justify futures, scalping doesn't.
+**Watch:** [▶ 18-Sep](https://www.youtube.com/watch?v=EPh5qxWEUhU&t=9420s)
