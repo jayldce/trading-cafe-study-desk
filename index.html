@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trading Cafe Study Desk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="web/style.css">
+</head>
+<body>
+<a class="skip" href="#app">Skip to content</a>
+<div class="shell">
+  <header class="rail">
+    <a class="brand" href="#/">
+      <span class="brand-mark" aria-hidden="true"><i class="w"></i><i class="l"></i><i class="w"></i></span>
+      <span class="brand-name">Study Desk<small>Trading Cafe India</small></span>
+    </a>
+    <nav aria-label="Sections">
+      <a href="#/" data-nav="start">Start</a>
+      <a href="#/playbook" data-nav="playbook">Playbook</a>
+      <a href="#/levels" data-nav="levels">Levels</a>
+      <a href="#/concepts" data-nav="concepts">Concepts</a>
+      <a href="#/smart" data-nav="smart">Smart money</a>
+      <a href="#/levelup" data-nav="levelup">Level up</a>
+      <a href="#/days" data-nav="days">Days</a>
+      <a href="#/trades" data-nav="trades">Trade log</a>
+      <a href="#/practice" data-nav="practice">Practice</a>
+    </nav>
+    <p class="rail-note">Education, not financial advice. Chat P&amp;L is self-reported.</p>
+  </header>
+  <main id="app" tabindex="-1" aria-live="polite">
+    <p class="loading">Loading the knowledge base…</p>
+  </main>
+</div>
+<dialog id="lightbox" aria-label="Chart frame">
+  <form method="dialog"><button class="close" aria-label="Close">Close</button></form>
+  <img alt="">
+  <p class="lb-caption"></p>
+</dialog>
+<script src="web/app.js"></script>
+</body>
+</html>
