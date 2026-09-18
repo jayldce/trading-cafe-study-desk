@@ -403,6 +403,21 @@ table.signals td.res small { color: var(--ink-2); font: 12px var(--mono); }
 table.signals td.why { font-size: 14px; color: var(--ink-2); min-width: 220px; }
 .review-signals, .review-summary { margin: 12px 0 22px; }
 
+table.signals.prep tr.strong td { font-weight: 600; }
+
+/* ---------- live ---------- */
+.live-top { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 22px; margin-bottom: 14px; }
+.live-price { font: 800 44px/1 var(--display); margin: 0; }
+.live-price span { font: 500 20px var(--mono); }
+.live-price .w, .record.w { color: var(--win); } .live-price .l, .page-head .record.l { color: var(--loss); }
+.live-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 12px 28px; max-width: 1100px; }
+.live-grid h2 { margin-top: 8px; }
+table.ladder tr.now td { font-weight: 700; background: color-mix(in srgb, var(--mark) 22%, transparent); }
+table.ladder tr.near td { background: color-mix(in srgb, var(--accent) 12%, transparent); }
+.alerts { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; font-size: 14px; }
+.alerts li { background: var(--card); border: 1px solid var(--rule); border-radius: 8px; padding: 8px 12px; }
+.alerts .num { font: 12px var(--mono); color: var(--ink-2); }
+
 /* ---------- levels ---------- */
 pre { overflow-x: auto; background: var(--card); border: 1px solid var(--rule); border-radius: var(--radius); padding: 12px 14px; font: 13px/1.45 var(--mono); }
 pre code { background: none; border: 0; padding: 0; font-size: inherit; }

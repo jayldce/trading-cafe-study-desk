@@ -44,6 +44,8 @@ Every setup is then scored the same way: a **2R target**, the stop, or a **time 
 - **Sweep reversals (S) were rarer but better** (5 signals, +2.22R). Breaks with follow-up (B) were fragile on these range-heavy days (4 signals, no 2R hits).
 - **On a trend day, counter-trend setups fail.** Both longs on 15 Sep were stopped within two minutes; every short in the trend's direction either hit 2R or was ahead at the time exit.
 - **The daily stop is a trade-off, not a free lunch.** Stopping after two consecutive losses cut 17 Sep from −5R to −2R, but it also stopped 11 and 15 Sep before their best trades: over these five days it turned +3.03R into −0.19R. Five days can't settle that — keep measuring.
+- **Reward to risk: the target mattered more than the stop.** The same 30 entries made +2.18R with a 1R target, +3.03R at 2R and **+8.03R at 3R** — most trades that reached 2R kept going. Taking profit early gave away most of the edge.
+- **Tight stops didn't lower the risk — they raised the loss rate.** Setups with stops of 10 points or less netted 0R at 2R; setups whose stop sat where the idea was actually wrong made +0.20R per trade. On 1-minute candles a tight stop sits inside normal noise. Keep risk small with **position size** (lesson 5.6), not by squeezing the stop.
 - **The scanner is stricter than your eye.** On 16 and 17 Sep the day's best reversals weren't flagged, because no reversal candle was big enough. The rules protect you from the fake ones and cost you some real ones.
 
 Everything here is hindsight on five sessions — a way to train your eye and to test rules, not evidence of an edge.

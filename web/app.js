@@ -172,7 +172,8 @@ function renderMarkdown(md, ctx = {}) {
       while (i < lines.length && !lines[i].trim().startsWith("```")) code.push(lines[i++]);
       // ```svg blocks are diagrams authored in knowledge/*.md; they render as figures, not as source.
       if (lang === "svg") out.push(`<figure class="diagram">${code.join("\n")}</figure>`);
-      else if (lang === "bias-worksheet") out.push('<div class="bias-sheet" data-bias-sheet></div>');
+      else if (lang === "bias-worksheet") out.push(`<div class="bias-sheet" data-bias-sheet data-defaults="${esc(code.join(" ").trim())}"></div>`);
+      else if (lang === "prep-zones") out.push('<div class="prep-zones" data-prep-zones></div>');
       else if (lang === "review-signals") out.push('<div class="review-signals" data-review-signals></div>');
       else if (lang === "review-summary") out.push('<div class="review-summary" data-review-summary></div>');
       else out.push(`<pre><code>${esc(code.join("\n"))}</code></pre>`);
@@ -237,7 +238,7 @@ function inline(text, ctx) {
   let s = text.replace(/`([^`]+)`/g, (_, c) => { codes.push(c); return `\uE000${codes.length - 1}\uE000`; });
   s = esc(s);
   // Images first, or the link rule below would swallow the [alt](url) part. Only our own chart folders are allowed.
-  s = s.replace(/!\[([^\]]*)\]\(((?:data\/reviews|data\/frames)\/[^)\s]+)\)/g, (_, alt, url) =>
+  s = s.replace(/!\[([^\]]*)\]\(((?:data\/reviews|data\/frames|data\/prep)\/[^)\s]+)\)/g, (_, alt, url) =>
     `<button type="button" class="thumb chart-img" data-src="${url}" data-caption="${alt}"><img loading="lazy" src="${url}" alt="${alt}"></button>`);
   s = s.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (_, label, url) => linkHTML(label, url.replace(/&amp;/g, "&")));
   s = s.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
@@ -906,7 +907,9 @@ function biasRead(v) {
 
 function mountBiasSheets(root) {
   $$("[data-bias-sheet]", root).forEach((el) => {
-    const todayISO = new Date().toLocaleDateString("en-CA");
+    let defaults = {};
+    try { defaults = el.dataset.defaults ? JSON.parse(el.dataset.defaults) : {}; } catch { defaults = {}; }
+    const todayISO = defaults.date || new Date().toLocaleDateString("en-CA");
     let date = todayISO;
     const sheets = () => store.get("biasSheets", {});
     const opts = (k) => BIAS_CHOICES[k][1].map(([val, label]) => `<option value="${val}">${esc(label)}</option>`).join("");
@@ -925,7 +928,7 @@ function mountBiasSheets(root) {
         <span class="bs-note">Saved in this browser only.</span></div>`;
     const fields = $$("[data-k]", el);
     const load = () => {
-      const v = sheets()[date] || {};
+      const v = sheets()[date] || (date === todayISO ? defaults : {});
       fields.forEach((f) => { f.value = v[f.dataset.k] ?? (f.tagName === "SELECT" ? "0" : ""); });
     };
     const read = () => Object.fromEntries(fields.map((f) => [f.dataset.k, f.value]));
@@ -959,7 +962,7 @@ function mountBiasSheets(root) {
 /* ---------------- chart reviews (knowledge/reviews/*.md + data/reviews/*.json from tools/market-review.py) ---------------- */
 const fmtPx = (n) => Number(n).toLocaleString("en-IN", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 const rText = (r) => `${r > 0 ? "+" : r < 0 ? "−" : ""}${Math.abs(r).toFixed(2)}R`;
-const RESULT = { target: ["hit 2R", "w"], stop: ["stopped", "l"], time: ["timed out", ""] };
+const RESULT = { target: ["hit 2R", "w"], stop: ["stopped", "l"], time: ["timed out", ""], open: ["still open", ""] };
 async function reviewFacts(r) { return r.facts ? JSON.parse(await getText(r.facts)) : null; }
 
 function signalsHTML(f) {
@@ -997,7 +1000,23 @@ async function summaryHTML() {
     <td class="num res ${s.r >= 0 ? "w" : "l"}">${rText(s.r)}</td><td class="num">${rText(s.r / s.n)}</td></tr>`).join("");
   const typeRows = Object.entries(byType).map(([type, t]) => `<tr><td>${esc(type)}</td><td class="num">${t.days}</td><td class="num">${t.n}</td>
     <td class="num res ${t.r >= 0 ? "w" : "l"}">${rText(t.r)}</td><td class="num">${t.n ? rText(t.r / t.n) : "—"}</td></tr>`).join("");
-  return `<h3>By setup, across ${facts.length} sessions</h3>
+  const all = facts.flatMap((f) => f.signals || []);
+  const tgtRows = ["1", "2", "3"].map((k) => {
+    const rs = all.map((g) => g.r_by_target?.[k]).filter((x) => x != null);
+    const net = rs.reduce((a, b) => a + b, 0);
+    return `<tr><td>${k}R target</td><td class="num">${rs.filter((r) => r > 0).length} of ${rs.length}</td>
+      <td class="num res ${net >= 0 ? "w" : "l"}">${rText(net)}</td><td class="num">${rs.length ? rText(net / rs.length) : "—"}</td></tr>`;
+  }).join("");
+  const riskRows = [["Stop 10 pts or less", (g) => g.risk <= 10], ["Stop over 10 pts", (g) => g.risk > 10]].map(([label, test]) => {
+    const sub = all.filter(test), net = sub.reduce((a, g) => a + g.r, 0);
+    return `<tr><td>${label}</td><td class="num">${sub.length}</td><td class="num">${sub.filter((g) => g.r > 0).length}</td>
+      <td class="num res ${net >= 0 ? "w" : "l"}">${rText(net)}</td><td class="num">${sub.length ? rText(net / sub.length) : "—"}</td></tr>`;
+  }).join("");
+  return `<h3>Reward: the same trades with different targets</h3>
+    <div class="tablewrap"><table class="signals"><thead><tr><th>Target</th><th>Winners</th><th>Net</th><th>Per trade</th></tr></thead><tbody>${tgtRows}</tbody></table></div>
+    <h3>Risk: tight stops versus stops where the idea is wrong (2R target)</h3>
+    <div class="tablewrap"><table class="signals"><thead><tr><th>Stop size</th><th>Trades</th><th>Won</th><th>Net</th><th>Per trade</th></tr></thead><tbody>${riskRows}</tbody></table></div>
+    <h3>By setup, across ${facts.length} sessions</h3>
     <div class="tablewrap"><table class="signals"><thead><tr><th>Setup</th><th>Signals</th><th>Hit 2R</th><th>Stopped</th><th>Timed out</th><th>Net</th><th>Per trade</th></tr></thead><tbody>${setupRows}</tbody></table></div>
     <h3>By day type</h3>
     <div class="tablewrap"><table class="signals"><thead><tr><th>Day type</th><th>Days</th><th>Signals</th><th>Net</th><th>Per trade</th></tr></thead><tbody>${typeRows}</tbody></table></div>`;
@@ -1040,6 +1059,101 @@ async function viewReview(date) {
     <article class="prose review" id="doc">${renderMarkdown(md)}</article>`;
   await mountReviewBlocks(app, facts);
   wireThumbs(app);
+}
+
+
+/* ---------------- next-session prep (knowledge/prep/*.md + data/prep/*.json) ---------------- */
+function prepZonesHTML(p) {
+  if (!p) return "";
+  const kindLabel = { prev_high: "prev-day high", prev_low: "prev-day low", prev_close: "prev-day close", old_high: "older high",
+    old_low: "older low", range_high: "range high", range_low: "range low", daily_gap: "unfilled daily gap", fvg_bull: "open bull FVG",
+    fvg_bear: "open bear FVG", equal_highs: "untaken equal highs", equal_lows: "untaken equal lows", round: "round number" };
+  const rows = p.zones.map((z) => {
+    const price = z.hi - z.lo < 1 ? fmtPx(z.lo) : `${fmtPx(z.lo)}–${fmtPx(z.hi)}`;
+    const cls = z.distance > 0 ? "l" : z.distance < 0 ? "w" : "";
+    return `<tr class="${z.weight >= 3 ? "strong" : ""}"><td class="num">${price}</td><td class="num ${cls}">${z.distance > 0 ? "+" : ""}${z.distance.toFixed(0)}</td>
+      <td>${esc(kindLabel[z.kind] || z.kind)}</td><td class="why">${esc(z.text)}</td><td class="num">${"●".repeat(z.weight)}</td></tr>`;
+  }).join("");
+  return `<div class="tablewrap"><table class="signals prep"><thead><tr><th>Price</th><th>From close</th><th>Kind</th><th>Where it comes from</th><th>Weight</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+}
+
+async function viewPrep(date) {
+  const list = DATA.manifest.preps || [];
+  if (!list.length) { app.innerHTML = '<p class="empty">No session prep yet. The nightly run writes one for the next trading day.</p>'; return; }
+  const k = date ? list.findIndex((r) => r.date === date) : list.length - 1;
+  const r = list[Math.max(0, k)], prev = list[k - 1];
+  const [md, facts] = await Promise.all([getText(r.notes), r.facts ? getText(r.facts).then(JSON.parse) : null]);
+  app.innerHTML = `
+    <nav class="daynav">${prev ? `<a href="#/prep/${prev.date}">← prep for ${esc(fmtDate(prev.date))}</a>` : "<span></span>"}<span></span></nav>
+    <article class="prose review" id="doc">${renderMarkdown(md)}</article>`;
+  for (const el of $$("[data-prep-zones]", app)) el.innerHTML = prepZonesHTML(facts);
+  mountBiasSheets(app);
+  wireThumbs(app);
+}
+
+
+/* ---------------- live (data/live/state.json from tools/live-monitor.py; local only) ---------------- */
+let liveTimer = null;
+async function viewLive() {
+  clearInterval(liveTimer);
+  const start = '<pre><code>uv run --with matplotlib python tools/live-monitor.py</code></pre>';
+  if (!LOCAL) {
+    app.innerHTML = `<div class="page-head"><div><p class="eyebrow">Local only</p><h1>Live</h1></div></div>
+      <p class="lede">The live monitor runs on your own Mac and is never published. Open the Study Desk locally
+      (<code>python3 tckb.py serve --open</code>), start the monitor, and this page updates every 20 seconds.</p>${start}`;
+    return;
+  }
+  const render = async () => {
+    if (!location.hash.startsWith("#/live")) { clearInterval(liveTimer); return; }
+    let st = null;
+    try { const r = await fetch("data/live/state.json", { cache: "no-store" }); if (r.ok) st = await r.json(); } catch { st = null; }
+    const today = new Date().toLocaleDateString("en-CA");
+    const updated = st ? new Date(st.updated) : null;
+    const staleMin = updated ? (Date.now() - updated.getTime()) / 60000 : Infinity;
+    const running = st && st.day === today && staleMin < 3;
+    const status = !st ? "The monitor hasn't run yet."
+      : running ? `Updated ${updated.toLocaleTimeString("en-IN")} · feed age ${st.data_age_min ?? "?"} min`
+      : `Last update ${updated.toLocaleString("en-IN")} — the monitor isn't running now.`;
+    if (!st) {
+      app.innerHTML = `<div class="page-head"><div><p class="eyebrow">Nifty · rules running live</p><h1>Live</h1></div></div>
+        <p class="lede">${status} Start it from the project folder around 9:10:</p>${start}`;
+      return;
+    }
+    const chg = st.price - st.prev_close;
+    const levels = [
+      ...st.zones.filter((z) => z.weight >= 2).map((z) => ({ lo: z.lo, hi: z.hi, text: z.text })),
+      { lo: st.or_high, hi: st.or_high, text: "opening-range high" }, { lo: st.or_low, hi: st.or_low, text: "opening-range low" },
+      { lo: st.high, hi: st.high, text: "today's high" }, { lo: st.low, hi: st.low, text: "today's low" },
+    ];
+    if (!st.zones.length) levels.push({ lo: st.pdh, hi: st.pdh, text: "previous-day high" }, { lo: st.pdl, hi: st.pdl, text: "previous-day low" },
+      { lo: st.prev_close, hi: st.prev_close, text: "previous-day close" });
+    levels.sort((a, b) => b.hi - a.hi);
+    const ladder = [];
+    let placed = false;
+    for (const l of levels) {
+      if (!placed && l.hi < st.price) { ladder.push(`<tr class="now"><td class="num">${fmtPx(st.price)}</td><td>← price now</td><td></td></tr>`); placed = true; }
+      const mid = (l.lo + l.hi) / 2, d = mid - st.price;
+      ladder.push(`<tr class="${Math.abs(d) <= 10 ? "near" : ""}"><td class="num">${l.hi - l.lo < 1 ? fmtPx(l.lo) : `${fmtPx(l.lo)}–${fmtPx(l.hi)}`}</td>
+        <td>${esc(l.text)}</td><td class="num ${d > 0 ? "l" : "w"}">${d > 0 ? "+" : ""}${d.toFixed(0)}</td></tr>`);
+    }
+    if (!placed) ladder.push(`<tr class="now"><td class="num">${fmtPx(st.price)}</td><td>← price now</td><td></td></tr>`);
+    const alerts = [...st.alerts].reverse().slice(0, 15).map((a) => `<li><span class="num">${esc(a.time)}</span> <b>${esc(a.title)}</b><br>${esc(a.text)}</li>`).join("");
+    app.innerHTML = `
+      <div class="page-head"><div><p class="eyebrow">Nifty · ${esc(st.day)} · rules running live</p><h1>Live</h1></div>
+        <p class="record ${running ? "" : "l"}">${esc(status)}</p></div>
+      <div class="live-top"><p class="live-price">${fmtPx(st.price)} <span class="${chg >= 0 ? "w" : "l"}">${chg >= 0 ? "+" : "−"}${Math.abs(chg).toFixed(1)}</span></p>
+        <p class="record">Open ${fmtPx(st.open)} · High ${fmtPx(st.high)} · Low ${fmtPx(st.low)} · Opening range ${fmtPx(st.or_low)}–${fmtPx(st.or_high)}</p></div>
+      <div class="live-grid">
+        <section><h2>Where price is</h2><div class="tablewrap"><table class="signals ladder"><tbody>${ladder.join("")}</tbody></table></div></section>
+        <section><h2>What the rules saw</h2><ul class="alerts">${alerts || "<li>Nothing yet.</li>"}</ul></section>
+      </div>
+      <h2>Setups today</h2><div class="review-signals">${signalsHTML({ signals: st.signals })}</div>
+      <button type="button" class="thumb chart-img" data-src="${esc(st.chart)}?t=${Date.now()}" data-caption="Live chart"><img src="${esc(st.chart)}?t=${Date.now()}" alt="Live Nifty chart"></button>
+      <p class="caption">These are the rules' detections, not recommendations. Stops and targets are the scanner's mechanical levels in index points, not option prices. The data feed is unofficial and can lag — check the feed age above.</p>`;
+    wireThumbs(app);
+  };
+  await render();
+  liveTimer = setInterval(render, 20000);
 }
 
 /* ---------------- levels ---------------- */
@@ -1183,6 +1297,9 @@ const ROUTES = [
   [/^#?\/?$/, "start", () => viewStart()],
   [/^#\/levelup$/, "levelup", () => viewLevelUp()],
   [/^#\/smart$/, "smart", () => viewSmart()],
+  [/^#\/live$/, "live", () => viewLive()],
+  [/^#\/prep$/, "prep", () => viewPrep()],
+  [/^#\/prep\/(\d{4}-\d{2}-\d{2})$/, "prep", (m) => viewPrep(m[1])],
   [/^#\/reviews$/, "reviews", () => viewReviews()],
   [/^#\/review\/(\d{4}-\d{2}-\d{2})$/, "reviews", (m) => viewReview(m[1])],
   [/^#\/smart\/(\d+)$/, "smart", (m) => viewSmartLesson(m[1])],
