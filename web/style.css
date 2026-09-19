@@ -450,7 +450,11 @@ table.signals.prep tr.strong td { font-weight: 600; }
 .lv-timeline li { display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 10px; padding: 6px 0 6px 14px; position: relative; }
 .lv-timeline li::before { content: ""; position: absolute; left: -6px; top: 12px; width: 10px; height: 10px; border-radius: 50%; background: var(--ink-2); }
 .lv-timeline li.k-setup::before { background: var(--accent); } .lv-timeline li.k-level::before, .lv-timeline li.k-wall::before { background: var(--mark); }
-.lv-timeline li.k-win::before { background: var(--win); } .lv-timeline li.k-loss::before { background: var(--loss); }
+.lv-timeline li.k-win::before { background: var(--win); } .lv-timeline li.k-fill::before { background: var(--accent); }
+.lv-timeline li.k-warn::before { background: var(--loss); box-shadow: 0 0 0 3px color-mix(in srgb, var(--loss) 30%, transparent); }
+.lv-card.pos { margin-bottom: 10px; }
+.review-list .day-title b.w { color: var(--win); } .review-list .day-title b.l { color: var(--loss); }
+.lv-chips b.w { color: var(--win); } .lv-chips b.l { color: var(--loss); } .lv-timeline li.k-loss::before { background: var(--loss); }
 .lv-timeline time { font: 12px var(--mono); color: var(--ink-2); padding-top: 2px; }
 .lv-timeline b { font-weight: 600; font-size: 15px; }
 .lv-timeline small { display: block; color: var(--ink-2); font-size: 13px; }

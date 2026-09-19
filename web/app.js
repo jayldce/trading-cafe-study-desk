@@ -942,7 +942,15 @@ function mountBiasSheets(root) {
         <blockquote class="bs-sentence">${esc(r.sentence)}</blockquote>`;
       return r;
     };
-    const save = () => { const all = sheets(); all[date] = read(); store.set("biasSheets", all); };
+    const save = () => {
+      const all = sheets(); all[date] = read(); store.set("biasSheets", all);
+      // Locally, also hand it to the Study Desk server so tonight's journal can compare your trades with it.
+      if (LOCAL) {
+        const r = biasRead(all[date]);
+        fetch("api/bias", { method: "POST", headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ date, ...all[date], verdict: r.verdict, score: r.score, sentence: r.sentence }) }).catch(() => {});
+      }
+    };
     fields.forEach((f) => f.addEventListener("input", () => { save(); show(); }));
     $("[data-date]", el).addEventListener("change", (e) => { date = e.target.value || todayISO; load(); show(); });
     $("[data-copy]", el).addEventListener("click", async (e) => {
@@ -1231,6 +1239,7 @@ async function viewLive() {
             <p class="lv-sub">Open ${fmtPx(st.open)} · High ${fmtPx(st.high)} · Low ${fmtPx(st.low)}</p></div>
           <span class="lv-pill ${mode}">● ${pill}</span>
         </header>
+        ${accountHTML(st.account)}
         <section><h2>Where Nifty is</h2>${whereHTML(st)}</section>
         <section><h2>Setup right now</h2>${setupHTML(st)}</section>
         <section><h2>Today so far</h2>${timelineHTML(st)}</section>
@@ -1246,6 +1255,120 @@ async function viewLive() {
   };
   await render();
   liveTimer = setInterval(render, 3000); // a small local file; with the Dhan feed the price changes every few seconds
+}
+
+
+const rupees = (n) => `${n < 0 ? "−" : n > 0 ? "+" : ""}₹${Math.abs(Math.round(n)).toLocaleString("en-IN")}`;
+function accountHTML(acct) {
+  if (!acct) return "";
+  if (acct.error) return `<section><h2>Your positions</h2><p class="caption">Couldn't read your Dhan account: ${esc(acct.error)}</p></section>`;
+  const d = acct.day || {};
+  const limits = [d.cap ? `${d.trades} of ${d.cap} trades` : `${d.trades} trades`,
+    d.loss_limit ? `${rupees(d.total)} of −₹${Number(d.loss_limit).toLocaleString("en-IN")} limit` : null].filter(Boolean).join(" · ");
+  const cards = (acct.positions || []).map((p) => {
+    const cls = (p.pnl_rs ?? 0) >= 0 ? "w" : "l";
+    const ctx = p.context ? `Entered ${esc(p.context.time)} with Nifty ${esc(p.context.where || "")}${p.context.setup ? ` · setup ${esc(p.context.setup)}` : " · no rule setup"}` : "";
+    return `<div class="lv-card pos ${p.side === "long" ? "long" : "short"}">
+      <p class="lv-tag">${esc(p.label)} · ${p.side === "long" ? "bought" : "sold"} ${p.qty} @ ₹${p.entry} · ${p.minutes ?? "?"} min</p>
+      <div class="lv-nums">
+        <div><span>Now${p.live ? " (live)" : ""}</span><b>${p.ltp != null ? `₹${p.ltp}` : "—"}</b></div>
+        <div><span>P&amp;L</span><b class="${cls}">${p.pnl_rs != null ? rupees(p.pnl_rs) : "—"}</b><small>${p.pnl_pts != null ? `${p.pnl_pts > 0 ? "+" : ""}${p.pnl_pts} pts` : ""}${p.r != null ? ` · ${rText(p.r)}` : ""}</small></div>
+        <div><span>Stop order</span><b class="${p.stop ? "" : "l"}">${p.stop ? `₹${p.stop}` : "none"}</b></div>
+        <div><span>Best / worst so far</span><b>${p.best_pts != null ? `${p.best_pts > 0 ? "+" : ""}${p.best_pts}` : "—"} / ${p.worst_pts != null ? p.worst_pts : "—"}</b><small>pts</small></div>
+      </div><p class="caption">${ctx}</p></div>`;
+  }).join("");
+  return `<section><h2>Your positions</h2>
+    <p class="lv-sentence">Today: ${limits} · ${d.wins ?? 0}W / ${d.losses ?? 0}L closed <b class="${(d.net_closed ?? 0) >= 0 ? "w" : "l"}">${rupees(d.net_closed ?? 0)}</b>
+      ${(acct.positions || []).length ? ` · open ${rupees(d.open_pnl ?? 0)}` : ""} <small class="caption">(net of estimated charges)</small></p>
+    ${cards || '<p class="caption">No open position.</p>'}</section>`;
+}
+
+/* ---------------- my trades (data/journal/ from tools/journal.py; local only, never published) ---------------- */
+async function journalData() {
+  const r = await fetch("data/journal/index.json", { cache: "no-store" });
+  if (!r.ok) return null;
+  const days = await r.json();
+  const full = await Promise.all(days.map((d) => fetch(`data/journal/${d.date}.json`, { cache: "no-store" }).then((x) => x.json())));
+  return { days, trades: full.flatMap((f) => f.trades), full };
+}
+
+function breakdown(trades, keyFn, title) {
+  const groups = {};
+  for (const t of trades) { const k = keyFn(t) ?? "unknown"; (groups[k] ||= []).push(t); }
+  const rows = Object.entries(groups).map(([k, ts]) => {
+    const net = ts.reduce((a, t) => a + t.net, 0), wins = ts.filter((t) => t.net > 0).length;
+    return `<tr><td>${esc(k)}</td><td class="num">${ts.length}</td><td class="num">${Math.round((100 * wins) / ts.length)}%</td>
+      <td class="num res ${net >= 0 ? "w" : "l"}">${rupees(net)}</td><td class="num">${rupees(net / ts.length)}</td></tr>`;
+  }).join("");
+  return `<h3>${title}</h3><div class="tablewrap"><table class="signals"><thead><tr><th></th><th>Trades</th><th>Win rate</th><th>Net</th><th>Per trade</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+}
+
+function curveSVG(trades) {
+  if (trades.length < 2) return "";
+  let run = 0;
+  const pts = trades.map((t) => (run += t.net));
+  const lo = Math.min(0, ...pts), hi = Math.max(0, ...pts), W = 800, H = 180, pad = 10;
+  const x = (i) => pad + (i * (W - 2 * pad)) / (pts.length - 1), y = (v) => H - pad - ((v - lo) * (H - 2 * pad)) / ((hi - lo) || 1);
+  return `<figure class="diagram"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Cumulative net P&L by trade">
+    <line x1="${pad}" x2="${W - pad}" y1="${y(0)}" y2="${y(0)}" class="eqline"/>
+    <polyline class="price" points="${pts.map((v, i) => `${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(" ")}"/></svg></figure>
+    <p>Cumulative net P&amp;L, trade by trade, after estimated charges.</p>`;
+}
+
+async function viewJournal(date) {
+  if (!LOCAL) {
+    app.innerHTML = `<div class="page-head"><div><p class="eyebrow">Local only</p><h1>My trades</h1></div></div>
+      <p class="lede">Your journal stays on your Mac and is never published. Open the Study Desk locally to see it.</p>`;
+    return;
+  }
+  const data = await journalData().catch(() => null);
+  if (!data || !data.days.length) {
+    app.innerHTML = `<div class="page-head"><div><p class="eyebrow">Your Dhan trades, measured</p><h1>My trades</h1></div></div>
+      <p class="lede">No journal yet. It starts after your first trading day: the live monitor saves your fills and the market
+      context as you trade, and tonight's run turns them into this page.</p>`;
+    return;
+  }
+  if (date) {
+    const day = data.full.find((f) => f.summary.date === date);
+    if (!day) { app.innerHTML = '<p class="empty">No journal for that day.</p>'; return; }
+    const s = day.summary;
+    const rows = day.trades.map((t) => `<tr><td class="num">${esc(t.entry_time.slice(0, 5))}–${esc((t.exit_time || "").slice(0, 5))}</td>
+      <td>${esc(t.label)}</td><td class="num">${t.qty}</td><td class="num">₹${t.entry} → ₹${t.exit}</td>
+      <td class="num res ${t.net >= 0 ? "w" : "l"}">${t.points > 0 ? "+" : ""}${t.points} · ${rupees(t.net)}</td>
+      <td class="num">${t.best_pts ?? "—"} / ${t.worst_pts ?? "—"}${t.kept_pct != null ? `<small> · kept ${t.kept_pct}%</small>` : ""}</td>
+      <td class="why">${esc([t.window, t.where, t.setup ? `setup ${t.setup}` : "no setup"].filter(Boolean).join(" · "))}
+        ${t.broken_rules.length ? `<br><b class="l">Broke: ${esc(t.broken_rules.join(", "))}</b>` : '<br><b class="w">All checks passed</b>'}</td></tr>`).join("");
+    app.innerHTML = `<nav class="daynav"><a href="#/journal">← All days</a><span></span></nav>
+      <div class="page-head"><div><p class="eyebrow">My trades · ${esc(fmtDate(s.date))}</p><h1>${rupees(s.net)} net</h1></div>
+        <p class="record">${s.trades} trades · ${s.wins}W / ${s.losses}L · charges ≈ ₹${Math.round(s.charges)} · rule score ${s.rule_score ?? "—"}%</p></div>
+      ${s.bias ? `<p class="lede">Morning bias: ${esc(s.bias)}</p>` : ""}
+      <div class="tablewrap"><table class="signals"><thead><tr><th>Time</th><th>Option</th><th>Qty</th><th>In → out</th><th>Pts · ₹</th><th>Best / worst pts</th><th>Context and rules</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+    return;
+  }
+  const T = data.trades, net = T.reduce((a, t) => a + t.net, 0);
+  const wins = T.filter((t) => t.net > 0), losses = T.filter((t) => t.net <= 0);
+  const avg = (xs) => (xs.length ? xs.reduce((a, t) => a + t.net, 0) / xs.length : 0);
+  const pf = losses.length ? wins.reduce((a, t) => a + t.net, 0) / Math.abs(losses.reduce((a, t) => a + t.net, 0) || 1) : null;
+  const kept = T.filter((t) => t.kept_pct != null), keptAvg = kept.length ? Math.round(kept.reduce((a, t) => a + t.kept_pct, 0) / kept.length) : null;
+  app.innerHTML = `
+    <div class="page-head"><div><p class="eyebrow">Your Dhan trades, measured · local only</p><h1>My trades</h1></div>
+      <p class="record">${data.days.length} days · ${T.length} trades</p></div>
+    <div class="lv-chips">
+      <span><small>Net (after est. charges)</small><b class="${net >= 0 ? "w" : "l"}">${rupees(net)}</b></span>
+      <span><small>Win rate</small>${T.length ? Math.round((100 * wins.length) / T.length) : 0}%</span>
+      <span><small>Average win / loss</small>${rupees(avg(wins))} / ${rupees(avg(losses))}</span>
+      <span><small>Profit factor</small>${pf != null ? pf.toFixed(2) : "—"}</span>
+      <span><small>Kept of the best move</small>${keptAvg != null ? `${keptAvg}%` : "—"}</span>
+    </div>
+    ${curveSVG(T)}
+    ${breakdown(T, (t) => (t.setup ? "with a rule setup" : "no rule setup"), "Did a rule setup agree?")}
+    ${breakdown(T, (t) => t.where, "Where Nifty was when you entered")}
+    ${breakdown(T, (t) => (t.broken_rules.length ? "broke a rule" : "followed every rule"), "Rules followed")}
+    ${breakdown(T, (t) => t.window, "Time of day")}
+    <h3>Days</h3>
+    <ul class="review-list">${[...data.days].reverse().map((d) => `<li><a href="#/journal/${esc(d.date)}">
+      <span class="day-date">${esc(fmtDate(d.date, { day: "numeric", month: "short" }))}<small>${esc(fmtDate(d.date, { weekday: "long" }))}</small></span>
+      <span class="day-title"><b class="${d.net >= 0 ? "w" : "l"}">${rupees(d.net)}</b><small>${d.trades} trades · ${d.wins}W / ${d.losses}L · rule score ${d.rule_score ?? "—"}%</small></span></a></li>`).join("")}</ul>`;
 }
 
 /* ---------------- levels ---------------- */
@@ -1390,6 +1513,8 @@ const ROUTES = [
   [/^#\/levelup$/, "levelup", () => viewLevelUp()],
   [/^#\/smart$/, "smart", () => viewSmart()],
   [/^#\/live$/, "live", () => viewLive()],
+  [/^#\/journal$/, "journal", () => viewJournal()],
+  [/^#\/journal\/(\d{4}-\d{2}-\d{2})$/, "journal", (m) => viewJournal(m[1])],
   [/^#\/prep$/, "prep", () => viewPrep()],
   [/^#\/prep\/(\d{4}-\d{2}-\d{2})$/, "prep", (m) => viewPrep(m[1])],
   [/^#\/reviews$/, "reviews", () => viewReviews()],
