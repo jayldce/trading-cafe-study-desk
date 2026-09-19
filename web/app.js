@@ -1094,6 +1094,29 @@ async function viewPrep(date) {
 
 /* ---------------- live (data/live/state.json from tools/live-monitor.py; local only) ---------------- */
 let liveTimer = null;
+function optionsHTML(o, signals) {
+  if (!o) return "";
+  if (o.error) {
+    return `<h2>Options</h2><p class="caption">No option data (${esc(o.error)}). Set up Dhan once — see <code>tools/dhan_options.py</code> —
+      then check it with <code>python3 tools/dhan_options.py --test</code>.</p>`;
+  }
+  const k = (x) => Number(x).toLocaleString("en-IN", { maximumFractionDigits: 0 });
+  const walls = (list, side) => list.map((w) => `${k(w.strike)} ${side} <small>(${k(w.oi)})</small>`).join(" · ") || "—";
+  const adds = (list, side) => list.map((w) => `${k(w.strike)} ${side} <small>(${w.oi_change > 0 ? "+" : ""}${k(w.oi_change)})</small>`).join(" · ") || "—";
+  const leg = (x, side) => x ? `<tr><td>${k(x.strike)} ${side}</td><td class="num">₹${x.ltp}</td><td class="num">${x.bid}/${x.ask}</td>
+    <td class="num">${x.spread ?? "—"}</td><td class="num">${x.delta ?? "—"}</td><td class="num">${x.iv ?? "—"}</td></tr>` : "";
+  const plans = (signals || []).filter((g) => g.option_plan).map((g) => `<tr><td>${esc(g.code + g.n)} ${esc(g.time)}</td>
+    <td>${k(g.option_plan.strike)} ${g.dir === "long" ? "CE" : "PE"}</td><td class="num">₹${g.option_plan.entry}</td>
+    <td class="num l">₹${g.option_plan.stop}</td><td class="num w">₹${g.option_plan.target}</td></tr>`).join("");
+  return `<h2>Options · Nifty ${esc(o.expiry)} expiry <small class="caption">updated ${esc(o.at)}</small></h2>
+    <p class="record">ATM ${k(o.atm)} · IV CE ${o.atm_iv.ce ?? "—"} / PE ${o.atm_iv.pe ?? "—"} · PCR ${o.pcr ?? "—"}</p>
+    <div class="live-grid"><section><p><b>Call OI walls above:</b> ${walls(o.call_walls, "CE")}<br><b>Put OI walls below:</b> ${walls(o.put_walls, "PE")}</p>
+      <p><b>Biggest call OI added:</b> ${adds(o.call_oi_adds, "CE")}<br><b>Biggest put OI added:</b> ${adds(o.put_oi_adds, "PE")}</p></section>
+    <section><div class="tablewrap"><table class="signals"><thead><tr><th>~₹150 strike</th><th>LTP</th><th>Bid/ask</th><th>Spread</th><th>Delta</th><th>IV</th></tr></thead>
+      <tbody>${leg(o.ce_150, "CE")}${leg(o.pe_150, "PE")}</tbody></table></div></section></div>
+    ${plans ? `<h3>Open setups in option terms (rough, from delta)</h3><div class="tablewrap"><table class="signals"><thead><tr><th>Setup</th><th>Option</th><th>Entry ≈</th><th>Stop ≈</th><th>2R ≈</th></tr></thead><tbody>${plans}</tbody></table></div>` : ""}
+    <p class="caption">Open interest is context, not a trigger (lesson 4.2). Premium levels ignore time decay and IV changes, so treat them as a rough guide.</p>`;
+}
 async function viewLive() {
   clearInterval(liveTimer);
   const start = '<pre><code>uv run --with matplotlib python tools/live-monitor.py</code></pre>';
@@ -1147,6 +1170,7 @@ async function viewLive() {
         <section><h2>Where price is</h2><div class="tablewrap"><table class="signals ladder"><tbody>${ladder.join("")}</tbody></table></div></section>
         <section><h2>What the rules saw</h2><ul class="alerts">${alerts || "<li>Nothing yet.</li>"}</ul></section>
       </div>
+      ${optionsHTML(st.options, st.signals)}
       <h2>Setups today</h2><div class="review-signals">${signalsHTML({ signals: st.signals })}</div>
       <button type="button" class="thumb chart-img" data-src="${esc(st.chart)}?t=${Date.now()}" data-caption="Live chart"><img src="${esc(st.chart)}?t=${Date.now()}" alt="Live Nifty chart"></button>
       <p class="caption">These are the rules' detections, not recommendations. Stops and targets are the scanner's mechanical levels in index points, not option prices. The data feed is unofficial and can lag — check the feed age above.</p>`;
