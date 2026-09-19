@@ -1,6 +1,6 @@
 # Chart reviews
 
-One Nifty session per page, read the way the Smart money course teaches: the map at 9:15, the pools, the sweeps, the gaps, and the candles that mattered. Each chart is drawn from that day's 1-minute index data by `tools/market-review.py`. The **numbered markers** match the numbered list in the review, and the **▲ ▼ markers** along the bottom are Chinmay Sir's own logged Nifty option entries (green win, red loss, grey other). The top chart uses 3-minute candles for the whole day; the two panels below zoom into the day's two most important moments on 1-minute candles.
+One Nifty session per page, read the way the Smart money course teaches: the map at 9:15, the pools, the sweeps, the gaps, and the candles that mattered. Each chart is drawn from that day's 1-minute index data by `tools/market-review.py` — from Dhan's official intraday feed from 21 Sep onwards (the 11–18 Sep reviews used Yahoo's public feed, which differs by a few points). The **numbered markers** match the numbered list in the review, and the **▲ ▼ markers** along the bottom are Chinmay Sir's own logged Nifty option entries (green win, red loss, grey other). The top chart uses 3-minute candles for the whole day; the two panels below zoom into the day's two most important moments on 1-minute candles.
 
 These are studies of finished sessions, not calls for the next one. Everything in the "where the course's rules found trades" sections is hindsight, written to train your eye.
 

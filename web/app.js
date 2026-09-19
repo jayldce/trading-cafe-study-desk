@@ -1094,29 +1094,102 @@ async function viewPrep(date) {
 
 /* ---------------- live (data/live/state.json from tools/live-monitor.py; local only) ---------------- */
 let liveTimer = null;
-function optionsHTML(o, signals) {
-  if (!o) return "";
-  if (o.error) {
-    return `<h2>Options</h2><p class="caption">No option data (${esc(o.error)}). Set up Dhan once — see <code>tools/dhan_options.py</code> —
-      then check it with <code>python3 tools/dhan_options.py --test</code>.</p>`;
-  }
-  const k = (x) => Number(x).toLocaleString("en-IN", { maximumFractionDigits: 0 });
-  const walls = (list, side) => list.map((w) => `${k(w.strike)} ${side} <small>(${k(w.oi)})</small>`).join(" · ") || "—";
-  const adds = (list, side) => list.map((w) => `${k(w.strike)} ${side} <small>(${w.oi_change > 0 ? "+" : ""}${k(w.oi_change)})</small>`).join(" · ") || "—";
-  const leg = (x, side) => x ? `<tr><td>${k(x.strike)} ${side}</td><td class="num">₹${x.ltp}</td><td class="num">${x.bid}/${x.ask}</td>
-    <td class="num">${x.spread ?? "—"}</td><td class="num">${x.delta ?? "—"}</td><td class="num">${x.iv ?? "—"}</td></tr>` : "";
-  const plans = (signals || []).filter((g) => g.option_plan).map((g) => `<tr><td>${esc(g.code + g.n)} ${esc(g.time)}</td>
-    <td>${k(g.option_plan.strike)} ${g.dir === "long" ? "CE" : "PE"}</td><td class="num">₹${g.option_plan.entry}</td>
-    <td class="num l">₹${g.option_plan.stop}</td><td class="num w">₹${g.option_plan.target}</td></tr>`).join("");
-  return `<h2>Options · Nifty ${esc(o.expiry)} expiry <small class="caption">updated ${esc(o.at)}</small></h2>
-    <p class="record">ATM ${k(o.atm)} · IV CE ${o.atm_iv.ce ?? "—"} / PE ${o.atm_iv.pe ?? "—"} · PCR ${o.pcr ?? "—"}</p>
-    <div class="live-grid"><section><p><b>Call OI walls above:</b> ${walls(o.call_walls, "CE")}<br><b>Put OI walls below:</b> ${walls(o.put_walls, "PE")}</p>
-      <p><b>Biggest call OI added:</b> ${adds(o.call_oi_adds, "CE")}<br><b>Biggest put OI added:</b> ${adds(o.put_oi_adds, "PE")}</p></section>
-    <section><div class="tablewrap"><table class="signals"><thead><tr><th>~₹150 strike</th><th>LTP</th><th>Bid/ask</th><th>Spread</th><th>Delta</th><th>IV</th></tr></thead>
-      <tbody>${leg(o.ce_150, "CE")}${leg(o.pe_150, "PE")}</tbody></table></div></section></div>
-    ${plans ? `<h3>Open setups in option terms (rough, from delta)</h3><div class="tablewrap"><table class="signals"><thead><tr><th>Setup</th><th>Option</th><th>Entry ≈</th><th>Stop ≈</th><th>2R ≈</th></tr></thead><tbody>${plans}</tbody></table></div>` : ""}
-    <p class="caption">Open interest is context, not a trigger (lesson 4.2). Premium levels ignore time decay and IV changes, so treat them as a rough guide.</p>`;
+const px0 = (n) => Number(n).toLocaleString("en-IN", { maximumFractionDigits: 0 });
+
+function liveLevels(st) {
+  const lv = st.zones.filter((z) => z.weight >= 2).map((z) => ({ lo: z.lo, hi: z.hi, name: z.text }));
+  lv.push({ lo: st.or_high, hi: st.or_high, name: "opening-range high" }, { lo: st.or_low, hi: st.or_low, name: "opening-range low" });
+  if (!st.zones.length) lv.push({ lo: st.pdh, hi: st.pdh, name: "previous-day high" }, { lo: st.pdl, hi: st.pdl, name: "previous-day low" },
+    { lo: st.prev_close, hi: st.prev_close, name: "previous-day close" });
+  return lv.sort((a, b) => b.hi - a.hi);
 }
+
+function whereHTML(st) {
+  const lv = liveLevels(st);
+  const res = lv.filter((l) => l.lo > st.price + 1).sort((a, b) => a.lo - b.lo)[0];
+  const sup = lv.filter((l) => l.hi < st.price - 1).sort((a, b) => b.hi - a.hi)[0];
+  const lab = (l) => (l.hi - l.lo < 1 ? px0(l.lo) : `${px0(l.lo)}–${px0(l.hi)}`);
+  if (!res || !sup) return `<p class="lv-sentence">Nifty is at <b>${fmtPx(st.price)}</b>, beyond every level on today's map.</p>`;
+  const up = res.lo - st.price, down = st.price - sup.hi;
+  const pos = Math.max(0, Math.min(100, (100 * down) / (down + up)));
+  const where = pos < 25 ? "close to support" : pos > 75 ? "close to resistance" : "in the middle — the worst place to start a trade";
+  return `<p class="lv-sentence">Nifty is <b>${where}</b>.</p>
+    <div class="lv-range">
+      <div class="lv-end sup"><span>Support</span><b>${lab(sup)}</b><small>${esc(sup.name)} · ${down.toFixed(0)} pts below</small></div>
+      <div class="lv-bar"><i style="left:${pos}%"></i><em style="left:${pos}%">${fmtPx(st.price)}</em></div>
+      <div class="lv-end res"><span>Resistance</span><b>${lab(res)}</b><small>${esc(res.name)} · ${up.toFixed(0)} pts above</small></div>
+    </div>`;
+}
+
+function setupHTML(st) {
+  const open = [...(st.signals || [])].reverse().find((g) => g.result === "open");
+  const done = [...(st.signals || [])].reverse().find((g) => g.result !== "open");
+  const last = done ? `<p class="caption">Last setup: <b>${esc(done.code + done.n)}</b> ${esc(done.setup)} at ${esc(done.time)} —
+    ${{ target: "hit 2R", stop: "stopped", time: "timed out" }[done.result]} (${rText(done.r)}).</p>` : "";
+  if (!open) {
+    return `<div class="lv-card quiet"><p><b>No setup right now.</b> The rules are waiting for a sweep with a reversal candle, a break with a follow-up,
+      or a pullback into a fresh gap.</p>${last}</div>`;
+  }
+  const long = open.dir === "long", p = open.option_plan;
+  const progress = Math.max(0, Math.min(100, ((open.r + 1) / 3) * 100)); // -1R .. +2R
+  return `<div class="lv-card ${long ? "long" : "short"}">
+    <p class="lv-tag">${long ? "▲ LONG idea" : "▼ SHORT idea"} · ${esc(open.setup)} · formed ${esc(open.time)}</p>
+    <p class="lv-why">${esc(open.text)}</p>
+    <div class="lv-nums">
+      <div><span>Entry</span><b>${fmtPx(open.entry)}</b></div>
+      <div><span>Stop</span><b class="l">${fmtPx(open.stop)}</b><small>${open.risk} pts risk</small></div>
+      <div><span>2R target</span><b class="w">${fmtPx(open.target)}</b></div>
+      ${p ? `<div class="opt"><span>${px0(p.strike)} ${long ? "CE" : "PE"} (rough)</span><b>₹${p.entry}</b><small>stop ₹${p.stop} · 2R ₹${p.target}</small></div>` : ""}
+    </div>
+    <div class="lv-progress"><div><i style="width:${progress}%"></i></div><small><span>−1R stop</span><span>now ${rText(open.r)}</span><span>+2R</span></small></div>
+    <p class="caption">What the rules detected, not a recommendation. The decision is yours.</p></div>${last}`;
+}
+
+function timelineHTML(st) {
+  const items = [...(st.alerts || [])].reverse().slice(0, 12);
+  if (!items.length) return '<p class="caption">Nothing yet — the first update comes after the opening range (about 9:35).</p>';
+  return `<ol class="lv-timeline">${items.map((a) => `<li class="k-${esc(a.kind || "event")}"><time>${esc(a.time)}</time>
+    <div><b>${esc(a.short || a.title || "")}</b>${a.detail || a.text ? `<small>${esc(a.detail || a.text)}</small>` : ""}</div></li>`).join("")}</ol>`;
+}
+
+function optionsHTML(o) {
+  if (!o) return "";
+  if (o.error) return `<p class="caption">No option data: ${esc(o.error)}</p>`;
+  const w = (list) => list.map((x) => px0(x.strike)).join(", ") || "—";
+  const adds = [...o.call_oi_adds.slice(0, 1).map((x) => `${px0(x.strike)} CE`), ...o.put_oi_adds.slice(0, 1).map((x) => `${px0(x.strike)} PE`)].join(" · ");
+  return `<div class="lv-chips">
+      <span><small>Expiry</small>${esc(fmtDate(o.expiry))}</span>
+      <span><small>ATM IV (CE / PE)</small>${o.atm_iv.ce?.toFixed(1) ?? "—"} / ${o.atm_iv.pe?.toFixed(1) ?? "—"}</span>
+      <span><small>PCR</small>${o.pcr ?? "—"}</span>
+      <span><small>Call wall (resistance)</small>${w(o.call_walls.slice(0, 1))}</span>
+      <span><small>Put wall (support)</small>${w(o.put_walls.slice(0, 1))}</span>
+      <span><small>Writers adding most</small>${adds}</span>
+      ${o.ce_150 ? `<span><small>~₹150 call</small>${px0(o.ce_150.strike)} CE ₹${o.ce_150.ltp}</span>` : ""}
+      ${o.pe_150 ? `<span><small>~₹150 put</small>${px0(o.pe_150.strike)} PE ₹${o.pe_150.ltp}</span>` : ""}
+    </div><p class="caption">Updated ${esc(o.at)}.${o.note ? ` ${esc(o.note)}` : ""}</p>`;
+}
+
+function ladderHTML(st) {
+  const rows = [];
+  let placed = false;
+  for (const l of liveLevels(st)) {
+    if (!placed && l.hi < st.price) { rows.push(`<tr class="now"><td class="num">${fmtPx(st.price)}</td><td>price now</td><td></td></tr>`); placed = true; }
+    const d = (l.lo + l.hi) / 2 - st.price;
+    rows.push(`<tr><td class="num">${l.hi - l.lo < 1 ? fmtPx(l.lo) : `${fmtPx(l.lo)}–${fmtPx(l.hi)}`}</td><td>${esc(l.name)}</td>
+      <td class="num ${d > 0 ? "l" : "w"}">${d > 0 ? "+" : ""}${d.toFixed(0)}</td></tr>`);
+  }
+  if (!placed) rows.push(`<tr class="now"><td class="num">${fmtPx(st.price)}</td><td>price now</td><td></td></tr>`);
+  return `<div class="tablewrap"><table class="signals ladder"><tbody>${rows.join("")}</tbody></table></div>`;
+}
+
+const LIVE_HELP = `<dl class="lv-help">
+  <dt>Where Nifty is</dt><dd>The nearest level below (support) and above (resistance), from this morning's prep and the opening range. Starting trades near an edge gives the best reward for the risk; the middle gives the worst.</dd>
+  <dt>Setup right now</dt><dd>When one of the four scanner rules fires (sweep reversal, gap pullback, break with follow-up, failed break), its entry, stop and 2R target appear here, with a rough option price from the option's delta. The bar shows how far it has moved, from −1R (stop) to +2R (target).</dd>
+  <dt>Today so far</dt><dd>Everything the rules noticed, newest first: prep levels reached, sweeps and breaks, setups forming and how they ended. The same messages arrive as Mac notifications.</dd>
+  <dt>Options</dt><dd>From your Dhan account every 3 minutes: the strikes with the most open interest (where option writers defend), where writers are adding, implied volatility, and the strikes priced near ₹150. Context, not a trigger.</dd>
+  <dt>Data</dt><dd>Nifty candles from Dhan's intraday API (Yahoo's public feed only if Dhan fails), levels calculated on your Mac. The pill at the top shows the source and how old the latest candle is.</dd>
+</dl>`;
+
 async function viewLive() {
   clearInterval(liveTimer);
   const start = '<pre><code>uv run --with matplotlib python tools/live-monitor.py</code></pre>';
@@ -1130,50 +1203,40 @@ async function viewLive() {
     if (!location.hash.startsWith("#/live")) { clearInterval(liveTimer); return; }
     let st = null;
     try { const r = await fetch("data/live/state.json", { cache: "no-store" }); if (r.ok) st = await r.json(); } catch { st = null; }
+    const opened = new Set($$("details[data-key][open]", app).map((d) => d.dataset.key));
     const today = new Date().toLocaleDateString("en-CA");
     const updated = st ? new Date(st.updated) : null;
-    const staleMin = updated ? (Date.now() - updated.getTime()) / 60000 : Infinity;
-    const running = st && st.day === today && staleMin < 3;
-    const status = !st ? "The monitor hasn't run yet."
-      : running ? `Updated ${updated.toLocaleTimeString("en-IN")} · feed age ${st.data_age_min ?? "?"} min`
-      : `Last update ${updated.toLocaleString("en-IN")} — the monitor isn't running now.`;
+    const fresh = updated && (Date.now() - updated.getTime()) / 60000 < 3;
     if (!st) {
       app.innerHTML = `<div class="page-head"><div><p class="eyebrow">Nifty · rules running live</p><h1>Live</h1></div></div>
-        <p class="lede">${status} Start it from the project folder around 9:10:</p>${start}`;
+        <p class="lede">The monitor hasn't run yet. Start it from the project folder around 9:10:</p>${start}`;
       return;
     }
-    const chg = st.price - st.prev_close;
-    const levels = [
-      ...st.zones.filter((z) => z.weight >= 2).map((z) => ({ lo: z.lo, hi: z.hi, text: z.text })),
-      { lo: st.or_high, hi: st.or_high, text: "opening-range high" }, { lo: st.or_low, hi: st.or_low, text: "opening-range low" },
-      { lo: st.high, hi: st.high, text: "today's high" }, { lo: st.low, hi: st.low, text: "today's low" },
-    ];
-    if (!st.zones.length) levels.push({ lo: st.pdh, hi: st.pdh, text: "previous-day high" }, { lo: st.pdl, hi: st.pdl, text: "previous-day low" },
-      { lo: st.prev_close, hi: st.prev_close, text: "previous-day close" });
-    levels.sort((a, b) => b.hi - a.hi);
-    const ladder = [];
-    let placed = false;
-    for (const l of levels) {
-      if (!placed && l.hi < st.price) { ladder.push(`<tr class="now"><td class="num">${fmtPx(st.price)}</td><td>← price now</td><td></td></tr>`); placed = true; }
-      const mid = (l.lo + l.hi) / 2, d = mid - st.price;
-      ladder.push(`<tr class="${Math.abs(d) <= 10 ? "near" : ""}"><td class="num">${l.hi - l.lo < 1 ? fmtPx(l.lo) : `${fmtPx(l.lo)}–${fmtPx(l.hi)}`}</td>
-        <td>${esc(l.text)}</td><td class="num ${d > 0 ? "l" : "w"}">${d > 0 ? "+" : ""}${d.toFixed(0)}</td></tr>`);
-    }
-    if (!placed) ladder.push(`<tr class="now"><td class="num">${fmtPx(st.price)}</td><td>← price now</td><td></td></tr>`);
-    const alerts = [...st.alerts].reverse().slice(0, 15).map((a) => `<li><span class="num">${esc(a.time)}</span> <b>${esc(a.title)}</b><br>${esc(a.text)}</li>`).join("");
+    const mode = st.replay && fresh ? "replay" : fresh && st.day === today ? "live" : "off";
+    const pill = mode === "replay" ? `Replay · ${esc(fmtDate(st.day))} · ${esc(st.replay)}`
+      : mode === "live" ? `Live · ${esc(st.source || "")} · candle ${st.data_age_min ?? "?"} min old`
+      : `Not running · last update ${esc(updated.toLocaleString("en-IN"))}`;
+    const chg = st.price - st.prev_close, pct = (100 * chg) / st.prev_close;
+    const section = (key, title, body) => `<details data-key="${key}" ${opened.has(key) ? "open" : ""}><summary>${title}</summary>${body}</details>`;
     app.innerHTML = `
-      <div class="page-head"><div><p class="eyebrow">Nifty · ${esc(st.day)} · rules running live</p><h1>Live</h1></div>
-        <p class="record ${running ? "" : "l"}">${esc(status)}</p></div>
-      <div class="live-top"><p class="live-price">${fmtPx(st.price)} <span class="${chg >= 0 ? "w" : "l"}">${chg >= 0 ? "+" : "−"}${Math.abs(chg).toFixed(1)}</span></p>
-        <p class="record">Open ${fmtPx(st.open)} · High ${fmtPx(st.high)} · Low ${fmtPx(st.low)} · Opening range ${fmtPx(st.or_low)}–${fmtPx(st.or_high)}</p></div>
-      <div class="live-grid">
-        <section><h2>Where price is</h2><div class="tablewrap"><table class="signals ladder"><tbody>${ladder.join("")}</tbody></table></div></section>
-        <section><h2>What the rules saw</h2><ul class="alerts">${alerts || "<li>Nothing yet.</li>"}</ul></section>
-      </div>
-      ${optionsHTML(st.options, st.signals)}
-      <h2>Setups today</h2><div class="review-signals">${signalsHTML({ signals: st.signals })}</div>
-      <button type="button" class="thumb chart-img" data-src="${esc(st.chart)}?t=${Date.now()}" data-caption="Live chart"><img src="${esc(st.chart)}?t=${Date.now()}" alt="Live Nifty chart"></button>
-      <p class="caption">These are the rules' detections, not recommendations. Stops and targets are the scanner's mechanical levels in index points, not option prices. The data feed is unofficial and can lag — check the feed age above.</p>`;
+      <div class="lv">
+        <header class="lv-head">
+          <div><p class="eyebrow">Nifty 50 · ${esc(fmtDate(st.day))}</p>
+            <p class="lv-price">${fmtPx(st.price)} <span class="${chg >= 0 ? "w" : "l"}">${chg >= 0 ? "▲" : "▼"} ${Math.abs(chg).toFixed(1)} (${pct.toFixed(2)}%)</span></p>
+            <p class="lv-sub">Open ${fmtPx(st.open)} · High ${fmtPx(st.high)} · Low ${fmtPx(st.low)}</p></div>
+          <span class="lv-pill ${mode}">● ${pill}</span>
+        </header>
+        <section><h2>Where Nifty is</h2>${whereHTML(st)}</section>
+        <section><h2>Setup right now</h2>${setupHTML(st)}</section>
+        <section><h2>Today so far</h2>${timelineHTML(st)}</section>
+        <section><h2>Options</h2>${optionsHTML(st.options)}</section>
+        <div class="lv-more">
+          ${section("levels", "All levels", ladderHTML(st))}
+          ${section("setups", `All setups today (${(st.signals || []).length})`, `<div class="review-signals">${signalsHTML({ signals: st.signals })}</div>`)}
+          ${section("chart", "Chart", `<button type="button" class="thumb chart-img" data-src="${esc(st.chart)}?t=${Date.now()}" data-caption="Live chart"><img loading="lazy" src="${esc(st.chart)}?t=${Date.now()}" alt="Live Nifty chart"></button>`)}
+          ${section("help", "How to read this page", LIVE_HELP)}
+        </div>
+      </div>`;
     wireThumbs(app);
   };
   await render();
