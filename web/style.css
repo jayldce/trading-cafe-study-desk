@@ -442,6 +442,7 @@ table.signals.prep tr.strong td { font-weight: 600; }
 .lv-nums b { font: 600 20px var(--mono); }
 .lv-nums small { font-size: 12px; color: var(--ink-2); }
 .lv-nums .opt { border-left: 1px dashed var(--rule); padding-left: 12px; }
+.lv-nums .opt b.now { font-size: 13px; color: var(--accent); }
 .lv-progress > div { height: 6px; border-radius: 999px; background: var(--grid); overflow: hidden; }
 .lv-progress i { display: block; height: 100%; background: var(--accent); }
 .lv-progress small { display: flex; justify-content: space-between; font: 11px var(--mono); color: var(--ink-2); margin-top: 4px; }

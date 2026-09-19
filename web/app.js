@@ -1139,7 +1139,11 @@ function setupHTML(st) {
       <div><span>Entry</span><b>${fmtPx(open.entry)}</b></div>
       <div><span>Stop</span><b class="l">${fmtPx(open.stop)}</b><small>${open.risk} pts risk</small></div>
       <div><span>2R target</span><b class="w">${fmtPx(open.target)}</b></div>
-      ${p ? `<div class="opt"><span>${px0(p.strike)} ${long ? "CE" : "PE"} (rough)</span><b>₹${p.entry}</b><small>stop ₹${p.stop} · 2R ₹${p.target}</small></div>` : ""}
+      ${p ? (() => {
+        const leg = st.options && (long ? st.options.ce_150 : st.options.pe_150);
+        const now = leg && leg.strike === p.strike && leg.live_ltp != null ? ` · <b class="now">now ₹${leg.live_ltp}</b>` : "";
+        return `<div class="opt"><span>${px0(p.strike)} ${long ? "CE" : "PE"} (rough plan)</span><b>₹${p.entry}</b><small>stop ₹${p.stop} · 2R ₹${p.target}${now}</small></div>`;
+      })() : ""}
     </div>
     <div class="lv-progress"><div><i style="width:${progress}%"></i></div><small><span>−1R stop</span><span>now ${rText(open.r)}</span><span>+2R</span></small></div>
     <p class="caption">What the rules detected, not a recommendation. The decision is yours.</p></div>${last}`;
@@ -1164,8 +1168,8 @@ function optionsHTML(o) {
       <span><small>Call wall (resistance)</small>${w(o.call_walls.slice(0, 1))}</span>
       <span><small>Put wall (support)</small>${w(o.put_walls.slice(0, 1))}</span>
       <span><small>Writers adding most</small>${adds}</span>
-      ${o.ce_150 ? `<span><small>~₹150 call</small>${px0(o.ce_150.strike)} CE ₹${o.ce_150.ltp}</span>` : ""}
-      ${o.pe_150 ? `<span><small>~₹150 put</small>${px0(o.pe_150.strike)} PE ₹${o.pe_150.ltp}</span>` : ""}
+      ${o.ce_150 ? `<span><small>~₹150 call${o.ce_150.live_ltp != null ? " · live" : ""}</small>${px0(o.ce_150.strike)} CE ₹${o.ce_150.live_ltp ?? o.ce_150.ltp}</span>` : ""}
+      ${o.pe_150 ? `<span><small>~₹150 put${o.pe_150.live_ltp != null ? " · live" : ""}</small>${px0(o.pe_150.strike)} PE ₹${o.pe_150.live_ltp ?? o.pe_150.ltp}</span>` : ""}
     </div><p class="caption">Updated ${esc(o.at)}.${o.note ? ` ${esc(o.note)}` : ""}</p>`;
 }
 
@@ -1187,12 +1191,12 @@ const LIVE_HELP = `<dl class="lv-help">
   <dt>Setup right now</dt><dd>When one of the four scanner rules fires (sweep reversal, gap pullback, break with follow-up, failed break), its entry, stop and 2R target appear here, with a rough option price from the option's delta. The bar shows how far it has moved, from −1R (stop) to +2R (target).</dd>
   <dt>Today so far</dt><dd>Everything the rules noticed, newest first: prep levels reached, sweeps and breaks, setups forming and how they ended. The same messages arrive as Mac notifications.</dd>
   <dt>Options</dt><dd>From your Dhan account every 3 minutes: the strikes with the most open interest (where option writers defend), where writers are adding, implied volatility, and the strikes priced near ₹150. Context, not a trigger.</dd>
-  <dt>Data</dt><dd>Nifty candles from Dhan's intraday API (Yahoo's public feed only if Dhan fails), levels calculated on your Mac. The pill at the top shows the source and how old the latest candle is.</dd>
+  <dt>Data</dt><dd>Nifty ticks stream from Dhan's live feed (WebSocket): the price updates every few seconds and each one-minute candle is checked the moment it closes. Dhan's official candles re-sync every 5 minutes. If the feed drops it polls Dhan once a minute, and Yahoo's public feed is the last resort. Levels are calculated on your Mac. The pill at the top shows the source and how fresh the data is.</dd>
 </dl>`;
 
 async function viewLive() {
   clearInterval(liveTimer);
-  const start = '<pre><code>uv run --with matplotlib python tools/live-monitor.py</code></pre>';
+  const start = '<pre><code>uv run --with websockets --with matplotlib python tools/live-monitor.py</code></pre>';
   if (!LOCAL) {
     app.innerHTML = `<div class="page-head"><div><p class="eyebrow">Local only</p><h1>Live</h1></div></div>
       <p class="lede">The live monitor runs on your own Mac and is never published. Open the Study Desk locally
@@ -1214,7 +1218,8 @@ async function viewLive() {
     }
     const mode = st.replay && fresh ? "replay" : fresh && st.day === today ? "live" : "off";
     const pill = mode === "replay" ? `Replay · ${esc(fmtDate(st.day))} · ${esc(st.replay)}`
-      : mode === "live" ? `Live · ${esc(st.source || "")} · candle ${st.data_age_min ?? "?"} min old`
+      : mode === "live" && st.tick_age_s != null ? `Live · ${esc(st.source || "Dhan")} · last tick ${st.tick_age_s < 60 ? `${st.tick_age_s}s` : `${Math.round(st.tick_age_s / 60)} min`} ago`
+      : mode === "live" ? `Live · ${esc(st.source || "")} · polling · candle ${st.data_age_min ?? "?"} min old`
       : `Not running · last update ${esc(updated.toLocaleString("en-IN"))}`;
     const chg = st.price - st.prev_close, pct = (100 * chg) / st.prev_close;
     const section = (key, title, body) => `<details data-key="${key}" ${opened.has(key) ? "open" : ""}><summary>${title}</summary>${body}</details>`;
@@ -1240,7 +1245,7 @@ async function viewLive() {
     wireThumbs(app);
   };
   await render();
-  liveTimer = setInterval(render, 20000);
+  liveTimer = setInterval(render, 3000); // a small local file; with the Dhan feed the price changes every few seconds
 }
 
 /* ---------------- levels ---------------- */
