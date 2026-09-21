@@ -6,7 +6,7 @@ Update this file as each stream is processed: add evidence, refine rules, and re
 
 **Hosts.** The main host is **Chinmay Sir**. He buys Nifty options, and Sensex options on Sensex expiry days, with levels drawn on the *option* chart. When he's unwell, **Trade Circuit** (his student, a separate channel) hosts, using a different method (§6). Their results are never mixed.
 
-Processed so far: 15, 16, 17, 20, 21, 22, 23, 24, 27, 28, 29, 30 Jul · 3, 4, 5, 6, 7, 18, 20, 21, 25 Aug · 3, 4, 7, 8, 10, 11, 15, 16, 17, 18 Sep 2026 (31 days, 172 trades).
+Processed so far: 15, 16, 17, 20, 21, 22, 23, 24, 27, 28, 29, 30 Jul · 3, 4, 5, 6, 7, 18, 20, 21, 25 Aug · 3, 4, 7, 8, 10, 11, 15, 16, 17, 18, 21 Sep 2026 (32 days, 177 trades).
 
 ---
 
@@ -51,12 +51,13 @@ Entering as soon as price pokes through the range, without a follow-up candle. *
 - **18-Sep 23400 PE (+~12.5):** planned before it happened ("a pullback candle we planned; the pullback candle came"): after a ~30-pt run he refused to buy at 150 (reward:risk not favourable) and waited for the dip to ~145, entered on the first green candle with a ~4–5 pt risk, was +15 within three minutes and trailed 154 → 159. The 169 target never printed (high ~167.6), so the 157–159 trail exited it for a small win: the setup's risk was tiny but the reward was capped by a momentum-less day. [▶ 18-Sep](https://www.youtube.com/watch?v=EPh5qxWEUhU&t=1080s) · frames `data/frames/EPh5qxWEUhU/002130.jpg`, `003100.jpg`
 - **Nuance:** he says he *used to* buy the first green candle after every pullback, but once a range has broken and shows continuation he prefers waiting for the deeper pullback zone. [▶ 8-Sep](https://www.youtube.com/watch?v=s3r5EJy4cw8&t=3780s)
 
-### C. Liquidity-sweep reversal ("bottom buying"): 3W / 1L / 4 unclear, Nifty +32 · Sensex +42
+### C. Liquidity-sweep reversal ("bottom buying"): 3W / 2L / 4 unclear, Nifty +26 · Sensex +42
 After price takes out the prior zone's low and a strong bullish close appears, enter on the first reversal sign with the SL at the day low. The same stop-hunt can happen **on the option premium itself** (a "shakeout" dip); wait it out before entering.
 **When it fails:** if the "sweep" is really price continuing into a news event, it goes straight through the stop. That's how the one loss happened, on SBI results (7-Aug, −6) [▶](https://www.youtube.com/watch?v=ayYEP_dKaLY&t=17700s). A sweep needs stops to be taken and then *rejected*, not a fresh reason to keep falling.
 **18-Sep (unclear):** after the 23250 CE swept the day low he framed a bottom buy only because the risk (~6 pts) against the ~14-pt reward was about 1:2, and said he personally "didn't feel like" taking it; the CE ran to ~156 but it was offered to viewers with no fill, box or exit, so no points are logged [▶ 18-Sep](https://www.youtube.com/watch?v=EPh5qxWEUhU&t=7260s). His filter for bottom buys is reward:risk, not just "liquidity was taken".
 **Liquidity ≠ resistance:** he draws a line between a zone that merely holds and a zone where stop losses actually sit. Only the second is a sweep. [▶ 25-Aug](https://www.youtube.com/watch?v=hkQBf4EvCuo&t=12540s) [▶ 11-Sep](https://www.youtube.com/watch?v=qTDwaNEZ2RY&t=6240s) · [▶ 4-Sep win ~117→139](https://www.youtube.com/watch?v=YtqPA0aKkzE&t=8940s) · [▶ 4-Sep shakeout](https://www.youtube.com/watch?v=YtqPA0aKkzE&t=5220s)
 
+- **21-Sep put (loss, ~−6, frame):** he waited for the day-low sweep and then took the 23500 PE from ~136 with the SL under 130; by 11:33 the PE was 127.4 and the stop level was gone, because Nifty was rising in a staircase that had begun off the 09:15 low. The sweep read was right about the *low* but the put was on the wrong side of the day's trend. [▶ 11:20](https://www.youtube.com/watch?v=DrmIRaTPU-A&t=8220s)
 - **Wait for the stops to actually be taken, not just for a fresh low** (reinforced 21-Sep). He refused to treat any bounce as tradeable until the day's low at 129 was swept, and only then looked for the reversal candle. [▶ 11:13](https://www.youtube.com/watch?v=DrmIRaTPU-A&t=7800s)
 
 ### D. Reversal at base, aggressive vs confirmation: 20W / 5L / 2 unclear, Nifty +282 · Sensex +899, 23/27 verified
@@ -119,25 +120,25 @@ On 27-Jul the option coiled in a tight range for hours and he took three small s
 ## 5. Scorecard (`python3 tckb.py scorecard`)
 | Host | Setup | Trades | Win | Loss | Scratch/unclear | Net pts by underlying | Verified |
 |------|-------|--------|-----|------|-----------------|-----------------------|----------|
-| chinmay | consolidation-breakout-followup | 29 | 20 | 6 | 3 | NIFTY +330 · SENSEX +482 | 28/29 |
+| chinmay | consolidation-breakout-followup | 31 | 21 | 6 | 4 | BANKNIFTY +61 · NIFTY +330 · SENSEX +482 | 30/31 |
 | chinmay | base-reversal-aggressive-or-confirm | 27 | 20 | 5 | 2 | NIFTY +282 · SENSEX +899 | 23/27 |
+| chinmay | pullback-first-green-candle | 18 | 15 | 0 | 3 | NIFTY +180 · SENSEX +462 | 15/18 |
 | chinmay | breakout-close-confirm | 18 | 10 | 4 | 4 | NIFTY +111 · SENSEX +42 | 17/18 |
 | chinmay | trend-re-entry | 18 | 12 | 1 | 5 | NIFTY +99 · SENSEX +284 | 16/18 |
-| chinmay | pullback-first-green-candle | 17 | 14 | 0 | 3 | NIFTY +139 · SENSEX +462 | 14/17 |
 | chinmay | jodi-long-straddle | 13 | 8 | 2 | 3 | NIFTY +84 · SENSEX +192 | 10/13 |
+| chinmay | telegram-vip-call | 12 | 1 | 0 | 11 | NIFTY +18 · SENSEX +0 | 1/12 |
 | chinmay | range-breakout-direct | 11 | 0 | 11 | 0 | NIFTY -34 · SENSEX -147 | 11/11 |
-| chinmay | telegram-vip-call | 11 | 1 | 0 | 10 | NIFTY +18 · SENSEX +0 | 1/11 |
-| chinmay | liquidity-sweep-reversal | 8 | 3 | 1 | 4 | NIFTY +32 · SENSEX +42 | 6/8 |
+| chinmay | liquidity-sweep-reversal | 9 | 3 | 2 | 4 | NIFTY +26 · SENSEX +42 | 7/9 |
 | chinmay | range-chop-scalps | 3 | 0 | 3 | 0 | NIFTY -18 · SENSEX -58 | 2/3 |
 | chinmay | aggressive-continuation-entry | 2 | 2 | 0 | 0 | NIFTY +46 | 2/2 |
 | chinmay | late-re-entry-fade | 1 | 0 | 1 | 0 | NIFTY -3 | 0/1 |
-| chinmay | **all** | 158 | 90 | 34 | 34 | NIFTY +1086 · SENSEX +2198 | 130/158 |
+| chinmay | **all** | 163 | 92 | 35 | 36 | BANKNIFTY +61 · NIFTY +1121 · SENSEX +2198 | 134/163 |
 | trade-circuit | close-above-level-entry | 11 | 6 | 4 | 1 | NIFTY +65 · SENSEX +147 | 11/11 |
 | trade-circuit | pullback-to-marked-zone | 2 | 1 | 1 | 0 | SENSEX -1 | 2/2 |
 | trade-circuit | jodi-long-straddle | 1 | 0 | 0 | 1 | SENSEX +0 | 0/1 |
 | trade-circuit | **all** | 14 | 7 | 5 | 2 | NIFTY +65 · SENSEX +146 | 13/14 |
 
-**What the data says (31 days, 172 trades, the full backlog):** the follow-up candle is still the edge. Setup A is **20W / 6L** (18-Sep added its first hard-trigger loss, in a 30–40-pt opening-range chop); the same breakout entered one candle early (A−) is **0W / 11L**; entering on a candle close without waiting (H) is 10W / 4L. Pullbacks (B) are 14W / 0L. Reversals at a base (D) are 20W / 5L and pay best when he waits for the pin bar or a strong candle to close. The jodi is 8W / 2L. The losing pattern is consistent: chop scalps and quick re-entries (J) and raw breakouts (A−) — 16-Sep added another clean A− loss (−30) within minutes of the poke. Points are option premium per lot, before costs, and **Nifty and Sensex points aren't comparable** (Sensex premiums are ~3× larger). Unstated exits use the confirmed target, the named trailing stop, or an open mark on a frame, never a peak, a drawn target, a cursor label or a viewer's booking read from chat. Telegram calls carry points only with an outcome frame. **130 of 158** of his trades are verified by a frame, his own words, or his TRADE RECORDS journal. Trade Circuit's own guest-side tally (13/14 verified) now includes a 16-Sep discovery that he trades a personal book in parallel to Chinmay's on-air session — see §6.
+**What the data says (32 days, 177 trades, the full backlog):** the follow-up candle is still the edge. Setup A is **21W / 6L** (18-Sep added its first hard-trigger loss, in a 30–40-pt opening-range chop; 21-Sep added a BankNifty hard-trigger win of +61 and a Nifty scratch); the same breakout entered one candle early (A−) is **0W / 11L**; entering on a candle close without waiting (H) is 10W / 4L. Pullbacks (B) are 15W / 0L (21-Sep: +41, frame-verified). Reversals at a base (D) are 20W / 5L and pay best when he waits for the pin bar or a strong candle to close. The jodi is 8W / 2L. The losing pattern is consistent: chop scalps and quick re-entries (J) and raw breakouts (A−) — 16-Sep added another clean A− loss (−30) within minutes of the poke. Points are option premium per lot, before costs, and **Nifty and Sensex points aren't comparable** (Sensex premiums are ~3× larger). Unstated exits use the confirmed target, the named trailing stop, or an open mark on a frame, never a peak, a drawn target, a cursor label or a viewer's booking read from chat. Telegram calls carry points only with an outcome frame. **134 of 163** of his trades are verified by a frame, his own words, or his TRADE RECORDS journal. Trade Circuit's own guest-side tally (13/14 verified) now includes a 16-Sep discovery that he trades a personal book in parallel to Chinmay's on-air session — see §6.
 
 ## 6. Guest method: Trade Circuit (Sensex), kept separate
 - Pure price action with no indicators. He marks structural lines on the **spot** chart and enters only on a full spot **candle close** beyond the line, never on a wick. [▶ 10-Sep](https://www.youtube.com/watch?v=_v3ieKuYGRc&t=780s)

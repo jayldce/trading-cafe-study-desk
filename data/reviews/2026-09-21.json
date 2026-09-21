@@ -421,8 +421,8 @@
    "time": "11:20",
    "option": "23500 PE",
    "setup": "liquidity-sweep-reversal",
-   "outcome": "unclear",
-   "pts": "",
+   "outcome": "loss",
+   "pts": "-6",
    "host": "chinmay",
    "side": "PE"
   },
