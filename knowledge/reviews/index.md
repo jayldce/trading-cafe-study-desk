@@ -13,6 +13,7 @@ These are studies of finished sessions, not calls for the next one. Everything i
 | Wed 16 Sep | +82 | range | Yesterday's low (gap fill) | Swept twice at 09:45–09:47, held | That sweep — the day's low |
 | Thu 17 Sep | −22 | mixed | Yesterday's high | Broke 09:31, failed 09:42 | The 11:11 poke under yesterday's close |
 | Fri 18 Sep | +64 | range | Opening-range low | Swept 09:32–09:35, held | That sweep — the day's low |
+| Mon 21 Sep | −16 | mixed, up | Yesterday's high | Swept 09:18, held | The 09:15 candle — the low was in at once |
 
 ## What repeats across the five
 
@@ -38,14 +39,37 @@ Every setup is then scored the same way: a **2R target**, the stop, or a **time 
 ```review-summary
 ```
 
-### What the scanner teaches so far (5 sessions, 30 setups)
-- **There are more opportunities than the highlights suggest** — about six a day — **but the edge per trade is thin**: +3.03R over 30 trades, about +0.10R each, before costs. Most of the money came from a handful of trades.
-- **Gap pullbacks (G) are the most common setup (21 of 30)**, and they live or die by the day type: they paid on trend days (15 Sep) and trending afternoons, and were stopped repeatedly inside ranges (16 and 17 Sep).
-- **Sweep reversals (S) were rarer but better** (5 signals, +2.22R). Breaks with follow-up (B) were fragile on these range-heavy days (4 signals, no 2R hits).
-- **On a trend day, counter-trend setups fail.** Both longs on 15 Sep were stopped within two minutes; every short in the trend's direction either hit 2R or was ahead at the time exit.
-- **The daily stop is a trade-off, not a free lunch.** Stopping after two consecutive losses cut 17 Sep from −5R to −2R, but it also stopped 11 and 15 Sep before their best trades: over these five days it turned +3.03R into −0.19R. Five days can't settle that — keep measuring.
-- **Reward to risk: the target mattered more than the stop.** The same 30 entries made +2.18R with a 1R target, +3.03R at 2R and **+8.03R at 3R** — most trades that reached 2R kept going. Taking profit early gave away most of the edge.
-- **Tight stops didn't lower the risk — they raised the loss rate.** Setups with stops of 10 points or less netted 0R at 2R; setups whose stop sat where the idea was actually wrong made +0.20R per trade. On 1-minute candles a tight stop sits inside normal noise. Keep risk small with **position size** (lesson 5.6), not by squeezing the stop.
+### What the scanner teaches so far (40 sessions, 186 setups)
+
+**The honest headline: this rule set loses money.** Over 40 cached sessions (24 Jul – 18 Sep) it produced 186 setups
+worth **−38.6R**, about **−0.21R per trade**, in index points before costs. An earlier version of this section reported
++3.03R over 30 trades — that was the five days written up below, and it did not survive a larger sample. Two of the
+conclusions drawn from those five days flipped outright; they are corrected here.
+
+| Rule | Setups | Total | Per trade | Stopped | Median best excursion |
+|---|---|---|---|---|---|
+| **S** Sweep reversal | 42 | −0.5R | −0.01R | 45% | 0.81R |
+| **G** Gap (FVG) pullback | 112 | **−25.2R** | −0.23R | 71% | 0.60R |
+| **B** Break + follow-up | 30 | −11.3R | −0.38R | 67% | 1.01R |
+| **All** | 186 | −38.6R | −0.21R | | 0.72R |
+
+- **Gap pullbacks are the bleeding wound.** They fire most often (112 of 186) and **46% never move even 0.5R in your
+  favour**. Entering at a gap's near edge with a stop at its far edge is a coin flip inside noise.
+- **Corrected — "3R is the best target" does not hold.** Across 186 setups: 1R −0.13R per trade, 2R −0.22R, 3R −0.21R.
+  Median best excursion is **0.72R**: these entries simply don't travel far enough relative to their stop. The
+  +8.03R-at-3R result came from five days.
+- **Corrected — a wider stop doesn't rescue it either** (−0.21R per trade at 1.5× risk). The entries are the problem,
+  not the exits.
+- **Still true: tight stops raise the loss rate.** Risk of 4–8 points: −0.40R per trade. Risk of 25–40 points: −0.06R.
+  Keep risk small with **position size** (lesson 5.6), not by squeezing the stop.
+- **Still true: on a trend day, counter-trend setups fail.** This is where the losses concentrate. 21 Sep is the clearest
+  case: the one losing signal shorted a level price had already been accepted above for an hour.
+- **Sweep reversals are the only rule that isn't losing** (−0.01R per trade), and they are the closest to the method
+  Chinmay Sir actually trades: wait for the sweep, wait for the reversal candle, then act.
+- **A level on its own is not an edge.** A separate study of 40 sessions measured how price reacts at 240 known levels
+  against 503 random prices in the same sessions: the levels scored a 0.73 rejection share against the random control's
+  **0.74**, and *broke more often* (50% held versus 64%). Only round numbers (0.79) and levels price had visited five or
+  more times (0.78) beat the control. Levels are context for where to look — the confirmation is what matters.
 - **The scanner is stricter than your eye.** On 16 and 17 Sep the day's best reversals weren't flagged, because no reversal candle was big enough. The rules protect you from the fake ones and cost you some real ones.
 
 Everything here is hindsight on five sessions — a way to train your eye and to test rules, not evidence of an edge.

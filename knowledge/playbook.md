@@ -57,6 +57,8 @@ After price takes out the prior zone's low and a strong bullish close appears, e
 **18-Sep (unclear):** after the 23250 CE swept the day low he framed a bottom buy only because the risk (~6 pts) against the ~14-pt reward was about 1:2, and said he personally "didn't feel like" taking it; the CE ran to ~156 but it was offered to viewers with no fill, box or exit, so no points are logged [▶ 18-Sep](https://www.youtube.com/watch?v=EPh5qxWEUhU&t=7260s). His filter for bottom buys is reward:risk, not just "liquidity was taken".
 **Liquidity ≠ resistance:** he draws a line between a zone that merely holds and a zone where stop losses actually sit. Only the second is a sweep. [▶ 25-Aug](https://www.youtube.com/watch?v=hkQBf4EvCuo&t=12540s) [▶ 11-Sep](https://www.youtube.com/watch?v=qTDwaNEZ2RY&t=6240s) · [▶ 4-Sep win ~117→139](https://www.youtube.com/watch?v=YtqPA0aKkzE&t=8940s) · [▶ 4-Sep shakeout](https://www.youtube.com/watch?v=YtqPA0aKkzE&t=5220s)
 
+- **Wait for the stops to actually be taken, not just for a fresh low** (reinforced 21-Sep). He refused to treat any bounce as tradeable until the day's low at 129 was swept, and only then looked for the reversal candle. [▶ 11:13](https://www.youtube.com/watch?v=DrmIRaTPU-A&t=7800s)
+
 ### D. Reversal at base, aggressive vs confirmation: 20W / 5L / 2 unclear, Nifty +282 · Sensex +899, 23/27 verified
 - **Aggressive:** enter near the base with a tiny SL (3–5 pts). **Confirmation:** wait for a pin bar or engulfing candle, or a close above the barrier.
 - He would rather **miss the trade** than enter before the confirmation candle prints, even with chat pushing to enter. [▶ 8-Sep](https://www.youtube.com/watch?v=s3r5EJy4cw8&t=5760s)
@@ -100,6 +102,7 @@ On 27-Jul the option coiled in a tight range for hours and he took three small s
 - **Hard SL ceiling on Sensex:** never more than 25–30 points (about ₹600–800 a lot). If the setup needs more room, skip it. [▶ 6-Aug](https://www.youtube.com/watch?v=VRl6SfYXXiQ&t=22080s)
 - **A trade needs a placeable stop.** A good read with no sensible SL location isn't a trade. [▶ 11-Sep pt2](https://www.youtube.com/watch?v=qEYKvXFibAU&t=9900s)
 - **He avoids Bank Nifty for scalping** (monthly expiry only, so intraday liquidity is thin). [▶ 6-Aug](https://www.youtube.com/watch?v=VRl6SfYXXiQ&t=720s)
+  - **Contradicted 21-Sep:** he ran a full hard-trigger breakout on the BankNifty 56500 CE — trigger named hours ahead, entry above 470, SL 446, target 531 — and it was the day's cleanest trade (+61 pts). So the rule is "not usually", not "never": on a day when Nifty was dull he went where the movement was. [▶ 13:18](https://www.youtube.com/watch?v=DrmIRaTPU-A&t=15300s)
 - **No pyramiding in scalps.** Adding quantity is only for swing positions. [▶ 7-Sep](https://www.youtube.com/watch?v=JhSkNorpW6w&t=10860s)
 - **Big SL means small quantity.** [▶ 11-Sep](https://www.youtube.com/watch?v=qTDwaNEZ2RY&t=2040s)
 
@@ -144,6 +147,9 @@ On 27-Jul the option coiled in a tight range for hours and he took three small s
 - **He trades his own book in parallel to Chinmay's on-air session (16-Sep).** Trade Circuit runs personal SENSEX trades throughout the morning while Chinmay is the one on camera, tracked in his own TRADE RECORDS journal, separate from anything narrated live for viewers ("jab tak main Trade Circuit pe tha, yeh cheez hai... baaki jo rahega wo Chinmay sir ke isme aayega"). Once he takes over hosting, he simply continues narrating whichever of his own positions is still open — the 11:20 AM journal entry (+51.12) is the same position he kept talking through live after the 11:52 handover. **Implication:** his self-reported day tallies may only cover his personal book, not everything he narrates on-air afterward — two later trades that day (a 74400 CE and a 74300 PE) never appeared in his 3-row journal total. [▶ 16-Sep](https://www.youtube.com/watch?v=MK1NfHWN24M&t=22215s)
 
 ## Contradictions and nuances
+
+- **21-Sep, Bank Nifty:** the "avoids Bank Nifty" rule broke. See §3 — one clean hard-trigger breakout, +61 pts, on a dull Nifty day.
+- **21-Sep, the same strike in two places:** his charted 23250 CE entry at 13:08 (+41 confirmed) and a Telegram call from 158 on the *same strike* ran in parallel all day. His end-of-day recap quoted "158 to 230" as one trade, which is the Telegram thread, not the charted entry. When a recap and a chart disagree, the chart wins.
 - *"Small candles at a level → blast is coming"* (11-Sep) vs *"barcode = no-trade zone"* (8-Sep). These are consistent: the squeeze tells you a move is coming, but you trade the **break** (setup A), not the inside of the squeeze.
 - *"Buy the first green candle at the pullback zone"* vs *"I used to do that, now I wait"* (8-Sep). The aggressive version seems reserved for zones after a strong move; the logged B trades were all small-risk and late in the day.
 - *"Wait for the follow-up candle"* vs the 18-Aug **aggressive continuation entry** (F), which he took deliberately when no pullback came, and which worked. The distinction he draws: entering late into a *confirmed* trend is acceptable with a bigger stop; entering early on an *unconfirmed* break (A−) is not.

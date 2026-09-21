@@ -1105,9 +1105,10 @@ let liveTimer = null;
 const px0 = (n) => Number(n).toLocaleString("en-IN", { maximumFractionDigits: 0 });
 
 function liveLevels(st) {
-  const lv = st.zones.filter((z) => z.weight >= 2).map((z) => ({ lo: z.lo, hi: z.hi, name: z.text }));
-  lv.push({ lo: st.or_high, hi: st.or_high, name: "opening-range high" }, { lo: st.or_low, hi: st.or_low, name: "opening-range low" });
-  if (!st.zones.length) lv.push({ lo: st.pdh, hi: st.pdh, name: "previous-day high" }, { lo: st.pdl, hi: st.pdl, name: "previous-day low" },
+  const zones = st.zones || [];
+  const lv = zones.filter((z) => z.weight >= 2).map((z) => ({ lo: z.lo, hi: z.hi, name: z.text }));
+  if (st.or_high) lv.push({ lo: st.or_high, hi: st.or_high, name: "opening-range high" }, { lo: st.or_low, hi: st.or_low, name: "opening-range low" });
+  if (!zones.length) lv.push({ lo: st.pdh, hi: st.pdh, name: "previous-day high" }, { lo: st.pdl, hi: st.pdl, name: "previous-day low" },
     { lo: st.prev_close, hi: st.prev_close, name: "previous-day close" });
   return lv.sort((a, b) => b.hi - a.hi);
 }
@@ -1126,7 +1127,18 @@ function whereHTML(st) {
       <div class="lv-end sup"><span>Support</span><b>${lab(sup)}</b><small>${esc(sup.name)} · ${down.toFixed(0)} pts below</small></div>
       <div class="lv-bar"><i style="left:${pos}%"></i><em style="left:${pos}%">${fmtPx(st.price)}</em></div>
       <div class="lv-end res"><span>Resistance</span><b>${lab(res)}</b><small>${esc(res.name)} · ${up.toFixed(0)} pts above</small></div>
-    </div>`;
+    </div>
+    ${approachHTML(st)}`;
+}
+
+// Zones price is walking into, so the warning arrives before the level does, not with it.
+function approachHTML(st) {
+  const near = (st.approaching || []).filter((a) => a.closing);
+  if (!near.length) return "";
+  const row = (a) => `<li class="${a.dist <= 15 ? "armed" : ""}">
+    <b>${esc(a.zone)}</b> <small>${esc(a.text)}</small>
+    <span>${a.dist.toFixed(0)} pts ${a.side}${a.eta ? ` · ~${esc(a.eta)}` : ""}</span></li>`;
+  return `<div class="lv-approach"><p class="caption">Heading toward</p><ul>${near.map(row).join("")}</ul></div>`;
 }
 
 function setupHTML(st) {
@@ -1160,7 +1172,7 @@ function setupHTML(st) {
 function timelineHTML(st) {
   const items = [...(st.alerts || [])].reverse().slice(0, 12);
   if (!items.length) return '<p class="caption">Nothing yet — the first update comes after the opening range (about 9:35).</p>';
-  return `<ol class="lv-timeline">${items.map((a) => `<li class="k-${esc(a.kind || "event")}"><time>${esc(a.time)}</time>
+  return `<ol class="lv-timeline">${items.map((a) => `<li class="k-${esc(a.kind || "event")}${a.quiet ? " quiet" : ""}"><time>${esc(a.time)}</time>
     <div><b>${esc(a.short || a.title || "")}</b>${a.detail || a.text ? `<small>${esc(a.detail || a.text)}</small>` : ""}</div></li>`).join("")}</ol>`;
 }
 
@@ -1229,21 +1241,30 @@ async function viewLive() {
       : mode === "live" && st.tick_age_s != null ? `Live · ${esc(st.source || "Dhan")} · last tick ${st.tick_age_s < 60 ? `${st.tick_age_s}s` : `${Math.round(st.tick_age_s / 60)} min`} ago`
       : mode === "live" ? `Live · ${esc(st.source || "")} · polling · candle ${st.data_age_min ?? "?"} min old`
       : `Not running · last update ${esc(updated.toLocaleString("en-IN"))}`;
+    // before the opening range is complete the monitor knows the price and the prep levels but nothing else yet
+    const pre = st.open == null;
     const chg = st.price - st.prev_close, pct = (100 * chg) / st.prev_close;
     const section = (key, title, body) => `<details data-key="${key}" ${opened.has(key) ? "open" : ""}><summary>${title}</summary>${body}</details>`;
     app.innerHTML = `
       <div class="lv">
         <header class="lv-head">
           <div><p class="eyebrow">Nifty 50 · ${esc(fmtDate(st.day))}</p>
-            <p class="lv-price">${fmtPx(st.price)} <span class="${chg >= 0 ? "w" : "l"}">${chg >= 0 ? "▲" : "▼"} ${Math.abs(chg).toFixed(1)} (${pct.toFixed(2)}%)</span></p>
-            <p class="lv-sub">Open ${fmtPx(st.open)} · High ${fmtPx(st.high)} · Low ${fmtPx(st.low)}</p></div>
+            <p class="lv-price">${fmtPx(st.price)}${st.prev_close == null ? "" : ` <span class="${chg >= 0 ? "w" : "l"}">${chg >= 0 ? "▲" : "▼"} ${Math.abs(chg).toFixed(1)} (${pct.toFixed(2)}%)</span>`}</p>
+            <p class="lv-sub">${pre ? `${st.prev_close != null ? `Pre-open · previous close ${fmtPx(st.prev_close)}` : "Pre-open"} — levels are armed; the rules start once the opening range is complete (about 9:31).`
+              : `Open ${fmtPx(st.open)} · High ${fmtPx(st.high)} · Low ${fmtPx(st.low)}`}</p></div>
           <span class="lv-pill ${mode}">● ${pill}</span>
         </header>
-        ${accountHTML(st.account)}
-        <section><h2>Where Nifty is</h2>${whereHTML(st)}</section>
-        <section><h2>Setup right now</h2>${setupHTML(st)}</section>
-        <section><h2>Today so far</h2>${timelineHTML(st)}</section>
-        <section><h2>Options</h2>${optionsHTML(st.options)}</section>
+        <div class="lv-cols">
+          <div class="lv-col">
+            ${accountHTML(st.account)}
+            <section><h2>Where Nifty is</h2>${whereHTML(st)}</section>
+            <section><h2>Setup right now</h2>${setupHTML(st)}</section>
+          </div>
+          <aside class="lv-col">
+            <section><h2>Options</h2>${optionsHTML(st.options)}</section>
+            <section><h2>Today so far</h2>${timelineHTML(st)}</section>
+          </aside>
+        </div>
         <div class="lv-more">
           ${section("levels", "All levels", ladderHTML(st))}
           ${section("setups", `All setups today (${(st.signals || []).length})`, `<div class="review-signals">${signalsHTML({ signals: st.signals })}</div>`)}
@@ -1281,6 +1302,33 @@ function accountHTML(acct) {
     <p class="lv-sentence">Today: ${limits} · ${d.wins ?? 0}W / ${d.losses ?? 0}L closed <b class="${(d.net_closed ?? 0) >= 0 ? "w" : "l"}">${rupees(d.net_closed ?? 0)}</b>
       ${(acct.positions || []).length ? ` · open ${rupees(d.open_pnl ?? 0)}` : ""} <small class="caption">(net of estimated charges)</small></p>
     ${cards || '<p class="caption">No open position.</p>'}</section>`;
+}
+
+/* Your day against his, from tools/faceoff.py. Local only: it pairs your fills with his logged calls. */
+async function faceoffHTML(date) {
+  let f = null;
+  try { const r = await fetch(`data/journal/faceoff-${date}.json`, { cache: "no-store" }); if (r.ok) f = await r.json(); } catch { f = null; }
+  if (!f) return "";
+  const side = (t) => (t.bullish ? "call" : "put");
+  const mine = (m) => `<b>you</b> ${side(m)} ${esc(m.label)} <span class="${(m.net ?? 0) >= 0 ? "w" : "l"}">${m.points > 0 ? "+" : ""}${m.points} pts · ${rupees(m.net ?? 0)}</span>${m.kept != null ? `<small> · kept ${m.kept}%</small>` : ""}`;
+  const his = (h) => `<b>him</b> ${side(h)} ${esc(h.option)} <small>${esc(h.setup || "")} · ${esc(h.outcome || "")}${h.verified ? ` (${esc(h.verified)})` : ""}</small>`;
+  const block = (title, body) => (body ? `<section class="fo"><h2>${title}</h2>${body}</section>` : "");
+  const pairs = (f.pairs || []).map((p) => `<li>${mine(p.mine)}<br>${his(p.his)}<br>
+      <small class="caption">${p.i_was_first ? "you were first" : "he was first"}, ${p.gap} min apart</small></li>`).join("");
+  const opps = (f.opposites || []).map((p) => `<li class="opp"><b>${esc(p.time_mine)}</b> — opposite sides<br>${mine(p.mine)}<br>${his(p.his)}</li>`).join("");
+  const heOnly = (f.he_only || []).map((h) => `<li>${esc(h.time)} ${his(h)}${h.points != null ? ` <small>${h.points > 0 ? "+" : ""}${h.points} pts</small>` : ""}</li>`).join("");
+  const youOnly = (f.you_only || []).map((m) => `<li>${esc(m.time)} ${mine(m)}${m.broken && m.broken.length ? `<br><small class="l">broke: ${esc(m.broken.join(", "))}</small>` : ""}</li>`).join("");
+  const notes = (f.observations || []).map((o) => `<li>${esc(o)}</li>`).join("");
+  return `<div class="faceoff">
+    <div class="page-head"><div><p class="eyebrow">Your day against his</p><h1>Face-off</h1></div>
+      <p class="record">${f.mine} yours · ${f.his} of his${f.his ? ` · ${f.together} together · ${f.opposite} opposite` : ""}</p></div>
+    ${f.his ? "" : '<p class="caption">His trades for this day aren\'t in the log yet — the stream has to be processed first.</p>'}
+    ${block("Same side, same time", pairs ? `<ul class="fo-list">${pairs}</ul>` : "")}
+    ${block("Opposite sides", opps ? `<ul class="fo-list">${opps}</ul>` : "")}
+    ${block("He took it, you didn't", heOnly ? `<ul class="fo-list">${heOnly}</ul>` : "")}
+    ${block("You took it, he didn't", youOnly ? `<ul class="fo-list">${youOnly}</ul>` : "")}
+    ${block("What to take from it", notes ? `<ul class="fo-notes">${notes}</ul>` : "")}
+  </div>`;
 }
 
 /* ---------------- my trades (data/journal/ from tools/journal.py; local only, never published) ---------------- */
@@ -1342,7 +1390,9 @@ async function viewJournal(date) {
       <div class="page-head"><div><p class="eyebrow">My trades · ${esc(fmtDate(s.date))}</p><h1>${rupees(s.net)} net</h1></div>
         <p class="record">${s.trades} trades · ${s.wins}W / ${s.losses}L · charges ≈ ₹${Math.round(s.charges)} · rule score ${s.rule_score ?? "—"}%</p></div>
       ${s.bias ? `<p class="lede">Morning bias: ${esc(s.bias)}</p>` : ""}
-      <div class="tablewrap"><table class="signals"><thead><tr><th>Time</th><th>Option</th><th>Qty</th><th>In → out</th><th>Pts · ₹</th><th>Best / worst pts</th><th>Context and rules</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+      <div class="tablewrap"><table class="signals"><thead><tr><th>Time</th><th>Option</th><th>Qty</th><th>In → out</th><th>Pts · ₹</th><th>Best / worst pts</th><th>Context and rules</th></tr></thead><tbody>${rows}</tbody></table></div>
+      <div id="faceoff"></div>`;
+    faceoffHTML(date).then((html) => { const el = $("#faceoff", app); if (el) el.innerHTML = html; });
     return;
   }
   const T = data.trades, net = T.reduce((a, t) => a + t.net, 0);

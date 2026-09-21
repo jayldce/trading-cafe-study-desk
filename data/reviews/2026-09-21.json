@@ -1,0 +1,497 @@
+{
+ "date": "2026-09-21",
+ "previous_session": "2026-09-18",
+ "open": 23330.2,
+ "high": 23466.8,
+ "high_time": "13:59",
+ "low": 23314.8,
+ "low_time": "09:15",
+ "close": 23414.3,
+ "range": 152.0,
+ "gap": -16.2,
+ "pdh": 23389.15,
+ "pdl": 23286.6,
+ "pdc": 23346.4,
+ "or_high": 23402.95,
+ "or_low": 23314.8,
+ "day_type": "mixed day",
+ "equal_highs": [
+  {
+   "side": "above",
+   "level": 23410.75,
+   "low": 23405.25,
+   "high": 23410.75,
+   "touches": [
+    "09:36",
+    "09:48",
+    "11:33",
+    "11:42"
+   ],
+   "taken": "11:54"
+  },
+  {
+   "side": "above",
+   "level": 23437.7,
+   "low": 23434.05,
+   "high": 23437.7,
+   "touches": [
+    "12:00",
+    "13:33"
+   ],
+   "taken": "13:51"
+  },
+  {
+   "side": "above",
+   "level": 23424.25,
+   "low": 23418.0,
+   "high": 23424.25,
+   "touches": [
+    "12:21",
+    "12:30",
+    "12:54"
+   ],
+   "taken": "13:20"
+  }
+ ],
+ "equal_lows": [
+  {
+   "side": "below",
+   "level": 23394.5,
+   "low": 23394.5,
+   "high": 23397.65,
+   "touches": [
+    "11:45",
+    "13:09"
+   ],
+   "taken": null
+  },
+  {
+   "side": "below",
+   "level": 23407.95,
+   "low": 23407.95,
+   "high": 23411.15,
+   "touches": [
+    "12:09",
+    "12:21",
+    "12:39"
+   ],
+   "taken": "13:03"
+  }
+ ],
+ "pools": [
+  {
+   "name": "previous-day high",
+   "level": 23389.15,
+   "side": "above",
+   "event": {
+    "time": "09:18",
+    "i": 3,
+    "extreme": 23396.7,
+    "beyond_by": 7.5,
+    "kind": "sweep",
+    "reversal": null
+   }
+  },
+  {
+   "name": "previous-day low",
+   "level": 23286.6,
+   "side": "below",
+   "event": null
+  },
+  {
+   "name": "opening-range high",
+   "level": 23402.95,
+   "side": "above",
+   "event": {
+    "time": "09:30",
+    "i": 15,
+    "extreme": 23406.25,
+    "beyond_by": 3.3,
+    "kind": "sweep",
+    "reversal": null
+   }
+  },
+  {
+   "name": "opening-range low",
+   "level": 23314.8,
+   "side": "below",
+   "event": null
+  },
+  {
+   "name": "previous-day close (gap fill)",
+   "level": 23346.4,
+   "side": "above",
+   "event": {
+    "time": "09:15",
+    "i": 0,
+    "extreme": 23396.7,
+    "beyond_by": 50.3,
+    "kind": "break",
+    "failed": null,
+    "failed_i": null
+   }
+  },
+  {
+   "name": "equal highs 23,405.2\u201323,410.8",
+   "level": 23410.75,
+   "side": "above",
+   "event": {
+    "time": "11:54",
+    "i": 159,
+    "extreme": 23422.25,
+    "beyond_by": 11.5,
+    "kind": "break",
+    "failed": "13:03",
+    "failed_i": 228
+   }
+  },
+  {
+   "name": "equal highs 23,434.0\u201323,437.7",
+   "level": 23437.7,
+   "side": "above",
+   "event": {
+    "time": "13:51",
+    "i": 276,
+    "extreme": 23441.05,
+    "beyond_by": 3.3,
+    "kind": "break",
+    "failed": null,
+    "failed_i": null
+   }
+  },
+  {
+   "name": "equal highs 23,418.0\u201323,424.2",
+   "level": 23424.25,
+   "side": "above",
+   "event": {
+    "time": "13:20",
+    "i": 245,
+    "extreme": 23429.15,
+    "beyond_by": 4.9,
+    "kind": "break",
+    "failed": null,
+    "failed_i": null
+   }
+  },
+  {
+   "name": "equal lows 23,394.5\u201323,397.7",
+   "level": 23394.5,
+   "side": "below",
+   "event": null
+  },
+  {
+   "name": "equal lows 23,408.0\u201323,411.2",
+   "level": 23407.95,
+   "side": "below",
+   "event": {
+    "time": "13:03",
+    "i": 228,
+    "extreme": 23403.25,
+    "beyond_by": 4.7,
+    "kind": "break",
+    "failed": null,
+    "failed_i": null
+   }
+  },
+  {
+   "name": "round number 23,300",
+   "level": 23300.0,
+   "side": "below",
+   "event": null
+  },
+  {
+   "name": "round number 23,400",
+   "level": 23400.0,
+   "side": "above",
+   "event": {
+    "time": "09:29",
+    "i": 14,
+    "extreme": 23406.25,
+    "beyond_by": 6.2,
+    "kind": "poke",
+    "reversal": null
+   }
+  },
+  {
+   "name": "round number 23,500",
+   "level": 23500.0,
+   "side": "above",
+   "event": null
+  }
+ ],
+ "displacement": [
+  {
+   "i": 58,
+   "time": "10:13",
+   "dir": "down",
+   "range": 12.1,
+   "x_atr": 2.1,
+   "o": 23389.55,
+   "c": 23378.9,
+   "h": 23390.3,
+   "l": 23378.2
+  },
+  {
+   "i": 100,
+   "time": "10:55",
+   "dir": "down",
+   "range": 10.4,
+   "x_atr": 2.1,
+   "o": 23386.75,
+   "c": 23379.9,
+   "h": 23389.95,
+   "l": 23379.55
+  },
+  {
+   "i": 138,
+   "time": "11:33",
+   "dir": "up",
+   "range": 10.2,
+   "x_atr": 2.2,
+   "o": 23401.95,
+   "c": 23409.1,
+   "h": 23409.35,
+   "l": 23399.1
+  },
+  {
+   "i": 187,
+   "time": "12:22",
+   "dir": "down",
+   "range": 10.1,
+   "x_atr": 2.0,
+   "o": 23420.25,
+   "c": 23412.0,
+   "h": 23421.5,
+   "l": 23411.4
+  },
+  {
+   "i": 228,
+   "time": "13:03",
+   "dir": "down",
+   "range": 8.8,
+   "x_atr": 2.3,
+   "o": 23412.95,
+   "c": 23406.75,
+   "h": 23415.2,
+   "l": 23406.4
+  },
+  {
+   "i": 313,
+   "time": "14:28",
+   "dir": "down",
+   "range": 12.7,
+   "x_atr": 2.5,
+   "o": 23458.25,
+   "c": 23450.2,
+   "h": 23462.0,
+   "l": 23449.35
+  }
+ ],
+ "fvgs": [
+  {
+   "time": "09:17",
+   "i": 2,
+   "kind": "bull",
+   "lo": 23364.0,
+   "hi": 23377.45,
+   "size": 13.5,
+   "from_displacement": false,
+   "first_touch": "09:20",
+   "filled": "10:27"
+  },
+  {
+   "time": "10:13",
+   "i": 58,
+   "kind": "bear",
+   "lo": 23379.9,
+   "hi": 23388.65,
+   "size": 8.8,
+   "from_displacement": true,
+   "first_touch": "10:17",
+   "filled": "10:54"
+  },
+  {
+   "time": "13:15",
+   "i": 240,
+   "kind": "bull",
+   "lo": 23411.45,
+   "hi": 23415.7,
+   "size": 4.2,
+   "from_displacement": false,
+   "first_touch": null,
+   "filled": null
+  },
+  {
+   "time": "13:59",
+   "i": 284,
+   "kind": "bull",
+   "lo": 23457.15,
+   "hi": 23461.2,
+   "size": 4.0,
+   "from_displacement": false,
+   "first_touch": "14:01",
+   "filled": "14:05"
+  }
+ ],
+ "events": [
+  {
+   "i": 0,
+   "time": "09:15",
+   "price": 23396.7,
+   "text": "break of the previous-day close (gap fill); day low 23,314.80; sweep of the previous-day high",
+   "score": 4.0,
+   "where": "above",
+   "n": 1
+  },
+  {
+   "i": 15,
+   "time": "09:30",
+   "price": 23406.25,
+   "text": "sweep of the opening-range high",
+   "score": 3,
+   "where": "above",
+   "n": 2
+  },
+  {
+   "i": 138,
+   "time": "11:33",
+   "price": 23409.35,
+   "text": "impulse candle up (10.2 pts, 2.2x normal)",
+   "score": 2,
+   "where": "above",
+   "n": 3
+  },
+  {
+   "i": 159,
+   "time": "11:54",
+   "price": 23422.25,
+   "text": "break of the equal highs 23,405.2\u201323,410.8",
+   "score": 3,
+   "where": "above",
+   "n": 4
+  },
+  {
+   "i": 228,
+   "time": "13:03",
+   "price": 23406.75,
+   "text": "that break failed: back through the equal highs 23,405.2\u201323,410.8; break of the equal lows 23,408.0\u201323,411.2; impulse candle down (8.8 pts, 2.3x normal)",
+   "score": 5.0,
+   "where": "below",
+   "n": 5
+  },
+  {
+   "i": 245,
+   "time": "13:20",
+   "price": 23429.15,
+   "text": "break of the equal highs 23,418.0\u201323,424.2",
+   "score": 3,
+   "where": "above",
+   "n": 6
+  },
+  {
+   "i": 276,
+   "time": "13:51",
+   "price": 23441.05,
+   "text": "break of the equal highs 23,434.0\u201323,437.7",
+   "score": 3,
+   "where": "above",
+   "n": 7
+  },
+  {
+   "i": 284,
+   "time": "13:59",
+   "price": 23466.8,
+   "text": "day high 23,466.80",
+   "score": 2,
+   "where": "above",
+   "n": 8
+  }
+ ],
+ "his_trades": [],
+ "signals": [
+  {
+   "code": "S",
+   "setup": "Sweep reversal",
+   "i": 58,
+   "time": "10:13",
+   "dir": "short",
+   "entry": 23378.9,
+   "stop": 23394.25,
+   "risk": 15.3,
+   "text": "sweep of the previous-day high, then a 12.1-pt reversal candle",
+   "result": "time",
+   "r": -0.39,
+   "exit": 23384.85,
+   "exit_time": "10:58",
+   "target": 23348.2,
+   "mfe_r": 1.43,
+   "r_by_target": {
+    "1": 1,
+    "2": -0.39,
+    "3": -0.39
+   },
+   "n": 1
+  },
+  {
+   "code": "G",
+   "setup": "Gap (FVG) pullback",
+   "i": 62,
+   "time": "10:17",
+   "dir": "short",
+   "entry": 23379.9,
+   "stop": 23389.65,
+   "risk": 9.8,
+   "text": "first pullback into the bear gap 23,380\u201323,389 (10:13)",
+   "result": "target",
+   "r": 2.0,
+   "exit": 23360.4,
+   "exit_time": "10:27",
+   "target": 23360.4,
+   "mfe_r": 2.17,
+   "r_by_target": {
+    "1": 1,
+    "2": 2,
+    "3": -1.0
+   },
+   "n": 2
+  },
+  {
+   "code": "S",
+   "setup": "Sweep reversal",
+   "i": 228,
+   "time": "13:03",
+   "dir": "short",
+   "entry": 23406.75,
+   "stop": 23418.25,
+   "risk": 11.5,
+   "text": "sweep of the equal highs 23,405.2\u201323,410.8, then a 8.8-pt reversal candle",
+   "result": "stop",
+   "r": -1.0,
+   "exit": 23418.25,
+   "exit_time": "13:16",
+   "target": 23383.75,
+   "mfe_r": 0.79,
+   "r_by_target": {
+    "1": -1.0,
+    "2": -1.0,
+    "3": -1.0
+   },
+   "n": 3
+  }
+ ],
+ "rules": {
+  "fvg_min": 4.0,
+  "equal_tolerance": 0.0002,
+  "displacement": ">= 2.0x ATR14 and body >= 60%",
+  "target_r": 2.0,
+  "max_hold_min": 45,
+  "risk_points": [
+   4.0,
+   40.0
+  ],
+  "entry_window": [
+   "09:30",
+   "14:45"
+  ]
+ }
+}

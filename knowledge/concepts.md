@@ -283,3 +283,9 @@ He expected sluggish markets while a very large IPO (NSE's, opening the followin
 ### Futures vs options for scalping
 He stopped trading futures after 2022–23 because the breakeven is about 16 points after STT and other charges; 200–300 point swings might justify futures, scalping doesn't.
 **Watch:** [▶ 18-Sep](https://www.youtube.com/watch?v=EPh5qxWEUhU&t=9420s)
+
+### No-trade is also a trade
+Declining to trade when conviction is missing is itself a decision, not a missed opportunity. He said it plainly through a dull morning on 21 Sep, while the market offered breakouts that kept failing. The discipline it protects is the one the trade log keeps proving: his losing setups cluster in chop (`range-breakout-direct` 0W/11L, `range-chop-scalps` 0W/3L). [▶ 21-Sep](https://www.youtube.com/watch?v=DrmIRaTPU-A&t=8580s)
+
+### The last bull becomes the bear (capitulation)
+The worse the news gets *after* a long fall, the closer the market usually is to a real bottom — because bad news arriving late is what finally breaks the holdouts who have been buying all the way down. He drew the analogy from the COVID crash on 21 Sep. Treat it as a way of reading sentiment extremes, not a timing tool. [▶ 21-Sep](https://www.youtube.com/watch?v=DrmIRaTPU-A&t=16680s)
