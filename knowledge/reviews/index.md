@@ -30,8 +30,8 @@ A review that shows only the day's best move makes trading look like one or two 
 | Code | Setup | Rule | Entry | Stop |
 |---|---|---|---|---|
 | **S** | Sweep reversal | Price pokes 0.5–15 pts beyond a pool (yesterday's high/low/close, opening range, equal highs/lows, round number), closes back inside within 3 candles, and a reversal candle at least 2× the normal size follows within 5 | Close of that reversal candle | 1 pt beyond the sweep's extreme |
-| **G** | Gap (FVG) pullback | The first return into a fair value gap left by an impulse candle, within an hour | The gap's near edge | 1 pt beyond the gap's far edge |
-| **B** | Break + follow-up | A 1-minute close through a pool, then a next candle with a big body that closes further through, near its extreme | Follow-up candle's close | 1 pt beyond the breakout candle |
+| **G** | Gap (FVG) pullback | A pullback that fills a displacement gap **to its far edge**, then a candle closing in the trade direction at the zone | When price takes out that candle's extreme | 1 pt beyond that candle's other side |
+| ~~**B**~~ | ~~Break + follow-up~~ | **Retired 21 Sep** — 28 setups, −15.3R, 4% reached 2R. See below. | — | — |
 | **T** | Failed break (trap) | A break that closes back through the level within 30 minutes, with a reversal candle in the last 5 | That close | 1 pt beyond the break's extreme |
 
 Every setup is then scored the same way: a **2R target**, the stop, or a **time exit after 45 minutes**, whichever comes first. A candle that touches both the stop and the target counts as the stop. Setups needing a stop tighter than 4 points or wider than 40 are skipped. Results are in **index points and R** (multiples of the risk), before costs and slippage — option premiums move less than the index, and differently.
@@ -39,37 +39,44 @@ Every setup is then scored the same way: a **2R target**, the stop, or a **time 
 ```review-summary
 ```
 
-### What the scanner teaches so far (40 sessions, 186 setups)
+### What the scanner teaches so far (41 sessions, 135 setups)
 
-**The honest headline: this rule set loses money.** Over 40 cached sessions (24 Jul – 18 Sep) it produced 186 setups
-worth **−38.6R**, about **−0.21R per trade**, in index points before costs. An earlier version of this section reported
-+3.03R over 30 trades — that was the five days written up below, and it did not survive a larger sample. Two of the
-conclusions drawn from those five days flipped outright; they are corrected here.
+The rules were rebuilt on 21 Sep after a 41-session test showed they lost money. The old set ran **−38.6R over 186
+setups** (−0.21R each). Two changes fixed the bleeding, and both came from his own playbook rather than from tuning:
 
-| Rule | Setups | Total | Per trade | Stopped | Median best excursion |
-|---|---|---|---|---|---|
-| **S** Sweep reversal | 42 | −0.5R | −0.01R | 45% | 0.81R |
-| **G** Gap (FVG) pullback | 112 | **−25.2R** | −0.23R | 71% | 0.60R |
-| **B** Break + follow-up | 30 | −11.3R | −0.38R | 67% | 1.01R |
-| **All** | 186 | −38.6R | −0.21R | | 0.72R |
+| Rule | Setups | Total | Per trade | Hit 2R |
+|---|---|---|---|---|
+| **G** Gap pullback *(rewritten)* | 89 | **+18.8R** | **+0.21R** | 36% |
+| **S** Sweep reversal | 44 | −1.9R | −0.04R | 16% |
+| **T** Failed break | 2 | −1.6R | −0.79R | 0% |
+| **All** | 135 | **+15.3R** | **+0.11R** | |
 
-- **Gap pullbacks are the bleeding wound.** They fire most often (112 of 186) and **46% never move even 0.5R in your
-  favour**. Entering at a gap's near edge with a stop at its far edge is a coin flip inside noise.
-- **Corrected — "3R is the best target" does not hold.** Across 186 setups: 1R −0.13R per trade, 2R −0.22R, 3R −0.21R.
-  Median best excursion is **0.72R**: these entries simply don't travel far enough relative to their stop. The
-  +8.03R-at-3R result came from five days.
-- **Corrected — a wider stop doesn't rescue it either** (−0.21R per trade at 1.5× risk). The entries are the problem,
-  not the exits.
-- **Still true: tight stops raise the loss rate.** Risk of 4–8 points: −0.40R per trade. Risk of 25–40 points: −0.06R.
-  Keep risk small with **position size** (lesson 5.6), not by squeezing the stop.
-- **Still true: on a trend day, counter-trend setups fail.** This is where the losses concentrate. 21 Sep is the clearest
-  case: the one losing signal shorted a level price had already been accepted above for an hour.
-- **Sweep reversals are the only rule that isn't losing** (−0.01R per trade), and they are the closest to the method
-  Chinmay Sir actually trades: wait for the sweep, wait for the reversal candle, then act.
-- **A level on its own is not an edge.** A separate study of 40 sessions measured how price reacts at 240 known levels
-  against 503 random prices in the same sessions: the levels scored a 0.73 rejection share against the random control's
-  **0.74**, and *broke more often* (50% held versus 64%). Only round numbers (0.79) and levels price had visited five or
-  more times (0.78) beat the control. Levels are context for where to look — the confirmation is what matters.
+**1. G now waits, the way he waits.** It used to buy the gap's near edge the moment price touched it — 135 setups,
+−29.6R, 71% stopped, and a median best excursion of only 0.63R: it was entering trades that never went anywhere.
+It now requires the **deep fill to the gap's far edge**, then a **candle closing in the trade direction at the zone**,
+and enters only when price takes out that candle's extreme — his pullback rule (playbook B, 14W/0L). Median best
+excursion doubled to 1.28R.
+
+**2. B was retired, not fixed.** Break + follow-up ran −15.3R over 28 setups with 4% reaching 2R. It entered at the
+*close* of the follow-up candle, two candles into the move, paying a wide stop for a move already spent. Rewriting it
+his way — a named trigger above a consolidation, the setup he wins 90% of — was tested and abandoned: a tight-base
+definition produced either 3 setups or 400–900 a month of noise, and a "must be at a level" filter swung from −0.02R
+to +0.08R per trade on a small threshold change. That is curve-fitting. **He wins that setup because he chooses which
+base matters, and that judgement isn't mechanical.**
+
+**+0.11R per trade is not an edge.** It is a system that has stopped losing, in index points, before costs. On weekly
+options with spread and theta it would still struggle. What survives from the earlier work:
+
+- **Tight stops raise the loss rate.** Risk of 4–8 points: −0.40R per trade. Risk of 25–40 points: −0.06R. Keep risk
+  small with **position size** (lesson 5.6), not by squeezing the stop.
+- **A level on its own is not an edge.** Across 40 sessions, 240 touches of known levels scored a 0.73 rejection share
+  against a random control's **0.74**, and *broke* more often (50% held versus 64%). Only round numbers (0.79) and
+  levels price had already visited five or more times (0.78) beat the control.
+- **The rules agreeing with him is the strongest signal we have measured.** On the 21 sessions where both traded Nifty,
+  the setups he independently took made **+0.62R each** and he won **80%** of them; the setups he ignored made −0.08R.
+  A setup the rules find on their own is a place to look, not a trade.
+- **Obvious filters need testing.** Restricting the rewritten G to the day's prevailing direction made it *worse*
+  (−0.17R versus +0.03R), and a 3R target beat a 1R target on the old rules but lost to it on the new ones.
 - **The scanner is stricter than your eye.** On 16 and 17 Sep the day's best reversals weren't flagged, because no reversal candle was big enough. The rules protect you from the fake ones and cost you some real ones.
 
 Everything here is hindsight on five sessions — a way to train your eye and to test rules, not evidence of an edge.

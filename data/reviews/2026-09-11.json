@@ -1,26 +1,26 @@
 {
  "date": "2026-09-11",
  "previous_session": "2026-09-10",
- "open": 23270.900390625,
- "high": 23447.900390625,
+ "open": 23270.3,
+ "high": 23448.1,
  "high_time": "14:03",
- "low": 23232.25,
- "low_time": "09:17",
- "close": 23398.099609375,
- "range": 215.7,
- "gap": -206.9,
- "pdh": 23489.69921875,
- "pdl": 23380.650390625,
- "pdc": 23477.80078125,
- "or_high": 23270.900390625,
- "or_low": 23232.25,
+ "low": 23231.4,
+ "low_time": "09:15",
+ "close": 23398.1,
+ "range": 216.7,
+ "gap": -207.5,
+ "pdh": 23494.95,
+ "pdl": 23380.1,
+ "pdc": 23477.8,
+ "or_high": 23277.3,
+ "or_low": 23231.4,
  "day_type": "mixed day",
  "equal_highs": [
   {
    "side": "above",
-   "level": 23360.75,
+   "level": 23361.1,
    "low": 23358.65,
-   "high": 23360.75,
+   "high": 23361.1,
    "touches": [
     "11:45",
     "12:42",
@@ -47,19 +47,19 @@
  "pools": [
   {
    "name": "previous-day high",
-   "level": 23489.7,
+   "level": 23494.95,
    "side": "above",
    "event": null
   },
   {
    "name": "previous-day low",
-   "level": 23380.65,
+   "level": 23380.1,
    "side": "above",
    "event": {
-    "time": "13:57",
-    "i": 282,
-    "extreme": 23400.75,
-    "beyond_by": 20.1,
+    "time": "13:55",
+    "i": 280,
+    "extreme": 23390.4,
+    "beyond_by": 10.3,
     "kind": "break",
     "failed": null,
     "failed_i": null
@@ -67,13 +67,13 @@
   },
   {
    "name": "opening-range high",
-   "level": 23270.9,
+   "level": 23277.3,
    "side": "above",
    "event": {
-    "time": "10:03",
-    "i": 48,
-    "extreme": 23276.7,
-    "beyond_by": 5.8,
+    "time": "10:08",
+    "i": 53,
+    "extreme": 23286.6,
+    "beyond_by": 9.3,
     "kind": "break",
     "failed": null,
     "failed_i": null
@@ -81,7 +81,7 @@
   },
   {
    "name": "opening-range low",
-   "level": 23232.25,
+   "level": 23231.4,
    "side": "below",
    "event": null
   },
@@ -92,14 +92,14 @@
    "event": null
   },
   {
-   "name": "equal highs 23,358.7\u201323,360.8",
-   "level": 23360.75,
+   "name": "equal highs 23,358.7\u201323,361.1",
+   "level": 23361.1,
    "side": "above",
    "event": {
     "time": "13:54",
     "i": 279,
-    "extreme": 23389.45,
-    "beyond_by": 28.7,
+    "extreme": 23389.85,
+    "beyond_by": 28.8,
     "kind": "break",
     "failed": null,
     "failed_i": null
@@ -131,8 +131,8 @@
    "event": {
     "time": "10:21",
     "i": 66,
-    "extreme": 23311.65,
-    "beyond_by": 11.7,
+    "extreme": 23311.8,
+    "beyond_by": 11.8,
     "kind": "break",
     "failed": null,
     "failed_i": null
@@ -145,8 +145,8 @@
    "event": {
     "time": "14:00",
     "i": 285,
-    "extreme": 23447.9,
-    "beyond_by": 47.9,
+    "extreme": 23448.1,
+    "beyond_by": 48.1,
     "kind": "break",
     "failed": "15:04",
     "failed_i": 349
@@ -164,23 +164,23 @@
    "i": 48,
    "time": "10:03",
    "dir": "up",
-   "range": 15.3,
+   "range": 15.4,
    "x_atr": 2.5,
-   "o": 23258.55078125,
-   "c": 23272.150390625,
-   "h": 23273.900390625,
-   "l": 23258.55078125
+   "o": 23258.55,
+   "c": 23272.15,
+   "h": 23273.9,
+   "l": 23258.55
   },
   {
    "i": 58,
    "time": "10:13",
    "dir": "up",
-   "range": 13.0,
-   "x_atr": 2.1,
+   "range": 13.5,
+   "x_atr": 2.2,
    "o": 23284.75,
-   "c": 23294.900390625,
-   "h": 23295.80078125,
-   "l": 23282.80078125
+   "c": 23294.9,
+   "h": 23296.3,
+   "l": 23282.8
   },
   {
    "i": 117,
@@ -188,32 +188,32 @@
    "dir": "up",
    "range": 16.5,
    "x_atr": 2.9,
-   "o": 23303.30078125,
+   "o": 23303.3,
    "c": 23315.0,
-   "h": 23319.099609375,
-   "l": 23302.599609375
+   "h": 23319.1,
+   "l": 23302.6
   },
   {
    "i": 118,
    "time": "11:13",
    "dir": "up",
-   "range": 16.7,
+   "range": 16.6,
    "x_atr": 2.6,
-   "o": 23316.94921875,
-   "c": 23328.30078125,
-   "h": 23331.30078125,
-   "l": 23314.650390625
+   "o": 23316.95,
+   "c": 23328.3,
+   "h": 23331.3,
+   "l": 23314.65
   },
   {
    "i": 122,
    "time": "11:17",
    "dir": "up",
-   "range": 18.1,
+   "range": 18.4,
    "x_atr": 2.2,
-   "o": 23335.30078125,
-   "c": 23348.69921875,
-   "h": 23352.94921875,
-   "l": 23334.80078125
+   "o": 23335.3,
+   "c": 23348.7,
+   "h": 23353.15,
+   "l": 23334.8
   },
   {
    "i": 177,
@@ -221,10 +221,10 @@
    "dir": "down",
    "range": 12.9,
    "x_atr": 2.4,
-   "o": 23341.150390625,
-   "c": 23328.849609375,
+   "o": 23341.15,
+   "c": 23328.85,
    "h": 23341.75,
-   "l": 23328.849609375
+   "l": 23328.85
   },
   {
    "i": 201,
@@ -232,10 +232,10 @@
    "dir": "down",
    "range": 10.9,
    "x_atr": 2.1,
-   "o": 23350.900390625,
-   "c": 23343.349609375,
-   "h": 23353.69921875,
-   "l": 23342.80078125
+   "o": 23350.9,
+   "c": 23343.35,
+   "h": 23353.7,
+   "l": 23342.8
   },
   {
    "i": 266,
@@ -243,8 +243,8 @@
    "dir": "down",
    "range": 31.2,
    "x_atr": 4.1,
-   "o": 23342.94921875,
-   "c": 23316.599609375,
+   "o": 23342.95,
+   "c": 23316.6,
    "h": 23345.25,
    "l": 23314.0
   },
@@ -254,43 +254,43 @@
    "dir": "up",
    "range": 19.0,
    "x_atr": 2.1,
-   "o": 23318.099609375,
-   "c": 23335.30078125,
-   "h": 23335.349609375,
-   "l": 23316.30078125
+   "o": 23318.1,
+   "c": 23335.3,
+   "h": 23335.35,
+   "l": 23316.3
   },
   {
    "i": 280,
    "time": "13:55",
    "dir": "up",
-   "range": 32.2,
+   "range": 32.7,
    "x_atr": 2.6,
-   "o": 23351.650390625,
-   "c": 23376.400390625,
-   "h": 23380.80078125,
-   "l": 23348.55078125
+   "o": 23351.65,
+   "c": 23376.4,
+   "h": 23381.25,
+   "l": 23348.55
   },
   {
    "i": 287,
    "time": "14:02",
    "dir": "up",
-   "range": 41.3,
+   "range": 41.5,
    "x_atr": 3.2,
-   "o": 23395.400390625,
-   "c": 23431.150390625,
-   "h": 23434.80078125,
+   "o": 23395.4,
+   "c": 23431.15,
+   "h": 23434.95,
    "l": 23393.5
   },
   {
    "i": 320,
    "time": "14:35",
    "dir": "up",
-   "range": 16.7,
+   "range": 16.6,
    "x_atr": 2.1,
-   "o": 23424.900390625,
+   "o": 23424.9,
    "c": 23438.25,
-   "h": 23440.55078125,
-   "l": 23423.900390625
+   "h": 23440.55,
+   "l": 23423.9
   },
   {
    "i": 346,
@@ -300,19 +300,19 @@
    "x_atr": 2.1,
    "o": 23415.75,
    "c": 23405.25,
-   "h": 23418.150390625,
-   "l": 23404.05078125
+   "h": 23418.15,
+   "l": 23404.05
   },
   {
    "i": 359,
    "time": "15:14",
    "dir": "up",
-   "range": 18.2,
+   "range": 18.1,
    "x_atr": 2.0,
-   "o": 23422.599609375,
-   "c": 23435.30078125,
-   "h": 23436.599609375,
-   "l": 23418.44921875
+   "o": 23422.6,
+   "c": 23435.3,
+   "h": 23436.6,
+   "l": 23418.45
   }
  ],
  "fvgs": [
@@ -333,7 +333,7 @@
    "kind": "bear",
    "lo": 23250.5,
    "hi": 23257.95,
-   "size": 7.4,
+   "size": 7.5,
    "from_displacement": false,
    "first_touch": "09:43",
    "filled": "09:56"
@@ -388,7 +388,7 @@
    "kind": "bear",
    "lo": 23287.2,
    "hi": 23293.85,
-   "size": 6.7,
+   "size": 6.6,
    "from_displacement": false,
    "first_touch": "10:34",
    "filled": "10:37"
@@ -399,7 +399,7 @@
    "kind": "bear",
    "lo": 23280.05,
    "hi": 23285.7,
-   "size": 5.6,
+   "size": 5.7,
    "from_displacement": false,
    "first_touch": "10:31",
    "filled": "10:34"
@@ -443,7 +443,7 @@
    "kind": "bull",
    "lo": 23334.45,
    "hi": 23342.3,
-   "size": 7.9,
+   "size": 7.8,
    "from_displacement": true,
    "first_touch": "11:19",
    "filled": "11:20"
@@ -454,7 +454,7 @@
    "kind": "bear",
    "lo": 23345.55,
    "hi": 23352.5,
-   "size": 6.9,
+   "size": 7.0,
    "from_displacement": false,
    "first_touch": "11:51",
    "filled": "11:59"
@@ -487,7 +487,7 @@
    "kind": "bear",
    "lo": 23347.25,
    "hi": 23352.8,
-   "size": 5.6,
+   "size": 5.5,
    "from_displacement": false,
    "first_touch": "13:27",
    "filled": "13:29"
@@ -572,18 +572,18 @@
  ],
  "events": [
   {
-   "i": 2,
-   "time": "09:17",
-   "price": 23232.25,
-   "text": "day low 23,232.25",
+   "i": 0,
+   "time": "09:15",
+   "price": 23231.4,
+   "text": "day low 23,231.40",
    "score": 2,
    "where": "below",
    "n": 1
   },
   {
-   "i": 48,
-   "time": "10:03",
-   "price": 23276.7,
+   "i": 53,
+   "time": "10:08",
+   "price": 23286.6,
    "text": "break of the opening-range high",
    "score": 3,
    "where": "above",
@@ -610,8 +610,8 @@
   {
    "i": 279,
    "time": "13:54",
-   "price": 23389.45,
-   "text": "break of the equal highs 23,358.7\u201323,360.8; break of the previous-day low",
+   "price": 23389.85,
+   "text": "break of the equal highs 23,358.7\u201323,361.1; break of the previous-day low",
    "score": 3.5,
    "where": "above",
    "n": 5
@@ -619,8 +619,8 @@
   {
    "i": 287,
    "time": "14:02",
-   "price": 23434.8,
-   "text": "impulse candle up (41.3 pts, 3.2x normal); day high 23,447.90",
+   "price": 23434.95,
+   "text": "impulse candle up (41.5 pts, 3.2x normal); day high 23,448.10",
    "score": 2.5,
    "where": "above",
    "n": 6
@@ -704,94 +704,71 @@
   {
    "code": "G",
    "setup": "Gap (FVG) pullback",
-   "i": 60,
-   "time": "10:15",
+   "i": 77,
+   "time": "10:32",
    "dir": "long",
-   "entry": 23293.15,
-   "stop": 23285.05,
-   "risk": 8.1,
-   "text": "first pullback into the bull gap 23,286\u201323,293 (10:13)",
+   "entry": 23284.1,
+   "stop": 23274.45,
+   "risk": 9.6,
+   "text": "pullback into the bull gap 23,286\u201323,293 (10:13), filled to 23,286 and confirmed by the 10:31 candle",
    "result": "target",
    "r": 2.0,
-   "exit": 23309.35,
-   "exit_time": "10:22",
-   "target": 23309.35,
-   "mfe_r": 2.22,
+   "exit": 23303.4,
+   "exit_time": "10:44",
+   "target": 23303.4,
+   "mfe_r": 2.2,
    "r_by_target": {
     "1": 1,
     "2": 2,
-    "3": -1.0
+    "3": 3
    },
    "n": 1
   },
   {
    "code": "G",
    "setup": "Gap (FVG) pullback",
-   "i": 120,
-   "time": "11:15",
+   "i": 127,
+   "time": "11:22",
    "dir": "long",
-   "entry": 23328.55,
-   "stop": 23318.1,
-   "risk": 10.5,
-   "text": "first pullback into the bull gap 23,319\u201323,329 (11:13)",
+   "entry": 23341.8,
+   "stop": 23332.4,
+   "risk": 9.4,
+   "text": "pullback into the bull gap 23,334\u201323,342 (11:17), filled to 23,334 and confirmed by the 11:21 candle",
    "result": "target",
    "r": 2.0,
-   "exit": 23349.45,
-   "exit_time": "11:17",
-   "target": 23349.45,
-   "mfe_r": 2.33,
+   "exit": 23360.6,
+   "exit_time": "11:45",
+   "target": 23360.6,
+   "mfe_r": 2.03,
    "r_by_target": {
     "1": 1,
     "2": 2,
-    "3": 3
+    "3": 0.65
    },
    "n": 2
   },
   {
    "code": "G",
    "setup": "Gap (FVG) pullback",
-   "i": 124,
-   "time": "11:19",
-   "dir": "long",
-   "entry": 23342.3,
-   "stop": 23333.45,
-   "risk": 8.8,
-   "text": "first pullback into the bull gap 23,334\u201323,342 (11:17)",
-   "result": "stop",
-   "r": -1.0,
-   "exit": 23333.45,
-   "exit_time": "11:21",
-   "target": 23360.0,
-   "mfe_r": 0.51,
-   "r_by_target": {
-    "1": -1.0,
-    "2": -1.0,
-    "3": -1.0
-   },
-   "n": 3
-  },
-  {
-   "code": "G",
-   "setup": "Gap (FVG) pullback",
-   "i": 179,
-   "time": "12:14",
+   "i": 185,
+   "time": "12:20",
    "dir": "short",
-   "entry": 23332.4,
-   "stop": 23337.6,
-   "risk": 5.2,
-   "text": "first pullback into the bear gap 23,332\u201323,337 (12:12)",
+   "entry": 23337.85,
+   "stop": 23342.9,
+   "risk": 5.1,
+   "text": "pullback into the bear gap 23,332\u201323,337 (12:12), filled to 23,337 and confirmed by the 12:19 candle",
    "result": "stop",
    "r": -1.0,
-   "exit": 23337.6,
-   "exit_time": "12:17",
-   "target": 23322.0,
-   "mfe_r": 1.02,
+   "exit": 23342.9,
+   "exit_time": "12:24",
+   "target": 23327.75,
+   "mfe_r": 1.5,
    "r_by_target": {
     "1": 1,
     "2": -1.0,
     "3": -1.0
    },
-   "n": 4
+   "n": 3
   },
   {
    "code": "S",
@@ -808,36 +785,13 @@
    "exit": 23379.9,
    "exit_time": "13:54",
    "target": 23379.9,
-   "mfe_r": 2.02,
+   "mfe_r": 2.03,
    "r_by_target": {
     "1": 1,
     "2": 2,
     "3": 3
    },
-   "n": 5
-  },
-  {
-   "code": "G",
-   "setup": "Gap (FVG) pullback",
-   "i": 290,
-   "time": "14:05",
-   "dir": "long",
-   "entry": 23428.9,
-   "stop": 23399.15,
-   "risk": 29.8,
-   "text": "first pullback into the bull gap 23,400\u201323,429 (14:02)",
-   "result": "time",
-   "r": -0.04,
-   "exit": 23427.6,
-   "exit_time": "14:50",
-   "target": 23488.4,
-   "mfe_r": 0.39,
-   "r_by_target": {
-    "1": -0.04,
-    "2": -0.04,
-    "3": -0.04
-   },
-   "n": 6
+   "n": 4
   }
  ],
  "rules": {

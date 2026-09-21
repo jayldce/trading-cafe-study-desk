@@ -407,7 +407,44 @@
    "n": 8
   }
  ],
- "his_trades": [],
+ "his_trades": [
+  {
+   "time": "09:28",
+   "option": "23250 CE",
+   "setup": "consolidation-breakout-followup",
+   "outcome": "scratch",
+   "pts": "0",
+   "host": "chinmay",
+   "side": "CE"
+  },
+  {
+   "time": "11:20",
+   "option": "23500 PE",
+   "setup": "liquidity-sweep-reversal",
+   "outcome": "unclear",
+   "pts": "",
+   "host": "chinmay",
+   "side": "PE"
+  },
+  {
+   "time": "13:08",
+   "option": "23250 CE",
+   "setup": "pullback-first-green-candle",
+   "outcome": "win",
+   "pts": "41",
+   "host": "chinmay",
+   "side": "CE"
+  },
+  {
+   "time": "12:32",
+   "option": "23250 CE",
+   "setup": "telegram-vip-call",
+   "outcome": "unclear",
+   "pts": "",
+   "host": "chinmay",
+   "side": "CE"
+  }
+ ],
  "signals": [
   {
    "code": "S",
@@ -433,29 +470,6 @@
    "n": 1
   },
   {
-   "code": "G",
-   "setup": "Gap (FVG) pullback",
-   "i": 62,
-   "time": "10:17",
-   "dir": "short",
-   "entry": 23379.9,
-   "stop": 23389.65,
-   "risk": 9.8,
-   "text": "first pullback into the bear gap 23,380\u201323,389 (10:13)",
-   "result": "target",
-   "r": 2.0,
-   "exit": 23360.4,
-   "exit_time": "10:27",
-   "target": 23360.4,
-   "mfe_r": 2.17,
-   "r_by_target": {
-    "1": 1,
-    "2": 2,
-    "3": -1.0
-   },
-   "n": 2
-  },
-  {
    "code": "S",
    "setup": "Sweep reversal",
    "i": 228,
@@ -476,7 +490,7 @@
     "2": -1.0,
     "3": -1.0
    },
-   "n": 3
+   "n": 2
   }
  ],
  "rules": {
