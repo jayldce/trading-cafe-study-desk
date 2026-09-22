@@ -863,6 +863,14 @@ const BIAS_CHOICES = {
   structure: ["Daily structure, last 5–10 days", [["1", "Higher highs and higher lows"], ["0", "Overlapping — a range"], ["-1", "Lower highs and lower lows"]]],
   global: ["Crude and global tone", [["1", "Supportive"], ["0", "Mixed or unknown"], ["-1", "Negative (e.g. crude rising)"]]],
 };
+// The day-facing half of the morning routine. The Risk tab holds the rails that must not move day to day
+// (capital, risk per trade, limits); these are the things that genuinely change with the session.
+const DAY_SETUP = {
+  daytype: ["What kind of day", [["normal", "Normal session"], ["expiry", "Expiry day — theta bites, prefer ITM"],
+    ["event", "Event day — expect a gap or a halt in the move"], ["thin", "Thin / holiday-shortened"]]],
+  plan: ["How you'll take entries today", [["confirm", "Confirmation only — wait for the candle"],
+    ["either", "Confirmation, aggressive only at a defended base"], ["none", "No trades — watching"]]],
+};
 const fmtLevel = (n) => n.toLocaleString("en-IN", { maximumFractionDigits: 2 });
 
 function biasRead(v) {
@@ -921,6 +929,17 @@ function mountBiasSheets(root) {
         <label>Your X (optional)<input type="number" step="any" inputmode="decimal" data-k="x" placeholder="auto"></label>
         ${Object.entries(BIAS_CHOICES).map(([k, [label]]) => `<label>${esc(label)}<select data-k="${k}">${opts(k)}</select></label>`).join("")}
         <label class="bs-wide">Stand down (events and times)<input type="text" data-k="standdown" placeholder="e.g. RBI policy 10:00, US CPI 18:00"></label>
+      </div>
+      <div class="bs-day">
+        <p class="eyebrow">Today's setup</p>
+        <div class="bs-grid">
+          ${Object.entries(DAY_SETUP).map(([k, [label, choices]]) => `<label>${esc(label)}<select data-k="${k}">
+            ${choices.map(([v, t]) => `<option value="${v}">${esc(t)}</option>`).join("")}</select></label>`).join("")}
+          <label>Call strike you're watching<input type="number" step="any" inputmode="decimal" data-k="ce_strike" placeholder="auto (~₹150)"></label>
+          <label>Put strike you're watching<input type="number" step="any" inputmode="decimal" data-k="pe_strike" placeholder="auto (~₹150)"></label>
+        </div>
+        <p class="caption">Blank strikes mean the monitor picks the ~₹150 pair itself. Capital and risk stay on the
+          <a href="#/risk">Risk tab</a> — those shouldn't change with the day.</p>
       </div>
       <div class="bs-out" aria-live="polite"></div>
       <div class="bs-actions"><button type="button" class="btn primary" data-copy>Copy sentence</button>
@@ -1088,11 +1107,18 @@ function prepZonesHTML(p) {
 async function viewPrep(date) {
   const list = DATA.manifest.preps || [];
   if (!list.length) { app.innerHTML = '<p class="empty">No session prep yet. The nightly run writes one for the next trading day.</p>'; return; }
-  const k = date ? list.findIndex((r) => r.date === date) : list.length - 1;
-  const r = list[Math.max(0, k)], prev = list[k - 1];
+  // a date can have a prep per index — he trades Nifty Mon/Tue/Fri and Sensex Wed/Thu
+  const want = date && date.includes(":") ? date.split(":") : [date, null];
+  const [wantDate, wantIdx] = want;
+  const pool = wantDate ? list.filter((r) => r.date === wantDate) : list.filter((r) => r.date === list[list.length - 1].date);
+  const r = pool.find((x) => x.instrument === (wantIdx || "nifty")) || pool[0] || list[list.length - 1];
+  const sameDay = list.filter((x) => x.date === r.date);
+  const earlier = [...new Set(list.filter((x) => x.date < r.date).map((x) => x.date))].pop();
   const [md, facts] = await Promise.all([getText(r.notes), r.facts ? getText(r.facts).then(JSON.parse) : null]);
+  const tabs = sameDay.length > 1 ? `<div class="prep-tabs">${sameDay.map((x) =>
+    `<a href="#/prep/${x.date}:${x.instrument}" class="${x === r ? "on" : ""}">${x.instrument === "nifty" ? "Nifty" : "Sensex"}</a>`).join("")}</div>` : "";
   app.innerHTML = `
-    <nav class="daynav">${prev ? `<a href="#/prep/${prev.date}">← prep for ${esc(fmtDate(prev.date))}</a>` : "<span></span>"}<span></span></nav>
+    <nav class="daynav">${earlier ? `<a href="#/prep/${earlier}">← prep for ${esc(fmtDate(earlier))}</a>` : "<span></span>"}${tabs}</nav>
     <article class="prose review" id="doc">${renderMarkdown(md)}</article>`;
   for (const el of $$("[data-prep-zones]", app)) el.innerHTML = prepZonesHTML(facts);
   mountBiasSheets(app);
@@ -1139,6 +1165,24 @@ function approachHTML(st) {
     <b>${esc(a.zone)}</b> <small>${esc(a.text)}</small>
     <span>${a.dist.toFixed(0)} pts ${a.side}${a.eta ? ` · ~${esc(a.eta)}` : ""}</span></li>`;
   return `<div class="lv-approach"><p class="caption">Heading toward</p><ul>${near.map(row).join("")}</ul></div>`;
+}
+
+// The base-reversal rule, read on the option chart (tools/base-reversal.py). New and unproven live, so it is
+// labelled as such rather than shown with the same weight as the index scanner.
+function baseSetupsHTML(st) {
+  const f = st.base_setups || [];
+  if (!f.length) return "";
+  const rows = f.slice(-4).reverse().map((b) => `<li class="${b.side === "CE" ? "long" : "short"}">
+      <b>${esc(b.label)}</b> <span class="bs-kind">${esc(b.confirm)}</span> <small>at ${esc(b.confirm_time)}</small>
+      <div class="bs-nums"><span>entry <b>₹${b.entry}</b></span><span>stop <b>₹${b.stop}</b></span>
+        <span>risk <b>₹${b.risk}</b></span><span>2R <b>₹${(b.entry + 2 * b.risk).toFixed(2)}</b></span></div>
+      <small class="caption">base ${esc(b.base)} from ${esc(b.base_time)}${b.result && b.result !== "time" ? ` · ${esc(b.result)} ${rText(b.r)}` : ""}</small></li>`).join("");
+  const charts = Object.entries(st.option_charts || {}).map(([label, c]) => optionChartSVG(label, c)).join("");
+  return `<section><h2>Base reversals (option chart)</h2>
+    ${charts}
+    <p class="caption">New rule, watching only — it reads the call and put charts, not the index. Backtested
+      +0.35R per trade on Nifty, but never yet run live. Treat it as something to check, not to follow.</p>
+    <ul class="bs-list">${rows}</ul></section>`;
 }
 
 function setupHTML(st) {
@@ -1259,6 +1303,7 @@ async function viewLive() {
             ${accountHTML(st.account)}
             <section><h2>Where Nifty is</h2>${whereHTML(st)}</section>
             <section><h2>Setup right now</h2>${setupHTML(st)}</section>
+            ${baseSetupsHTML(st)}
           </div>
           <aside class="lv-col">
             <section><h2>Options</h2>${optionsHTML(st.options)}</section>
@@ -1563,10 +1608,11 @@ const ROUTES = [
   [/^#\/levelup$/, "levelup", () => viewLevelUp()],
   [/^#\/smart$/, "smart", () => viewSmart()],
   [/^#\/live$/, "live", () => viewLive()],
+  [/^#\/risk$/, "risk", () => viewRisk()],
   [/^#\/journal$/, "journal", () => viewJournal()],
   [/^#\/journal\/(\d{4}-\d{2}-\d{2})$/, "journal", (m) => viewJournal(m[1])],
   [/^#\/prep$/, "prep", () => viewPrep()],
-  [/^#\/prep\/(\d{4}-\d{2}-\d{2})$/, "prep", (m) => viewPrep(m[1])],
+  [/^#\/prep\/(\d{4}-\d{2}-\d{2}(?::[a-z]+)?)$/, "prep", (m) => viewPrep(m[1])],
   [/^#\/reviews$/, "reviews", () => viewReviews()],
   [/^#\/review\/(\d{4}-\d{2}-\d{2})$/, "reviews", (m) => viewReview(m[1])],
   [/^#\/smart\/(\d+)$/, "smart", (m) => viewSmartLesson(m[1])],
@@ -1617,3 +1663,225 @@ async function route() {
   window.addEventListener("hashchange", route);
   route();
 })();
+
+/* ---------------- risk (data/journal/settings.json; local only, never published) ---------------- */
+const RISK_FIELDS = [
+  ["capital_rs", "Trading capital", "₹", "What you're willing to have in play. Everything below is a share of this."],
+  ["risk_per_trade_pct", "Risk per trade", "%", "Of capital, per trade. 0.5–1% is the usual range; lower while a rule is unproven."],
+  ["daily_loss_limit_rs", "Daily loss limit", "₹", "Stop for the day when losses reach this. The monitor alerts; it cannot stop you."],
+  ["max_trades_per_day", "Max trades per day", "", "Counted from your fills. Chinmay Sir averages 4.2 a day on Nifty."],
+  ["min_stop_pct_of_premium", "Minimum stop", "% of premium", "Stops tighter than this sit inside noise — measured at −0.40R per trade."],
+  ["target_r", "Target", "R", "Reward as a multiple of risk. Measured best for these rules: 2R."],
+  ["time_stop_minutes", "Time stop", "min", "Alert when a position has been held this long without resolving."],
+  ["remind_stop_order_after_min", "Stop-order reminder", "min", "Alert if an open position still has no stop-loss order."],
+];
+
+async function viewRisk() {
+  if (!LOCAL) {
+    app.innerHTML = `<div class="page-head"><div><p class="eyebrow">Local only</p><h1>Risk</h1></div></div>
+      <p class="lede">Your capital and risk settings stay on your Mac and are never published.</p>`;
+    return;
+  }
+  let cfg = {};
+  try { const r = await fetch("data/journal/settings.json", { cache: "no-store" }); if (r.ok) cfg = await r.json(); } catch { cfg = {}; }
+  const rows = RISK_FIELDS.map(([key, label, unit, help]) => `<label class="rk-row">
+      <span class="rk-label">${esc(label)}${unit ? ` <small>${esc(unit)}</small>` : ""}</span>
+      <input type="number" step="any" name="${key}" value="${cfg[key] ?? ""}" placeholder="—">
+      <small class="rk-help">${esc(help)}</small></label>`).join("");
+  app.innerHTML = `<div class="page-head"><div><p class="eyebrow">Local only · read by the live monitor</p><h1>Risk</h1></div></div>
+    <p class="lede">Set it once here and every alert sizes itself to it. Blank switches a rule off.</p>
+    <form id="riskform" class="rk-form">${rows}
+      <div class="rk-actions"><button type="submit">Save</button><span id="rksaved" class="rk-saved"></span></div>
+    </form>
+    <div id="rkcalc" class="rk-calc"></div>
+    <div id="rkinsight" class="rk-calc"></div>`;
+  const calc = () => {
+    const f = $("#riskform", app);
+    const cap = parseFloat(f.capital_rs.value), pct = parseFloat(f.risk_per_trade_pct.value);
+    const el = $("#rkcalc", app);
+    if (!(cap > 0 && pct > 0)) { el.innerHTML = ""; return; }
+    const risk = (cap * pct) / 100;
+    const row = (prem, stopPct) => {
+      const stop = (prem * stopPct) / 100;
+      const qty = Math.floor(risk / stop);
+      return `<tr><td class="num">₹${prem}</td><td class="num">${stopPct}% = ₹${stop.toFixed(1)}</td>
+        <td class="num">${qty}</td><td class="num">₹${Math.round(qty * stop).toLocaleString("en-IN")}</td>
+        <td class="num w">₹${Math.round(qty * stop * (parseFloat(f.target_r.value) || 2)).toLocaleString("en-IN")}</td></tr>`;
+    };
+    el.innerHTML = `<h2>What that means per trade</h2>
+      <p class="caption">Risking <b>₹${Math.round(risk).toLocaleString("en-IN")}</b> per trade (${pct}% of ₹${Math.round(cap).toLocaleString("en-IN")}).
+        Quantity is whatever puts exactly that much at risk given the rule's stop.</p>
+      <div class="tablewrap"><table class="signals"><thead><tr><th>Premium</th><th>Stop</th><th>Quantity</th><th>At risk</th><th>If it hits target</th></tr></thead>
+        <tbody>${row(150, 4)}${row(150, 6)}${row(250, 4)}${row(250, 6)}</tbody></table></div>`;
+  };
+  $("#riskform", app).addEventListener("input", () => { calc(); insight(); });
+  const insight = async () => { $("#rkinsight", app).innerHTML = await riskInsight($("#riskform", app)); };
+  calc();
+  insight();
+  $("#riskform", app).addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const body = { _about: cfg._about || "Capital and risk, set from the Study Desk Risk tab. Local only." };
+    for (const [key] of RISK_FIELDS) {
+      const v = e.target[key].value.trim();
+      body[key] = v === "" ? null : Number(v);
+    }
+    const ok = await fetch("api/settings", { method: "POST", body: JSON.stringify(body) }).then((r) => r.ok).catch(() => false);
+    $("#rksaved", app).textContent = ok ? "Saved — the monitor picks it up within seconds." : "Could not save.";
+  });
+}
+
+/* What the chosen risk and reward actually imply — measured against your own record, not a textbook. */
+async function myTradeStats() {
+  try {
+    const r = await fetch("data/journal/trades.csv", { cache: "no-store" });
+    if (!r.ok) return null;
+    const rows = parseCSV(await r.text()).filter((t) => t.net !== "" && t.net != null);
+    if (rows.length < 5) return null;
+    const net = rows.map((t) => parseFloat(t.net)).filter(Number.isFinite);
+    const w = net.filter((n) => n > 0), l = net.filter((n) => n <= 0);
+    if (!w.length || !l.length) return null;
+    const avgW = w.reduce((a, b) => a + b, 0) / w.length;
+    const avgL = Math.abs(l.reduce((a, b) => a + b, 0) / l.length);
+    return { n: net.length, wins: w.length, wr: w.length / net.length, avgW, avgL, payoff: avgW / avgL };
+  } catch { return null; }
+}
+
+async function riskInsight(form) {
+  const cap = parseFloat(form.capital_rs.value), pct = parseFloat(form.risk_per_trade_pct.value);
+  const R = parseFloat(form.target_r.value) || 2;
+  const cap_ok = cap > 0 && pct > 0;
+  const risk = cap_ok ? (cap * pct) / 100 : null;
+  const me = await myTradeStats();
+  const pc = (x) => `${(100 * x).toFixed(0)}%`;
+  const rs = (x) => `₹${Math.round(x).toLocaleString("en-IN")}`;
+
+  // 1. the arithmetic that decides everything
+  const beRows = [1, 1.5, 2, 2.5, 3].map((r) => {
+    const be = 1 / (1 + r);
+    const mine = me ? me.wr * r - (1 - me.wr) : null;
+    return `<tr class="${Math.abs(r - R) < 0.01 ? "rk-here" : ""}">
+      <td class="num">${r}R</td><td class="num">${pc(be)}</td>
+      ${me ? `<td class="num ${mine > 0 ? "w" : "l"}">${mine > 0 ? "+" : ""}${mine.toFixed(2)}R</td>` : ""}
+      ${me && risk ? `<td class="num ${mine > 0 ? "w" : "l"}">${mine > 0 ? "+" : ""}${rs(mine * risk)}</td>` : ""}</tr>`;
+  }).join("");
+
+  // 2. your own record, and the one number that has to change
+  let mine = "";
+  if (me) {
+    const exp = me.wr * me.payoff - (1 - me.wr);
+    const needPayoff = (1 - me.wr) / me.wr;
+    const needWR = 1 / (1 + me.payoff);
+    mine = `<div class="rk-panel ${exp > 0 ? "ok" : "bad"}">
+      <h3>Your record so far — ${me.n} trades</h3>
+      <div class="bs-nums">
+        <span>win rate <b>${pc(me.wr)}</b></span><span>average win <b>${rs(me.avgW)}</b></span>
+        <span>average loss <b>${rs(me.avgL)}</b></span><span>payoff <b>${me.payoff.toFixed(2)} : 1</b></span>
+        <span>expectancy <b class="${exp > 0 ? "w" : "l"}">${exp > 0 ? "+" : ""}${exp.toFixed(2)}R</b></span>
+      </div>
+      <p>At a <b>${pc(me.wr)}</b> win rate you need a payoff above <b>${needPayoff.toFixed(2)} : 1</b> to break even.
+      You are at <b>${me.payoff.toFixed(2)} : 1</b>.
+      ${me.payoff < needPayoff
+        ? `Your win rate is not the problem — holding winners is. If you kept the same ${pc(me.wr)} and took
+           ${R}R on the winners, expectancy would be <b class="w">+${(me.wr * R - (1 - me.wr)).toFixed(2)}R</b> a trade
+           ${risk ? `(${rs((me.wr * R - (1 - me.wr)) * risk)})` : ""}.`
+        : `That is a working edge. Protect it by not widening losses.`}</p>
+      <p class="caption">Alternatively, at your current ${me.payoff.toFixed(2)} : 1 payoff you would need to win
+        ${pc(needWR)} of trades. Raising a win rate is much harder than holding a winner longer.</p></div>`;
+  }
+
+  // 3. what a run of losses does — the part that ends accounts
+  let streak = "";
+  if (risk && me) {
+    const lose = 1 - me.wr;
+    const rows = [3, 5, 8].map((k) => {
+      const p = Math.pow(lose, k);
+      return `<tr><td class="num">${k} in a row</td><td class="num">${(100 * p).toFixed(1)}%</td>
+        <td class="num">about 1 in ${Math.round(1 / p)} trades</td>
+        <td class="num l">−${rs(k * risk)}</td>
+        <td class="num">${cap ? ((100 * k * risk) / cap).toFixed(1) + "% of capital" : "—"}</td></tr>`;
+    }).join("");
+    streak = `<h2>Losing streaks are normal, not failure</h2>
+      <p class="caption">At your ${pc(me.wr)} win rate, with ${rs(risk)} at risk per trade. A run of five is not
+        bad luck — it is a Tuesday. Your settings decide whether it is survivable.</p>
+      <div class="tablewrap"><table class="signals"><thead><tr><th>Run</th><th>Chance</th><th>How often</th>
+        <th>Costs you</th><th>Drawdown</th></tr></thead><tbody>${rows}</tbody></table></div>`;
+  }
+
+  // 4. where the settings should sit, and why
+  const guide = `<h2>Where I'd set these, and why</h2>
+    <ul class="rk-guide">
+      <li><b>Risk per trade 0.5%</b> while a rule is unproven; 1% once your journal shows a positive expectancy over
+        50+ trades. Above 2% a normal losing streak becomes an account event.</li>
+      <li><b>Target 2R.</b> It needs only a ${pc(1 / 3)} win rate to break even, and the measured best-move on our
+        rules is about 1.3R — a 3R target asks for a move that usually is not there.</li>
+      <li><b>Daily loss limit = 3 × your per-trade risk.</b> Three full losses is a bad day, not a disaster. It caps
+        the tilt that follows.</li>
+      <li><b>Minimum stop 2% of premium.</b> Stops tighter than that were measured at −0.40R per trade: they sit
+        inside normal noise and convert good ideas into losses.</li>
+      <li><b>Max 4 trades a day.</b> Chinmay Sir averages 4.2 on Nifty. More trades has not once meant more profit
+        in this journal.</li>
+    </ul>`;
+
+  return `<h2>What these settings imply</h2>
+    <p class="caption">Break-even is pure arithmetic: at a target of R, you need ${"1/(1+R)"} of trades to win.
+      Everything past that is your edge.</p>
+    <div class="tablewrap"><table class="signals"><thead><tr><th>Target</th><th>Break-even win rate</th>
+      ${me ? "<th>At your win rate</th>" : ""}${me && risk ? "<th>Per trade</th>" : ""}</tr></thead>
+      <tbody>${beRows}</tbody></table></div>
+    ${mine}${streak}${guide}`;
+}
+
+/* The option's own 1-minute candles with the zones the base-reversal rule is watching drawn on them.
+   Small and read-only: it exists so you can judge the rule's idea rather than take the label on trust. */
+function optionChartSVG(label, c) {
+  const rows = c.rows || [];
+  if (rows.length < 10) return "";
+  const W = 760, H = 190, L = 46, R = 8, T = 10, B = 18;
+  const lo = Math.min(...rows.map((r) => r[3])), hi = Math.max(...rows.map((r) => r[2]));
+  const pad = (hi - lo) * 0.08 || 1;
+  const y0 = lo - pad, y1 = hi + pad;
+  const x = (i) => L + (i * (W - L - R)) / Math.max(rows.length - 1, 1);
+  const y = (v) => T + ((y1 - v) * (H - T - B)) / (y1 - y0);
+  const w = Math.max(1.4, (W - L - R) / rows.length - 1.1);
+  const at = (t) => rows.findIndex((r) => r[0] === t);
+
+  const zones = (c.bases || []).slice(-3).map((b) => {
+    const top = y(b.high), bot = y(b.low), i = Math.max(at(b.time), 0);
+    return `<rect x="${x(i).toFixed(1)}" y="${top.toFixed(1)}" width="${(W - R - x(i)).toFixed(1)}"
+      height="${Math.max(bot - top, 1.5).toFixed(1)}" class="oc-zone"></rect>`;
+  }).join("");
+
+  const candles = rows.map((r, i) => {
+    const up = r[4] >= r[1];
+    const cx = x(i), yo = y(r[1]), yc = y(r[4]);
+    return `<line x1="${cx.toFixed(1)}" y1="${y(r[2]).toFixed(1)}" x2="${cx.toFixed(1)}" y2="${y(r[3]).toFixed(1)}"
+        class="oc-wick ${up ? "up" : "dn"}"></line>
+      <rect x="${(cx - w / 2).toFixed(1)}" y="${Math.min(yo, yc).toFixed(1)}" width="${w.toFixed(1)}"
+        height="${Math.max(Math.abs(yc - yo), 0.8).toFixed(1)}" class="oc-body ${up ? "up" : "dn"}"></rect>`;
+  }).join("");
+
+  const marks = (c.setups || []).map((f) => {
+    const i = at(f.confirm_time), j = at(f.time);
+    if (i < 0) return "";
+    const cls = f.result === "target" ? "win" : f.result === "stop" ? "loss" : "";
+    return `<rect x="${(x(i) - w / 2 - 1).toFixed(1)}" y="${T}" width="${(w + 2).toFixed(1)}" height="${H - T - B}"
+        class="oc-confirm"></rect>
+      ${j >= 0 ? `<line x1="${x(j).toFixed(1)}" y1="${y(f.entry).toFixed(1)}" x2="${(W - R).toFixed(1)}"
+        y2="${y(f.entry).toFixed(1)}" class="oc-entry ${cls}"></line>
+      <line x1="${x(j).toFixed(1)}" y1="${y(f.stop).toFixed(1)}" x2="${(W - R).toFixed(1)}"
+        y2="${y(f.stop).toFixed(1)}" class="oc-stop"></line>` : ""}`;
+  }).join("");
+
+  const ticks = [y0 + (y1 - y0) * 0.1, (y0 + y1) / 2, y1 - (y1 - y0) * 0.1].map((v) =>
+    `<text x="4" y="${(y(v) + 3.5).toFixed(1)}" class="oc-axis">₹${v.toFixed(0)}</text>`).join("");
+  const times = [0, Math.floor(rows.length / 2), rows.length - 1].map((i) =>
+    `<text x="${x(i).toFixed(1)}" y="${H - 5}" class="oc-axis mid">${esc(rows[i][0])}</text>`).join("");
+
+  return `<figure class="oc">
+    <figcaption>${esc(label)} <small>last ${rows.length} minutes · shaded bands are the launch zones the rule
+      watches · the pale column is a confirmation candle</small></figcaption>
+    <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" role="img"
+      aria-label="One-minute candles for ${esc(label)} with the base zones the rule is watching">
+      ${zones}${candles}${marks}${ticks}${times}
+    </svg></figure>`;
+}

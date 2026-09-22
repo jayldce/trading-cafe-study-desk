@@ -289,3 +289,13 @@ Declining to trade when conviction is missing is itself a decision, not a missed
 
 ### The last bull becomes the bear (capitulation)
 The worse the news gets *after* a long fall, the closer the market usually is to a real bottom — because bad news arriving late is what finally breaks the holdouts who have been buying all the way down. He drew the analogy from the COVID crash on 21 Sep. Treat it as a way of reading sentiment extremes, not a timing tool. [▶ 21-Sep](https://www.youtube.com/watch?v=DrmIRaTPU-A&t=16680s)
+
+### First bounce zone
+The very first time price returns to a zone right after breaking out of it — as opposed to a deeper "pullback zone" reached later. He watches for a pin-bar or reversal candle here with a small stop (6–7 points in his 22-Sep example), because it's the freshest, least-tested version of the level. It didn't pay on 22-Sep (the entry lost about 6 points once the bounce stalled and the trail was taken out), a reminder that "fresh" isn't the same as "confirmed" — it still needs the reversal candle to actually print.
+**Watch:** [▶ 22-Sep](https://www.youtube.com/watch?v=Dpx4i4TCkEc&t=4620s)
+
+### Jodi layering (Polymarket/Kalshi analogy)
+When several jodis (long straddles) are open at once, he books each side in stages as it moves favourably rather than exiting the whole position at once — comparing it to toggling between "yes" and "no" positions on a prediction market. Example: with three jodis open and the put side in profit while the call side is fading toward zero, he sells down the put leg in pieces; once the average combined cost is fully recovered, anything the position still holds is free optionality. [▶ 22-Sep](https://www.youtube.com/watch?v=Dpx4i4TCkEc&t=13620s)
+
+### Prefer call-selling over put-buying once a trend is confirmed
+Once a directional trend is already running (not at the start of one), he says he'd rather sell the opposite-side call than buy a put, because selling lets him carry a bigger quantity and gives him more time to adjust than a bought option's decaying premium does. Stated once, in passing, on a day his own book was underwater from an afternoon reversal — not yet backed by a logged trade. [▶ 22-Sep](https://www.youtube.com/watch?v=Dpx4i4TCkEc&t=21180s)
