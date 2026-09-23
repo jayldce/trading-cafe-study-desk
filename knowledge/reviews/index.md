@@ -4,7 +4,7 @@ One Nifty session per page, read the way the Smart money course teaches: the map
 
 These are studies of finished sessions, not calls for the next one. Everything in the "where the course's rules found trades" sections is hindsight, written to train your eye.
 
-## Five sessions side by side
+## Sessions side by side
 
 | Day | Gap | Type | First big pool | What it did | The day's best move started from |
 |---|---|---|---|---|---|
@@ -15,10 +15,11 @@ These are studies of finished sessions, not calls for the next one. Everything i
 | Fri 18 Sep | +64 | range | Opening-range low | Swept 09:32–09:35, held | That sweep — the day's low |
 | Mon 21 Sep | −16 | mixed, up | Yesterday's high | Swept 09:18, held | The 09:15 candle — the low was in at once |
 | Tue 22 Sep | +25 | trend down | Previous-day high | "Swept" at 09:15, no reversal | The 10:31 opening-range-low break |
+| Wed 23 Sep | +23 | trend up | Opening-range low | Poked 2.2 pts at 09:54, no reversal candle, held | That poke — the day's low; confirmed by the 10:45 opening-range-high break |
 
-## What repeats across the six
+## What repeats across them
 
-- **The day's extreme often prints in the first 30 minutes** (11, 15, 16, 17, 18 and 22 Sep all had one extreme before 09:50). Wait for the opening range before trusting a direction.
+- **The day's extreme often prints in the first 30 minutes** (11, 15, 16, 17, 18, 22 and 23 Sep all had one extreme before 09:55). Wait for the opening range before trusting a direction.
 - **A sweep only counts with displacement.** 16 and 18 Sep: sweep plus strong reversal candle, and the level held all day. 15 and 22 Sep: the same shape without displacement, and the trend simply continued the other way.
 - **The first break of an obvious level is often the trap** (17 Sep at 09:42, 18 Sep at 15:02) — but not always: 22 Sep's break of the previous-day low at 13:53 ran another 31 points before its own late reversal at 14:14, a reminder the "first break is a trap" pattern isn't universal.
 - **Big gaps behave differently from small ones.** Both 170–200-point gaps (11 and 15 Sep) moved hard *against* the gap. The smaller gaps (16–18 and 22 Sep) produced ranges or trend days that still respected nearby levels.

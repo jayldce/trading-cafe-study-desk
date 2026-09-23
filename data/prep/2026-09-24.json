@@ -1,0 +1,268 @@
+{
+ "date": "2026-09-24",
+ "sessions": [
+  "2026-09-17",
+  "2026-09-18",
+  "2026-09-21",
+  "2026-09-22",
+  "2026-09-23"
+ ],
+ "close": 23446.8,
+ "last_session": "2026-09-23",
+ "week_high": 23489.0,
+ "week_low": 23193.65,
+ "closes": {
+  "2026-09-17": 23270.6,
+  "2026-09-18": 23346.4,
+  "2026-09-21": 23414.3,
+  "2026-09-22": 23329.0,
+  "2026-09-23": 23446.8
+ },
+ "nifty_expiry": "2026-09-29",
+ "sensex_expiry": "2026-09-24",
+ "zones": [
+  {
+   "kind": "round",
+   "lo": 23700,
+   "hi": 23700,
+   "text": "round number 23,700",
+   "weight": 1,
+   "side": "above",
+   "distance": 253.2
+  },
+  {
+   "kind": "round",
+   "lo": 23600,
+   "hi": 23600,
+   "text": "round number 23,600",
+   "weight": 1,
+   "side": "above",
+   "distance": 153.2
+  },
+  {
+   "kind": "round",
+   "lo": 23500,
+   "hi": 23500,
+   "text": "round number 23,500",
+   "weight": 1,
+   "side": "above",
+   "distance": 53.2
+  },
+  {
+   "kind": "old_high",
+   "lo": 23489.0,
+   "hi": 23489.0,
+   "text": "Tue 22 Sep high",
+   "weight": 1,
+   "side": "above",
+   "distance": 42.2
+  },
+  {
+   "kind": "range_high",
+   "lo": 23489.0,
+   "hi": 23489.0,
+   "text": "5-session high",
+   "weight": 2,
+   "side": "above",
+   "distance": 42.2
+  },
+  {
+   "kind": "prev_high",
+   "lo": 23466.9,
+   "hi": 23466.9,
+   "text": "previous-day high (Wed 23 Sep)",
+   "weight": 3,
+   "side": "above",
+   "distance": 20.1
+  },
+  {
+   "kind": "old_high",
+   "lo": 23466.8,
+   "hi": 23466.8,
+   "text": "Mon 21 Sep high",
+   "weight": 1,
+   "side": "above",
+   "distance": 20.0
+  },
+  {
+   "kind": "equal_highs",
+   "lo": 23458.6,
+   "hi": 23459.95,
+   "text": "untaken equal highs from Wed 23 Sep",
+   "weight": 3,
+   "side": "above",
+   "distance": 12.5
+  },
+  {
+   "kind": "prev_close",
+   "lo": 23446.8,
+   "hi": 23446.8,
+   "text": "previous-day close (Wed 23 Sep)",
+   "weight": 2,
+   "side": "below",
+   "distance": 0.0
+  },
+  {
+   "kind": "equal_lows",
+   "lo": 23408.4,
+   "hi": 23412.5,
+   "text": "untaken equal lows from Wed 23 Sep",
+   "weight": 3,
+   "side": "below",
+   "distance": -36.3
+  },
+  {
+   "kind": "round",
+   "lo": 23400,
+   "hi": 23400,
+   "text": "round number 23,400",
+   "weight": 1,
+   "side": "below",
+   "distance": -46.8
+  },
+  {
+   "kind": "old_high",
+   "lo": 23389.15,
+   "hi": 23389.15,
+   "text": "Fri 18 Sep high",
+   "weight": 1,
+   "side": "below",
+   "distance": -57.6
+  },
+  {
+   "kind": "fvg_bull",
+   "lo": 23367.05,
+   "hi": 23375.45,
+   "text": "open bull FVG from Wed 23 Sep 10:15",
+   "weight": 2,
+   "side": "below",
+   "distance": -75.5
+  },
+  {
+   "kind": "fvg_bull",
+   "lo": 23340.75,
+   "hi": 23373.05,
+   "text": "open bull FVG from Tue 22 Sep 14:14",
+   "weight": 1,
+   "side": "below",
+   "distance": -89.9
+  },
+  {
+   "kind": "old_high",
+   "lo": 23363.55,
+   "hi": 23363.55,
+   "text": "Thu 17 Sep high",
+   "weight": 1,
+   "side": "below",
+   "distance": -83.2
+  },
+  {
+   "kind": "prev_low",
+   "lo": 23349.55,
+   "hi": 23349.55,
+   "text": "previous-day low (Wed 23 Sep)",
+   "weight": 3,
+   "side": "below",
+   "distance": -97.2
+  },
+  {
+   "kind": "daily_gap",
+   "lo": 23329.0,
+   "hi": 23349.55,
+   "text": "unfilled gap up of Wed 23 Sep",
+   "weight": 2,
+   "side": "below",
+   "distance": -107.5
+  },
+  {
+   "kind": "old_low",
+   "lo": 23314.8,
+   "hi": 23314.8,
+   "text": "Mon 21 Sep low",
+   "weight": 1,
+   "side": "below",
+   "distance": -132.0
+  },
+  {
+   "kind": "fvg_bull",
+   "lo": 23302.95,
+   "hi": 23312.8,
+   "text": "open bull FVG from Tue 22 Sep 14:09",
+   "weight": 1,
+   "side": "below",
+   "distance": -138.9
+  },
+  {
+   "kind": "round",
+   "lo": 23300,
+   "hi": 23300,
+   "text": "round number 23,300",
+   "weight": 1,
+   "side": "below",
+   "distance": -146.8
+  },
+  {
+   "kind": "old_low",
+   "lo": 23286.6,
+   "hi": 23286.6,
+   "text": "Fri 18 Sep low",
+   "weight": 1,
+   "side": "below",
+   "distance": -160.2
+  },
+  {
+   "kind": "daily_gap",
+   "lo": 23270.6,
+   "hi": 23286.6,
+   "text": "unfilled gap up of Fri 18 Sep",
+   "weight": 2,
+   "side": "below",
+   "distance": -168.2
+  },
+  {
+   "kind": "old_low",
+   "lo": 23285.75,
+   "hi": 23285.75,
+   "text": "Tue 22 Sep low",
+   "weight": 1,
+   "side": "below",
+   "distance": -161.0
+  },
+  {
+   "kind": "fvg_bull",
+   "lo": 23229.95,
+   "hi": 23239.95,
+   "text": "open bull FVG from Thu 17 Sep 11:17",
+   "weight": 1,
+   "side": "below",
+   "distance": -211.8
+  },
+  {
+   "kind": "round",
+   "lo": 23200,
+   "hi": 23200,
+   "text": "round number 23,200",
+   "weight": 1,
+   "side": "below",
+   "distance": -246.8
+  },
+  {
+   "kind": "old_low",
+   "lo": 23193.65,
+   "hi": 23193.65,
+   "text": "Thu 17 Sep low",
+   "weight": 1,
+   "side": "below",
+   "distance": -253.1
+  },
+  {
+   "kind": "range_low",
+   "lo": 23193.65,
+   "hi": 23193.65,
+   "text": "5-session low",
+   "weight": 2,
+   "side": "below",
+   "distance": -253.1
+  }
+ ]
+}

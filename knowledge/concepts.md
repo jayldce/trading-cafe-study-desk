@@ -67,7 +67,8 @@ He uses the **index** for structure (SMC zones, S/R, round numbers) and the **op
 ### Designing a trade instead of predicting it
 Take a defined risk, then shrink it step by step as price moves your way (trail, part-book, breakeven). Once the risk is neutral you don't need to be right about the target. This is the core of his psychology.
 **Multi-lot ladder (7-Sep):** book ~1 lot at 1–1.5× the initial risk, move the rest to breakeven, then trail under each fresh higher low. With a single lot you can't ladder, so it's full target or full stop.
-**Watch:** [▶ 11-Sep](https://www.youtube.com/watch?v=qTDwaNEZ2RY&t=6720s) · [▶ 7-Sep ladder](https://www.youtube.com/watch?v=JhSkNorpW6w&t=8340s)
+**Distribution zones as booking points (23-Sep):** on the 74900 CE he told viewers to move the stop up a ladder (252, then 269, then 277) and part-book each time price tagged a marked distribution zone, rather than waiting for one fixed target. The zones decide where to book; the trail decides when you're out.
+**Watch:** [▶ 11-Sep](https://www.youtube.com/watch?v=qTDwaNEZ2RY&t=6720s) · [▶ 7-Sep ladder](https://www.youtube.com/watch?v=JhSkNorpW6w&t=8340s) · [▶ 23-Sep ladder](https://www.youtube.com/watch?v=2yC1a6SL2Cw&t=19380s)
 
 ### Jodi (long straddle)
 **What:** buy a CE and a PE together (near-ATM, roughly equal premium). You profit if the market makes a big move either way, and lose to time decay if it stays flat.
@@ -205,7 +206,8 @@ After a huge move exhausts itself, he sometimes takes small follow-on scalps in 
 
 ### Patience after being trapped
 On 15-Jul he took three small stops (19, 29 and 10 points) on early breakout pokes, then got the pullback entry he'd been waiting for all morning. It became the biggest trade in the log. His lesson: small, fast stops keep you in the game long enough to catch the real move, but only if you keep waiting for the proper entry instead of chasing.
-**Watch:** [▶ 15-Jul](https://www.youtube.com/watch?v=DmPpZPOBuNA&t=13800s)
+**23-Sep, same shape on Sensex:** a −35.89 stop on the 74600 CE at 09:24, then an hour of waiting at the 275–320 base for a strength candle; the re-entry near 309 around 10:22–10:30 cleared its 433.32 target (about +124).
+**Watch:** [▶ 15-Jul](https://www.youtube.com/watch?v=DmPpZPOBuNA&t=13800s) · [▶ 23-Sep re-entry](https://www.youtube.com/watch?v=2yC1a6SL2Cw&t=4620s)
 
 ### Why the free stream stays "educational"
 He says that taking his own positions while broadcasting calls creates a conflict under the regulatory framework, which is why the free stream is presented as education rather than a paid advisory service. It's also a reminder for you: the levels and calls on stream are teaching material, and your own risk rules decide whether a trade is right for you.

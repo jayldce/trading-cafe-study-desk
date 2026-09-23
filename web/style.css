@@ -483,6 +483,23 @@ table.signals.prep tr.strong td { font-weight: 600; }
 .prep-tabs { display: flex; gap: 6px; }
 .prep-tabs a { padding: 3px 12px; border: 1px solid var(--rule); border-radius: 999px; font: 500 12px var(--mono); color: var(--ink-2); }
 .prep-tabs a.on { background: var(--card); color: var(--ink); border-color: var(--mark); }
+.lv-headright { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+/* the live index chart: candles plus today's levels, redrawn client-side every few seconds */
+.ic { margin: 16px 0 0; }
+.ic svg { width: 100%; height: auto; background: var(--card); border: 1px solid var(--rule); border-radius: var(--radius); }
+.ic figcaption { margin-top: 5px; font: 400 12px var(--mono); color: var(--ink-2); }
+.ic-body.up, .ic-wick.up { fill: var(--win); stroke: var(--win); }
+.ic-body.dn, .ic-wick.dn { fill: var(--loss); stroke: var(--loss); }
+.ic-wick { stroke-width: 1; }
+.ic-zone { fill: var(--mark); opacity: 0.13; }
+.ic-zone.w3 { opacity: 0.22; }
+.ic-label { fill: var(--ink-2); font: 9px var(--mono); }
+.ic-now { stroke: var(--accent); stroke-width: 1; stroke-dasharray: 5 3; }
+.ic-nowbox { fill: var(--accent); }
+.ic-nowtext { fill: var(--bg); font: 600 9px var(--mono); }
+.ic-sig { fill: var(--ink-2); } .ic-sig.win { fill: var(--win); } .ic-sig.loss { fill: var(--loss); }
+.ic-axis { fill: var(--ink-2); font: 9px var(--mono); } .ic-axis.mid { text-anchor: middle; }
+.live-tabs { margin: 0; }
 .rk-here td { background: color-mix(in srgb, var(--mark) 16%, transparent); font-weight: 600; }
 .rk-panel { border: 1px solid var(--rule); border-left-width: 3px; border-radius: var(--radius); padding: 14px 16px; margin: 22px 0; }
 .rk-panel.ok { border-left-color: var(--win); } .rk-panel.bad { border-left-color: var(--loss); }
@@ -634,3 +651,19 @@ dialog#lightbox .close, .lb-caption { font: 13px var(--mono); color: #e3eaee; ba
   .duel, .path { grid-template-columns: minmax(0, 1fr); }
   .day-list a { grid-template-columns: minmax(0, 1fr); gap: 6px; }
 }
+
+/* ---- Backtest (local only) ---- */
+.bt { width: 100%; border-collapse: collapse; }
+.bt th, .bt td { padding: .5rem .6rem; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+.bt th { font-size: .78rem; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); font-weight: 600; }
+.bt td.num, .bt th:not(:first-child) { text-align: right; }
+.bt td.num { font-variant-numeric: tabular-nums; }
+.bt-eq { width: 100%; height: auto; max-width: 760px; display: block; margin: .5rem 0 1rem; }
+.bt-line { fill: none; stroke: var(--accent); stroke-width: 2; stroke-linejoin: round; }
+.bt-zero { stroke: var(--line); stroke-width: 1; stroke-dasharray: 3 3; }
+.bt-lbl { font-size: 11px; fill: var(--muted); }
+.bt-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: .75rem; margin: 1rem 0; }
+.bt-stats > div { border: 1px solid var(--line); border-radius: 8px; padding: .6rem .7rem; }
+.bt-k { display: block; font-size: .75rem; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+.bt-v { display: block; font-size: 1.15rem; font-weight: 600; font-variant-numeric: tabular-nums; margin-top: .15rem; }
+.caveat { border-left: 3px solid var(--line); padding-left: .9rem; color: var(--muted); font-size: .92rem; }

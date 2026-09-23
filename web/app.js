@@ -1144,11 +1144,12 @@ function whereHTML(st) {
   const res = lv.filter((l) => l.lo > st.price + 1).sort((a, b) => a.lo - b.lo)[0];
   const sup = lv.filter((l) => l.hi < st.price - 1).sort((a, b) => b.hi - a.hi)[0];
   const lab = (l) => (l.hi - l.lo < 1 ? px0(l.lo) : `${px0(l.lo)}–${px0(l.hi)}`);
-  if (!res || !sup) return `<p class="lv-sentence">Nifty is at <b>${fmtPx(st.price)}</b>, beyond every level on today's map.</p>`;
+  const name = st.index_label || "Nifty";
+  if (!res || !sup) return `<p class="lv-sentence">${esc(name)} is at <b>${fmtPx(st.price)}</b>, beyond every level on today's map.</p>`;
   const up = res.lo - st.price, down = st.price - sup.hi;
   const pos = Math.max(0, Math.min(100, (100 * down) / (down + up)));
   const where = pos < 25 ? "close to support" : pos > 75 ? "close to resistance" : "in the middle — the worst place to start a trade";
-  return `<p class="lv-sentence">Nifty is <b>${where}</b>.</p>
+  return `<p class="lv-sentence">${esc(name)} is <b>${where}</b>.</p>
     <div class="lv-range">
       <div class="lv-end sup"><span>Support</span><b>${lab(sup)}</b><small>${esc(sup.name)} · ${down.toFixed(0)} pts below</small></div>
       <div class="lv-bar"><i style="left:${pos}%"></i><em style="left:${pos}%">${fmtPx(st.price)}</em></div>
@@ -1181,7 +1182,7 @@ function baseSetupsHTML(st) {
   return `<section><h2>Base reversals (option chart)</h2>
     ${charts}
     <p class="caption">New rule, watching only — it reads the call and put charts, not the index. Backtested
-      +0.35R per trade on Nifty, but never yet run live. Treat it as something to check, not to follow.</p>
+      +0.35R per trade (backtested on Nifty only), but never yet run live. Treat it as something to check, not to follow.</p>
     <ul class="bs-list">${rows}</ul></section>`;
 }
 
@@ -1251,15 +1252,18 @@ function ladderHTML(st) {
 }
 
 const LIVE_HELP = `<dl class="lv-help">
-  <dt>Where Nifty is</dt><dd>The nearest level below (support) and above (resistance), from this morning's prep and the opening range. Starting trades near an edge gives the best reward for the risk; the middle gives the worst.</dd>
+  <dt>Where the index is</dt><dd>The nearest level below (support) and above (resistance), from this morning's prep and the opening range. Starting trades near an edge gives the best reward for the risk; the middle gives the worst.</dd>
   <dt>Setup right now</dt><dd>When one of the four scanner rules fires (sweep reversal, gap pullback, break with follow-up, failed break), its entry, stop and 2R target appear here, with a rough option price from the option's delta. The bar shows how far it has moved, from −1R (stop) to +2R (target).</dd>
   <dt>Today so far</dt><dd>Everything the rules noticed, newest first: prep levels reached, sweeps and breaks, setups forming and how they ended. The same messages arrive as Mac notifications.</dd>
   <dt>Options</dt><dd>From your Dhan account every 3 minutes: the strikes with the most open interest (where option writers defend), where writers are adding, implied volatility, and the strikes priced near ₹150. Context, not a trigger.</dd>
-  <dt>Data</dt><dd>Nifty ticks stream from Dhan's live feed (WebSocket): the price updates every few seconds and each one-minute candle is checked the moment it closes. Dhan's official candles re-sync every 5 minutes. If the feed drops it polls Dhan once a minute, and Yahoo's public feed is the last resort. Levels are calculated on your Mac. The pill at the top shows the source and how fresh the data is.</dd>
+  <dt>Data</dt><dd>Index ticks stream from Dhan's live feed (WebSocket): the price updates every few seconds and each one-minute candle is checked the moment it closes. Dhan's official candles re-sync every 5 minutes. If the feed drops it polls Dhan once a minute, and Yahoo's public feed is the last resort. Levels are calculated on your Mac. The pill at the top shows the source and how fresh the data is.</dd>
 </dl>`;
 
-async function viewLive() {
+async function viewLive(which) {
   clearInterval(liveTimer);
+  // he trades Nifty Mon/Tue/Fri and Sensex Wed/Thu, and both monitors can run at once, each with its own state
+  const idx = which === "sensex" ? "sensex" : "nifty";
+  const stateURL = idx === "nifty" ? "data/live/state.json" : `data/live/state-${idx}.json`;
   const start = '<pre><code>uv run --with websockets --with matplotlib python tools/live-monitor.py</code></pre>';
   if (!LOCAL) {
     app.innerHTML = `<div class="page-head"><div><p class="eyebrow">Local only</p><h1>Live</h1></div></div>
@@ -1269,15 +1273,27 @@ async function viewLive() {
   }
   const render = async () => {
     if (!location.hash.startsWith("#/live")) { clearInterval(liveTimer); return; }
+    if (location.hash.startsWith("#/live/") !== (idx !== "nifty")) { clearInterval(liveTimer); return; }
     let st = null;
-    try { const r = await fetch("data/live/state.json", { cache: "no-store" }); if (r.ok) st = await r.json(); } catch { st = null; }
+    try { const r = await fetch(stateURL, { cache: "no-store" }); if (r.ok) st = await r.json(); } catch { st = null; }
+    // is the other index being watched too? if so, offer the switch
+    let other = false;
+    try { other = (await fetch(idx === "nifty" ? "data/live/state-sensex.json" : "data/live/state.json",
+      { cache: "no-store", method: "HEAD" })).ok; } catch { other = false; }
+    const tabs = other ? `<div class="prep-tabs live-tabs">
+      <a href="#/live" class="${idx === "nifty" ? "on" : ""}">Nifty</a>
+      <a href="#/live/sensex" class="${idx === "sensex" ? "on" : ""}">Sensex</a></div>` : "";
+    // your Dhan account is one account, written by whichever monitor holds the lock — never per index
+    let acct = st && st.account;
+    try { const a = await fetch("data/live/account.json", { cache: "no-store" }); if (a.ok) acct = await a.json(); } catch { /* keep what the state had */ }
     const opened = new Set($$("details[data-key][open]", app).map((d) => d.dataset.key));
     const today = new Date().toLocaleDateString("en-CA");
     const updated = st ? new Date(st.updated) : null;
     const fresh = updated && (Date.now() - updated.getTime()) / 60000 < 3;
     if (!st) {
-      app.innerHTML = `<div class="page-head"><div><p class="eyebrow">Nifty · rules running live</p><h1>Live</h1></div></div>
-        <p class="lede">The monitor hasn't run yet. Start it from the project folder around 9:10:</p>${start}`;
+      app.innerHTML = `<div class="page-head"><div><p class="eyebrow">${idx === "nifty" ? "Nifty" : "Sensex"} · rules running live</p><h1>Live</h1></div>${tabs}</div>
+        <p class="lede">No monitor for ${idx === "nifty" ? "Nifty" : "Sensex"} yet. It starts automatically on weekday mornings; to run it by hand:</p>
+        <pre><code>uv run --with websockets --with matplotlib python tools/live-monitor.py${idx === "nifty" ? "" : " --instrument sensex"}</code></pre>`;
       return;
     }
     const mode = st.replay && fresh ? "replay" : fresh && st.day === today ? "live" : "off";
@@ -1292,16 +1308,16 @@ async function viewLive() {
     app.innerHTML = `
       <div class="lv">
         <header class="lv-head">
-          <div><p class="eyebrow">Nifty 50 · ${esc(fmtDate(st.day))}</p>
+          <div><p class="eyebrow">${esc(st.index_label || "Nifty 50")} · ${esc(fmtDate(st.day))}</p>
             <p class="lv-price">${fmtPx(st.price)}${st.prev_close == null ? "" : ` <span class="${chg >= 0 ? "w" : "l"}">${chg >= 0 ? "▲" : "▼"} ${Math.abs(chg).toFixed(1)} (${pct.toFixed(2)}%)</span>`}</p>
             <p class="lv-sub">${pre ? `${st.prev_close != null ? `Pre-open · previous close ${fmtPx(st.prev_close)}` : "Pre-open"} — levels are armed; the rules start once the opening range is complete (about 9:31).`
               : `Open ${fmtPx(st.open)} · High ${fmtPx(st.high)} · Low ${fmtPx(st.low)}`}</p></div>
-          <span class="lv-pill ${mode}">● ${pill}</span>
+          <div class="lv-headright">${tabs}<span class="lv-pill ${mode}">● ${pill}</span></div>
         </header>
         <div class="lv-cols">
           <div class="lv-col">
-            ${accountHTML(st.account)}
-            <section><h2>Where Nifty is</h2>${whereHTML(st)}</section>
+            ${accountHTML(acct)}
+            <section><h2>Where ${idx === "nifty" ? "Nifty" : "Sensex"} is</h2>${whereHTML(st)}${indexChartSVG(st)}</section>
             <section><h2>Setup right now</h2>${setupHTML(st)}</section>
             ${baseSetupsHTML(st)}
           </div>
@@ -1313,7 +1329,7 @@ async function viewLive() {
         <div class="lv-more">
           ${section("levels", "All levels", ladderHTML(st))}
           ${section("setups", `All setups today (${(st.signals || []).length})`, `<div class="review-signals">${signalsHTML({ signals: st.signals })}</div>`)}
-          ${section("chart", "Chart", `<button type="button" class="thumb chart-img" data-src="${esc(st.chart)}?t=${Date.now()}" data-caption="Live chart"><img loading="lazy" src="${esc(st.chart)}?t=${Date.now()}" alt="Live Nifty chart"></button>`)}
+          ${section("chart", "Chart", `<button type="button" class="thumb chart-img" data-src="${esc(st.chart)}?t=${Date.now()}" data-caption="Live chart"><img loading="lazy" src="${esc(st.chart)}?t=${Date.now()}" alt="Live chart"></button>`)}
           ${section("help", "How to read this page", LIVE_HELP)}
         </div>
       </div>`;
@@ -1333,7 +1349,7 @@ function accountHTML(acct) {
     d.loss_limit ? `${rupees(d.total)} of −₹${Number(d.loss_limit).toLocaleString("en-IN")} limit` : null].filter(Boolean).join(" · ");
   const cards = (acct.positions || []).map((p) => {
     const cls = (p.pnl_rs ?? 0) >= 0 ? "w" : "l";
-    const ctx = p.context ? `Entered ${esc(p.context.time)} with Nifty ${esc(p.context.where || "")}${p.context.setup ? ` · setup ${esc(p.context.setup)}` : " · no rule setup"}` : "";
+    const ctx = p.context ? `Entered ${esc(p.context.time)} with the index ${esc(p.context.where || "")}${p.context.setup ? ` · setup ${esc(p.context.setup)}` : " · no rule setup"}` : "";
     return `<div class="lv-card pos ${p.side === "long" ? "long" : "short"}">
       <p class="lv-tag">${esc(p.label)} · ${p.side === "long" ? "bought" : "sold"} ${p.qty} @ ₹${p.entry} · ${p.minutes ?? "?"} min</p>
       <div class="lv-nums">
@@ -1457,7 +1473,7 @@ async function viewJournal(date) {
     </div>
     ${curveSVG(T)}
     ${breakdown(T, (t) => (t.setup ? "with a rule setup" : "no rule setup"), "Did a rule setup agree?")}
-    ${breakdown(T, (t) => t.where, "Where Nifty was when you entered")}
+    ${breakdown(T, (t) => t.where, "Where the index was when you entered")}
     ${breakdown(T, (t) => (t.broken_rules.length ? "broke a rule" : "followed every rule"), "Rules followed")}
     ${breakdown(T, (t) => t.window, "Time of day")}
     <h3>Days</h3>
@@ -1608,7 +1624,9 @@ const ROUTES = [
   [/^#\/levelup$/, "levelup", () => viewLevelUp()],
   [/^#\/smart$/, "smart", () => viewSmart()],
   [/^#\/live$/, "live", () => viewLive()],
+  [/^#\/live\/([a-z]+)$/, "live", (m) => viewLive(m[1])],
   [/^#\/risk$/, "risk", () => viewRisk()],
+  [/^#\/backtest$/, "backtest", () => viewBacktest()],
   [/^#\/journal$/, "journal", () => viewJournal()],
   [/^#\/journal\/(\d{4}-\d{2}-\d{2})$/, "journal", (m) => viewJournal(m[1])],
   [/^#\/prep$/, "prep", () => viewPrep()],
@@ -1663,6 +1681,94 @@ async function route() {
   window.addEventListener("hashchange", route);
   route();
 })();
+
+/* ---------------- backtest (data/journal/backtest.json; local only, never published) ----------------
+   Every figure here is NET of Rs 110 a round trip and of the modelled fill. Gross R-multiples flattered
+   every earlier number in this project; the whole point of this page is that they are gone. */
+function rsign(v, digits = 3) {
+  return `<span class="num ${v > 0 ? "ok" : v < 0 ? "off" : ""}">${v > 0 ? "+" : ""}${v.toFixed(digits)}R</span>`;
+}
+
+function equitySVG(curve, capital) {
+  if (!curve || curve.length < 2) return "";
+  const W = 720, H = 200, pad = 28;
+  const lo = Math.min(capital, ...curve), hi = Math.max(capital, ...curve);
+  const x = (i) => pad + (i / (curve.length - 1)) * (W - 2 * pad);
+  const y = (v) => H - pad - ((v - lo) / ((hi - lo) || 1)) * (H - 2 * pad);
+  const d = curve.map((v, i) => `${i ? "L" : "M"}${x(i).toFixed(1)},${y(v).toFixed(1)}`).join("");
+  return `<svg class="bt-eq" viewBox="0 0 ${W} ${H}" role="img" aria-label="Equity curve over ${curve.length} trades">
+    <line x1="${pad}" y1="${y(capital).toFixed(1)}" x2="${W - pad}" y2="${y(capital).toFixed(1)}" class="bt-zero"/>
+    <path d="${d}" class="bt-line"/>
+    <text x="${pad}" y="${(y(capital) - 6).toFixed(1)}" class="bt-lbl">start ₹${capital.toLocaleString("en-IN")}</text>
+    <text x="${W - pad}" y="${(y(curve[curve.length - 1]) - 6).toFixed(1)}" class="bt-lbl" text-anchor="end">₹${curve[curve.length - 1].toLocaleString("en-IN")}</text>
+  </svg>`;
+}
+
+async function viewBacktest() {
+  if (!LOCAL) {
+    app.innerHTML = `<div class="page-head"><div><p class="eyebrow">Local only</p><h1>Backtest</h1></div></div>
+      <p class="lede">These results are scored against your own capital and charges, so they stay on your Mac.</p>`;
+    return;
+  }
+  let d;
+  try {
+    d = await (await fetch("../data/journal/backtest.json")).json();
+  } catch {
+    app.innerHTML = `<div class="page-head"><div><h1>Backtest</h1></div></div>
+      <p class="lede">No report yet. Build one with:</p>
+      <pre class="mono">uv run --with matplotlib python tools/backtest.py</pre>`;
+    return;
+  }
+  const rules = d.rules.map((r) => {
+    const verdict = r.net > 0.10 ? "ok" : r.net > 0 ? "" : "off";
+    return `<tr>
+      <td>${esc(r.rule === "base" ? "Base reversal" : "Index scanner")}<br><small class="muted">${esc(r.index)}</small></td>
+      <td class="num">${r.n}<br><small class="muted">${r.sessions} sess</small></td>
+      <td class="num">${r.gross > 0 ? "+" : ""}${r.gross.toFixed(3)}R</td>
+      <td class="num ${verdict}"><strong>${r.net > 0 ? "+" : ""}${r.net.toFixed(3)}R</strong></td>
+      <td class="num">${r.late == null ? "—" : (r.late > 0 ? "+" : "") + r.late.toFixed(3) + "R"}</td>
+      <td class="num">${r.charge_r.toFixed(3)}R</td>
+      <td class="num">${(r.win * 100).toFixed(0)}%</td></tr>`;
+  }).join("");
+  const sel = d.selection.map((s) => `<tr><td>${esc(s.name)}</td><td class="num">${s.n}</td>
+      <td class="num">${s.exp == null ? "—" : rsign(s.exp)}</td>
+      <td class="num">₹${(s.rs || 0).toLocaleString("en-IN")}</td></tr>`).join("");
+  const e = d.equity;
+  app.innerHTML = `<div class="page-head"><div><p class="eyebrow">Local only · net of costs</p><h1>Backtest</h1></div></div>
+    <p class="lede">Every rule scored against <strong>₹${d.cost} a round trip</strong> and a <strong>₹${d.risk} risk budget</strong>
+      on <strong>₹${d.capital.toLocaleString("en-IN")}</strong>. Gross R-multiples flattered every earlier number here; they are gone.
+      ${d.sessions} option sessions, ${esc(d.days[0])} to ${esc(d.days[d.days.length - 1])}.</p>
+
+    <h2>What survives the charges</h2>
+    <div class="tablewrap"><table class="bt">
+      <thead><tr><th>Rule</th><th>Setups</th><th>Gross</th><th>Net, bracket</th><th>Net, market late</th><th>Charge</th><th>Win</th></tr></thead>
+      <tbody>${rules}</tbody></table></div>
+    <p class="muted">“Net, bracket” assumes a resting buy-stop filled at the rule’s own price. “Net, market late”
+      is a hand-placed order two minutes after the trigger, with the fill taken from the option’s own candles.
+      The gap between those two columns is the cost of how you enter, and on every row it is larger than the edge.</p>
+
+    <h2>How many a day</h2>
+    <div class="tablewrap"><table class="bt">
+      <thead><tr><th>Selection rule</th><th>Trades</th><th>Per trade</th><th>Total</th></tr></thead>
+      <tbody>${sel}</tbody></table></div>
+    <p class="muted">Eight selection rules were tried against ${e.n} trades, so the best row here is partly luck.
+      What is not luck: taking every setup earns least, because each one pays ₹${d.cost}.</p>
+
+    <h2>On ₹${d.capital.toLocaleString("en-IN")}</h2>
+    ${equitySVG(e.curve, d.capital)}
+    <div class="bt-stats">
+      <div><span class="bt-k">End balance</span><span class="bt-v">₹${e.end.toLocaleString("en-IN")}</span></div>
+      <div><span class="bt-k">Max drawdown</span><span class="bt-v off">${(e.dd * 100).toFixed(1)}%</span></div>
+      <div><span class="bt-k">Worst losing streak</span><span class="bt-v">${e.worst_streak} in a row</span></div>
+      <div><span class="bt-k">Charges paid</span><span class="bt-v off">₹${e.charges.toLocaleString("en-IN")}</span></div>
+    </div>
+    <p class="muted">The drawdown is the number that decides whether you can trade this at all: if the rule’s normal
+      losing run is ${e.worst_streak} trades and you stop after three, the edge never reaches you.</p>
+
+    <p class="caveat">Hindsight, on roughly two months of option data. Fills are modelled from 1-minute candles,
+      not from the order book, and Dhan serves only about two weeks of option history, so the sample cannot be
+      extended backwards. Quote these with the sample size attached; none of them is an edge yet.</p>`;
+}
 
 /* ---------------- risk (data/journal/settings.json; local only, never published) ---------------- */
 const RISK_FIELDS = [
@@ -1884,4 +1990,52 @@ function optionChartSVG(label, c) {
       aria-label="One-minute candles for ${esc(label)} with the base zones the rule is watching">
       ${zones}${candles}${marks}${ticks}${times}
     </svg></figure>`;
+}
+
+/* The index itself, drawn live from the monitor's own candles with today's prep levels on it. The 5-minute PNG
+   is still there under "Chart"; this is the one that keeps up with price. */
+function indexChartSVG(st) {
+  const rows = st.candles || [];
+  if (rows.length < 10) return "";
+  const W = 780, H = 260, L = 54, R = 64, T = 10, B = 18;
+  const lv = (st.zones || []).filter((z) => z.weight >= 2);
+  const lo0 = Math.min(...rows.map((r) => r[3])), hi0 = Math.max(...rows.map((r) => r[2]));
+  const near = lv.filter((z) => z.lo > lo0 - (hi0 - lo0) * 0.5 && z.hi < hi0 + (hi0 - lo0) * 0.5);
+  const lo = Math.min(lo0, ...near.map((z) => z.lo)), hi = Math.max(hi0, ...near.map((z) => z.hi));
+  const pad = (hi - lo) * 0.06 || 1, y0 = lo - pad, y1 = hi + pad;
+  const x = (i) => L + (i * (W - L - R)) / Math.max(rows.length - 1, 1);
+  const y = (v) => T + ((y1 - v) * (H - T - B)) / (y1 - y0);
+  const w = Math.max(1.2, (W - L - R) / rows.length - 1);
+
+  const bands = near.map((z) => {
+    const top = y(z.hi), bot = y(z.lo), h = Math.max(bot - top, 1.2);
+    return `<rect x="${L}" y="${top.toFixed(1)}" width="${(W - L - R).toFixed(1)}" height="${h.toFixed(1)}"
+        class="ic-zone w${z.weight}"></rect>
+      <text x="${(W - R + 4).toFixed(1)}" y="${(top + h / 2 + 3).toFixed(1)}" class="ic-label">${px0(z.lo)}</text>`;
+  }).join("");
+
+  const candles = rows.map((r, i) => {
+    const up = r[4] >= r[1], cx = x(i), yo = y(r[1]), yc = y(r[4]);
+    return `<line x1="${cx.toFixed(1)}" y1="${y(r[2]).toFixed(1)}" x2="${cx.toFixed(1)}" y2="${y(r[3]).toFixed(1)}" class="ic-wick ${up ? "up" : "dn"}"></line>
+      <rect x="${(cx - w / 2).toFixed(1)}" y="${Math.min(yo, yc).toFixed(1)}" width="${w.toFixed(1)}" height="${Math.max(Math.abs(yc - yo), 0.8).toFixed(1)}" class="ic-body ${up ? "up" : "dn"}"></rect>`;
+  }).join("");
+
+  const at = (t) => rows.findIndex((r) => r[0] === t);
+  const marks = (st.signals || []).map((g) => {
+    const i = at(g.time);
+    if (i < 0) return "";
+    const up = g.dir === "long", yy = y(g.entry);
+    return `<path d="M ${x(i).toFixed(1)} ${(yy + (up ? 9 : -9)).toFixed(1)} l -4 ${up ? 7 : -7} l 8 0 z"
+      class="ic-sig ${g.result === "target" ? "win" : g.result === "stop" ? "loss" : ""}"></path>`;
+  }).join("");
+
+  const pr = st.price != null ? `<line x1="${L}" y1="${y(st.price).toFixed(1)}" x2="${(W - R).toFixed(1)}" y2="${y(st.price).toFixed(1)}" class="ic-now"></line>
+    <rect x="${(W - R + 1).toFixed(1)}" y="${(y(st.price) - 7).toFixed(1)}" width="58" height="14" class="ic-nowbox"></rect>
+    <text x="${(W - R + 5).toFixed(1)}" y="${(y(st.price) + 3.5).toFixed(1)}" class="ic-nowtext">${px0(st.price)}</text>` : "";
+  const times = [0, Math.floor(rows.length / 2), rows.length - 1].map((i) =>
+    `<text x="${x(i).toFixed(1)}" y="${H - 5}" class="ic-axis mid">${esc(rows[i][0])}</text>`).join("");
+
+  return `<figure class="ic"><svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" role="img"
+      aria-label="Live one-minute candles with today's levels">${bands}${candles}${marks}${pr}${times}</svg>
+    <figcaption>Last ${rows.length} minutes · shaded bands are today's prep levels · ▲▼ are rule setups</figcaption></figure>`;
 }
