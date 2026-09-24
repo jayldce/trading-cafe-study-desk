@@ -16,14 +16,15 @@ These are studies of finished sessions, not calls for the next one. Everything i
 | Mon 21 Sep | −16 | mixed, up | Yesterday's high | Swept 09:18, held | The 09:15 candle — the low was in at once |
 | Tue 22 Sep | +25 | trend down | Previous-day high | "Swept" at 09:15, no reversal | The 10:31 opening-range-low break |
 | Wed 23 Sep | +23 | trend up | Opening-range low | Poked 2.2 pts at 09:54, no reversal candle, held | That poke — the day's low; confirmed by the 10:45 opening-range-high break |
+| Thu 24 Sep | −227 | trend down | Opening-range low / 23,200 | Poked 09:55 and 10:22 with no reversal, broke with the 5-session low at 11:56 | The 09:15 candle — the high was in at once; confirmed by the 11:56 break |
 
 ## What repeats across them
 
-- **The day's extreme often prints in the first 30 minutes** (11, 15, 16, 17, 18, 22 and 23 Sep all had one extreme before 09:55). Wait for the opening range before trusting a direction.
+- **The day's extreme often prints in the first 30 minutes** (11, 15, 16, 17, 18, 22, 23 and 24 Sep all had one extreme before 09:55). Wait for the opening range before trusting a direction.
 - **A sweep only counts with displacement.** 16 and 18 Sep: sweep plus strong reversal candle, and the level held all day. 15 and 22 Sep: the same shape without displacement, and the trend simply continued the other way.
 - **The first break of an obvious level is often the trap** (17 Sep at 09:42, 18 Sep at 15:02) — but not always: 22 Sep's break of the previous-day low at 13:53 ran another 31 points before its own late reversal at 14:14, a reminder the "first break is a trap" pattern isn't universal.
-- **Big gaps behave differently from small ones.** Both 170–200-point gaps (11 and 15 Sep) moved hard *against* the gap. The smaller gaps (16–18 and 22 Sep) produced ranges or trend days that still respected nearby levels.
-- **On a trend day, gaps in its direction stay open**, and sweeps against it fail (15 and 22 Sep both swept a level at the open with zero follow-through, then trended the other way all session).
+- **Big gaps behave differently from small ones — but not in one fixed direction.** The 170–200-point gaps of 11 and 15 Sep moved hard *against* the gap; the 227-point gap down of 24 Sep printed its high in the first minute and trended *with* the gap all day. A big gap means a big day, not a known side. The smaller gaps (16–18 and 22 Sep) produced ranges or trend days that still respected nearby levels.
+- **On a trend day, gaps in its direction stay open**, and sweeps against it fail (15 and 22 Sep both swept a level at the open with zero follow-through, then trended the other way all session; on 24 Sep both scanner longs at 23,200 were stopped, while all three shorts into bear gaps made money).
 - **Even a clean trend day can reverse hard in one candle** (22 Sep, 14:14: a 4.5×-normal candle erased hours of a downtrend). No rule-based setup in the scanner catches this — it's a risk-management lesson, not an entry.
 
 ## The setup scanner: more opportunities, scored honestly

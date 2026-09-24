@@ -74,6 +74,7 @@ Take a defined risk, then shrink it step by step as price moves your way (trail,
 **What:** buy a CE and a PE together (near-ATM, roughly equal premium). You profit if the market makes a big move either way, and lose to time decay if it stays flat.
 **How he manages it:** as one position. Add up both premiums, set one combined SL (e.g. 52 → 27) and one combined target (~85–100). On 8-Sep (expiry day) it bled for hours, then paid in the last hour when spot finally trended.
 **When:** a big move is likely but its direction isn't clear, e.g. expiry day or a long squeeze.
+**A worked Sensex construction with a time stop (24-Sep):** 73700 CE ~135 + 73600 PE ~153 = 288 combined; stop on a ~150 combined drop, target a 200–235 combined gain, and **30 minutes** for the move to start before he treats it as decaying. By 15:03 it hadn't come, and he said to cut it rather than hold into the close (no fill was shown, so it isn't in the trade log). [▶ the plan](https://www.youtube.com/watch?v=cnhIFE3Rzew&t=2880s) · [▶ cut it](https://www.youtube.com/watch?v=LHErabU5Wok&t=180s)
 **Watch:** [▶ 8-Sep](https://www.youtube.com/watch?v=s3r5EJy4cw8&t=19080s) · [▶ 10-Sep (Trade Circuit)](https://www.youtube.com/watch?v=_v3ieKuYGRc&t=19260s)
 
 ### Order block
@@ -108,7 +109,8 @@ Sell the expiring ATM call and put, buy the same strikes in the next expiry. The
 ### When spot and options stop tracking each other
 Two live examples where the usual link broke: a **T+0 cash settlement pilot** (6-Aug) that let large last-minute cash orders whip spot while options barely moved, and a **stock hitting its price band** (7-Aug), which froze spot ticks while options kept trading. When you notice this, trust the option chart and reduce size.
 On 18-Sep the gap showed up differently: on the 12:42–13:00 leg Nifty moved well but the options hadn't yet reached their earlier distribution zone, so the spot move wasn't reflected in premium and there was nothing to buy yet.
-**Watch:** [▶ 6-Aug](https://www.youtube.com/watch?v=VRl6SfYXXiQ&t=4560s) · [▶ 7-Aug](https://www.youtube.com/watch?v=ayYEP_dKaLY&t=13320s) · [▶ 18-Sep](https://www.youtube.com/watch?v=EPh5qxWEUhU&t=12900s)
+On 24-Sep (Sensex expiry, Trade Circuit) it cost a trade: spot closed above his marked line exactly as planned, but the 74100 CE premium never showed matching strength, so he cut it at −22.68 before the stop rather than wait. [▶ 24-Sep](https://www.youtube.com/watch?v=1opAYBTRhww&t=3600s)
+**Watch:** [▶ 6-Aug](https://www.youtube.com/watch?v=VRl6SfYXXiQ&t=4560s) · [▶ 7-Aug](https://www.youtube.com/watch?v=ayYEP_dKaLY&t=13320s) · [▶ 18-Sep](https://www.youtube.com/watch?v=EPh5qxWEUhU&t=12900s) · [▶ 24-Sep](https://www.youtube.com/watch?v=1opAYBTRhww&t=3600s)
 
 ### Gamma blasts vs volatility spikes
 Two different reasons a premium can suddenly jump:
@@ -173,8 +175,8 @@ If a second high forms *lower* than the first before a level breaks, more buyers
 **Watch:** [▶ 22-Jul](https://www.youtube.com/watch?v=jCedaeF9RWg&t=4380s)
 
 ### Don't carry your whole account overnight (BTST sizing)
-Buying an option today and selling it tomorrow (BTST) isn't the problem. Putting 100% of your capital into a single overnight option is. He calls that a gambling habit, separate from disciplined intraday sizing where the stop and quantity are planned before entry. Size an overnight position so a gap against you is survivable.
-**Watch:** [▶ 24-Jul](https://www.youtube.com/watch?v=U8CNQ0Rhwzs&t=17700s)
+Buying an option today and selling it tomorrow (BTST) isn't the problem. Putting 100% of your capital into a single overnight option is. He calls that a gambling habit, separate from disciplined intraday sizing where the stop and quantity are planned before entry. Size an overnight position so a gap against you is survivable. He repeated it on 24-Sep, after a 227-point gap-down day, while talking about a possible panic move toward a ~23,000 Nifty zone: carry overnight only the premium you can afford to lose in full, with a strict stop on any bearish BTST.
+**Watch:** [▶ 24-Jul](https://www.youtube.com/watch?v=U8CNQ0Rhwzs&t=17700s) · [▶ 24-Sep](https://www.youtube.com/watch?v=LHErabU5Wok&t=300s)
 
 ### The apex: where a breakout launched from
 His name for the base a breakout candle actually took off from. After the move extends, price often comes back to the apex once, and that return is a calm pullback entry with a small stop, better than chasing the extended candle. On 17-Jul he waited for the 24150 CE to return to its 154–174 apex after a spike to 204, entered at 170, and his first target of 184 was hit (+14).
@@ -301,3 +303,7 @@ When several jodis (long straddles) are open at once, he books each side in stag
 
 ### Prefer call-selling over put-buying once a trend is confirmed
 Once a directional trend is already running (not at the start of one), he says he'd rather sell the opposite-side call than buy a put, because selling lets him carry a bigger quantity and gives him more time to adjust than a bought option's decaying premium does. Stated once, in passing, on a day his own book was underwater from an afternoon reversal — not yet backed by a logged trade. [▶ 22-Sep](https://www.youtube.com/watch?v=Dpx4i4TCkEc&t=21180s)
+
+### Sustainable buying/selling zone (Trade Circuit's term)
+The area above (or below) a structural line where a directional move can actually *hold*, not just poke. The zone isn't fixed: once a fresh swing low or high forms, it moves with it. On 24-Sep his "sustainable buying" area shifted lower after Sensex broke a prior low, so a level that had been support became the line price had to reclaim first. Guest method, not Chinmay's.
+**Watch:** [▶ 24-Sep](https://www.youtube.com/watch?v=1opAYBTRhww&t=7160s)

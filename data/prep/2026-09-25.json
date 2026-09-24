@@ -1,0 +1,223 @@
+{
+ "date": "2026-09-25",
+ "sessions": [
+  "2026-09-18",
+  "2026-09-21",
+  "2026-09-22",
+  "2026-09-23",
+  "2026-09-24"
+ ],
+ "close": 23063.099609375,
+ "last_session": "2026-09-24",
+ "week_high": 23489.0,
+ "week_low": 23046.19921875,
+ "closes": {
+  "2026-09-18": 23346.4,
+  "2026-09-21": 23429.0,
+  "2026-09-22": 23329.0,
+  "2026-09-23": 23446.8,
+  "2026-09-24": 23063.1
+ },
+ "nifty_expiry": "2026-09-29",
+ "sensex_expiry": "2026-10-01",
+ "zones": [
+  {
+   "kind": "daily_gap",
+   "lo": 23280.6,
+   "hi": 23446.8,
+   "text": "unfilled gap down of Thu 24 Sep",
+   "weight": 2,
+   "side": "above",
+   "distance": 300.6
+  },
+  {
+   "kind": "old_high",
+   "lo": 23389.15,
+   "hi": 23389.15,
+   "text": "Fri 18 Sep high",
+   "weight": 1,
+   "side": "above",
+   "distance": 326.1
+  },
+  {
+   "kind": "old_low",
+   "lo": 23349.7,
+   "hi": 23349.7,
+   "text": "Wed 23 Sep low",
+   "weight": 1,
+   "side": "above",
+   "distance": 286.6
+  },
+  {
+   "kind": "old_low",
+   "lo": 23317.15,
+   "hi": 23317.15,
+   "text": "Mon 21 Sep low",
+   "weight": 1,
+   "side": "above",
+   "distance": 254.1
+  },
+  {
+   "kind": "round",
+   "lo": 23300,
+   "hi": 23300,
+   "text": "round number 23,300",
+   "weight": 1,
+   "side": "above",
+   "distance": 236.9
+  },
+  {
+   "kind": "old_low",
+   "lo": 23286.8,
+   "hi": 23286.8,
+   "text": "Fri 18 Sep low",
+   "weight": 1,
+   "side": "above",
+   "distance": 223.7
+  },
+  {
+   "kind": "old_low",
+   "lo": 23285.95,
+   "hi": 23285.95,
+   "text": "Tue 22 Sep low",
+   "weight": 1,
+   "side": "above",
+   "distance": 222.8
+  },
+  {
+   "kind": "prev_high",
+   "lo": 23280.6,
+   "hi": 23280.6,
+   "text": "previous-day high (Thu 24 Sep)",
+   "weight": 3,
+   "side": "above",
+   "distance": 217.5
+  },
+  {
+   "kind": "fvg_bear",
+   "lo": 23256.6,
+   "hi": 23264.7,
+   "text": "open bear FVG from Thu 24 Sep 09:38",
+   "weight": 2,
+   "side": "above",
+   "distance": 197.6
+  },
+  {
+   "kind": "equal_highs",
+   "lo": 23242.75,
+   "hi": 23245.1,
+   "text": "untaken equal highs from Thu 24 Sep",
+   "weight": 3,
+   "side": "above",
+   "distance": 180.8
+  },
+  {
+   "kind": "round",
+   "lo": 23200,
+   "hi": 23200,
+   "text": "round number 23,200",
+   "weight": 1,
+   "side": "above",
+   "distance": 136.9
+  },
+  {
+   "kind": "fvg_bear",
+   "lo": 23168.9,
+   "hi": 23174.15,
+   "text": "open bear FVG from Thu 24 Sep 13:25",
+   "weight": 2,
+   "side": "above",
+   "distance": 108.4
+  },
+  {
+   "kind": "fvg_bear",
+   "lo": 23151.4,
+   "hi": 23168.1,
+   "text": "open bear FVG from Thu 24 Sep 13:26",
+   "weight": 2,
+   "side": "above",
+   "distance": 96.7
+  },
+  {
+   "kind": "fvg_bear",
+   "lo": 23122.15,
+   "hi": 23132.15,
+   "text": "open bear FVG from Thu 24 Sep 13:43",
+   "weight": 2,
+   "side": "above",
+   "distance": 64.1
+  },
+  {
+   "kind": "fvg_bear",
+   "lo": 23115.95,
+   "hi": 23121.5,
+   "text": "open bear FVG from Thu 24 Sep 13:44",
+   "weight": 2,
+   "side": "above",
+   "distance": 55.6
+  },
+  {
+   "kind": "round",
+   "lo": 23100,
+   "hi": 23100,
+   "text": "round number 23,100",
+   "weight": 1,
+   "side": "above",
+   "distance": 36.9
+  },
+  {
+   "kind": "prev_close",
+   "lo": 23063.1,
+   "hi": 23063.1,
+   "text": "previous-day close (Thu 24 Sep)",
+   "weight": 2,
+   "side": "below",
+   "distance": 0.0
+  },
+  {
+   "kind": "prev_low",
+   "lo": 23046.2,
+   "hi": 23046.2,
+   "text": "previous-day low (Thu 24 Sep)",
+   "weight": 3,
+   "side": "below",
+   "distance": -16.9
+  },
+  {
+   "kind": "range_low",
+   "lo": 23046.2,
+   "hi": 23046.2,
+   "text": "5-session low",
+   "weight": 2,
+   "side": "below",
+   "distance": -16.9
+  },
+  {
+   "kind": "round",
+   "lo": 23000,
+   "hi": 23000,
+   "text": "round number 23,000",
+   "weight": 1,
+   "side": "below",
+   "distance": -63.1
+  },
+  {
+   "kind": "round",
+   "lo": 22900,
+   "hi": 22900,
+   "text": "round number 22,900",
+   "weight": 1,
+   "side": "below",
+   "distance": -163.1
+  },
+  {
+   "kind": "round",
+   "lo": 22800,
+   "hi": 22800,
+   "text": "round number 22,800",
+   "weight": 1,
+   "side": "below",
+   "distance": -263.1
+  }
+ ]
+}

@@ -547,6 +547,7 @@ table.signals.prep tr.strong td { font-weight: 600; }
 .lv-timeline li::before { content: ""; position: absolute; left: -6px; top: 12px; width: 10px; height: 10px; border-radius: 50%; background: var(--ink-2); }
 .lv-timeline li.k-setup::before { background: var(--accent); } .lv-timeline li.k-level::before, .lv-timeline li.k-wall::before { background: var(--mark); }
 .lv-timeline li.k-win::before { background: var(--win); } .lv-timeline li.k-fill::before { background: var(--accent); }
+.lv-timeline li.k-nostop::before,
 .lv-timeline li.k-warn::before { background: var(--loss); box-shadow: 0 0 0 3px color-mix(in srgb, var(--loss) 30%, transparent); }
 .lv-card.pos { margin-bottom: 10px; }
 .review-list .day-title b.w { color: var(--win); } .review-list .day-title b.l { color: var(--loss); }
@@ -667,3 +668,21 @@ dialog#lightbox .close, .lb-caption { font: 13px var(--mono); color: #e3eaee; ba
 .bt-k { display: block; font-size: .75rem; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
 .bt-v { display: block; font-size: 1.15rem; font-weight: 600; font-variant-numeric: tabular-nums; margin-top: .15rem; }
 .caveat { border-left: 3px solid var(--line); padding-left: .9rem; color: var(--muted); font-size: .92rem; }
+
+/* Today's rule trades — the running scoreboard on the Live page */
+.rt td, .rt th { padding: .45rem .55rem; font-size: .92rem; }
+.rt td.res.w { color: var(--win); font-weight: 600; }
+.rt td.res.l { color: var(--loss); font-weight: 600; }
+.rt tbody tr:last-child td { border-bottom: none; }
+
+/* Armed setups — the moment a resting order can still fill at the rule's price */
+.arm-list li.armed { border-left: 3px solid var(--accent); background: color-mix(in srgb, var(--accent) 7%, transparent); }
+.arm-live { color: var(--accent); font-weight: 600; font-size: .82rem; text-transform: uppercase; letter-spacing: .03em; }
+.arm-done { color: var(--muted); font-size: .82rem; }
+.arm-gone { color: var(--muted); font-size: .82rem; font-style: italic; }
+
+/* Copy-order ticket */
+.slip-btn { margin-top: .5rem; font-size: .82rem; padding: .3rem .7rem; }
+.slip-fallback { margin: .5rem 0 0; padding: .6rem .7rem; border: 1px solid var(--line); border-radius: 8px;
+  font-size: .8rem; white-space: pre; overflow-x: auto; user-select: all; }
+.slip-dead { margin: .5rem 0 0; font-size: .8rem; color: var(--muted); font-style: italic; }

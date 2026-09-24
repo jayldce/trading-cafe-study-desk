@@ -1170,19 +1170,202 @@ function approachHTML(st) {
 
 // The base-reversal rule, read on the option chart (tools/base-reversal.py). New and unproven live, so it is
 // labelled as such rather than shown with the same weight as the index scanner.
+/* Today's rule trades: every setup BOTH rule sets produced today, in order, with what it made.
+   The point is the running total — on 24 Sep the rules made +4.9R in a morning where none of them reached the
+   phone, and there was no single place on the page that said so. */
+const COPY_MAX_AGE_MIN = 10;   // past this the trigger price is history, not an order
+let LIVE_RISK = null;
+async function riskUnit() {
+  if (LIVE_RISK !== null) return LIVE_RISK;
+  try {
+    const s = await (await fetch("../data/journal/settings.json", { cache: "no-store" })).json();
+    LIVE_RISK = s.risk_per_trade_rs || (s.capital_rs && s.risk_per_trade_pct ? s.capital_rs * s.risk_per_trade_pct / 100 : 0);
+  } catch { LIVE_RISK = 0; }
+  return LIVE_RISK;
+}
+
+/* One tap puts the whole bracket ticket on the clipboard, in the order Dhan's form asks for it. It does not
+   place anything - it removes the retyping, which is where a wrong strike or a dropped decimal comes from when
+   you are working against a 5-minute ARM window. */
+// The whole trade on one line, the way a Telegram call reads. Built from the same slip as everything above
+// it, so the two can never disagree.
+function callLine(indexLabel, a) {
+  const s = a.slip || {};
+  const idx = (indexLabel || "").toUpperCase().replace(" 50", "");
+  const strike = String(a.label || "").replace(/,/g, "");
+  let exp = "";
+  if (a.expiry && /^\d{4}-\d{2}-\d{2}$/.test(a.expiry)) {
+    const d = new Date(a.expiry + "T00:00:00");
+    exp = " " + String(d.getDate()) + d.toLocaleString("en", { month: "short" }).toUpperCase();
+  }
+  const f = (v) => (v == null ? "—" : Number(v).toFixed(2));
+  return `BUY ${idx} ${strike}${exp} @ ${f(s.entry)} (lmt ${f(s.limit)}) SL ${f(s.stop)} TGT ${f(s.target)}`
+    + (s.qty ? ` QTY ${s.qty}` : " QTY — one lot is over budget");
+}
+
+function slipText(a, indexLabel) {
+  const s = a.slip || {};
+  // Field names as TRADINGVIEW's order panel labels them - that is the ticket he actually places from
+  // (tabs: Market / Limit / Stop / Stop Limit; Units; Exits with Take profit and Stop loss checkboxes).
+  // On 24 Sep the generic phrase "stop-limit" was read as the LIMIT tab and the limit price entered alone,
+  // which fills instantly, because a buy limit above the market is immediately marketable.
+  return [
+    `${indexLabel || ""} ${a.label}`,
+    ``,
+    `TAB            Stop Limit      <- NOT "Limit". The Limit tab fills instantly.`,
+    `Side           Buy`,
+    `Units          ${s.qty ?? "— one lot is over budget"}${s.lots ? `  (${s.lots} lot${s.lots === 1 ? "" : "s"})` : ""}`,
+    ``,
+    `TYPE THESE AS ABSOLUTE PRICES. The boxes on the right ("Ask", "Stop + 1",`,
+    `"Ticks") are RELATIVE modes that auto-fill from the current price - typing`,
+    `into the left-hand Price box is what pins the number to the rule.`,
+    ``,
+    `Stop price     ${s.entry}         <- nothing happens until it trades here`,
+    `Limit price    ${s.limit}         <- the most you will pay once it triggers`,
+    ``,
+    `Exits — tick BOTH boxes, switch each dropdown from Ticks to Price:`,
+    `  Take profit  ${s.target}`,
+    `  Stop loss    ${s.stop}`,
+    ``,
+    `Time in force  Today`,
+    `Risk           ₹${s.rupee_risk ?? "—"} of your ₹${s.budget ?? "—"} budget`,
+    `Setup          ${a.confirm} at ${a.confirm_time}, base ${a.base || ""}`,
+    `Security id    ${a.security_id || "(see Options panel)"}`,
+    ``,
+    callLine(indexLabel, a),
+  ].join("\n");
+}
+
+function wireCopyButtons(root, indexLabel) {
+  root.querySelectorAll("[data-slip]").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      let a;
+      try { a = JSON.parse(btn.dataset.slip); } catch { return; }
+      const text = slipText(a, indexLabel);
+      try {
+        await navigator.clipboard.writeText(text);
+        btn.textContent = "Copied";
+      } catch {
+        // clipboard is blocked outside https/localhost in some browsers: show it so it can still be selected
+        const pre = document.createElement("pre");
+        pre.className = "slip-fallback mono";
+        pre.textContent = text;
+        btn.after(pre);
+        btn.textContent = "Select and copy";
+      }
+      setTimeout(() => { btn.textContent = "Copy order"; }, 2500);
+    });
+  });
+}
+
+function armedHTML(st) {
+  // The ARM is the only moment a resting buy-stop can still fill at the rule's price, so it is the alert that
+  // matters most - and until 24 Sep it was the one thing the page never drew. `arming` is momentary; the
+  // monitor also publishes `armed_log`, everything that armed today with what became of it.
+  const live = st.arming || [];
+  const log = (st.armed_log || []).filter((a) => !live.some((l) => l.confirm_time === a.confirm_time && l.side === a.side));
+  if (!live.length && !log.length) return "";
+  const card = (a, isLive) => {
+    // read the slip the monitor computed; never recompute prices here. Ticks and lots are decided in one
+    // place (order_slip in live-monitor.py) precisely so the page cannot drift from the notification.
+    const s = a.slip || {};
+    const tgt = s.target ?? "—", limit = s.limit ?? "—", entry = s.entry ?? a.entry, stop = s.stop ?? a.stop;
+    const size = s.qty ? `${s.qty} (${s.lots} lot${s.lots === 1 ? "" : "s"}, risks ₹${s.rupee_risk})`
+      : s.one_lot_risk ? `⚠ 1 lot of ${s.lot} risks ₹${s.one_lot_risk} — over budget` : "";
+    const state = isLive ? `<span class="arm-live">ARMED — not triggered yet${a.expires_in != null ? ` · expires in ${a.expires_in} min` : ""}</span>`
+      : a.triggered ? `<span class="arm-done">triggered ${esc(a.triggered)}${a.r != null ? ` · ${rText(a.r)}` : ""}</span>`
+        : `<span class="arm-gone">never triggered</span>`;
+    return `<li class="${isLive ? "armed" : ""}">
+      <b>${esc(a.label)}</b> <span class="bs-kind">${esc(a.confirm)}</span>
+      <small>at ${esc(a.confirm_time)}</small> ${state}
+      <div class="bs-nums"><span>buy stop <b>₹${entry}</b></span><span>limit <b>₹${limit}</b></span>
+        <span>SL <b>₹${stop}</b></span><span>2R <b>₹${tgt}</b></span>${size ? `<span>size <b>${size}</b></span>` : ""}</div>
+      ${s.qty && isLive ? `<button type="button" class="btn slip-btn" data-slip="${esc(JSON.stringify(a))}">Copy order</button>`
+        : `<p class="slip-dead">${a.triggered ? "already triggered" : "window closed"} — not placeable</p>`}</li>`;
+  };
+  return `<section><h2>Armed — ready to place</h2>
+    <ul class="bs-list arm-list">${live.map((a) => card(a, true)).join("")}${log.slice().reverse().map((a) => card(a, false)).join("")}</ul>
+    <p class="caption">An armed setup means the confirmation candle has formed but price has not taken it out yet —
+      the only moment a resting buy stop-limit can still fill at the rule's own price. Placing it is yours to do;
+      this tool has no order endpoints.</p></section>`;
+}
+
+function ruleTradesHTML(st, riskRs) {
+  const base = (st.base_setups || []).map((b) => ({
+    time: b.time, rule: "Base reversal", what: `${b.label} · ${b.confirm}`,
+    entry: (b.slip && b.slip.entry) ?? b.entry, stop: (b.slip && b.slip.stop) ?? b.stop,
+    risk: (b.slip && b.slip.risk) ?? b.risk, target: b.slip && b.slip.target,
+    r: b.r, result: b.result, exit: b.exit, exitTime: b.exit_time,
+  }));
+  const scan = (st.signals || []).map((g) => ({
+    time: g.time, rule: "Index scanner", what: `${g.code || ""}${g.n || ""} ${g.setup || ""}`.trim() + ` · ${g.dir || ""}`,
+    entry: g.entry, stop: g.stop, risk: g.entry != null && g.stop != null ? Math.abs(g.entry - g.stop) : null,
+    r: g.r, result: g.result, exit: g.exit, exitTime: g.exit_time,
+  }));
+  const all = [...base, ...scan].sort((a, b) => (a.time || "").localeCompare(b.time || ""));
+  if (!all.length) {
+    return `<section><h2>Today's rule trades</h2>
+      <div class="lv-card quiet"><p><b>Nothing yet.</b> Neither rule set has produced a setup today.</p></div></section>`;
+  }
+  const done = all.filter((t) => t.r != null);
+  const net = done.reduce((a, t) => a + t.r, 0);
+  const open = all.filter((t) => t.result === "open" || t.result === "time").length;
+  const label = { target: "hit 2R", stop: "stopped", time: "running", open: "open" };
+  const rows = all.map((t) => {
+    const cls = t.r > 0 ? "w" : t.r < 0 ? "l" : "";
+    const tgt = t.target != null ? t.target : (t.entry != null && t.risk ? (t.entry + 2 * t.risk).toFixed(2) : "—");
+    return `<tr>
+      <td class="num">${esc(t.time || "")}</td>
+      <td>${esc(t.rule)}<br><small class="muted">${esc(t.what)}</small></td>
+      <td class="num">₹${t.entry ?? "—"}</td><td class="num">₹${t.stop ?? "—"}</td><td class="num">₹${tgt}</td>
+      <td>${esc(label[t.result] || t.result || "")}${t.exitTime ? `<br><small class="muted">${esc(t.exitTime)}</small>` : ""}</td>
+      <td class="num res ${cls}">${t.r == null ? "—" : rText(t.r)}</td></tr>`;
+  }).join("");
+  const rupees = riskRs ? ` · ≈ <b class="${net >= 0 ? "w" : "l"}">₹${Math.round(net * riskRs).toLocaleString("en-IN")}</b> at your ₹${Math.round(riskRs)} risk unit` : "";
+  return `<section><h2>Today's rule trades</h2>
+    <p class="record"><b>${all.length}</b> setups · <b class="w">${all.filter((t) => t.result === "target").length} hit 2R</b>
+      · <b class="l">${all.filter((t) => t.result === "stop").length} stopped</b> · ${open} still running ·
+      net <b class="${net >= 0 ? "w" : "l"}">${rText(net)}</b>${rupees}</p>
+    <div class="tablewrap"><table class="bt rt">
+      <thead><tr><th>Time</th><th>Rule</th><th>Entry</th><th>Stop</th><th>2R target</th><th>Result</th><th>R</th></tr></thead>
+      <tbody>${rows}</tbody></table></div>
+    <p class="caption">What the rules signalled, scored in index or premium points before costs — not what you traded.
+      A row that says “running” is still open and its R will move.</p></section>`;
+}
+
 function baseSetupsHTML(st) {
   const f = st.base_setups || [];
   if (!f.length) return "";
-  const rows = f.slice(-4).reverse().map((b) => `<li class="${b.side === "CE" ? "long" : "short"}">
+  // Minutes since a setup triggered, from the page's own clock - the state's stamp can be a few seconds old.
+  const nowMin = (() => { const d = new Date(); return d.getHours() * 60 + d.getMinutes(); })();
+  const ageOf = (t) => (t && /^\d\d:\d\d$/.test(t) ? nowMin - (+t.slice(0, 2) * 60 + +t.slice(3)) : 999);
+  const rows = f.slice(-4).reverse().map((b) => {
+    const sl = b.slip || {};
+    const age = ageOf(b.time);
+    // A ticket is copyable only while it is ACTUALLY placeable: still unresolved, and young enough that the
+    // trigger price still means something. A 104-minute-old card with a live-looking Copy button is how you
+    // end up placing a trade the rule closed an hour ago.
+    const live = (!b.result || b.result === "time") && age <= COPY_MAX_AGE_MIN;
+    const why = b.result && b.result !== "time" ? `closed — ${b.result} ${rText(b.r)}`
+      : age > COPY_MAX_AGE_MIN ? `expired — triggered ${age} min ago` : ""
+    const size = sl.qty ? `${sl.qty} (${sl.lots} lot${sl.lots === 1 ? "" : "s"}, risks ₹${sl.rupee_risk})`
+      : sl.one_lot_risk ? `⚠ 1 lot of ${sl.lot} risks ₹${sl.one_lot_risk} — over budget` : "";
+    return `<li class="${b.side === "CE" ? "long" : "short"}">
       <b>${esc(b.label)}</b> <span class="bs-kind">${esc(b.confirm)}</span> <small>at ${esc(b.confirm_time)}</small>
-      <div class="bs-nums"><span>entry <b>₹${b.entry}</b></span><span>stop <b>₹${b.stop}</b></span>
-        <span>risk <b>₹${b.risk}</b></span><span>2R <b>₹${(b.entry + 2 * b.risk).toFixed(2)}</b></span></div>
-      <small class="caption">base ${esc(b.base)} from ${esc(b.base_time)}${b.result && b.result !== "time" ? ` · ${esc(b.result)} ${rText(b.r)}` : ""}</small></li>`).join("");
+      <div class="bs-nums"><span>entry <b>₹${sl.entry ?? b.entry}</b></span><span>stop <b>₹${sl.stop ?? b.stop}</b></span>
+        <span>risk <b>₹${sl.risk ?? b.risk}</b></span><span>2R <b>₹${sl.target ?? (b.entry + 2 * b.risk).toFixed(2)}</b></span>
+        ${size ? `<span>size <b>${size}</b></span>` : ""}</div>
+      <small class="caption">base ${esc(b.base)} from ${esc(b.base_time)}${b.result && b.result !== "time" ? ` · ${esc(b.result)} ${rText(b.r)}` : ""}</small>
+      ${sl.qty && live ? `<button type="button" class="btn slip-btn" data-slip="${esc(JSON.stringify(b))}">Copy order</button>`
+        : why ? `<p class="slip-dead">${esc(why)} — not placeable</p>` : ""}</li>`;
+  }).join("");
   const charts = Object.entries(st.option_charts || {}).map(([label, c]) => optionChartSVG(label, c)).join("");
   return `<section><h2>Base reversals (option chart)</h2>
     ${charts}
-    <p class="caption">New rule, watching only — it reads the call and put charts, not the index. Backtested
-      +0.35R per trade (backtested on Nifty only), but never yet run live. Treat it as something to check, not to follow.</p>
+    <p class="caption">Reads the call and put charts, not the index. Measured net of costs by
+      <code>tools/backtest.py</code>: Nifty <b>+0.13R</b> over 97 setups / 25 sessions, beating a random-entry
+      control 30 times out of 30; Sensex <b>−0.44R</b> over only 25 setups / 4 sessions, too small a sample to
+      trust either way. Something to check, not to follow.</p>
     <ul class="bs-list">${rows}</ul></section>`;
 }
 
@@ -1222,6 +1405,9 @@ function timelineHTML(st) {
 }
 
 function optionsHTML(o) {
+  // the strike he buys is per index - Nifty around Rs 150, Sensex around Rs 300, since Rs 150 at a 74,000
+  // index buys a delta-0.3 option that barely moves. dhan_options.summarize() reports what it aimed for.
+  const tp = Math.round(o.target_premium || 150);
   if (!o) return "";
   if (o.error) return `<p class="caption">No option data: ${esc(o.error)}</p>`;
   const w = (list) => list.map((x) => px0(x.strike)).join(", ") || "—";
@@ -1233,8 +1419,9 @@ function optionsHTML(o) {
       <span><small>Call wall (resistance)</small>${w(o.call_walls.slice(0, 1))}</span>
       <span><small>Put wall (support)</small>${w(o.put_walls.slice(0, 1))}</span>
       <span><small>Writers adding most</small>${adds}</span>
-      ${o.ce_150 ? `<span><small>~₹150 call${o.ce_150.live_ltp != null ? " · live" : ""}</small>${px0(o.ce_150.strike)} CE ₹${o.ce_150.live_ltp ?? o.ce_150.ltp}</span>` : ""}
-      ${o.pe_150 ? `<span><small>~₹150 put${o.pe_150.live_ltp != null ? " · live" : ""}</small>${px0(o.pe_150.strike)} PE ₹${o.pe_150.live_ltp ?? o.pe_150.ltp}</span>` : ""}
+      <!-- the target premium is per index: Nifty ~150, Sensex ~300 -->
+      ${o.ce_150 ? `<span><small>~₹${tp} call${o.ce_150.live_ltp != null ? " · live" : ""}</small>${px0(o.ce_150.strike)} CE ₹${o.ce_150.live_ltp ?? o.ce_150.ltp}</span>` : ""}
+      ${o.pe_150 ? `<span><small>~₹${tp} put${o.pe_150.live_ltp != null ? " · live" : ""}</small>${px0(o.pe_150.strike)} PE ₹${o.pe_150.live_ltp ?? o.pe_150.ltp}</span>` : ""}
     </div><p class="caption">Updated ${esc(o.at)}.${o.note ? ` ${esc(o.note)}` : ""}</p>`;
 }
 
@@ -1271,6 +1458,7 @@ async function viewLive(which) {
       (<code>python3 tckb.py serve --open</code>), start the monitor, and this page updates every 20 seconds.</p>${start}`;
     return;
   }
+  await riskUnit();
   const render = async () => {
     if (!location.hash.startsWith("#/live")) { clearInterval(liveTimer); return; }
     if (location.hash.startsWith("#/live/") !== (idx !== "nifty")) { clearInterval(liveTimer); return; }
@@ -1319,6 +1507,8 @@ async function viewLive(which) {
             ${accountHTML(acct)}
             <section><h2>Where ${idx === "nifty" ? "Nifty" : "Sensex"} is</h2>${whereHTML(st)}${indexChartSVG(st)}</section>
             <section><h2>Setup right now</h2>${setupHTML(st)}</section>
+            ${armedHTML(st)}
+            ${ruleTradesHTML(st, LIVE_RISK)}
             ${baseSetupsHTML(st)}
           </div>
           <aside class="lv-col">
@@ -1334,6 +1524,7 @@ async function viewLive(which) {
         </div>
       </div>`;
     wireThumbs(app);
+    wireCopyButtons(app, st.index_label);
   };
   await render();
   liveTimer = setInterval(render, 3000); // a small local file; with the Dhan feed the price changes every few seconds
