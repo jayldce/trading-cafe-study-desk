@@ -1407,8 +1407,8 @@ function timelineHTML(st) {
 function optionsHTML(o) {
   // the strike he buys is per index - Nifty around Rs 150, Sensex around Rs 300, since Rs 150 at a 74,000
   // index buys a delta-0.3 option that barely moves. dhan_options.summarize() reports what it aimed for.
-  const tp = Math.round(o.target_premium || 150);
   if (!o) return "";
+  const tp = Math.round(o.target_premium || 150);
   if (o.error) return `<p class="caption">No option data: ${esc(o.error)}</p>`;
   const w = (list) => list.map((x) => px0(x.strike)).join(", ") || "—";
   const adds = [...o.call_oi_adds.slice(0, 1).map((x) => `${px0(x.strike)} CE`), ...o.put_oi_adds.slice(0, 1).map((x) => `${px0(x.strike)} PE`)].join(" · ");

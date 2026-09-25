@@ -17,6 +17,7 @@ These are studies of finished sessions, not calls for the next one. Everything i
 | Tue 22 Sep | +25 | trend down | Previous-day high | "Swept" at 09:15, no reversal | The 10:31 opening-range-low break |
 | Wed 23 Sep | +23 | trend up | Opening-range low | Poked 2.2 pts at 09:54, no reversal candle, held | That poke — the day's low; confirmed by the 10:45 opening-range-high break |
 | Thu 24 Sep | −227 | trend down | Opening-range low / 23,200 | Poked 09:55 and 10:22 with no reversal, broke with the 5-session low at 11:56 | The 09:15 candle — the high was in at once; confirmed by the 11:56 break |
+| Fri 25 Sep | −28 | range, then late breakout up | Yesterday's low | Opened under it, reclaimed in the first candle; broken again 12:56 and reclaimed in one candle | The 12:57 failed break — then three stacks of equal highs taken 13:59–14:03 |
 
 ## What repeats across them
 

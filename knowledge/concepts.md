@@ -250,7 +250,12 @@ On 10-Sep a BSE-wide price-feed and order glitch spiked one option ~100+ pts in 
 
 ### Guest method: levels on spot + standard-deviation zones (Trade Circuit)
 The guest host draws entry, SL and target on the **spot** chart and trades the option at whatever premium prevails when spot hits each level, entering only on a full candle close. He books profit at **standard-deviation projections** of the latest swing, which he treats as "stretched" zones rather than a mechanical system.
-**Watch:** [▶ 10-Sep spot method](https://www.youtube.com/watch?v=_v3ieKuYGRc&t=4260s) · [▶ 10-Sep SD zones](https://www.youtube.com/watch?v=_v3ieKuYGRc&t=19660s)
+On 25-Sep he spelled out how he anchors the standard-deviation tool: from the lowest to the highest point of the single continuous run of same-colour candles that caused the reversal, never from an arbitrary swing. He also gave a plain definition of **confluence**: a few extra confirmations for a trade, the main one being your own analysis.
+**Watch:** [▶ 10-Sep spot method](https://www.youtube.com/watch?v=_v3ieKuYGRc&t=4260s) · [▶ 10-Sep SD zones](https://www.youtube.com/watch?v=_v3ieKuYGRc&t=19660s) · [▶ 25-Sep SD anchor](https://www.youtube.com/watch?v=yD4AJB3j0e4&t=5220s) · [▶ 25-Sep confluence](https://www.youtube.com/watch?v=yD4AJB3j0e4&t=4860s)
+
+### Step back after a stop, and cap the day
+After a stop-out, re-read the market before firing the same trade again, and set a daily trade count in advance. On 25-Sep Trade Circuit stopped at four trades and skipped a same-spot re-entry after his fourth stop; the index then broke out about 100 points without him. His answer: a missed move is not a loss. The cap trades missed moves for avoided revenge trades — which side of that trade-off pays is not yet measured.
+**Watch:** [▶ 25-Sep](https://www.youtube.com/watch?v=yD4AJB3j0e4&t=21480s) · [▶ "move miss hua"](https://www.youtube.com/watch?v=yD4AJB3j0e4&t=21240s)
 
 ### Trade your own setup, not your neighbour's
 A 2016–17 trading-floor story he retells: two traders sitting side by side, in *opposite* positions, can both end the month profitable if each sticks to their own system instead of reacting to the other's conviction. The lesson he draws for viewers: don't let a nearby trader's (or a chat commenter's) confidence shake your own plan.
