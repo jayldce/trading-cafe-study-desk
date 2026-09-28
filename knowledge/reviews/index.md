@@ -18,10 +18,11 @@ These are studies of finished sessions, not calls for the next one. Everything i
 | Wed 23 Sep | +23 | trend up | Opening-range low | Poked 2.2 pts at 09:54, no reversal candle, held | That poke — the day's low; confirmed by the 10:45 opening-range-high break |
 | Thu 24 Sep | −227 | trend down | Opening-range low / 23,200 | Poked 09:55 and 10:22 with no reversal, broke with the 5-session low at 11:56 | The 09:15 candle — the high was in at once; confirmed by the 11:56 break |
 | Fri 25 Sep | −28 | range, then late breakout up | Yesterday's low | Opened under it, reclaimed in the first candle; broken again 12:56 and reclaimed in one candle | The 12:57 failed break — then three stacks of equal highs taken 13:59–14:03 |
+| Mon 28 Sep | −76 | trend down | Yesterday's low | Opened 44 pts above it, broken inside the first candle, never reclaimed | The 09:15 candle — the high was in at once; the 14:17 break of the box's equal lows gave the late leg |
 
 ## What repeats across them
 
-- **The day's extreme often prints in the first 30 minutes** (11, 15, 16, 17, 18, 22, 23 and 24 Sep all had one extreme before 09:55). Wait for the opening range before trusting a direction.
+- **The day's extreme often prints in the first 30 minutes** (11, 15, 16, 17, 18, 22, 23, 24 and 28 Sep all had one extreme before 09:55). Wait for the opening range before trusting a direction.
 - **A sweep only counts with displacement.** 16 and 18 Sep: sweep plus strong reversal candle, and the level held all day. 15 and 22 Sep: the same shape without displacement, and the trend simply continued the other way.
 - **The first break of an obvious level is often the trap** (17 Sep at 09:42, 18 Sep at 15:02) — but not always: 22 Sep's break of the previous-day low at 13:53 ran another 31 points before its own late reversal at 14:14, a reminder the "first break is a trap" pattern isn't universal.
 - **Big gaps behave differently from small ones — but not in one fixed direction.** The 170–200-point gaps of 11 and 15 Sep moved hard *against* the gap; the 227-point gap down of 24 Sep printed its high in the first minute and trended *with* the gap all day. A big gap means a big day, not a known side. The smaller gaps (16–18 and 22 Sep) produced ranges or trend days that still respected nearby levels.

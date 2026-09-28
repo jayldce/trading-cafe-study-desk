@@ -1200,7 +1200,7 @@ function callLine(indexLabel, a) {
   }
   const f = (v) => (v == null ? "—" : Number(v).toFixed(2));
   return `BUY ${idx} ${strike}${exp} @ ${f(s.entry)} (lmt ${f(s.limit)}) SL ${f(s.stop)} TGT ${f(s.target)}`
-    + (s.qty ? ` QTY ${s.qty}` : " QTY — one lot is over budget");
+    + ` QTY ${s.qty}` + (s.rr ? ` RR 1:${s.rr.toFixed(2)}` : "");
 }
 
 function slipText(a, indexLabel) {
@@ -1214,7 +1214,8 @@ function slipText(a, indexLabel) {
     ``,
     `TAB            Stop Limit      <- NOT "Limit". The Limit tab fills instantly.`,
     `Side           Buy`,
-    `Units          ${s.qty ?? "— one lot is over budget"}${s.lots ? `  (${s.lots} lot${s.lots === 1 ? "" : "s"})` : ""}`,
+    `Units          ${s.qty}  (${s.lots} lot${s.lots === 1 ? "" : "s"}, risks ₹${s.rupee_risk}${s.over_budget ? " — ABOVE your budget" : ""})`,
+    `Risk : Reward  1 : ${s.rr}   (risk ₹${s.rupee_risk} to make ₹${s.reward_rs})`,
     ``,
     `TYPE THESE AS ABSOLUTE PRICES. The boxes on the right ("Ask", "Stop + 1",`,
     `"Ticks") are RELATIVE modes that auto-fill from the current price - typing`,
@@ -1270,8 +1271,7 @@ function armedHTML(st) {
     // place (order_slip in live-monitor.py) precisely so the page cannot drift from the notification.
     const s = a.slip || {};
     const tgt = s.target ?? "—", limit = s.limit ?? "—", entry = s.entry ?? a.entry, stop = s.stop ?? a.stop;
-    const size = s.qty ? `${s.qty} (${s.lots} lot${s.lots === 1 ? "" : "s"}, risks ₹${s.rupee_risk})`
-      : s.one_lot_risk ? `⚠ 1 lot of ${s.lot} risks ₹${s.one_lot_risk} — over budget` : "";
+    const size = s.qty ? `${s.qty} (${s.lots} lot${s.lots === 1 ? "" : "s"}, risks ₹${s.rupee_risk}${s.over_budget ? " — above budget" : ""})` : "";
     const state = isLive ? `<span class="arm-live">ARMED — not triggered yet${a.expires_in != null ? ` · expires in ${a.expires_in} min` : ""}</span>`
       : a.triggered ? `<span class="arm-done">triggered ${esc(a.triggered)}${a.r != null ? ` · ${rText(a.r)}` : ""}</span>`
         : `<span class="arm-gone">never triggered</span>`;
@@ -1279,7 +1279,7 @@ function armedHTML(st) {
       <b>${esc(a.label)}</b> <span class="bs-kind">${esc(a.confirm)}</span>
       <small>at ${esc(a.confirm_time)}</small> ${state}
       <div class="bs-nums"><span>buy stop <b>₹${entry}</b></span><span>limit <b>₹${limit}</b></span>
-        <span>SL <b>₹${stop}</b></span><span>2R <b>₹${tgt}</b></span>${size ? `<span>size <b>${size}</b></span>` : ""}</div>
+        <span>SL <b>₹${stop}</b></span><span>2R <b>₹${tgt}</b></span>${s.rr ? `<span>R:R <b>1:${s.rr.toFixed(2)}</b></span>` : ""}${size ? `<span>size <b>${size}</b></span>` : ""}</div>
       ${s.qty && isLive ? `<button type="button" class="btn slip-btn" data-slip="${esc(JSON.stringify(a))}">Copy order</button>`
         : `<p class="slip-dead">${a.triggered ? "already triggered" : "window closed"} — not placeable</p>`}</li>`;
   };
@@ -1348,12 +1348,11 @@ function baseSetupsHTML(st) {
     const live = (!b.result || b.result === "time") && age <= COPY_MAX_AGE_MIN;
     const why = b.result && b.result !== "time" ? `closed — ${b.result} ${rText(b.r)}`
       : age > COPY_MAX_AGE_MIN ? `expired — triggered ${age} min ago` : ""
-    const size = sl.qty ? `${sl.qty} (${sl.lots} lot${sl.lots === 1 ? "" : "s"}, risks ₹${sl.rupee_risk})`
-      : sl.one_lot_risk ? `⚠ 1 lot of ${sl.lot} risks ₹${sl.one_lot_risk} — over budget` : "";
+    const size = sl.qty ? `${sl.qty} (${sl.lots} lot${sl.lots === 1 ? "" : "s"}, risks ₹${sl.rupee_risk}${sl.over_budget ? " — above budget" : ""})` : "";
     return `<li class="${b.side === "CE" ? "long" : "short"}">
       <b>${esc(b.label)}</b> <span class="bs-kind">${esc(b.confirm)}</span> <small>at ${esc(b.confirm_time)}</small>
       <div class="bs-nums"><span>entry <b>₹${sl.entry ?? b.entry}</b></span><span>stop <b>₹${sl.stop ?? b.stop}</b></span>
-        <span>risk <b>₹${sl.risk ?? b.risk}</b></span><span>2R <b>₹${sl.target ?? (b.entry + 2 * b.risk).toFixed(2)}</b></span>
+        <span>risk <b>₹${sl.risk ?? b.risk}</b></span><span>2R <b>₹${sl.target ?? (b.entry + 2 * b.risk).toFixed(2)}</b></span>${sl.rr ? `<span>R:R <b>1:${sl.rr.toFixed(2)}</b></span>` : ""}
         ${size ? `<span>size <b>${size}</b></span>` : ""}</div>
       <small class="caption">base ${esc(b.base)} from ${esc(b.base_time)}${b.result && b.result !== "time" ? ` · ${esc(b.result)} ${rText(b.r)}` : ""}</small>
       ${sl.qty && live ? `<button type="button" class="btn slip-btn" data-slip="${esc(JSON.stringify(b))}">Copy order</button>`
@@ -1404,6 +1403,129 @@ function timelineHTML(st) {
     <div><b>${esc(a.short || a.title || "")}</b>${a.detail || a.text ? `<small>${esc(a.detail || a.text)}</small>` : ""}</div></li>`).join("")}</ol>`;
 }
 
+/* ---------------- position sizing reference (local only) ----------------
+   A lookup table, not a calculator you refill each time: put in the premium you are paying and the target and
+   stop in points, and read off what every lot size is worth in rupees. The dialog is attached to document.body
+   rather than rendered inside the Live page, because that page rewrites its own HTML every 3 seconds - a dialog
+   living inside it would be destroyed and would close itself while you were still typing into it. */
+const SIZING = {
+  nifty: { label: "Nifty", lot: 65, premium: 160, t1: 18, t2: 30, sl: 15, lots: 10 },
+  sensex: { label: "Sensex", lot: 20, premium: 300, t1: 35, t2: 60, sl: 30, lots: 10 },
+};
+const SIZING_MAX_ROWS = 100;   // a hard ceiling, so a stray keystroke cannot ask for ten thousand rows
+const SIZING_FIELDS = [["premium", "Premium (1 unit)", "₹"], ["t1", "Target 1", "pts"],
+  ["t2", "Target 2", "pts"], ["sl", "Stop loss", "pts"], ["lots", "Max lots", ""]];
+
+function sizingCfg(key) {
+  const saved = store.get("sizing:" + key, null);
+  return { ...SIZING[key], ...(saved || {}) };
+}
+
+// Rows only. The inputs are rendered once and never rewritten, so typing is never interrupted: an earlier
+// version rebuilt the whole block on every keystroke, which reset the field from the parsed value - typing
+// "160.5" lost its decimal point the moment the "." was entered.
+function paintSizingRows(key, cap) {
+  const c = sizingCfg(key);
+  const body = document.querySelector(`tbody[data-rows="${key}"]`);
+  if (!body) return;
+  const money = (n) => `₹${Math.round(n).toLocaleString("en-IN")}`;
+  const out = [];
+  const maxLots = Math.max(1, Math.min(SIZING_MAX_ROWS, Math.floor(c.lots) || 10));
+  for (let lots = 1; lots <= maxLots; lots++) {
+    const qty = lots * c.lot;
+    const cost = c.premium * qty;
+    // dim what this account cannot put on today, without hiding it - capital changes day to day
+    const over = cap && cost > cap;
+    out.push(`<tr class="${over ? "sz-over" : ""}">
+      <td class="num">${lots}</td><td class="num">${qty}</td><td class="num">${money(cost)}</td>
+      <td class="num w">+${money(c.t1 * qty)}</td>
+      <td class="num w">+${money(c.t2 * qty)}</td>
+      <td class="num l">−${money(c.sl * qty)}</td></tr>`);
+  }
+  body.innerHTML = out.join("");
+}
+
+function sizingTable(key) {
+  const c = sizingCfg(key);
+  // type=text with inputmode=decimal, not type=number: a number input carries spinner arrows and changes its
+  // value when the wheel passes over it, which is unusable while scrolling a long table.
+  const inputs = SIZING_FIELDS.map(([f, label, unit]) => `<label class="sz-f">
+      <span>${label}</span>
+      <input type="text" inputmode="decimal" autocomplete="off" data-sz="${key}" data-f="${f}" value="${c[f]}">
+      <small>${unit}</small></label>`).join("");
+  return `<section class="sz-block">
+    <h3>${c.label} <small>lot ${c.lot}</small></h3>
+    <div class="sz-inputs">${inputs}</div>
+    <div class="tablewrap"><table class="bt sz-table">
+      <thead><tr><th>Lots</th><th>Qty</th><th>Price</th><th>Target 1</th><th>Target 2</th><th>Stop loss</th></tr></thead>
+      <tbody data-rows="${key}"></tbody></table></div></section>`;
+}
+
+let SIZING_PREFILLED = false;
+async function prefillSizing() {
+  // first open only: take the premium from the strike the monitor is actually watching, then it is yours to edit
+  if (SIZING_PREFILLED) return;
+  SIZING_PREFILLED = true;
+  for (const [key, file] of [["nifty", "data/live/state.json"], ["sensex", "data/live/state-sensex.json"]]) {
+    if (store.get("sizing:" + key, null)) continue;          // never overwrite a number he has typed
+    try {
+      const st = await (await fetch(file, { cache: "no-store" })).json();
+      const o = st.options || {};
+      const px = (o.ce_150 || {}).ltp || (o.pe_150 || {}).ltp;
+      if (px) store.set("sizing:" + key, { ...SIZING[key], premium: Math.round(px) });
+    } catch { /* no monitor for that index today; the default stands */ }
+  }
+}
+
+function renderSizing(dlg) {
+  const cap = store.get("sizingCapital", 50000);
+  dlg.querySelector(".sz-body").innerHTML = ["nifty", "sensex"].map(sizingTable).join("");
+  dlg.querySelectorAll("[data-sz]").forEach((inp) => {
+    inp.addEventListener("input", () => {
+      const key = inp.dataset.sz;
+      // keep whatever is in the box; only the arithmetic uses the parsed number. A half-typed "160." stays
+      // on screen and simply counts as 160 until the rest arrives.
+      const n = parseFloat(inp.value);
+      store.set("sizing:" + key, { ...sizingCfg(key), [inp.dataset.f]: Number.isFinite(n) ? n : 0 });
+      paintSizingRows(key, cap);
+    });
+    // a wheel over a focused field must scroll the dialog, never nudge the value
+    inp.addEventListener("wheel", (e) => { if (document.activeElement === inp) inp.blur(); }, { passive: true });
+  });
+  ["nifty", "sensex"].forEach((k) => paintSizingRows(k, cap));
+}
+
+async function openSizing() {
+  let dlg = document.getElementById("sizing-dialog");
+  if (!dlg) {
+    dlg = document.createElement("dialog");
+    dlg.id = "sizing-dialog";
+    dlg.innerHTML = `<div class="sz">
+      <header class="sz-head"><h2>Position sizing</h2>
+        <button type="button" class="btn sz-close" aria-label="Close">Close</button></header>
+      <div class="sz-body"></div>
+      <p class="caption">Price is what the position costs (premium × quantity). Target and stop columns are
+        points × quantity. Rows costing more than ₹${(50000).toLocaleString("en-IN")} are dimmed. Your numbers
+        are remembered in this browser.</p></div>`;
+    document.body.appendChild(dlg);
+    dlg.querySelector(".sz-close").addEventListener("click", () => dlg.close());
+    // click on the backdrop (outside the panel) closes it
+    dlg.addEventListener("click", (e) => { if (e.target === dlg) dlg.close(); });
+  }
+  await prefillSizing();
+  renderSizing(dlg);
+  if (!dlg.open) dlg.showModal();
+}
+
+document.addEventListener("click", (e) => {
+  const btn = e.target instanceof Element ? e.target.closest("[data-open-sizing]") : null;
+  if (btn) { e.preventDefault(); openSizing(); }
+});
+
+let TICKER_T0 = 0;
+const TICKER_SECS = 30;   // seconds for one full loop; lower is faster. Drives the inline
+                          // animation-duration, so this constant is the single place to tune it.
+
 function optionsHTML(o) {
   // the strike he buys is per index - Nifty around Rs 150, Sensex around Rs 300, since Rs 150 at a 74,000
   // index buys a delta-0.3 option that barely moves. dhan_options.summarize() reports what it aimed for.
@@ -1412,17 +1534,40 @@ function optionsHTML(o) {
   if (o.error) return `<p class="caption">No option data: ${esc(o.error)}</p>`;
   const w = (list) => list.map((x) => px0(x.strike)).join(", ") || "—";
   const adds = [...o.call_oi_adds.slice(0, 1).map((x) => `${px0(x.strike)} CE`), ...o.put_oi_adds.slice(0, 1).map((x) => `${px0(x.strike)} PE`)].join(" · ");
-  return `<div class="lv-chips">
-      <span><small>Expiry</small>${esc(fmtDate(o.expiry))}</span>
-      <span><small>ATM IV (CE / PE)</small>${o.atm_iv.ce?.toFixed(1) ?? "—"} / ${o.atm_iv.pe?.toFixed(1) ?? "—"}</span>
-      <span><small>PCR</small>${o.pcr ?? "—"}</span>
-      <span><small>Call wall (resistance)</small>${w(o.call_walls.slice(0, 1))}</span>
-      <span><small>Put wall (support)</small>${w(o.put_walls.slice(0, 1))}</span>
-      <span><small>Writers adding most</small>${adds}</span>
-      <!-- the target premium is per index: Nifty ~150, Sensex ~300 -->
-      ${o.ce_150 ? `<span><small>~₹${tp} call${o.ce_150.live_ltp != null ? " · live" : ""}</small>${px0(o.ce_150.strike)} CE ₹${o.ce_150.live_ltp ?? o.ce_150.ltp}</span>` : ""}
-      ${o.pe_150 ? `<span><small>~₹${tp} put${o.pe_150.live_ltp != null ? " · live" : ""}</small>${px0(o.pe_150.strike)} PE ₹${o.pe_150.live_ltp ?? o.pe_150.ltp}</span>` : ""}
-    </div><p class="caption">Updated ${esc(o.at)}.${o.note ? ` ${esc(o.note)}` : ""}</p>`;
+  // A ticker rather than a chip grid: the option chain is glanceable context, not something to study, and on
+  // the Live page the vertical space is better spent on the chart and the rule table. It pauses on hover and on
+  // keyboard focus, and prefers-reduced-motion turns it into an ordinary scrolling row - a marquee you cannot
+  // stop is unreadable exactly when you want to read it.
+  const items = [
+    ["Expiry", esc(fmtDate(o.expiry))],
+    ["ATM IV CE/PE", `${o.atm_iv.ce?.toFixed(1) ?? "—"} / ${o.atm_iv.pe?.toFixed(1) ?? "—"}`],
+    ["PCR", String(o.pcr ?? "—")],
+    ["Call wall", w(o.call_walls.slice(0, 1))],
+    ["Put wall", w(o.put_walls.slice(0, 1))],
+    ["Writers adding", adds],
+    o.ce_150 && [`~₹${tp} call${o.ce_150.live_ltp != null ? " · live" : ""}`,
+      `${px0(o.ce_150.strike)} CE ₹${o.ce_150.live_ltp ?? o.ce_150.ltp}`],
+    o.pe_150 && [`~₹${tp} put${o.pe_150.live_ltp != null ? " · live" : ""}`,
+      `${px0(o.pe_150.strike)} PE ₹${o.pe_150.live_ltp ?? o.pe_150.ltp}`],
+    ["Updated", esc(o.at)],
+  ].filter(Boolean);
+  const run = items.map(([k, v]) => `<span class="tk-item"><small>${k}</small><b>${v}</b></span>`).join("");
+  // The Live page rewrites app.innerHTML every 3 seconds, which destroys this element and restarts its CSS
+  // animation from zero - the ticker visibly jumped back. Carry the phase across renders with a negative
+  // animation-delay, so the new node picks up exactly where the old one was. TICKER_T0 only resets when the
+  // chain data itself changes, so the strip runs continuously for as long as the numbers hold.
+  // Start the clock once and never restart it. An earlier version reset it whenever the markup changed, but
+  // the markup carries the live LTPs and the "Updated" stamp, which change every few seconds - so the phase
+  // snapped back to zero constantly and the strip stuttered. Text may swap mid-scroll; the motion must not.
+  if (!TICKER_T0) TICKER_T0 = performance.now();
+  const phase = ((performance.now() - TICKER_T0) / 1000) % TICKER_SECS;
+  // the run is duplicated so the loop has no seam; the copy is hidden from screen readers
+  return `<div class="ticker full" tabindex="0" aria-label="Option chain summary">
+      <div class="ticker-track" style="animation-duration:${TICKER_SECS}s;animation-delay:-${phase.toFixed(2)}s">
+        <div class="ticker-run">${run}</div>
+        <div class="ticker-run" aria-hidden="true">${run}</div>
+      </div>
+    </div>${o.note ? `<p class="caption">${esc(o.note)}</p>` : ""}`;
 }
 
 function ladderHTML(st) {
@@ -1500,8 +1645,9 @@ async function viewLive(which) {
             <p class="lv-price">${fmtPx(st.price)}${st.prev_close == null ? "" : ` <span class="${chg >= 0 ? "w" : "l"}">${chg >= 0 ? "▲" : "▼"} ${Math.abs(chg).toFixed(1)} (${pct.toFixed(2)}%)</span>`}</p>
             <p class="lv-sub">${pre ? `${st.prev_close != null ? `Pre-open · previous close ${fmtPx(st.prev_close)}` : "Pre-open"} — levels are armed; the rules start once the opening range is complete (about 9:31).`
               : `Open ${fmtPx(st.open)} · High ${fmtPx(st.high)} · Low ${fmtPx(st.low)}`}</p></div>
-          <div class="lv-headright">${tabs}<span class="lv-pill ${mode}">● ${pill}</span></div>
+          <div class="lv-headright">${tabs}<button type="button" class="btn sizing-btn" data-open-sizing="${idx}">Sizing</button><span class="lv-pill ${mode}">● ${pill}</span></div>
         </header>
+        ${optionsHTML(st.options)}
         <div class="lv-cols">
           <div class="lv-col">
             ${accountHTML(acct)}
@@ -1512,7 +1658,6 @@ async function viewLive(which) {
             ${baseSetupsHTML(st)}
           </div>
           <aside class="lv-col">
-            <section><h2>Options</h2>${optionsHTML(st.options)}</section>
             <section><h2>Today so far</h2>${timelineHTML(st)}</section>
           </aside>
         </div>
@@ -1869,9 +2014,38 @@ async function route() {
       : "Chart didn't load. Check your connection, then reload.";
     img.replaceWith(note);
   }, true);
+  mountRailToggle();
   window.addEventListener("hashchange", route);
   route();
 })();
+
+/* The rail collapses to a 52px strip, so the Live page can have the width. The choice is remembered per
+   browser; "\\" toggles it without reaching for the mouse, which matters while a session is running. */
+function mountRailToggle() {
+  const shell = document.querySelector(".shell");
+  const btn = document.getElementById("rail-toggle");
+  if (!shell || !btn) return;
+  const apply = (collapsed) => {
+    shell.dataset.rail = collapsed ? "collapsed" : "open";
+    btn.setAttribute("aria-expanded", String(!collapsed));
+    btn.title = (collapsed ? "Expand" : "Collapse") + " the sidebar (\\)";
+    btn.querySelector(".sr").textContent = (collapsed ? "Expand" : "Collapse") + " the sidebar";
+  };
+  apply(store.get("railCollapsed", false) === true);
+  btn.addEventListener("click", () => {
+    const next = shell.dataset.rail !== "collapsed";
+    apply(next);
+    store.set("railCollapsed", next);
+  });
+  document.addEventListener("keydown", (e) => {
+    // not while typing into the bias worksheet or the risk form
+    const t = e.target;
+    if (e.key !== "\\" || e.metaKey || e.ctrlKey || e.altKey) return;
+    if (t instanceof HTMLElement && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+    e.preventDefault();
+    btn.click();
+  });
+}
 
 /* ---------------- backtest (data/journal/backtest.json; local only, never published) ----------------
    Every figure here is NET of Rs 110 a round trip and of the modelled fill. Gross R-multiples flattered

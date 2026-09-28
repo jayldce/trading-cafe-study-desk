@@ -43,7 +43,8 @@ Only after an **aggressive move**. A pullback after a weak move is often just th
 ### Bounce strength
 After price falls from a level it usually bounces. If each bounce is **weaker**, expect a breakdown from that same zone. A strong bounce means buyers are defending. After two bounces, a **third test** rarely holds, so don't buy it; wait for the break.
 **Related, the dead-cat bounce:** a small reversal candle inside a strong move that fails to hold. The first green candle alone doesn't make a reversal; check its strength.
-**Watch:** [▶ 11-Sep](https://www.youtube.com/watch?v=qTDwaNEZ2RY&t=7380s) · [▶ 8-Sep third test](https://www.youtube.com/watch?v=s3r5EJy4cw8&t=6660s) · [▶ 7-Sep dead cat](https://www.youtube.com/watch?v=JhSkNorpW6w&t=18720s)
+**28-Sep, traded on purpose:** he named a ~124 base on a falling 22850 CE a technical / dead-cat bounce, not a reversal, and still took it with a ~4-pt stop and a capped 137 target. It never got past ~134 and the stop went (about −4). Naming it a dead-cat bounce is what kept the stop and target small.
+**Watch:** [▶ 11-Sep](https://www.youtube.com/watch?v=qTDwaNEZ2RY&t=7380s) · [▶ 8-Sep third test](https://www.youtube.com/watch?v=s3r5EJy4cw8&t=6660s) · [▶ 7-Sep dead cat](https://www.youtube.com/watch?v=JhSkNorpW6w&t=18720s) · [▶ 28-Sep](https://www.youtube.com/watch?v=cJuzypq8gHA&t=1920s)
 
 ### Call writers at round strikes
 Option sellers cluster at round strikes (23,300). When spot pushes through and holds, those writers cover ("give up"), which fuels the move. That's why round numbers make good targets and breakout levels.
@@ -138,7 +139,8 @@ Buying far-OTM options for ₹20–30 hoping for a many-times return. He present
 ### Lot sizing across Nifty and Sensex
 Don't cut your Sensex lots just because its premium is about double Nifty's. Once you account for index level and lot size, the rupee P&L per point ends up similar, so size by rupee risk, not by premium.
 **Sizing by capital (18-Sep):** with about ₹1 lakh use 2 lots while learning and at most 5 once experienced; credit spreads only make sense above roughly ₹10 lakh.
-**Watch:** [▶ 29-Jul](https://www.youtube.com/watch?v=aWD9ZCXlChk&t=13140s) · [▶ 18-Sep](https://www.youtube.com/watch?v=EPh5qxWEUhU&t=720s)
+**Worked live (28-Sep):** ₹20,000 of capital, 2 lots, entry ~₹156, stop ~6.6 points → about ₹900 at risk. If ₹900 feels frightening, he said, the fear is telling you the truth: size down.
+**Watch:** [▶ 29-Jul](https://www.youtube.com/watch?v=aWD9ZCXlChk&t=13140s) · [▶ 18-Sep](https://www.youtube.com/watch?v=EPh5qxWEUhU&t=720s) · [▶ 28-Sep](https://www.youtube.com/watch?v=cJuzypq8gHA&t=10980s)
 
 ### Box days ("Test match" markets)
 Some days price coils in a tight range for hours. He stops forcing trades and mentally treats the session like a slow Test match rather than a T20: a few small losses are the acceptable cost of not overtrading. He also names the trap that makes box days expensive: after 30–60 minutes of watching nothing happen, you feel urgency to jump in the moment any candle moves, and repeated often enough that becomes a habit of impulsive entries.
@@ -267,11 +269,13 @@ A bounce after a big move can come from two different sources of buying: stop-lo
 
 ### Trail by structure, not by a fixed number of points
 He moves the stop to the last swing low under each fresh higher high, rather than a fixed distance behind price. On 17-Sep the 74100 CE trail went 404 → 420 → 449 → 482 as each new high formed, and the 74800 PE's went 329 → 360 → 405. A fixed 20-point trail would have been shaken out in the chop the PE sat through for 18 minutes after entry; a structure trail only moves when the market proves itself.
-**Watch:** [▶ 17-Sep](https://www.youtube.com/watch?v=njvG_Pr9CpM&t=11880s)
+**28-Sep:** the 23100 PE trail went 183 → 216 → 222 under each fresh high, and the 222 trail was what took him out after the peak near 236. He called the first pullback before a big move a *shake-out*, the reason a structure trail beats a fixed one.
+**Watch:** [▶ 17-Sep](https://www.youtube.com/watch?v=njvG_Pr9CpM&t=11880s) · [▶ 28-Sep trail](https://www.youtube.com/watch?v=cJuzypq8gHA&t=1800s) · [▶ 28-Sep shake-out](https://www.youtube.com/watch?v=cJuzypq8gHA&t=12300s)
 
 ### Strength comes with a trap
 Real momentum starts after one side has been trapped at a zone: stops hunted below a low, then a break of the trendline that catches the other side. If the reversal happens before that hunt, the move has no strength behind it and tends to die in the range. That's why he refuses call reversals until 23300 is dipped below and rejected.
-**Watch:** [▶ 18-Sep](https://www.youtube.com/watch?v=EPh5qxWEUhU&t=4200s)
+**28-Sep:** until the sellers who built positions on a pullback are squeezed out above a level, don't expect strong buying. The whole trend day down had no such squeeze, and the bounce trades failed.
+**Watch:** [▶ 18-Sep](https://www.youtube.com/watch?v=EPh5qxWEUhU&t=4200s) · [▶ 28-Sep](https://www.youtube.com/watch?v=cJuzypq8gHA&t=13080s)
 
 ### Fresh resistance
 After a consolidation makes a fresh low, the upper edge of that consolidation becomes "fresh resistance". Puts can't show strength until price clears it, and entries near the top of a consolidation tend to get rejected. On 18-Sep the 23400 PE's 155–156 zone was exactly that: it spiked to ~159 above it, then fell back to ~148 (about −9 on the trade).
@@ -312,3 +316,7 @@ Once a directional trend is already running (not at the start of one), he says h
 ### Sustainable buying/selling zone (Trade Circuit's term)
 The area above (or below) a structural line where a directional move can actually *hold*, not just poke. The zone isn't fixed: once a fresh swing low or high forms, it moves with it. On 24-Sep his "sustainable buying" area shifted lower after Sensex broke a prior low, so a level that had been support became the line price had to reclaim first. Guest method, not Chinmay's.
 **Watch:** [▶ 24-Sep](https://www.youtube.com/watch?v=1opAYBTRhww&t=7160s)
+
+### Impostor Telegram channels
+On 28-Sep he screen-shared a Telegram search for "Trading Cafe India" showing several copycat channels that resell his free calls as paid tips. His real groups are linked only from the stream description. A reminder that a channel's name proves nothing about who runs it.
+**Watch:** [▶ 28-Sep](https://www.youtube.com/watch?v=cJuzypq8gHA&t=20640s)

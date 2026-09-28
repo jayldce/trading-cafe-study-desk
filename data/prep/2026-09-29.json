@@ -1,0 +1,187 @@
+{
+ "date": "2026-09-29",
+ "sessions": [
+  "2026-09-22",
+  "2026-09-23",
+  "2026-09-24",
+  "2026-09-25",
+  "2026-09-28"
+ ],
+ "close": 22780.25,
+ "last_session": "2026-09-28",
+ "week_high": 23489.0,
+ "week_low": 22762.2,
+ "closes": {
+  "2026-09-22": 23329.0,
+  "2026-09-23": 23446.8,
+  "2026-09-24": 23063.1,
+  "2026-09-25": 23140.5,
+  "2026-09-28": 22780.25
+ },
+ "nifty_expiry": "2026-09-29",
+ "sensex_expiry": "2026-10-01",
+ "zones": [
+  {
+   "kind": "daily_gap",
+   "lo": 23080.25,
+   "hi": 23140.5,
+   "text": "unfilled gap down of Mon 28 Sep",
+   "weight": 2,
+   "side": "above",
+   "distance": 330.1
+  },
+  {
+   "kind": "prev_high",
+   "lo": 23080.25,
+   "hi": 23080.25,
+   "text": "previous-day high (Mon 28 Sep)",
+   "weight": 3,
+   "side": "above",
+   "distance": 300.0
+  },
+  {
+   "kind": "old_low",
+   "lo": 23046.15,
+   "hi": 23046.15,
+   "text": "Thu 24 Sep low",
+   "weight": 1,
+   "side": "above",
+   "distance": 265.9
+  },
+  {
+   "kind": "old_low",
+   "lo": 23020.95,
+   "hi": 23020.95,
+   "text": "Fri 25 Sep low",
+   "weight": 1,
+   "side": "above",
+   "distance": 240.7
+  },
+  {
+   "kind": "round",
+   "lo": 23000,
+   "hi": 23000,
+   "text": "round number 23,000",
+   "weight": 1,
+   "side": "above",
+   "distance": 219.8
+  },
+  {
+   "kind": "fvg_bear",
+   "lo": 22951.8,
+   "hi": 22961.9,
+   "text": "open bear FVG from Mon 28 Sep 09:19",
+   "weight": 2,
+   "side": "above",
+   "distance": 176.6
+  },
+  {
+   "kind": "fvg_bear",
+   "lo": 22928.25,
+   "hi": 22947.55,
+   "text": "open bear FVG from Mon 28 Sep 09:20",
+   "weight": 2,
+   "side": "above",
+   "distance": 157.7
+  },
+  {
+   "kind": "round",
+   "lo": 22900,
+   "hi": 22900,
+   "text": "round number 22,900",
+   "weight": 1,
+   "side": "above",
+   "distance": 119.8
+  },
+  {
+   "kind": "fvg_bear",
+   "lo": 22878.8,
+   "hi": 22889.25,
+   "text": "open bear FVG from Mon 28 Sep 09:35",
+   "weight": 2,
+   "side": "above",
+   "distance": 103.8
+  },
+  {
+   "kind": "equal_highs",
+   "lo": 22848.15,
+   "hi": 22855.45,
+   "text": "untaken equal highs from Mon 28 Sep",
+   "weight": 3,
+   "side": "above",
+   "distance": 71.6
+  },
+  {
+   "kind": "fvg_bear",
+   "lo": 22804.95,
+   "hi": 22811.75,
+   "text": "open bear FVG from Mon 28 Sep 14:17",
+   "weight": 2,
+   "side": "above",
+   "distance": 28.1
+  },
+  {
+   "kind": "round",
+   "lo": 22800,
+   "hi": 22800,
+   "text": "round number 22,800",
+   "weight": 1,
+   "side": "above",
+   "distance": 19.8
+  },
+  {
+   "kind": "prev_close",
+   "lo": 22780.25,
+   "hi": 22780.25,
+   "text": "previous-day close (Mon 28 Sep)",
+   "weight": 2,
+   "side": "below",
+   "distance": 0.0
+  },
+  {
+   "kind": "prev_low",
+   "lo": 22762.2,
+   "hi": 22762.2,
+   "text": "previous-day low (Mon 28 Sep)",
+   "weight": 3,
+   "side": "below",
+   "distance": -18.0
+  },
+  {
+   "kind": "range_low",
+   "lo": 22762.2,
+   "hi": 22762.2,
+   "text": "5-session low",
+   "weight": 2,
+   "side": "below",
+   "distance": -18.0
+  },
+  {
+   "kind": "round",
+   "lo": 22700,
+   "hi": 22700,
+   "text": "round number 22,700",
+   "weight": 1,
+   "side": "below",
+   "distance": -80.2
+  },
+  {
+   "kind": "round",
+   "lo": 22600,
+   "hi": 22600,
+   "text": "round number 22,600",
+   "weight": 1,
+   "side": "below",
+   "distance": -180.2
+  },
+  {
+   "kind": "round",
+   "lo": 22500,
+   "hi": 22500,
+   "text": "round number 22,500",
+   "weight": 1,
+   "side": "below",
+   "distance": -280.2
+  }
+ ]
+}

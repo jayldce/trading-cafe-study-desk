@@ -84,6 +84,36 @@ nav a:hover { color: var(--ink); background: var(--card); }
 nav a[aria-current="page"] { color: var(--ink); background: var(--card); box-shadow: inset 3px 0 0 var(--mark); }
 .rail-note { margin-top: auto; font: 12px/1.45 var(--body); color: var(--ink-2); }
 
+/* ---------- collapsible rail ----------
+   The Live page wants the width: charts, the option panels and the rule table all read better wide. Collapsing
+   leaves a 52px strip with just the toggle, so the whole nav is one click (or "\") away rather than gone. */
+.rail-toggle {
+  position: absolute; top: 14px; right: -13px; z-index: 6;
+  width: 26px; height: 26px; padding: 0; cursor: pointer;
+  display: grid; place-items: center;
+  background: var(--paper); color: var(--ink-2);
+  border: 1px solid var(--rule); border-radius: 50%;
+}
+.rail-toggle:hover { color: var(--ink); border-color: var(--ink-2); }
+.rail-toggle:focus-visible { outline: 2px solid var(--mark); outline-offset: 2px; }
+.rail-toggle span[aria-hidden] {
+  width: 7px; height: 7px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor;
+  transform: rotate(135deg) translate(-1px, -1px); transition: transform .18s ease;
+}
+.rail { position: sticky; }   /* keep the toggle pinned to the rail, not the page */
+.shell { transition: grid-template-columns .18s ease; }
+.shell[data-rail="collapsed"] { grid-template-columns: 52px minmax(0, 1fr); }
+.shell[data-rail="collapsed"] .rail { padding: 26px 10px; overflow: hidden; }
+.shell[data-rail="collapsed"] nav,
+.shell[data-rail="collapsed"] .brand-name,
+.shell[data-rail="collapsed"] .rail-note { display: none; }
+.shell[data-rail="collapsed"] .rail-toggle span[aria-hidden] { transform: rotate(-45deg) translate(-1px, -1px); }
+.sr { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+@media (prefers-reduced-motion: reduce) {
+  .shell, .rail-toggle span[aria-hidden] { transition: none; }
+}
+
 main { padding: 44px clamp(18px, 4vw, 56px) 80px; outline: none; }
 .loading, .empty { color: var(--ink-2); font-family: var(--mono); font-size: 14px; }
 .error { background: var(--card); border-left: 4px solid var(--loss); padding: 16px 20px; border-radius: var(--radius); max-width: 640px; }
@@ -481,7 +511,8 @@ table.signals.prep tr.strong td { font-weight: 600; }
 .rk-saved { font-size: 13px; color: var(--ink-2); }
 .rk-calc { margin-top: 34px; }
 .prep-tabs { display: flex; gap: 6px; }
-.prep-tabs a { padding: 3px 12px; border: 1px solid var(--rule); border-radius: 999px; font: 500 12px var(--mono); color: var(--ink-2); }
+.prep-tabs a { padding: 3px 12px; border: 1px solid var(--rule); border-radius: 999px; font: 500 12px var(--mono); color: var(--ink-2);
+  text-decoration: none; }   /* they read as buttons, so they must not carry a link underline */
 .prep-tabs a.on { background: var(--card); color: var(--ink); border-color: var(--mark); }
 .lv-headright { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
 /* the live index chart: candles plus today's levels, redrawn client-side every few seconds */
@@ -514,7 +545,23 @@ table.signals.prep tr.strong td { font-weight: 600; }
 /* wide screens: the map and the setup on the left, the option chain and the running timeline on the right */
 .lv-cols { display: grid; gap: 22px; align-items: start; }
 .lv-col { display: grid; gap: 22px; align-content: start; min-width: 0; }
-@media (min-width: 1100px) { .lv-cols { grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 30px; } }
+@media (min-width: 1100px) {
+  .lv-cols { grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 30px; }
+  /* The left column runs long - chart, setups, rule table, option charts - while the right one ends after the
+     timeline, leaving dead space beside it. Pin the timeline instead: it stays beside whatever you have
+     scrolled to, and scrolls inside itself once it outgrows the viewport, so the column is never taller than
+     the screen and never shorter than it needs to be. */
+  .lv-cols > aside.lv-col {
+    position: sticky; top: 16px;
+    max-height: calc(100vh - 32px);
+    overflow-y: auto; overscroll-behavior: contain;
+    scrollbar-width: thin;
+  }
+  .lv-cols > aside.lv-col::-webkit-scrollbar { width: 8px; }
+  .lv-cols > aside.lv-col::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 4px; }
+  .lv-cols > aside.lv-col::-webkit-scrollbar-thumb:hover { background: var(--ink-3, var(--ink-2)); }
+  .lv-cols > aside.lv-col::-webkit-scrollbar-track { background: transparent; }
+}
 
 /* face-off: your trades beside his (local only) */
 .faceoff { margin-top: 42px; border-top: 2px solid var(--rule); padding-top: 8px; }
@@ -638,6 +685,11 @@ dialog#lightbox .close, .lb-caption { font: 13px var(--mono); color: #e3eaee; ba
   .quiz { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-width: 860px) {
+  /* on a phone the rail is already a horizontal strip - collapsing it would hide the only navigation */
+  .rail-toggle { display: none; }
+  .shell[data-rail="collapsed"] { grid-template-columns: minmax(0, 1fr); }
+  .shell[data-rail="collapsed"] nav,
+  .shell[data-rail="collapsed"] .brand-name { display: flex; }
   .shell { grid-template-columns: minmax(0, 1fr); }
   .rail { position: sticky; top: 0; z-index: 5; height: auto; flex-direction: row; align-items: center; gap: 14px; padding: 10px 14px; border-right: 0; border-bottom: 1px solid var(--rule); overflow-x: auto; }
   .brand-name small, .rail-note { display: none; }
@@ -686,3 +738,58 @@ dialog#lightbox .close, .lb-caption { font: 13px var(--mono); color: #e3eaee; ba
 .slip-fallback { margin: .5rem 0 0; padding: .6rem .7rem; border: 1px solid var(--line); border-radius: 8px;
   font-size: .8rem; white-space: pre; overflow-x: auto; user-select: all; }
 .slip-dead { margin: .5rem 0 0; font-size: .8rem; color: var(--muted); font-style: italic; }
+
+/* ---- option-chain ticker ----
+   Glanceable context in one line. Pauses on hover and focus, because a marquee you cannot stop is unreadable
+   exactly when you want to read it. */
+.ticker {
+  position: relative; overflow: hidden; border: 1px solid var(--rule); border-radius: var(--radius);
+  background: var(--card); padding: 9px 0; margin: 6px 0 10px;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 40px, #000 calc(100% - 40px), transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 40px, #000 calc(100% - 40px), transparent);
+}
+.ticker:focus-visible { outline: 2px solid var(--mark); outline-offset: 2px; }
+.ticker-track { display: flex; width: max-content; animation: ticker 30s linear infinite; }  /* app.js overrides with TICKER_SECS */
+.ticker:hover .ticker-track, .ticker:focus-within .ticker-track { animation-play-state: paused; }
+.ticker-run { display: flex; flex-shrink: 0; }
+.tk-item { display: flex; align-items: baseline; gap: 7px; padding: 0 20px; white-space: nowrap;
+  border-right: 1px solid var(--rule); }
+.tk-item small { font: 500 10px var(--mono); text-transform: uppercase; letter-spacing: 0.07em; color: var(--ink-2); }
+.tk-item b { font: 600 14px/1 var(--body); color: var(--ink); font-variant-numeric: tabular-nums; }
+@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+/* Full-bleed: the strip breaks out of main's padding and of .lv's max-width, so the option chain costs one
+   line across the whole page instead of a titled card in the right column. It stops at the rail, not at the
+   window edge - 100vw would slide under the sidebar and add a horizontal scrollbar. */
+.ticker.full {
+  margin-left: calc(-1 * clamp(18px, 4vw, 56px));
+  margin-right: calc(-1 * clamp(18px, 4vw, 56px));
+  border-left: 0; border-right: 0; border-radius: 0;
+  margin-top: 2px; margin-bottom: 18px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ticker { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
+  .ticker-track { animation: none; }
+  .ticker-run:nth-child(2) { display: none; }
+}
+
+/* ---- position sizing dialog ---- */
+.sizing-btn { font: 500 12px var(--mono); padding: 3px 12px; border-radius: 999px; }
+#sizing-dialog { border: 0; padding: 0; background: transparent; max-width: min(960px, 94vw); width: 100%; }
+#sizing-dialog::backdrop { background: rgba(0, 0, 0, 0.55); backdrop-filter: blur(2px); }
+.sz { background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius);
+  padding: 20px 22px 16px; max-height: 88vh; overflow-y: auto; }
+.sz-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 4px; }
+.sz-head h2 { margin: 0; }
+.sz-block { margin-top: 20px; }
+.sz-block h3 { margin: 0 0 8px; }
+.sz-block h3 small { font: 500 11px var(--mono); color: var(--ink-2); margin-left: 6px; }
+.sz-inputs { display: flex; flex-wrap: wrap; gap: 10px 18px; margin-bottom: 10px; }
+.sz-f { display: flex; align-items: center; gap: 6px; font: 500 12px var(--mono); color: var(--ink-2); }
+.sz-f input { width: 82px; padding: 4px 8px; border: 1px solid var(--rule); border-radius: 6px;
+  background: var(--card); color: var(--ink); font: 600 13px var(--mono); text-align: right; }
+.sz-f input:focus-visible { outline: 2px solid var(--mark); outline-offset: 1px; }
+.sz-table td, .sz-table th { padding: .4rem .6rem; }
+.sz-table td.w { color: var(--win); }
+.sz-table td.l { color: var(--loss); }
+/* still readable, just clearly out of reach on this account */
+.sz-over td { opacity: 0.38; }

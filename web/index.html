@@ -13,11 +13,13 @@
 <a class="skip" href="#app">Skip to content</a>
 <div class="shell">
   <header class="rail">
+    <button type="button" id="rail-toggle" class="rail-toggle" aria-expanded="true" aria-controls="rail-nav"
+            title="Collapse the sidebar (\\)"><span aria-hidden="true"></span><span class="sr">Collapse the sidebar</span></button>
     <a class="brand" href="#/">
       <span class="brand-mark" aria-hidden="true"><i class="w"></i><i class="l"></i><i class="w"></i></span>
       <span class="brand-name">Study Desk<small>Trading Cafe India</small></span>
     </a>
-    <nav aria-label="Sections">
+    <nav id="rail-nav" aria-label="Sections">
       <p class="nav-group" id="nav-today">Today</p>
       <div class="nav-set" role="group" aria-labelledby="nav-today">
         <a href="#/" data-nav="start">Start</a>
