@@ -76,6 +76,7 @@ Take a defined risk, then shrink it step by step as price moves your way (trail,
 **How he manages it:** as one position. Add up both premiums, set one combined SL (e.g. 52 → 27) and one combined target (~85–100). On 8-Sep (expiry day) it bled for hours, then paid in the last hour when spot finally trended.
 **When:** a big move is likely but its direction isn't clear, e.g. expiry day or a long squeeze.
 **A worked Sensex construction with a time stop (24-Sep):** 73700 CE ~135 + 73600 PE ~153 = 288 combined; stop on a ~150 combined drop, target a 200–235 combined gain, and **30 minutes** for the move to start before he treats it as decaying. By 15:03 it hadn't come, and he said to cut it rather than hold into the close (no fill was shown, so it isn't in the trade log). [▶ the plan](https://www.youtube.com/watch?v=cnhIFE3Rzew&t=2880s) · [▶ cut it](https://www.youtube.com/watch?v=LHErabU5Wok&t=180s)
+**Watch only the combined P&L (29-Sep, Trade Circuit):** on a Nifty expiry afternoon he bought the 22750 CE and 22650 PE for about 40 combined and told viewers to ignore each leg and exit both together at a combined ₹20 loss or ₹40 gain per unit. [▶ 29-Sep](https://www.youtube.com/watch?v=jyeGpm8SGxo&t=10260s)
 **Watch:** [▶ 8-Sep](https://www.youtube.com/watch?v=s3r5EJy4cw8&t=19080s) · [▶ 10-Sep (Trade Circuit)](https://www.youtube.com/watch?v=_v3ieKuYGRc&t=19260s)
 
 ### Order block
@@ -320,3 +321,11 @@ The area above (or below) a structural line where a directional move can actuall
 ### Impostor Telegram channels
 On 28-Sep he screen-shared a Telegram search for "Trading Cafe India" showing several copycat channels that resell his free calls as paid tips. His real groups are linked only from the stream description. A reminder that a channel's name proves nothing about who runs it.
 **Watch:** [▶ 28-Sep](https://www.youtube.com/watch?v=cJuzypq8gHA&t=20640s)
+
+### Scaling out of a large position (Trade Circuit)
+Asked how to book a large quantity, he described a ladder: about 40% at the first target, 20% at the second, 20% at the third, and the last 20% held for the day's move. His reason is psychological as much as mathematical: each booking calms you for the next decision, so you aren't forced to get one exit perfect.
+**Watch:** [▶ 29-Sep](https://www.youtube.com/watch?v=jyeGpm8SGxo&t=1440s)
+
+### FII selling: "it takes two hands to clap"
+On 29-Sep he explained why Indian indices were falling harder than markets closer to the Gulf conflict: foreign institutions were not only exiting positions but opening fresh shorts, and domestic buying alone can't hold the market up ("ताली एक हाथ से नहीं बजती"). He then said to set the trading view from price action, not from the news — a strong narrative doesn't put money in your hands.
+**Watch:** [▶ the FII point](https://www.youtube.com/watch?v=tyvrNoWrQuA&t=1020s) · [▶ price action first](https://www.youtube.com/watch?v=tyvrNoWrQuA&t=1080s)

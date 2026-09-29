@@ -276,6 +276,45 @@ Because the passive buy orders that defined the zone get consumed on each test, 
 
 **Drill:** find a zone in a day note that was tested three times. Screenshot each test and compare the size of the bounce.
 
+### 2.7 Four gates that grade a zone
+**Goal:** stop treating every zone as equal, and know which of these gates our own data actually supports.
+
+Zones are easy to draw and that is the problem — mark them honestly on any chart and you will find one every few candles. These four gates are the ones worth applying. Three are borrowed from a supply-and-demand masterclass by JeaFx (linked in Sources); the fourth is where our own measurements disagree with it, and that disagreement is the most useful part of the lesson.
+
+| Gate | The claim | What it rules out |
+|---|---|---|
+| **1. Unfilled imbalance** | The approach into the zone must still contain a gap — a candle whose wick never met the wick before it | Zones price has already "paid for" on the way back |
+| **2. First tap only** | A zone is worth trading on its first return; after that it is spent | The second and third visits, where the resting orders are already consumed |
+| **3. The extreme zone** | When several zones stack, the furthest one from price is the highest-probability one | Nearer zones that price will likely trade straight through to reach the extreme |
+| **4. Trend context** | Buy demand only in an uptrend, sell supply only in a downtrend | Counter-trend zones — "buying every dip on the way down" |
+
+**Gate 1 is the one we do not yet apply.** Our base-reversal rule requires a launch zone and a confirmation candle, but it never checks whether the approach still has an unfilled gap. That is a precise, testable addition: re-score every logged setup, split by whether an imbalance survived into the zone, and see whether the filtered half carries the edge.
+
+**Gate 2 we already hold**, in Lesson 2.6's freshness rule and in his own behaviour with thrice-tested levels.
+
+**Gate 3 is untested here** and is the most interesting of the four, because it makes a falsifiable ordering claim: given two live zones, the far one should beat the near one.
+
+**Gate 4 is where our own data says the opposite.** Trend filters were added to the index scanner's gap setup and made it measurably *worse*, and the base-reversal rule buys a base on the option chart regardless of the index's trend — which on a falling index means buying puts, i.e. the "wrong" side by this gate's logic, and that is exactly when it works best. Take gate 4 as a claim about the instruments the masterclass is drawn from (spot forex and gold on higher timeframes), not a rule proven on 1-minute Indian index options.
+
+The masterclass also separates two ways into a zone, and the split is the same one the playbook makes:
+
+- an **aggressive** entry — a resting limit order at the zone, taken only at the extreme zone;
+- a **confirmation** entry — wait inside the zone for a lower-timeframe structure shift, then enter on the smaller zone that caused it.
+
+That second form is precisely what `tools/base-reversal.py` implements: the pin bar or engulfing candle at the base *is* the lower-timeframe shift, and entry on the break of its high is the execution. The rule already sits on the safer side of this split, which the trade log supports — the aggressive form is where his losses cluster.
+
+<details>
+<summary>Check yourself: why would a zone whose imbalance has already been filled be a worse place to buy?</summary>
+Because the gap was the unfinished business. Price returns to trade the range it skipped; once that range has been traded, the reason to come back is gone, and any orders resting there have already had their chance to fill. What is left is a line on a chart with no mechanism behind it.
+</details>
+
+<details>
+<summary>Check yourself: gate 4 says never buy demand in a downtrend. Our base-reversal rule does something that looks like exactly that, and it is our best-measured setup. Why is there no contradiction?</summary>
+Because the rule reads the option's chart, not the index's. When the index falls, the put's premium chart is in an **uptrend** — so buying a base on that chart is trading with the trend, not against it. The gate is right; it is being applied to the wrong chart. This is also why the index scanner structurally cannot see these setups (Lesson 4.1).
+</details>
+
+**Drill:** take the last five base-reversal setups from the Live tab's rule table. For each, look at the option's own candles in the minutes before the zone and mark whether a wick-to-wick gap survived into it. Then compare that column against the R column and see whether gate 1 would have helped.
+
 ## Module 3 — The sequence: how a smart-money move unfolds
 
 ### 3.1 The five-beat sequence
@@ -1188,6 +1227,9 @@ Nothing in this course is original to the channel, and several popular parts of 
 **Order flow and stop clustering (the strongest evidence):**
 - [Osler, *Currency Orders and Exchange Rate Dynamics* (Journal of Finance, 2003)](https://onlinelibrary.wiley.com/doi/abs/10.1111/1540-6261.00588) — take-profit orders cluster at round numbers, stop-loss orders just beyond them.
 - [Osler, *Stop-Loss Orders and Price Cascades in Currency Markets* (NY Fed staff report / JIMF)](https://www.newyorkfed.org/medialibrary/media/research/staff_reports/sr150.pdf) — the documented mechanism behind "liquidity sweeps".
+
+**Supply and demand zones (Lesson 2.7):**
+- [JeaFx, *Ultimate Supply and Demand Masterclass* (YouTube, 40 min)](https://www.youtube.com/watch?v=yaCM_cr5BXo) — where the four gates in Lesson 2.7 come from. Taught on spot forex and gold on higher timeframes; treat the trend-context gate as untested on 1-minute Indian index options, where our own measurements point the other way.
 
 **Auction theory, Wyckoff and volume:**
 - [Auction market theory: price, time and volume](https://tradingwyckoff.com/en/auction-market-theory/)
