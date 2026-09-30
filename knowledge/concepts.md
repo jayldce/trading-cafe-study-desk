@@ -119,7 +119,8 @@ Two different reasons a premium can suddenly jump:
 - **Gamma:** the index itself moves fast, so the option's delta changes fast. It's most violent near expiry and in cheap OTM strikes, where the other Greeks are already thin. That's why expiry-day spikes feel so extreme.
 - **Volatility ("wall") spike:** premium jumps because IV expands, with no matching move in the index. Sellers trade into these spikes.
 His advice for retail: don't chase either one; stick to your setup.
-**Watch:** [▶ 5-Aug gamma](https://www.youtube.com/watch?v=u-jxNXi-O_M&t=4320s) · [▶ 29-Jul gamma](https://www.youtube.com/watch?v=aWD9ZCXlChk&t=16560s) · [▶ 4-Aug volatility vs gamma](https://www.youtube.com/watch?v=zmnPW3HauhM&t=20700s)
+The flip side (30-Sep): with neither a panic (IV flat) nor a big absolute index move (little delta), a premium just crawls even while the index drifts in your direction.
+**Watch:** [▶ 5-Aug gamma](https://www.youtube.com/watch?v=u-jxNXi-O_M&t=4320s) · [▶ 30-Sep crawl](https://www.youtube.com/watch?v=fGUAnwhNZkc&t=4080s) · [▶ 29-Jul gamma](https://www.youtube.com/watch?v=aWD9ZCXlChk&t=16560s) · [▶ 4-Aug volatility vs gamma](https://www.youtube.com/watch?v=zmnPW3HauhM&t=20700s)
 
 ### Gap-up mornings cool IV
 On a gap-up open there's no panic, so IV relaxes. Near-ATM and ITM premiums then lag the index's move until a real push arrives. Don't expect the option to track spot one-for-one in that first phase.
@@ -285,6 +286,10 @@ After a consolidation makes a fresh low, the upper edge of that consolidation be
 ### Reversals are judged by reward vs risk
 A reversal always shows a small stop, which is why it feels safe. The real question is what the next distribution zone pays. A 13–14-pt stop needs a ~30-pt rally; 6 pts of risk against ~14 of reward (about 1:2) is borderline; 7–8 pts of reward isn't worth the trade.
 **Watch:** [▶ 18-Sep 10:33](https://www.youtube.com/watch?v=EPh5qxWEUhU&t=5160s) · [▶ 18-Sep 11:08](https://www.youtube.com/watch?v=EPh5qxWEUhU&t=7260s)
+
+### Stop size comes from structure, not a % of premium
+On 30-Sep he rejected a fixed-percentage stop: buying a ₹300 strike does not mean a ₹30 risk. The stop goes where the price action is proven wrong (below the base or the consolidation), and the quantity is sized to that. Compare 29-Sep, when he passed a trade because a ₹15 stop was too big a share of a ₹100 premium: the structure sets the stop, and the premium decides whether that stop is affordable.
+**Watch:** [▶ 30-Sep](https://www.youtube.com/watch?v=fGUAnwhNZkc&t=11040s)
 
 ### Market phases (why sellers, buyers and jodis take turns)
 His history lesson: dead markets (2017–18) favoured option sellers who sold straddles and slept; momentum and high VIX (2020) favoured buyers and jodis; the last one to one-and-a-half months favoured expiry-day jodis until Thursday's premium melt-down. Pick the structure for the current phase instead of loyalty to one style.
