@@ -56,6 +56,7 @@ Option sellers cluster at round strikes (23,300). When spot pushes through and h
 - High IV helps near-ATM/ITM buyers while the move lasts, but premiums melt when volatility fades, especially before a holiday or expiry and in the second half.
 - He checks IV on the NSE website.
 - **Skew:** compare IV on calls vs puts at the same distance from spot. If puts are visibly richer, sellers are pricing more downside risk that day, and vice versa.
+- **1-Oct, Sensex expiry:** from the open, call-side IV kept rising while put-side IV eased, and he used that to stay off aggressive puts for the morning ("the put's time will come"). [▶ 1-Oct](https://www.youtube.com/watch?v=BFZHFiPxAG4&t=5280s)
 **Watch:** [▶ 11-Sep](https://www.youtube.com/watch?v=qTDwaNEZ2RY&t=1560s) · [▶ 7-Sep skew](https://www.youtube.com/watch?v=JhSkNorpW6w&t=12120s) · [▶ 8-Sep skew](https://www.youtube.com/watch?v=s3r5EJy4cw8&t=13620s)
 
 ### ₹150 near-ATM strikes
@@ -75,6 +76,7 @@ Take a defined risk, then shrink it step by step as price moves your way (trail,
 **What:** buy a CE and a PE together (near-ATM, roughly equal premium). You profit if the market makes a big move either way, and lose to time decay if it stays flat.
 **How he manages it:** as one position. Add up both premiums, set one combined SL (e.g. 52 → 27) and one combined target (~85–100). On 8-Sep (expiry day) it bled for hours, then paid in the last hour when spot finally trended.
 **When:** a big move is likely but its direction isn't clear, e.g. expiry day or a long squeeze.
+**Wide stops as the trigger (1-Oct):** when single-side Sensex stops were coming out at 60–80 points in a crash, he took that as the sign to stop guessing direction and build jodis from two ~₹120 options, since a cheap out-of-the-money option in a violent market has a real chance of doubling either way. Both made money (~+35, ~+18), booked on a modest net gain rather than the 150-point target. [▶ 1-Oct](https://www.youtube.com/watch?v=BFZHFiPxAG4&t=15060s)
 **A worked Sensex construction with a time stop (24-Sep):** 73700 CE ~135 + 73600 PE ~153 = 288 combined; stop on a ~150 combined drop, target a 200–235 combined gain, and **30 minutes** for the move to start before he treats it as decaying. By 15:03 it hadn't come, and he said to cut it rather than hold into the close (no fill was shown, so it isn't in the trade log). [▶ the plan](https://www.youtube.com/watch?v=cnhIFE3Rzew&t=2880s) · [▶ cut it](https://www.youtube.com/watch?v=LHErabU5Wok&t=180s)
 **Watch only the combined P&L (29-Sep, Trade Circuit):** on a Nifty expiry afternoon he bought the 22750 CE and 22650 PE for about 40 combined and told viewers to ignore each leg and exit both together at a combined ₹20 loss or ₹40 gain per unit. [▶ 29-Sep](https://www.youtube.com/watch?v=jyeGpm8SGxo&t=10260s)
 **Watch:** [▶ 8-Sep](https://www.youtube.com/watch?v=s3r5EJy4cw8&t=19080s) · [▶ 10-Sep (Trade Circuit)](https://www.youtube.com/watch?v=_v3ieKuYGRc&t=19260s)
@@ -100,9 +102,14 @@ Large players build positions quietly with **limit** orders resting just below o
 Risking ₹500–1,000 per trade for rewards of 1:3 to 1:5 means being right half the time still pays. Judge a method by risk-reward and consistency, not by accuracy.
 **Watch:** [▶ 20-Aug](https://www.youtube.com/watch?v=2gndmZYrtPw&t=3960s)
 
+### Proven support zone
+A zone counts as *proven* when the market has already launched a fresh, strong rally from it. A dip back into such a zone that recovers is his reason to buy with a small stop; an untested zone gets no such trust. 1-Oct: the 72200 CE's 265–267 area, bought at 267 with the stop at the day low, ran to its 351 target within five minutes.
+**Watch:** [▶ 1-Oct](https://www.youtube.com/watch?v=BFZHFiPxAG4&t=1620s)
+
 ### News lands on demand and supply zones
 His observation: good news tends to arrive when price is already at a demand zone, bad news at a supply zone. The last panicking trader creates the turn just before the news explains it, which is his argument for trading levels instead of headlines.
-**Watch:** [▶ 20-Aug](https://www.youtube.com/watch?v=2gndmZYrtPw&t=1200s)
+**The other way round (1-Oct):** he listed the day's good macro prints (industrial growth, manufacturing, GST collections) while Sensex was in a midday crash — good news did not stop a fall that was already running.
+**Watch:** [▶ 20-Aug](https://www.youtube.com/watch?v=2gndmZYrtPw&t=1200s) · [▶ 1-Oct](https://www.youtube.com/watch?v=BFZHFiPxAG4&t=15480s)
 
 ### Calendar spread (taught, not traded)
 Sell the expiring ATM call and put, buy the same strikes in the next expiry. The near legs decay to zero while the far legs keep time value, so it profits if spot stays in a wide range. Margin is roughly ₹90,000. He presented it as an expiry-day alternative to the jodi.
