@@ -773,7 +773,10 @@ dialog#lightbox .close, .lb-caption { font: 13px var(--mono); color: #e3eaee; ba
 }
 
 /* ---- position sizing dialog ---- */
-.sizing-btn { font: 500 12px var(--mono); padding: 3px 12px; border-radius: 999px; }
+/* matches .prep-tabs a and .lv-pill beside it: .btn's 40px min-height and 9px padding made it tower over them */
+.sizing-btn { font: 500 12px var(--mono); padding: 4px 12px; border-radius: 999px; min-height: 0;
+  color: var(--ink-2); background: transparent; line-height: 1.35; }
+.sizing-btn:hover { color: var(--ink); border-color: var(--ink-2); }
 #sizing-dialog { border: 0; padding: 0; background: transparent; max-width: min(960px, 94vw); width: 100%; }
 #sizing-dialog::backdrop { background: rgba(0, 0, 0, 0.55); backdrop-filter: blur(2px); }
 .sz { background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius);
@@ -793,3 +796,8 @@ dialog#lightbox .close, .lb-caption { font: 13px var(--mono); color: #e3eaee; ba
 .sz-table td.l { color: var(--loss); }
 /* still readable, just clearly out of reach on this account */
 .sz-over td { opacity: 0.38; }
+/* India VIX sits in the live header; up is red because a rising VIX is a bigger stop, not a better trade */
+.lv-vix { white-space: nowrap; }
+.lv-vix b { font-variant-numeric: tabular-nums; color: var(--ink); }
+/* the day's charge bill, in the account headline — 21 trades cost ~₹2,000, which is the day's edge */
+.lv-charges b { color: var(--loss); font-variant-numeric: tabular-nums; }

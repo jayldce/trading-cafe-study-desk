@@ -1526,6 +1526,17 @@ let TICKER_T0 = 0;
 const TICKER_SECS = 30;   // seconds for one full loop; lower is faster. Drives the inline
                           // animation-duration, so this constant is the single place to tune it.
 
+// India VIX, in the header rather than the scrolling ticker: it sets the size of everything else, so it should
+// be readable at a glance. A rising VIX means fatter premiums and wider stops, which is fewer lots for the same
+// 1.5% risk - the opposite of what most people assume when they see a big move and want to size up.
+function vixHTML(v) {
+  if (!v || v.error || v.value == null) return "";
+  const up = (v.change ?? 0) > 0;
+  const sign = up ? "▲" : (v.change ?? 0) < 0 ? "▼" : "";
+  return ` · <span class="lv-vix" title="India VIX — day range ${v.low}–${v.high}, open ${v.open}">VIX
+    <b>${v.value.toFixed(2)}</b> <span class="${up ? "l" : "w"}">${sign}${Math.abs(v.change ?? 0).toFixed(2)}</span></span>`;
+}
+
 function optionsHTML(o) {
   // the strike he buys is per index - Nifty around Rs 150, Sensex around Rs 300, since Rs 150 at a 74,000
   // index buys a delta-0.3 option that barely moves. dhan_options.summarize() reports what it aimed for.
@@ -1644,7 +1655,7 @@ async function viewLive(which) {
           <div><p class="eyebrow">${esc(st.index_label || "Nifty 50")} · ${esc(fmtDate(st.day))}</p>
             <p class="lv-price">${fmtPx(st.price)}${st.prev_close == null ? "" : ` <span class="${chg >= 0 ? "w" : "l"}">${chg >= 0 ? "▲" : "▼"} ${Math.abs(chg).toFixed(1)} (${pct.toFixed(2)}%)</span>`}</p>
             <p class="lv-sub">${pre ? `${st.prev_close != null ? `Pre-open · previous close ${fmtPx(st.prev_close)}` : "Pre-open"} — levels are armed; the rules start once the opening range is complete (about 9:31).`
-              : `Open ${fmtPx(st.open)} · High ${fmtPx(st.high)} · Low ${fmtPx(st.low)}`}</p></div>
+              : `Open ${fmtPx(st.open)} · High ${fmtPx(st.high)} · Low ${fmtPx(st.low)}`}${vixHTML(st.vix)}</p></div>
           <div class="lv-headright">${tabs}<button type="button" class="btn sizing-btn" data-open-sizing="${idx}">Sizing</button><span class="lv-pill ${mode}">● ${pill}</span></div>
         </header>
         ${optionsHTML(st.options)}
@@ -1681,8 +1692,16 @@ function accountHTML(acct) {
   if (!acct) return "";
   if (acct.error) return `<section><h2>Your positions</h2><p class="caption">Couldn't read your Dhan account: ${esc(acct.error)}</p></section>`;
   const d = acct.day || {};
+  // Charges in the headline, not buried. Measured over 97 logged trades: the two 21-trade sessions paid
+  // ₹1,982 and ₹1,977, which was 39% of gross on those days, while the two best days were 6 and 9 trades.
+  // Trade count is the one variable here whose sign is certain, so the running bill belongs where it is seen.
+  const chg = d.charges || 0;
+  const gross = (d.net_closed || 0) + chg;
+  const bite = gross > 0 ? Math.round((100 * chg) / gross) : null;
   const limits = [d.cap ? `${d.trades} of ${d.cap} trades` : `${d.trades} trades`,
-    d.loss_limit ? `${rupees(d.total)} of −₹${Number(d.loss_limit).toLocaleString("en-IN")} limit` : null].filter(Boolean).join(" · ");
+    d.loss_limit ? `${rupees(d.total)} of −₹${Number(d.loss_limit).toLocaleString("en-IN")} limit` : null,
+    chg ? `<span class="lv-charges">charges <b>₹${Math.round(chg).toLocaleString("en-IN")}</b>${bite != null ? ` · ${bite}% of gross` : ""}</span>` : null,
+  ].filter(Boolean).join(" · ");
   const cards = (acct.positions || []).map((p) => {
     const cls = (p.pnl_rs ?? 0) >= 0 ? "w" : "l";
     const ctx = p.context ? `Entered ${esc(p.context.time)} with the index ${esc(p.context.where || "")}${p.context.setup ? ` · setup ${esc(p.context.setup)}` : " · no rule setup"}` : "";

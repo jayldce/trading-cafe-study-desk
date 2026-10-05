@@ -263,6 +263,7 @@ On 10-Sep a BSE-wide price-feed and order glitch spiked one option ~100+ pts in 
 The guest host draws entry, SL and target on the **spot** chart and trades the option at whatever premium prevails when spot hits each level, entering only on a full candle close. He books profit at **standard-deviation projections** of the latest swing, which he treats as "stretched" zones rather than a mechanical system.
 On 25-Sep he spelled out how he anchors the standard-deviation tool: from the lowest to the highest point of the single continuous run of same-colour candles that caused the reversal, never from an arbitrary swing. He also gave a plain definition of **confluence**: a few extra confirmations for a trade, the main one being your own analysis.
 **Watch:** [▶ 10-Sep spot method](https://www.youtube.com/watch?v=_v3ieKuYGRc&t=4260s) · [▶ 10-Sep SD zones](https://www.youtube.com/watch?v=_v3ieKuYGRc&t=19660s) · [▶ 25-Sep SD anchor](https://www.youtube.com/watch?v=yD4AJB3j0e4&t=5220s) · [▶ 25-Sep confluence](https://www.youtube.com/watch?v=yD4AJB3j0e4&t=4860s)
+On 5-Oct he added that the standard-deviation levels are just the Fibonacci tool with changed settings, drawn from the low to the high of the reversal — across all three candles if three candles built the low. [▶ 5-Oct](https://www.youtube.com/watch?v=61JX6X_6c-g&t=6420s)
 
 ### Step back after a stop, and cap the day
 After a stop-out, re-read the market before firing the same trade again, and set a daily trade count in advance. On 25-Sep Trade Circuit stopped at four trades and skipped a same-spot re-entry after his fourth stop; the index then broke out about 100 points without him. His answer: a missed move is not a loss. The cap trades missed moves for avoided revenge trades — which side of that trade-off pays is not yet measured.
@@ -336,8 +337,26 @@ On 28-Sep he screen-shared a Telegram search for "Trading Cafe India" showing se
 
 ### Scaling out of a large position (Trade Circuit)
 Asked how to book a large quantity, he described a ladder: about 40% at the first target, 20% at the second, 20% at the third, and the last 20% held for the day's move. His reason is psychological as much as mathematical: each booking calms you for the next decision, so you aren't forced to get one exit perfect.
+On 5-Oct he added the one-lot case: with a single lot there is nothing to scale, so book the whole thing at 1:2; with several lots take 50–90% at the target and trail the rest. [▶ 5-Oct](https://www.youtube.com/watch?v=61JX6X_6c-g&t=3720s)
 **Watch:** [▶ 29-Sep](https://www.youtube.com/watch?v=jyeGpm8SGxo&t=1440s)
 
 ### FII selling: "it takes two hands to clap"
 On 29-Sep he explained why Indian indices were falling harder than markets closer to the Gulf conflict: foreign institutions were not only exiting positions but opening fresh shorts, and domestic buying alone can't hold the market up ("ताली एक हाथ से नहीं बजती"). He then said to set the trading view from price action, not from the news — a strong narrative doesn't put money in your hands.
 **Watch:** [▶ the FII point](https://www.youtube.com/watch?v=tyvrNoWrQuA&t=1020s) · [▶ price action first](https://www.youtube.com/watch?v=tyvrNoWrQuA&t=1080s)
+
+### Catching the wick of the 15-minute candle (Trade Circuit)
+His entry logic on 5-Oct: once a 15-minute candle has printed its wick, the next move usually expands away from it — big moves have small wicks and big bodies. So he takes a 1-minute entry that "catches" the wick, with a small stop beyond it, before the 15-minute candle has closed. It is an aggressive entry by his own description. It produced his best trade of the day (+27, 22400 CE at 12:18, ten minutes after Nifty swept 22,400), and the chart review shows why it worked there: the wick sat on two levels at once.
+**Watch:** [▶ 5-Oct](https://www.youtube.com/watch?v=61JX6X_6c-g&t=9360s)
+
+### Double-side liquidity candle (Trade Circuit)
+A 15-minute candle that takes the highs and the lows of the candles before it traps both sides, and what follows is usually chop. His rule is not to chase either direction after one, but to wait for a retracement to a level. On 5-Oct the one trade he took this way (13:01 PE) still lost 6.52, because the day had already turned up.
+**Watch:** [▶ 5-Oct](https://www.youtube.com/watch?v=61JX6X_6c-g&t=12120s)
+
+### "Every gap gets filled" is a myth
+Showing daily charts with gaps that have stayed open for years, he said there is no rule that a gap must be filled — a gap is a level to watch, not a target the market owes you.
+**Watch:** [▶ 5-Oct](https://www.youtube.com/watch?v=61JX6X_6c-g&t=16080s)
+
+### After a first win, risk only the profit (Trade Circuit)
+Once the first trade of the day is in profit, he splits that gain into two or three trades of 7–10 points of risk each, so the rest of the day is played with the market's money. On 5-Oct the plan held until the afternoon: his three afternoon losses (−6.52, −7.45, −17.4) took back about 31 of the 111 points his five wins had made.
+**Watch:** [▶ 5-Oct](https://www.youtube.com/watch?v=61JX6X_6c-g&t=900s)
+
