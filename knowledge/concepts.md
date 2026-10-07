@@ -80,10 +80,12 @@ Take a defined risk, then shrink it step by step as price moves your way (trail,
 **A worked Sensex construction with a time stop (24-Sep):** 73700 CE ~135 + 73600 PE ~153 = 288 combined; stop on a ~150 combined drop, target a 200–235 combined gain, and **30 minutes** for the move to start before he treats it as decaying. By 15:03 it hadn't come, and he said to cut it rather than hold into the close (no fill was shown, so it isn't in the trade log). [▶ the plan](https://www.youtube.com/watch?v=cnhIFE3Rzew&t=2880s) · [▶ cut it](https://www.youtube.com/watch?v=LHErabU5Wok&t=180s)
 **Watch only the combined P&L (29-Sep, Trade Circuit):** on a Nifty expiry afternoon he bought the 22750 CE and 22650 PE for about 40 combined and told viewers to ignore each leg and exit both together at a combined ₹20 loss or ₹40 gain per unit. [▶ 29-Sep](https://www.youtube.com/watch?v=jyeGpm8SGxo&t=10260s)
 **Watch:** [▶ 8-Sep](https://www.youtube.com/watch?v=s3r5EJy4cw8&t=19080s) · [▶ 10-Sep (Trade Circuit)](https://www.youtube.com/watch?v=_v3ieKuYGRc&t=19260s)
+- 6-Oct mechanics, restated: sell the leg that doubles, and the other leg's leftover premium is the profit; stop the pair when the combined premium falls by about half. He waited for the market to leave the 22,700 zone before building one, because a jodi loses all its premium if no panic comes. [▶ 12:27](https://www.youtube.com/watch?v=XnCas9JOTJI&t=12240s) · [▶ 13:32](https://www.youtube.com/watch?v=XnCas9JOTJI&t=16320s)
 
 ### Order block
 The last opposite-coloured candle before a strong impulsive move. That's where the big orders were placed, so when price comes back to that zone it usually reacts, which gives a reversal entry with a small stop.
 **Watch:** [▶ 25-Aug](https://www.youtube.com/watch?v=hkQBf4EvCuo&t=7140s)
+- 6-Oct: after the 14:32 22500 CE (+21.21) he explained it as an order-block zone — the origin of a strong move, where price exhausted, held, retested and then fired. The index review cannot check order blocks; it shows a higher low 14 points over the morning's equal lows and a bear gap that filled. [▶ 14:43](https://www.youtube.com/watch?v=XnCas9JOTJI&t=20400s)
 
 ### ITM / ATM / OTM basics
 **What:** for a call, strikes below the current spot price are **in-the-money (ITM)**; above spot they're **out-of-the-money (OTM)**. For a put, it's the reverse: strikes above spot are ITM, below spot are OTM. The strike matching spot is **at-the-money (ATM)**.
@@ -229,6 +231,7 @@ He says that taking his own positions while broadcasting calls creates a conflic
 ### Why he avoids indicators
 He splits indicators into **price-based** (RSI, moving averages, stochastics), which he treats as lagging noise, and **volume-based** (volume, VWAP, ADX), which he'll use as confirmation. RSI divergence is "one of the lowest-probability trades" because it only confirms strength that has already passed. An NR7/NR4-style narrow-range squeeze is just another version of "small candles → blast".
 **Watch:** [▶ 3-Sep](https://www.youtube.com/watch?v=vK9x0XEwaAg&t=6960s)
+- 6-Oct: no OI, no PCR, no moving averages or EMA crossovers — "pure naked price action"; OI flips too quickly to trust. [▶ 09:52](https://www.youtube.com/watch?v=XnCas9JOTJI&t=2940s)
 
 ### Absorption zone
 A range where price is soaking up all the supply (or demand) before the next leg. Unlike a barcode, it isn't a coiled spring you trade the break of; it's simply a zone he refuses to trade inside, because moves there go nowhere.
@@ -302,6 +305,7 @@ On 30-Sep he rejected a fixed-percentage stop: buying a ₹300 strike does not m
 ### Market phases (why sellers, buyers and jodis take turns)
 His history lesson: dead markets (2017–18) favoured option sellers who sold straddles and slept; momentum and high VIX (2020) favoured buyers and jodis; the last one to one-and-a-half months favoured expiry-day jodis until Thursday's premium melt-down. Pick the structure for the current phase instead of loyalty to one style.
 **Watch:** [▶ 18-Sep](https://www.youtube.com/watch?v=EPh5qxWEUhU&t=6660s)
+- 6-Oct: he labelled the 1-minute Nifty as alternating expansion and contraction and waited for the squeeze to break before trading. [▶ 10:26](https://www.youtube.com/watch?v=XnCas9JOTJI&t=4980s)
 
 ### Liquidity parked in a mega IPO
 He expected sluggish markets while a very large IPO (NSE's, opening the following Monday) soaked up cash, and said to wait for price to start moving again after listing. This is his explanation for thin volumes that morning, not a tested rule.
@@ -313,6 +317,7 @@ He stopped trading futures after 2022–23 because the breakeven is about 16 poi
 
 ### No-trade is also a trade
 Declining to trade when conviction is missing is itself a decision, not a missed opportunity. He said it plainly through a dull morning on 21 Sep, while the market offered breakouts that kept failing. The discipline it protects is the one the trade log keeps proving: his losing setups cluster in chop (`range-breakout-direct` 0W/11L, `range-chop-scalps` 0W/3L). [▶ 21-Sep](https://www.youtube.com/watch?v=DrmIRaTPU-A&t=8580s)
+- 6-Oct: after the morning burst he sat out about two hours of mid-market chop, refused to re-enter in consolidation, and took the breakout of the zone he had marked at 12:00. On the same box the course's scanner fired six setups and lost all six. [▶ 12:07](https://www.youtube.com/watch?v=XnCas9JOTJI&t=11040s)
 
 ### The last bull becomes the bear (capitulation)
 The worse the news gets *after* a long fall, the closer the market usually is to a real bottom — because bad news arriving late is what finally breaks the holdouts who have been buying all the way down. He drew the analogy from the COVID crash on 21 Sep. Treat it as a way of reading sentiment extremes, not a timing tool. [▶ 21-Sep](https://www.youtube.com/watch?v=DrmIRaTPU-A&t=16680s)
@@ -360,3 +365,8 @@ Showing daily charts with gaps that have stayed open for years, he said there is
 Once the first trade of the day is in profit, he splits that gain into two or three trades of 7–10 points of risk each, so the rest of the day is played with the market's money. On 5-Oct the plan held until the afternoon: his three afternoon losses (−6.52, −7.45, −17.4) took back about 31 of the 111 points his five wins had made.
 **Watch:** [▶ 5-Oct](https://www.youtube.com/watch?v=61JX6X_6c-g&t=900s)
 
+### Zone to zone
+Enter where the market first stalls at an earlier supply or demand zone, with the stop just beyond it, and aim for the next zone — never for an open-ended move. On 6-Oct each of his targets was the next zone on the option chart (198, 215, 244). [▶ 10:05](https://www.youtube.com/watch?v=XnCas9JOTJI&t=3720s)
+
+### Distribution and accumulation zones wear out
+An earlier distribution (selling) or accumulation (buying) zone reacts well the first time or two price returns to it; each further test weakens it, because the orders that defended it have been used up. [▶ 10:23](https://www.youtube.com/watch?v=XnCas9JOTJI&t=4800s)
