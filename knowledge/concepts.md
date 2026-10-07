@@ -16,6 +16,7 @@ Add new concepts as streams are processed; add examples to existing ones rather 
 **What:** a squeeze. When many small, similar candles hug the same level (he calls it a **barcode pattern**, or a "dangal" wrestling match between buyers and sellers), the two sides are balanced and energy is building. The break is usually fast.
 **How he uses it:** don't trade *inside* the barcode, because the range keeps shrinking and you get chopped. Wait for one side to win, then take the follow-up candle after the break (playbook setup A).
 **Watch:** [▶ 11-Sep 09:22](https://www.youtube.com/watch?v=qTDwaNEZ2RY&t=1200s) · [▶ 8-Sep barcode explained](https://www.youtube.com/watch?v=s3r5EJy4cw8&t=3420s)
+**Tall zigzag candles are the opposite (7-Oct):** a run of big alternating candles means fast moves, so he plans a small-risk entry in advance rather than chasing one. [▶ 11:44](https://www.youtube.com/watch?v=F-PdJ_DvsDY&t=9420s)
 
 ### Make-or-break zone
 **What:** a level where price was rejected several times (e.g. 176 on the CE, 162 on the PE). Whichever side breaks with an aggressive candle is the side to trade.
@@ -39,6 +40,7 @@ Only after an **aggressive move**. A pullback after a weak move is often just th
 **What:** a zone price moved through too fast (an imbalance), left behind by a quick push to a fresh high or low. Price often returns to it.
 **His use:** if price falls back into the FVG, the move gets "dull" and late traders are trapped. You want an aggressive candle to clear it.
 **Watch:** [▶ 10:55](https://www.youtube.com/watch?v=qTDwaNEZ2RY&t=6780s)
+**7-Oct:** a viewer called a spot FVG mid-move; he said no — on his reading an FVG forms at a bottom after a strong move and a retest, and that move had not made one yet. [▶ 10:23](https://www.youtube.com/watch?v=F-PdJ_DvsDY&t=4560s)
 
 ### Bounce strength
 After price falls from a level it usually bounces. If each bounce is **weaker**, expect a breakdown from that same zone. A strong bounce means buyers are defending. After two bounces, a **third test** rarely holds, so don't buy it; wait for the break.
@@ -58,6 +60,7 @@ Option sellers cluster at round strikes (23,300). When spot pushes through and h
 - **Skew:** compare IV on calls vs puts at the same distance from spot. If puts are visibly richer, sellers are pricing more downside risk that day, and vice versa.
 - **1-Oct, Sensex expiry:** from the open, call-side IV kept rising while put-side IV eased, and he used that to stay off aggressive puts for the morning ("the put's time will come"). [▶ 1-Oct](https://www.youtube.com/watch?v=BFZHFiPxAG4&t=5280s)
 **Watch:** [▶ 11-Sep](https://www.youtube.com/watch?v=qTDwaNEZ2RY&t=1560s) · [▶ 7-Sep skew](https://www.youtube.com/watch?v=JhSkNorpW6w&t=12120s) · [▶ 8-Sep skew](https://www.youtube.com/watch?v=s3r5EJy4cw8&t=13620s)
+- **Into a scheduled event (7-Oct, RBI policy):** IV rises ahead of the announcement and falls once it passes, so a long straddle or strangle bought just before the event pays for volatility that is about to drain out. He said to build a jodi on an expiry day with real movement instead. [▶ 09:50](https://www.youtube.com/watch?v=F-PdJ_DvsDY&t=2580s)
 
 ### ₹150 near-ATM strikes
 He buys options priced around ₹150 (near-ATM or slightly ITM). They move almost 1:1 with spot, so chart levels on spot translate cleanly. He rolls to a closer strike when premium runs away.
@@ -112,6 +115,7 @@ A zone counts as *proven* when the market has already launched a fresh, strong r
 His observation: good news tends to arrive when price is already at a demand zone, bad news at a supply zone. The last panicking trader creates the turn just before the news explains it, which is his argument for trading levels instead of headlines.
 **The other way round (1-Oct):** he listed the day's good macro prints (industrial growth, manufacturing, GST collections) while Sensex was in a midday crash — good news did not stop a fall that was already running.
 **Watch:** [▶ 20-Aug](https://www.youtube.com/watch?v=2gndmZYrtPw&t=1200s) · [▶ 1-Oct](https://www.youtube.com/watch?v=BFZHFiPxAG4&t=15480s)
+**Trade the setup, not the news (7-Oct):** when the commentary on an event is bad, look for long setups; when it is good, expect profit booking. Setups rarely line up with the sentiment. On RBI day the announcement was as expected, and the first real move came after the speech, not on the headline. [▶ 11:54](https://www.youtube.com/watch?v=F-PdJ_DvsDY&t=10020s) · [▶ 10:03](https://www.youtube.com/watch?v=F-PdJ_DvsDY&t=3360s)
 
 ### Calendar spread (taught, not traded)
 Sell the expiring ATM call and put, buy the same strikes in the next expiry. The near legs decay to zero while the far legs keep time value, so it profits if spot stays in a wide range. Margin is roughly ₹90,000. He presented it as an expiry-day alternative to the jodi.
@@ -325,6 +329,7 @@ The worse the news gets *after* a long fall, the closer the market usually is to
 ### First bounce zone
 The very first time price returns to a zone right after breaking out of it — as opposed to a deeper "pullback zone" reached later. He watches for a pin-bar or reversal candle here with a small stop (6–7 points in his 22-Sep example), because it's the freshest, least-tested version of the level. It didn't pay on 22-Sep (the entry lost about 6 points once the bounce stalled and the trail was taken out), a reminder that "fresh" isn't the same as "confirmed" — it still needs the reversal candle to actually print.
 **Watch:** [▶ 22-Sep](https://www.youtube.com/watch?v=Dpx4i4TCkEc&t=4620s)
+**It paid three times on 7-Oct (Sensex):** after the 72600 CE's 10:17 breakout ran, price came back to the zone where that entry had formed and a pin bar printed there — the 73000 CE trade, +~75.5 [▶ 10:37](https://www.youtube.com/watch?v=F-PdJ_DvsDY&t=5400s); the afternoon 72600 PE launched off its own first-bounce zone after a one-way fall [▶ 14:34](https://www.youtube.com/watch?v=F-PdJ_DvsDY&t=19620s). Both waited for the candle, which is the difference from 22-Sep.
 
 ### Jodi layering (Polymarket/Kalshi analogy)
 When several jodis (long straddles) are open at once, he books each side in stages as it moves favourably rather than exiting the whole position at once — comparing it to toggling between "yes" and "no" positions on a prediction market. Example: with three jodis open and the put side in profit while the call side is fading toward zero, he sells down the put leg in pieces; once the average combined cost is fully recovered, anything the position still holds is free optionality. [▶ 22-Sep](https://www.youtube.com/watch?v=Dpx4i4TCkEc&t=13620s)
@@ -370,3 +375,10 @@ Enter where the market first stalls at an earlier supply or demand zone, with th
 
 ### Distribution and accumulation zones wear out
 An earlier distribution (selling) or accumulation (buying) zone reacts well the first time or two price returns to it; each further test weakens it, because the orders that defended it have been used up. [▶ 10:23](https://www.youtube.com/watch?v=XnCas9JOTJI&t=4800s)
+
+### Tussle zone (CE and PE both stuck)
+When the call and the put are both sitting at key zones on their own charts, neither side has won yet ("tussle-muscle"). He waits for the fight to resolve and joins whichever side breaks out, rather than guessing. On 7-Oct the 72900 PE trade came out of such a zone. [▶ 11:47](https://www.youtube.com/watch?v=F-PdJ_DvsDY&t=9600s)
+
+### Pick the strike by premium, then re-set it
+He likes ~₹300 Sensex premiums, but drops to a cheaper strike when the stop on the usual one would be too wide: on 7-Oct he chose the 73000 CE at ~190 because it gave "a small stop and a decent target". After a big move he re-sets both strikes so the next trade starts at the same premium band. [▶ 10:42](https://www.youtube.com/watch?v=F-PdJ_DvsDY&t=5700s) · [▶ 10:25](https://www.youtube.com/watch?v=F-PdJ_DvsDY&t=4680s)
+
