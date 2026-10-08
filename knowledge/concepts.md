@@ -82,6 +82,7 @@ Take a defined risk, then shrink it step by step as price moves your way (trail,
 **Wide stops as the trigger (1-Oct):** when single-side Sensex stops were coming out at 60–80 points in a crash, he took that as the sign to stop guessing direction and build jodis from two ~₹120 options, since a cheap out-of-the-money option in a violent market has a real chance of doubling either way. Both made money (~+35, ~+18), booked on a modest net gain rather than the 150-point target. [▶ 1-Oct](https://www.youtube.com/watch?v=BFZHFiPxAG4&t=15060s)
 **A worked Sensex construction with a time stop (24-Sep):** 73700 CE ~135 + 73600 PE ~153 = 288 combined; stop on a ~150 combined drop, target a 200–235 combined gain, and **30 minutes** for the move to start before he treats it as decaying. By 15:03 it hadn't come, and he said to cut it rather than hold into the close (no fill was shown, so it isn't in the trade log). [▶ the plan](https://www.youtube.com/watch?v=cnhIFE3Rzew&t=2880s) · [▶ cut it](https://www.youtube.com/watch?v=LHErabU5Wok&t=180s)
 **Watch only the combined P&L (29-Sep, Trade Circuit):** on a Nifty expiry afternoon he bought the 22750 CE and 22650 PE for about 40 combined and told viewers to ignore each leg and exit both together at a combined ₹20 loss or ₹40 gain per unit. [▶ 29-Sep](https://www.youtube.com/watch?v=jyeGpm8SGxo&t=10260s)
+**Built early, legs shown (8-Oct):** he usually builds after 13:00 but built at 11:29 because momentum was strong; the SL (half the combined premium) is only applied around 15:00. His journal logs the legs: PE 132 → 200 (+68), CE 95 → 60 (−35), net +33. Later he added that a jodi built at ~190 combined is too dear — ~80 + 80 is the shape — and that a farther strike only needs a ~200-point Sensex move. [▶ 11:29](https://www.youtube.com/watch?v=kw5L_dY2HPo&t=9240s) · [▶ 13:56](https://www.youtube.com/watch?v=kw5L_dY2HPo&t=17460s)
 **Watch:** [▶ 8-Sep](https://www.youtube.com/watch?v=s3r5EJy4cw8&t=19080s) · [▶ 10-Sep (Trade Circuit)](https://www.youtube.com/watch?v=_v3ieKuYGRc&t=19260s)
 - 6-Oct mechanics, restated: sell the leg that doubles, and the other leg's leftover premium is the profit; stop the pair when the combined premium falls by about half. He waited for the market to leave the 22,700 zone before building one, because a jodi loses all its premium if no panic comes. [▶ 12:27](https://www.youtube.com/watch?v=XnCas9JOTJI&t=12240s) · [▶ 13:32](https://www.youtube.com/watch?v=XnCas9JOTJI&t=16320s)
 
@@ -381,4 +382,19 @@ When the call and the put are both sitting at key zones on their own charts, nei
 
 ### Pick the strike by premium, then re-set it
 He likes ~₹300 Sensex premiums, but drops to a cheaper strike when the stop on the usual one would be too wide: on 7-Oct he chose the 73000 CE at ~190 because it gave "a small stop and a decent target". After a big move he re-sets both strikes so the next trade starts at the same premium band. [▶ 10:42](https://www.youtube.com/watch?v=F-PdJ_DvsDY&t=5700s) · [▶ 10:25](https://www.youtube.com/watch?v=F-PdJ_DvsDY&t=4680s)
+
+### Two ways to pick a target
+An earlier distribution zone on the option chart (where the last fall began), or a Fibonacci extension of the previous leg. He uses whichever is nearer and trails beyond it. [▶ 8-Oct](https://www.youtube.com/watch?v=kw5L_dY2HPo&t=8220s)
+
+### Same zone, two timeframes
+A 5-minute trader and a 1-minute trader can buy the same zone: the 5-minute version takes a ~60-point Sensex stop for ~100 of reward, the 1-minute version waits for a one-candle stop. Neither is wrong; the stop size, not the zone, decides the quantity. [▶ 8-Oct](https://www.youtube.com/watch?v=kw5L_dY2HPo&t=6180s)
+
+### Premium erosion is not direction
+On a falling day a CE that keeps making lower lows is losing to the index *and* to time; a PE that fails to make a higher high while spot falls is losing to time too. Don't read a decaying premium as the market turning. [▶ 8-Oct](https://www.youtube.com/watch?v=kw5L_dY2HPo&t=4740s)
+
+### No trendline breakouts
+He doesn't trade trendline breaks: he wants a real support or base close to price, so the stop has something under it. On 8-Oct viewers took a put on a trendline break; he said he hadn't plotted it. [▶ 8-Oct](https://www.youtube.com/watch?v=kw5L_dY2HPo&t=3840s)
+
+### Don't buy the very bottom
+He avoids the exact low of a fall, where stop-hunts happen, and prefers a zone where trapped traders sit and a small-candle pullback gives a defined stop. [▶ 8-Oct](https://www.youtube.com/watch?v=kw5L_dY2HPo&t=17280s)
 
