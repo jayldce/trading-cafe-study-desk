@@ -28,8 +28,25 @@ Add new concepts as streams are processed; add examples to existing ones rather 
 **Watch:** [▶ 09:25](https://www.youtube.com/watch?v=qTDwaNEZ2RY&t=1380s)
 
 ### When is a pullback trustworthy?
-Only after an **aggressive move**. A pullback after a weak move is often just the start of a reversal. On 11-Sep a ~100-pt spot move wasn't strong enough, so he didn't trust the pullback.
-**Watch:** [▶ 09:40](https://www.youtube.com/watch?v=qTDwaNEZ2RY&t=2280s)
+**What:** not every dip after a move is a pullback you can buy. Most are not, and he says so out loud far more often than he takes one.
+
+**Why it works:** a pullback is only tradeable when it returns to a zone that already *produced* a move — the base a breakout launched from, which he calls the **apex**. Buyers who were filled there once are willing again, and the people who chased the extended candle are now offside. A dip to nowhere in particular has neither.
+
+**Qualifies when:**
+- the move it is retracing was **aggressive**. A ~100-point spot move on 11-Sep was not enough, and he left it alone [▶](https://www.youtube.com/watch?v=qTDwaNEZ2RY&t=2280s).
+- it returns to a zone he had **marked before** price got there — on 25-Aug the entry came just above a 268 base / ~286 breakout zone he had been watching for hours: "यह पुलबैक एंट्री मैं सुबह से ढूंढने की कोशिश कर रहा था" [▶](https://www.youtube.com/watch?v=DmPpZPOBuNA&t=13800s).
+- the resulting stop is **small**. The whole point is a cheaper entry than the breakout offered.
+
+**Disqualified when:**
+- **the stop comes out too big.** On 23-Sep he refused a ~30-point stop against a 585 target and waited for a smaller-risk pullback instead, saying plainly he didn't like it [▶](https://www.youtube.com/watch?v=U-VHSEbmW5Y&t=16500s).
+- **the candle isn't a pullback candle.** On 25-Aug he sat through several candles after the breakout held, rejecting more than one out loud as "not a pullback candle" before the right one came [▶](https://www.youtube.com/watch?v=DmPpZPOBuNA&t=13140s).
+- **no green candle forms at the zone.** On 9-Oct the 22400 PE came back toward its 145–147 base after the first leg, and he passed: "a pullback needs a candle to form; it hasn't" — re-entry only above the 147 base [▶](https://www.youtube.com/watch?v=9kn5B0LK1YM&t=960s).
+- **it is the pullback of a breakout that just failed.** "Re-entry on a breakout trade is not taken in the pullback, unless the candle was very strong" (9-Oct, straight after the 22450 CE stop-out); the failed break has already shown no strength, so the dip buys the same trapped zone. Wait for a fresh higher high [▶](https://www.youtube.com/watch?v=9kn5B0LK1YM&t=3780s).
+- **the structure calls for a breakout entry instead.** On 1-Oct, approaching a 459–460 zone: "इसमें पुलबैक एंट्री नहीं देख रहा हूं। इसमें क्लियर ब्रेकआउट एंट्री देख रहा हूं" — and he accepted a 25–30 point stop, the top of his own ceiling, because the entry type was different [▶](https://www.youtube.com/watch?v=jCedaeF9RWg&t=14640s).
+
+**Trigger:** a small, calm candle **at** the marked zone — not the pullback candle itself. On 17-Jul he let the 24150 CE fall back into its 154–174 apex after a spike to 204 and entered at ~170 rather than chasing, with the first target 184 hit [▶](https://www.youtube.com/watch?v=5wgTKROoOhc&t=9900s).
+
+**Seen:** [▶ apex defined](https://www.youtube.com/watch?v=5wgTKROoOhc&t=9480s) · [▶ 25-Aug, hunted all morning](https://www.youtube.com/watch?v=DmPpZPOBuNA&t=13800s) · [▶ 23-Sep, refused](https://www.youtube.com/watch?v=U-VHSEbmW5Y&t=16500s)
 
 ### Liquidity sweep (stop hunt)
 **What:** stop losses cluster just below obvious lows. Big players push price below the low to fill their buy orders against those stops, and then price reverses.
@@ -52,6 +69,28 @@ After price falls from a level it usually bounces. If each bounce is **weaker**,
 Option sellers cluster at round strikes (23,300). When spot pushes through and holds, those writers cover ("give up"), which fuels the move. That's why round numbers make good targets and breakout levels.
 **Real numbers (8-Sep):** 23,700 call OI fell from ~3.79 Cr to ~3.20 Cr as spot pushed through; that's writers covering. The chain that day also showed PCR 0.56 and max pain 23,800.
 **Watch:** [▶ 11-Sep](https://www.youtube.com/watch?v=qTDwaNEZ2RY&t=6060s) · [▶ 8-Sep OI](https://www.youtube.com/watch?v=s3r5EJy4cw8&t=13500s)
+
+### Trapped writers: why a move accelerates past a level
+**What:** his highest-conviction entries are not "the level broke" — they are "the people positioned against this break now have to buy it back". The move that follows is fast because it is forced, not voluntary.
+
+**Why it works:** in an index option chain the trapped party has a name and an address. Writers sell calls at a strike expecting price to stay below it; when spot pushes through and *holds*, their short is losing and they cover by buying — which pushes price further through, which traps the next strike up. That is the fuel. On 8-Sep the 23,700 call OI fell from ~3.79 Cr to ~3.20 Cr as spot pushed through: that number is the covering, visible after the fact [▶](https://www.youtube.com/watch?v=s3r5EJy4cw8&t=13500s). He calls the moment the writers "give up".
+
+**Qualifies when:**
+- there is a **real concentration** to trap — a strike with heavy open interest, which is why round numbers work so well as breakout levels.
+- price **breaks and holds**, not just pokes. A wick through traps nobody; the writers only cover once the break sustains.
+- the level is one price has **already been rejected from several times** — a make-or-break zone. Each rejection adds another layer of sellers who are now offside when it finally goes.
+- **a second, lower high before the break** deepens it: that shape traps the buyers who bought the first high as well, and he flags it as fuelling a bigger counter-move [▶](https://www.youtube.com/watch?v=jCedaeF9RWg&t=4380s).
+
+**Disqualified when:**
+- **the break has no one on the other side.** A level with no OI behind it produces a move with no forced buying, which is the ordinary grind rather than the blast.
+- **the panic is yours.** His own worst sequences are the ones where he was the trapped party — three stopped attempts on the same PE before the real move, "frankly trapped" in his own words, and afterwards: "ट्रैप वाज़ वर्थ फॉर दिस काइंड ऑफ़ मूव" [▶](https://www.youtube.com/watch?v=DmPpZPOBuNA&t=12240s). The same mechanism that pays you when you read it right is what takes the stop when you don't.
+- **it is news or results doing the moving.** "रादर देन रिजल्ट वाले इसमें हाथ डाले, हम ऐसे ट्रेड्स देखेंगे जहां पे ढंग से समझ में आता है क्या हो रहा है" — only trade where the price action is legible [▶](https://www.youtube.com/watch?v=ayYEP_dKaLY&t=17880s).
+
+**Trigger:** the break that *holds*, entered the normal way — follow-up candle above the level, stop at that candle's low. The trapped-writer read raises conviction and justifies a wider target; it does not replace the entry rule.
+
+**Honest caveat:** this mechanism is well documented *after* a move, and the OI change proves it happened. It does **not** tell you when. Tested over 8 logged sessions, neither PCR, IV skew nor distance to the nearest OI wall predicted the next 30 minutes — every bucket came out negative because those sessions were falling. Read the wall as *where the fuel is if a break comes*, never as a forecast that one will. See also [Call writers at round strikes](#) and [Make-or-break zone](#).
+
+**Seen:** [▶ put writers panicking through 24,500](https://www.youtube.com/watch?v=zmnPW3HauhM&t=10800s) · [▶ 23,800 "make-or-break", writers would panic on a clean break](https://www.youtube.com/watch?v=JhSkNorpW6w&t=3120s) · [▶ double-top traps more buyers](https://www.youtube.com/watch?v=jCedaeF9RWg&t=4380s)
 
 ### Implied volatility (IV) regimes
 - 12–13 is normal, 15–16 is costly, 27+ (like 11-Sep) is abnormal: premiums are very expensive and swings are violent.
@@ -178,6 +217,7 @@ On a fast Sensex expiry move he refused to park a trigger order above the level.
 ### The confirmed pin-bar entry, step by step
 At a base, don't buy the first down-tick or the first green candle. Wait for a **strong green pin bar to close**, enter above its high, and put the stop at that pin bar's low. On 23-Jul this turned the 76900 PE into his best trade of the batch (~324 → booked as a "double century", +200).
 **Not every pin bar (17-Sep):** he warns that reaching for every single pin bar and every random reversal means stop losses "again and again". The pin bar only counts at a level where the other side is visibly trapped, and on 17-Sep he added a price condition too — work the 74800 PE only once it sustains above 303. That trade made +174.6.
+**Disqualified: one candle is not a reversal (9-Oct).** At 09:46 the call had broken a zone, printed a pin bar and still gone lower — "there was nothing to sit in a reversal for"; at 10:04 he refused a put reversal for the same reason: a reversal needs a clear breakout of the move or a completed pattern (he pointed at a head-and-shoulders still forming), and at 10:16 an order block that was only "temporary" and exhausting. [▶ 10:04](https://www.youtube.com/watch?v=9kn5B0LK1YM&t=3240s) · [▶ 10:19](https://www.youtube.com/watch?v=9kn5B0LK1YM&t=4140s)
 **Watch:** [▶ 23-Jul](https://www.youtube.com/watch?v=Uu-LJo9Li30&t=8580s) · [▶ 17-Sep](https://www.youtube.com/watch?v=njvG_Pr9CpM&t=12120s)
 
 ### Options drive the index
@@ -357,6 +397,7 @@ On 29-Sep he explained why Indian indices were falling harder than markets close
 
 ### Catching the wick of the 15-minute candle (Trade Circuit)
 His entry logic on 5-Oct: once a 15-minute candle has printed its wick, the next move usually expands away from it — big moves have small wicks and big bodies. So he takes a 1-minute entry that "catches" the wick, with a small stop beyond it, before the 15-minute candle has closed. It is an aggressive entry by his own description. It produced his best trade of the day (+27, 22400 CE at 12:18, ten minutes after Nifty swept 22,400), and the chart review shows why it worked there: the wick sat on two levels at once.
+**9-Oct:** the 22500 CE at 135 — after a parallel FVG and a close back above his black line, he bought early and later said the entry "caught the 15-minute wick"; stop under the FVG (126.71, trailed to 131.12), and the first target 150.28 passed by 14:10 (157.50 on the frame). Once that leg ran, he called the 135 level "relevant no more" for re-entries — the next one had to come from the new gap at 148. [▶ 9-Oct](https://www.youtube.com/watch?v=6xE3fsOXdCI&t=8760s)
 **Watch:** [▶ 5-Oct](https://www.youtube.com/watch?v=61JX6X_6c-g&t=9360s)
 
 ### Double-side liquidity candle (Trade Circuit)
@@ -398,3 +439,34 @@ He doesn't trade trendline breaks: he wants a real support or base close to pric
 ### Don't buy the very bottom
 He avoids the exact low of a fall, where stop-hunts happen, and prefers a zone where trapped traders sit and a small-candle pullback gives a defined stop. [▶ 8-Oct](https://www.youtube.com/watch?v=kw5L_dY2HPo&t=17280s)
 
+### Enter above the higher high to shrink the stop
+**What:** when a breakout candle shows rejection at its top, he does not buy it — he waits for price to take out its high, so the stop can sit under the last small candle instead of under the whole structure.
+**Why it works:** the rejection wick is where the first breakout buyers were sold to. A trade above that high means the sellers who leaned on the wick are now offside, and the stop shrinks from the structural one to the last candle's low — the same idea at half the risk.
+**Qualifies when:** a consolidation has broken, small pin bars or dojis form just under the level, and the structural stop is too big. On 9-Oct (22350 CE) that was ~20 points against a 226 target, about 1:1.5; above 199 it became ~9 points (191.15) for the same target.
+**Disqualified when:** the stop is still ~20 points at the trigger ("I do not understand a 20-point risk"), or a trap forms instead of a higher high.
+**Trigger:** price trades through the named higher high (199). Journal: 199.97 → 191.15 → 225.84, booked 220.14, +20.17.
+**Seen:** [▶ 09:41 "only if the higher high forms — 199"](https://www.youtube.com/watch?v=9kn5B0LK1YM&t=1860s) · [▶ 09:43 refuses the 20-pt risk](https://www.youtube.com/watch?v=9kn5B0LK1YM&t=1980s) · [▶ 09:44 the 10-pt version](https://www.youtube.com/watch?v=9kn5B0LK1YM&t=2040s)
+
+### Counter-trend trades only tiny (Trade Circuit)
+**What:** he picks call or put from the 1-hour, 15-minute and 5-minute structure; the side against the short-term trend is a small, quick, optional trade.
+**Why it works:** in a market whose short-term buyers keep absorbing every sell candle, put buyers are stopped by each shake-out before any pullback comes.
+**Qualifies when:** a swing exists to put the stop behind, and the 1-minute closes below his marked line; even then he rates it only ~1:2.
+**Disqualified when:** price is only sideways with no momentum, the premium is already high (he refused a 167–168 put), or no swing has formed for the stop.
+**Trigger:** a 1-minute close below the black line, then the buy (22550 PE at ~155 on 9-Oct).
+**Seen:** both 9-Oct counter-trend puts lost (−8, −6.91) while both with-trend calls paid (+15.28, +10). [▶ against the trend](https://www.youtube.com/watch?v=6xE3fsOXdCI&t=3540s) · [▶ structure read](https://www.youtube.com/watch?v=6xE3fsOXdCI&t=3360s)
+
+### FVG limit re-entry (Trade Circuit)
+**What:** after a leg pays, he re-enters with a **limit order at the fair value gap** the leg left, not at the high.
+**Why it works:** buyers who missed the first leg get filled where the move was inefficient; the stop is small (~10) and the first target is the prior high area.
+**Qualifies when:** the first entry has already paid and price is pulling back into the gap — on 9-Oct it tapped 150 and then 148.
+**Disqualified when:** price is well above the gap (a chase), or the 15-minute candle near the target is indecisive (book part instead).
+**Trigger:** limit at 148, stop ~138, first exit 158, then stop to 145. The 14:19 frame showed 171.10.
+**Seen:** [▶ 14:11 "tapped 150, now 148"](https://www.youtube.com/watch?v=6xE3fsOXdCI&t=10380s) · [▶ 14:18 first exit 158](https://www.youtube.com/watch?v=6xE3fsOXdCI&t=10860s)
+
+### The weekly-candle fight on a Friday (Trade Circuit)
+**What:** on Friday afternoon after a big week, he reads the sideways tape as bulls and bears fighting over where the weekly candle closes.
+**Why it works:** both sides defend the weekly close, so intraday swings stall and reverse until one side gives up.
+**Qualifies when:** Friday, after a large move earlier in the week, with price ranging.
+**Disqualified when:** not stated.
+**Trigger:** none — it is a reason to trade smaller and stop early; he declined a call near 15:00 as too late in the day.
+**Seen:** [▶ 9-Oct](https://www.youtube.com/watch?v=6xE3fsOXdCI&t=7680s) · [▶ near 3 o'clock](https://www.youtube.com/watch?v=6xE3fsOXdCI&t=13140s)

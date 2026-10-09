@@ -7,10 +7,10 @@
   "2026-10-07",
   "2026-10-08"
  ],
- "close": 22231.80078125,
+ "close": 22231.8,
  "last_session": "2026-10-08",
- "week_high": 22731.75,
- "week_low": 22180.30078125,
+ "week_high": 22731.85,
+ "week_low": 22179.9,
  "closes": {
   "2026-10-01": 22421.95,
   "2026-10-05": 22555.75,
@@ -32,21 +32,21 @@
   },
   {
    "kind": "old_low",
-   "lo": 22561.8,
-   "hi": 22561.8,
+   "lo": 22561.6,
+   "hi": 22561.6,
    "text": "Tue 06 Oct low",
    "weight": 1,
    "side": "above",
-   "distance": 330.0
+   "distance": 329.8
   },
   {
    "kind": "old_low",
-   "lo": 22546.55,
-   "hi": 22546.55,
+   "lo": 22546.3,
+   "hi": 22546.3,
    "text": "Wed 07 Oct low",
    "weight": 1,
    "side": "above",
-   "distance": 314.8
+   "distance": 314.5
   },
   {
    "kind": "round",
@@ -96,16 +96,16 @@
   {
    "kind": "fvg_bear",
    "lo": 22412.95,
-   "hi": 22429.45,
+   "hi": 22429.25,
    "text": "open bear FVG from Thu 08 Oct 11:21",
    "weight": 2,
    "side": "above",
-   "distance": 189.4
+   "distance": 189.3
   },
   {
    "kind": "fvg_bear",
    "lo": 22402.3,
-   "hi": 22409.35,
+   "hi": 22409.3,
    "text": "open bear FVG from Thu 08 Oct 11:22",
    "weight": 2,
    "side": "above",
@@ -136,7 +136,7 @@
    "text": "open bear FVG from Thu 08 Oct 11:25",
    "weight": 2,
    "side": "above",
-   "distance": 152.3
+   "distance": 152.4
   },
   {
    "kind": "fvg_bear",
@@ -154,7 +154,7 @@
    "text": "open bear FVG from Thu 08 Oct 12:30",
    "weight": 2,
    "side": "above",
-   "distance": 80.7
+   "distance": 80.8
   },
   {
    "kind": "round",
@@ -181,7 +181,7 @@
    "text": "open bear FVG from Thu 08 Oct 13:40",
    "weight": 2,
    "side": "above",
-   "distance": 44.3
+   "distance": 44.4
   },
   {
    "kind": "prev_close",
@@ -221,21 +221,21 @@
   },
   {
    "kind": "prev_low",
-   "lo": 22180.3,
-   "hi": 22180.3,
+   "lo": 22179.9,
+   "hi": 22179.9,
    "text": "previous-day low (Thu 08 Oct)",
    "weight": 3,
    "side": "below",
-   "distance": -51.5
+   "distance": -51.9
   },
   {
    "kind": "range_low",
-   "lo": 22180.3,
-   "hi": 22180.3,
+   "lo": 22179.9,
+   "hi": 22179.9,
    "text": "5-session low",
    "weight": 2,
    "side": "below",
-   "distance": -51.5
+   "distance": -51.9
   },
   {
    "kind": "round",
