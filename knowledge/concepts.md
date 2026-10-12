@@ -133,6 +133,7 @@ The last opposite-coloured candle before a strong impulsive move. That's where t
 ### ITM / ATM / OTM basics
 **What:** for a call, strikes below the current spot price are **in-the-money (ITM)**; above spot they're **out-of-the-money (OTM)**. For a put, it's the reverse: strikes above spot are ITM, below spot are OTM. The strike matching spot is **at-the-money (ATM)**.
 **Watch:** [▶ 16-Sep, taught live with the option chain open](https://www.youtube.com/watch?v=MK1NfHWN24M&t=12360s) (Trade Circuit, teaching a beginner viewer)
+**The day before expiry (Trade Circuit, 12-Oct):** he told small accounts (₹20,000) to buy ATM or ITM and never OTM, because OTM premiums lose the most time value on expiry eve, and he traded the ITM side himself (22450 CE with spot ~22,520; 22450 PE once spot was below it). [▶ 10:11](https://www.youtube.com/watch?v=Yv82vH6iBzM&t=3600s)
 
 ### What "liquidity" means (plain definition)
 **What:** liquidity is simply resting buy and sell orders sitting in the market. They cluster at swing highs/lows, order blocks, fair-value gaps, equal highs/lows, and prior day/week/month highs/lows — all the same zones used elsewhere in the playbook for stops and targets.
@@ -312,10 +313,12 @@ The guest host draws entry, SL and target on the **spot** chart and trades the o
 On 25-Sep he spelled out how he anchors the standard-deviation tool: from the lowest to the highest point of the single continuous run of same-colour candles that caused the reversal, never from an arbitrary swing. He also gave a plain definition of **confluence**: a few extra confirmations for a trade, the main one being your own analysis.
 **Watch:** [▶ 10-Sep spot method](https://www.youtube.com/watch?v=_v3ieKuYGRc&t=4260s) · [▶ 10-Sep SD zones](https://www.youtube.com/watch?v=_v3ieKuYGRc&t=19660s) · [▶ 25-Sep SD anchor](https://www.youtube.com/watch?v=yD4AJB3j0e4&t=5220s) · [▶ 25-Sep confluence](https://www.youtube.com/watch?v=yD4AJB3j0e4&t=4860s)
 On 5-Oct he added that the standard-deviation levels are just the Fibonacci tool with changed settings, drawn from the low to the high of the reversal — across all three candles if three candles built the low. [▶ 5-Oct](https://www.youtube.com/watch?v=61JX6X_6c-g&t=6420s)
+**12-Oct, the rule spelled out as conditions.** *Qualifies when:* the line is marked before the candle, the stop sits on **spot** at the swing or low ("my stop is on spot, not on the option"), and the reward is at least 1:1 to the first area and 1:2 to the second. *Disqualified when:* the candle fails to close beyond the line (he deleted a 13:20 put entry because "it could not close below"), or the stop is bigger than the move (a 15–20-point stop for a 5–10-point reward). *Trigger:* the 15-minute (sometimes 5-minute) close beyond the line, then buy at the running premium. He also said he never draws FVGs on the option chart — the option is only the vehicle for a spot read — and that the 1-minute is for execution only. That day the rule went 1W / 1L / 1 unclear (22450 CE −5.7; 22450 PE unclear; 22450 PE +15). [▶ 10:00](https://www.youtube.com/watch?v=Yv82vH6iBzM&t=2940s) · [▶ 12:50](https://www.youtube.com/watch?v=Yv82vH6iBzM&t=13140s) · [▶ 14:21](https://www.youtube.com/watch?v=Yv82vH6iBzM&t=18600s) · [▶ spot only](https://www.youtube.com/watch?v=Yv82vH6iBzM&t=5460s)
 
 ### Step back after a stop, and cap the day
 After a stop-out, re-read the market before firing the same trade again, and set a daily trade count in advance. On 25-Sep Trade Circuit stopped at four trades and skipped a same-spot re-entry after his fourth stop; the index then broke out about 100 points without him. His answer: a missed move is not a loss. The cap trades missed moves for avoided revenge trades — which side of that trade-off pays is not yet measured.
 **Watch:** [▶ 25-Sep](https://www.youtube.com/watch?v=yD4AJB3j0e4&t=21480s) · [▶ "move miss hua"](https://www.youtube.com/watch?v=yD4AJB3j0e4&t=21240s)
+**No re-entry after the momentum has passed (12-Oct).** After the 12:51 put gave about 10 points and reversed hard, he refused to take it again: a second entry after the impulse has a bigger stop and a smaller reward ("momentum cross hone ke baad re-entry … sense nahi banta"). *Disqualified when:* price has already run ~10 points and turned. *Qualifies again only when:* a fresh candle sets a new, small stop. [▶ 12:53](https://www.youtube.com/watch?v=Yv82vH6iBzM&t=13320s) · [▶ 12:55](https://www.youtube.com/watch?v=Yv82vH6iBzM&t=13500s)
 
 ### Trade your own setup, not your neighbour's
 A 2016–17 trading-floor story he retells: two traders sitting side by side, in *opposite* positions, can both end the month profitable if each sticks to their own system instead of reacting to the other's conviction. The lesson he draws for viewers: don't let a nearby trader's (or a chat commenter's) confidence shake your own plan.
@@ -390,6 +393,7 @@ On 28-Sep he screen-shared a Telegram search for "Trading Cafe India" showing se
 Asked how to book a large quantity, he described a ladder: about 40% at the first target, 20% at the second, 20% at the third, and the last 20% held for the day's move. His reason is psychological as much as mathematical: each booking calms you for the next decision, so you aren't forced to get one exit perfect.
 On 5-Oct he added the one-lot case: with a single lot there is nothing to scale, so book the whole thing at 1:2; with several lots take 50–90% at the target and trail the rest. [▶ 5-Oct](https://www.youtube.com/watch?v=61JX6X_6c-g&t=3720s)
 **Watch:** [▶ 29-Sep](https://www.youtube.com/watch?v=jyeGpm8SGxo&t=1440s)
+On 12-Oct he gave the shape for a range day: about 10 points first (it pays for the day when the move traps you), the bulk at 1:2, the rest trailed to the last liquidity zone with the stop at cost — and on a sideways day, book everything near 10 points. The 14:23 put followed it: 145.10 in, 158 two minutes later, ~15 points booked by his account, and back at 141 by 14:51. [▶ 12:52](https://www.youtube.com/watch?v=Yv82vH6iBzM&t=13260s) · [▶ 14:24](https://www.youtube.com/watch?v=Yv82vH6iBzM&t=18780s)
 
 ### FII selling: "it takes two hands to clap"
 On 29-Sep he explained why Indian indices were falling harder than markets closer to the Gulf conflict: foreign institutions were not only exiting positions but opening fresh shorts, and domestic buying alone can't hold the market up ("ताली एक हाथ से नहीं बजती"). He then said to set the trading view from price action, not from the news — a strong narrative doesn't put money in your hands.
@@ -437,7 +441,12 @@ On a falling day a CE that keeps making lower lows is losing to the index *and* 
 He doesn't trade trendline breaks: he wants a real support or base close to price, so the stop has something under it. On 8-Oct viewers took a put on a trendline break; he said he hadn't plotted it. [▶ 8-Oct](https://www.youtube.com/watch?v=kw5L_dY2HPo&t=3840s)
 
 ### Don't buy the very bottom
-He avoids the exact low of a fall, where stop-hunts happen, and prefers a zone where trapped traders sit and a small-candle pullback gives a defined stop. [▶ 8-Oct](https://www.youtube.com/watch?v=kw5L_dY2HPo&t=17280s)
+**What:** he avoids the exact low of a fall, where stop-hunts happen, and prefers a zone where trapped traders sit and a small-candle pullback gives a defined stop.
+**Why it works:** at a fresh low the only buyers are bottom-pickers with no base under them; the sellers who drove the fall have not been trapped yet, so the first bounce is often just a pause.
+**Qualifies when:** a base forms and a small-candle pullback gives a stop of ~10–15 points or less (his 12-Oct entries used 6–17 option points).
+**Disqualified when:** it is the **first bounce after a big one-way fall** — 12-Oct, ~200 points down by 11:25: "market stretched", no base, so he refused the dip-buy. The same day, the put side was refused too, because a put at the low needed a 26–28-point stop ("a week's loss in one trade").
+**Trigger:** not stated beyond a candle that sets a small stop.
+**Seen:** [▶ 8-Oct](https://www.youtube.com/watch?v=kw5L_dY2HPo&t=17280s) · [▶ 12-Oct refusal at 11:25](https://www.youtube.com/watch?v=Yv82vH6iBzM&t=8040s) · [▶ 12-Oct the 28-pt put refused](https://www.youtube.com/watch?v=Yv82vH6iBzM&t=7320s). **The negative case proved out:** ten minutes after refusing, he bought that bounce anyway (22300 CE at 146.16, 11:35) and spot traded through his stop line by 11:40 (~−7.4). [▶ 11:34](https://www.youtube.com/watch?v=Yv82vH6iBzM&t=8580s)
 
 ### Enter above the higher high to shrink the stop
 **What:** when a breakout candle shows rejection at its top, he does not buy it — he waits for price to take out its high, so the stop can sit under the last small candle instead of under the whole structure.
@@ -454,6 +463,7 @@ He avoids the exact low of a fall, where stop-hunts happen, and prefers a zone w
 **Disqualified when:** price is only sideways with no momentum, the premium is already high (he refused a 167–168 put), or no swing has formed for the stop.
 **Trigger:** a 1-minute close below the black line, then the buy (22550 PE at ~155 on 9-Oct).
 **Seen:** both 9-Oct counter-trend puts lost (−8, −6.91) while both with-trend calls paid (+15.28, +10). [▶ against the trend](https://www.youtube.com/watch?v=6xE3fsOXdCI&t=3540s) · [▶ structure read](https://www.youtube.com/watch?v=6xE3fsOXdCI&t=3360s)
+**12-Oct, the exception that paid:** a 22650 PE at 165.11 at 09:40 with a small stop (148.33), which he later called a counter trade; Nifty fell from ~22,517 to 22,472 by 09:54 and the put ran past its 185.33 target (+20.2). He took it *because* the stop was small after refusing the same put earlier when the stop was big. [▶ 09:39](https://www.youtube.com/watch?v=Yv82vH6iBzM&t=1680s)
 
 ### FVG limit re-entry (Trade Circuit)
 **What:** after a leg pays, he re-enters with a **limit order at the fair value gap** the leg left, not at the high.
@@ -470,3 +480,43 @@ He avoids the exact low of a fall, where stop-hunts happen, and prefers a zone w
 **Disqualified when:** not stated.
 **Trigger:** none — it is a reason to trade smaller and stop early; he declined a call near 15:00 as too late in the day.
 **Seen:** [▶ 9-Oct](https://www.youtube.com/watch?v=6xE3fsOXdCI&t=7680s) · [▶ near 3 o'clock](https://www.youtube.com/watch?v=6xE3fsOXdCI&t=13140s)
+
+### A sweep alone is not an entry (Trade Circuit)
+**What:** price taking a swing's stops is a lead, not a trigger — he waits for the candle after it.
+**Why it works:** the sweep removes resting stops, but the traders who just traded into it can still be run over by a second leg; a confirming candle shows who won.
+**Qualifies when:** after the sweep a candle in the trade direction prints and holds, and the stop behind it is small.
+**Disqualified when:** the sweep is a lone wick with nothing after it — on 12-Oct at 09:32 he said a trade straight off the first sweep "may be a trap" and took neither side.
+**Trigger:** the first confirming candle after the sweep, never the sweep wick itself.
+**Seen:** [▶ 12-Oct 09:32](https://www.youtube.com/watch?v=Yv82vH6iBzM&t=1260s)
+
+### Slow selling is not a put signal (Trade Circuit)
+**What:** when a fall grinds down in small candles with a retracement on each one, he will not buy puts into it.
+**Why it works:** real selling arrives fast; slow selling means dip-buyers are absorbing it, and the late put buyer is the one who gets squeezed.
+**Qualifies when:** not stated — the negative is the point.
+**Disqualified when:** small bodies with wicks on top and price near the day low ("slow selling … you will get stuck"), and the reward is small.
+**Trigger:** not stated.
+**Seen:** [▶ 12-Oct 10:17](https://www.youtube.com/watch?v=Yv82vH6iBzM&t=3960s)
+
+### Who is trapped in a box (Trade Circuit)
+**What:** when a 15-minute candle sweeps a low and closes back up, the buyers who bought that reclaim become the trapped side if hard selling follows; inside a sideways box, both sides keep getting trapped.
+**Why it works:** the reclaim buyers' stops sit under the swept low; a fall back through it forces them to sell into the move. In a box every break pulls in breakout traders on one side and then returns.
+**Qualifies when:** the candle takes the low, closes above it, and the next candle sells hard.
+**Disqualified when:** price is just inside a box with no displacement — "a sideways market gives entries on both sides and chases you both ways". Pure range days belong to those selling the range high and buying the range low.
+**Trigger:** not stated beyond the strong selling candle after the trap.
+**Seen:** [▶ 12-Oct 12:37 buyers trapped](https://www.youtube.com/watch?v=Yv82vH6iBzM&t=12360s) · [▶ 12:55](https://www.youtube.com/watch?v=Yv82vH6iBzM&t=13500s) · [▶ 13:15 range days](https://www.youtube.com/watch?v=Yv82vH6iBzM&t=14640s)
+
+### Accumulation, manipulation, distribution (Trade Circuit)
+**What:** a break out of a consolidation that comes straight back inside the same box is the manipulation leg, not the start of a trend.
+**Why it works:** the break takes the stops on one side of the box; once price re-enters, that fuel is spent and the real move tends to go the other way.
+**Qualifies when:** price breaks the box and returns inside it.
+**Disqualified when:** price closes outside the box and holds — then he treats it as continuation.
+**Trigger:** none stated; he used it to explain the midday chop, not to enter.
+**Seen:** [▶ 12-Oct 12:17](https://www.youtube.com/watch?v=Yv82vH6iBzM&t=11160s)
+
+### Crude oil as the day's driver (Trade Circuit)
+**What:** he reads crude first — crude falling lets Nifty rise, crude rising pushes Nifty down.
+**Why it works:** his stated reason is cost: crude is the supply-chain cost, so margins and risk appetite move opposite to it.
+**Qualifies when:** crude is trending.
+**Disqualified when:** both are sideways ("same range for an hour"), or crude moves and Nifty refuses to follow — on 12-Oct afternoon crude "rocketed" and Nifty boxed, and he called the combination "upside down". He calls it a probability, not a rule; on 5-Oct it failed too (crude and Nifty fell together).
+**Trigger:** not stated.
+**Seen:** [▶ 12-Oct 09:19](https://www.youtube.com/watch?v=Yv82vH6iBzM&t=480s) · [▶ 11:47](https://www.youtube.com/watch?v=Yv82vH6iBzM&t=9360s)

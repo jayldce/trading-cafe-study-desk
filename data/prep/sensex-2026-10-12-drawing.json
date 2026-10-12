@@ -1,0 +1,158 @@
+{
+ "date": "2026-10-12",
+ "instrument": "sensex",
+ "symbol": "BSE-6:BSE SENSEX",
+ "name": "Sensex",
+ "ref": 72472.33,
+ "open": null,
+ "last_session": "2026-10-09",
+ "pdh": 72669.2,
+ "pdl": 71739.49,
+ "pdc": 72472.33,
+ "trends": {
+  "D": "down",
+  "1H": "down",
+  "15m": "up"
+ },
+ "lines": [
+  {
+   "p": 71292.88,
+   "text": "\u200b2026 low 71,292.88 (1-Oct)",
+   "color": "#089981",
+   "w": 2,
+   "style": 0,
+   "valign": "top",
+   "halign": "left"
+  },
+  {
+   "p": 71327.75,
+   "text": "\u200bPrev week low 71,327.75",
+   "color": "#089981",
+   "w": 2,
+   "style": 0,
+   "valign": "top",
+   "halign": "left"
+  },
+  {
+   "p": 71739.49,
+   "text": "\u200bPDL 71,739.49 (Fri low)",
+   "color": "#089981",
+   "w": 2,
+   "style": 0,
+   "valign": "top",
+   "halign": "left"
+  },
+  {
+   "p": 72000.0,
+   "text": "\u200b72,000 round",
+   "color": "#9598a1",
+   "w": 1,
+   "style": 2,
+   "valign": "top",
+   "halign": "left"
+  },
+  {
+   "p": 72472.33,
+   "text": "\u200bPDC 72,472.33 (Fri close)",
+   "color": "#2962ff",
+   "w": 1,
+   "style": 2,
+   "valign": "bottom",
+   "halign": "left"
+  },
+  {
+   "p": 72500.0,
+   "text": "\u200b72,500 round",
+   "color": "#9598a1",
+   "w": 1,
+   "style": 2,
+   "valign": "bottom",
+   "halign": "left"
+  },
+  {
+   "p": 72669.2,
+   "text": "\u200bPDH 72,669.20 (Fri high)",
+   "color": "#f23645",
+   "w": 2,
+   "style": 0,
+   "valign": "bottom",
+   "halign": "left"
+  },
+  {
+   "p": 72693.97,
+   "text": "\u200b1H swing high 72,693.97 (Thu)",
+   "color": "#f23645",
+   "w": 1,
+   "style": 1,
+   "valign": "bottom",
+   "halign": "left"
+  },
+  {
+   "p": 73000.0,
+   "text": "\u200b73,000 round",
+   "color": "#9598a1",
+   "w": 1,
+   "style": 2,
+   "valign": "bottom",
+   "halign": "left"
+  },
+  {
+   "p": 73067.81,
+   "text": "\u200bPrev week high 73,067.81",
+   "color": "#f23645",
+   "w": 2,
+   "style": 0,
+   "valign": "bottom",
+   "halign": "left"
+  },
+  {
+   "p": 73477.28,
+   "text": "\u200b1H swing high 73,477.28 (Wed)",
+   "color": "#f23645",
+   "w": 1,
+   "style": 1,
+   "valign": "bottom",
+   "halign": "left"
+  }
+ ],
+ "zones": [
+  {
+   "t0": 1790567100,
+   "t1": 1791539940,
+   "hi": 73881.44,
+   "lo": 73477.28,
+   "text": "\u200bR1 SUPPLY: 1H FVG + 73,500 (Mon)",
+   "color": "#f23645",
+   "alpha": 0.25
+  },
+  {
+   "t0": 1791452700,
+   "t1": 1791539940,
+   "hi": 71739.49,
+   "lo": 71590.31,
+   "text": "\u200bS1 DEMAND: 1H FVG + 15m FVG (Thu)",
+   "color": "#089981",
+   "alpha": 0.25
+  },
+  {
+   "t0": 1791539940,
+   "t1": 1791539940,
+   "hi": 72092.78,
+   "lo": 71934.73,
+   "text": "\u200bOTE 62-79% of Fri's leg (long side)",
+   "color": "#089981",
+   "alpha": 0.1
+  },
+  {
+   "t0": 1790567100,
+   "t1": 1791539940,
+   "hi": 73477.77,
+   "lo": 73067.81,
+   "text": "\u200bD bear FVG (28-Sep, unfilled part)",
+   "color": "#f23645",
+   "alpha": 0.08
+  }
+ ],
+ "daily_source": "Dhan daily",
+ "layout": "Lemonn Layout - Nifty 50"
+}
