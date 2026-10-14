@@ -10,6 +10,7 @@ Add new concepts as streams are processed; add examples to existing ones rather 
 **Why it matters:** breakout candles often trap buyers. Price pokes above, stops trigger, then it reverses. Waiting for the follow-up filters out many false breakouts, at the cost of a slightly worse price.
 **His words:** to avoid false breakouts, watch the follow-up zone patiently.
 **Crowded trade (18-Sep):** every retail trader sees the same breakout, so the trap is heavy; buying the break itself makes you "the liquidity that buys the top". Enter on the first pullback or the follow-up instead. [▶ 18-Sep](https://www.youtube.com/watch?v=EPh5qxWEUhU&t=4020s)
+**Midday needs a shakeout first (13-Oct):** the larger the consolidation, the more orders sit just beyond it, so he lets the break candle pass and wants two or three candles of halt, then a higher high and higher low. At midday he added that no breakout is trustworthy "until a shakeout has formed and come out". The 22700 PE version — candle close first, small pullback, entry above 157.57 with the breakout candle's low 141.9 as stop — hit its 207.99 target (+50.42). [▶ 10:09](https://www.youtube.com/watch?v=PoHdfFTi3y0&t=3600s) · [▶ 10:19](https://www.youtube.com/watch?v=PoHdfFTi3y0&t=4200s) · [▶ 12:24](https://www.youtube.com/watch?v=PoHdfFTi3y0&t=11700s)
 **Watch:** [▶ 10:23 recap of the winning trade](https://www.youtube.com/watch?v=qTDwaNEZ2RY&t=4860s) · [▶ 09:24 why breakouts trap](https://www.youtube.com/watch?v=qTDwaNEZ2RY&t=1320s)
 
 ### "Small candles at one level → blast" / barcode pattern
@@ -25,6 +26,7 @@ Add new concepts as streams are processed; add examples to existing ones rather 
 ### Scalper entry vs traditional entry
 - **Scalper:** buy directly as price crosses the level. Tighter, faster, more false signals.
 - **Traditional:** wait for a strong candle, then buy the pullback. Fewer trades, better SL.
+- **Analyse on 5 minutes, execute on 1 minute (13-Oct):** he plots zones on the 5-minute (or 1-hour / 4-hour) chart and executes on a 1-minute candle close at that zone, because the 1-minute confirmation candle sits close to the zone and the stop comes out at 10–15 points instead of 15–30. Executing on the higher timeframe is allowed only with a cut in quantity. [▶ 11:42](https://www.youtube.com/watch?v=PoHdfFTi3y0&t=9180s) · [▶ 11:45](https://www.youtube.com/watch?v=PoHdfFTi3y0&t=9360s)
 **Watch:** [▶ 09:25](https://www.youtube.com/watch?v=qTDwaNEZ2RY&t=1380s)
 
 ### When is a pullback trustworthy?
@@ -63,6 +65,7 @@ Add new concepts as streams are processed; add examples to existing ones rather 
 After price falls from a level it usually bounces. If each bounce is **weaker**, expect a breakdown from that same zone. A strong bounce means buyers are defending. After two bounces, a **third test** rarely holds, so don't buy it; wait for the break.
 **Related, the dead-cat bounce:** a small reversal candle inside a strong move that fails to hold. The first green candle alone doesn't make a reversal; check its strength.
 **28-Sep, traded on purpose:** he named a ~124 base on a falling 22850 CE a technical / dead-cat bounce, not a reversal, and still took it with a ~4-pt stop and a capped 137 target. It never got past ~134 and the stop went (about −4). Naming it a dead-cat bounce is what kept the stop and target small.
+**Disqualified: the second visit to a zone that already paid (13-Oct).** He took the first bounce of the 22400 CE at ~125 (+21.15) and refused the re-entry at the same zone at 10:50, and at 11:14–11:18 refused calls at a 22,600 resistance tested again and again — "ये टूट जाएगा" (this will break). Each touch uses up the orders resting there; re-entry only after a strong candle through the old level, on the higher high. [▶ 10:50](https://www.youtube.com/watch?v=PoHdfFTi3y0&t=6120s) · [▶ 11:18](https://www.youtube.com/watch?v=PoHdfFTi3y0&t=7800s)
 **Watch:** [▶ 11-Sep](https://www.youtube.com/watch?v=qTDwaNEZ2RY&t=7380s) · [▶ 8-Sep third test](https://www.youtube.com/watch?v=s3r5EJy4cw8&t=6660s) · [▶ 7-Sep dead cat](https://www.youtube.com/watch?v=JhSkNorpW6w&t=18720s) · [▶ 28-Sep](https://www.youtube.com/watch?v=cJuzypq8gHA&t=1920s)
 
 ### Call writers at round strikes
@@ -90,6 +93,7 @@ Option sellers cluster at round strikes (23,300). When spot pushes through and h
 
 **Honest caveat:** this mechanism is well documented *after* a move, and the OI change proves it happened. It does **not** tell you when. Tested over 8 logged sessions, neither PCR, IV skew nor distance to the nearest OI wall predicted the next 30 minutes — every bucket came out negative because those sessions were falling. Read the wall as *where the fuel is if a break comes*, never as a forecast that one will. See also [Call writers at round strikes](#) and [Make-or-break zone](#).
 
+**13-Oct example:** before the 22700 PE trade he named the trapped side at a price — put buyers who bought the 156–157 zone stay under water until price clears it, and the 22,550 call sellers and "the last leg of sellers" above 161–162 on the call would be trapped ("ये ट्रैप हो जाएंगे") if it broke. He would not enter until the zone was cleared on a close. [▶ 10:04](https://www.youtube.com/watch?v=PoHdfFTi3y0&t=3300s) · [▶ 10:14](https://www.youtube.com/watch?v=PoHdfFTi3y0&t=3900s)
 **Seen:** [▶ put writers panicking through 24,500](https://www.youtube.com/watch?v=zmnPW3HauhM&t=10800s) · [▶ 23,800 "make-or-break", writers would panic on a clean break](https://www.youtube.com/watch?v=JhSkNorpW6w&t=3120s) · [▶ double-top traps more buyers](https://www.youtube.com/watch?v=jCedaeF9RWg&t=4380s)
 
 ### Implied volatility (IV) regimes
@@ -123,6 +127,7 @@ Take a defined risk, then shrink it step by step as price moves your way (trail,
 **Watch only the combined P&L (29-Sep, Trade Circuit):** on a Nifty expiry afternoon he bought the 22750 CE and 22650 PE for about 40 combined and told viewers to ignore each leg and exit both together at a combined ₹20 loss or ₹40 gain per unit. [▶ 29-Sep](https://www.youtube.com/watch?v=jyeGpm8SGxo&t=10260s)
 **Built early, legs shown (8-Oct):** he usually builds after 13:00 but built at 11:29 because momentum was strong; the SL (half the combined premium) is only applied around 15:00. His journal logs the legs: PE 132 → 200 (+68), CE 95 → 60 (−35), net +33. Later he added that a jodi built at ~190 combined is too dear — ~80 + 80 is the shape — and that a farther strike only needs a ~200-point Sensex move. [▶ 11:29](https://www.youtube.com/watch?v=kw5L_dY2HPo&t=9240s) · [▶ 13:56](https://www.youtube.com/watch?v=kw5L_dY2HPo&t=17460s)
 **Watch:** [▶ 8-Sep](https://www.youtube.com/watch?v=s3r5EJy4cw8&t=19080s) · [▶ 10-Sep (Trade Circuit)](https://www.youtube.com/watch?v=_v3ieKuYGRc&t=19260s)
+- **13-Oct, cheap jodis in a 100-point box (Nifty expiry):** with Nifty boxed at 22,500–22,600 and no 50–60-point move either way, he waited from 13:03 to 13:25 for premiums to fall, then built 22500 PE 17 + 22550 CE 29 = 45–46 (SL 23, ~₹1,500; target 70–80) and later, with 45 minutes left, 22550 PE 12 + 22600 CE 24 = 36 (SL 18; target 50–55). The mechanism he gave: the box's straddle sellers are in profit until one side panics. He warned the odds were low without an aggressive move; when the 14:10 squeeze came he cut both on modest gains (~20 at ~64 combined, ~14 at ~48) rather than waiting for target. [▶ 13:26](https://www.youtube.com/watch?v=PoHdfFTi3y0&t=15420s) · [▶ 14:13 exit](https://www.youtube.com/watch?v=PoHdfFTi3y0&t=18240s) · [▶ 14:27](https://www.youtube.com/watch?v=PoHdfFTi3y0&t=19080s)
 - 6-Oct mechanics, restated: sell the leg that doubles, and the other leg's leftover premium is the profit; stop the pair when the combined premium falls by about half. He waited for the market to leave the 22,700 zone before building one, because a jodi loses all its premium if no panic comes. [▶ 12:27](https://www.youtube.com/watch?v=XnCas9JOTJI&t=12240s) · [▶ 13:32](https://www.youtube.com/watch?v=XnCas9JOTJI&t=16320s)
 
 ### Order block
@@ -219,6 +224,7 @@ On a fast Sensex expiry move he refused to park a trigger order above the level.
 At a base, don't buy the first down-tick or the first green candle. Wait for a **strong green pin bar to close**, enter above its high, and put the stop at that pin bar's low. On 23-Jul this turned the 76900 PE into his best trade of the batch (~324 → booked as a "double century", +200).
 **Not every pin bar (17-Sep):** he warns that reaching for every single pin bar and every random reversal means stop losses "again and again". The pin bar only counts at a level where the other side is visibly trapped, and on 17-Sep he added a price condition too — work the 74800 PE only once it sustains above 303. That trade made +174.6.
 **Disqualified: one candle is not a reversal (9-Oct).** At 09:46 the call had broken a zone, printed a pin bar and still gone lower — "there was nothing to sit in a reversal for"; at 10:04 he refused a put reversal for the same reason: a reversal needs a clear breakout of the move or a completed pattern (he pointed at a head-and-shoulders still forming), and at 10:16 an order block that was only "temporary" and exhausting. [▶ 10:04](https://www.youtube.com/watch?v=9kn5B0LK1YM&t=3240s) · [▶ 10:19](https://www.youtube.com/watch?v=9kn5B0LK1YM&t=4140s)
+**At a participated zone, and at an FVG (13-Oct):** "pin bar after pin bar" on the 22400 CE at a zone where buyers had been trapped before (118–125), then entry on the first small green candle at 124–125 with the stop at 104–106 (+21.15 trailed); and at 13:33 a pin bar at a fair value gap, "just work above" 150 with a 9-point stop (~+13.4). His disqualifier the same morning: don't reach in while price is still running into the zone ("एकदम से तुरंत हाथ मत डालना") — wait for the first sign it has stopped. [▶ 09:56](https://www.youtube.com/watch?v=PoHdfFTi3y0&t=2820s) · [▶ 10:41](https://www.youtube.com/watch?v=PoHdfFTi3y0&t=5520s) · [▶ 13:33](https://www.youtube.com/watch?v=PoHdfFTi3y0&t=15900s)
 **Watch:** [▶ 23-Jul](https://www.youtube.com/watch?v=Uu-LJo9Li30&t=8580s) · [▶ 17-Sep](https://www.youtube.com/watch?v=njvG_Pr9CpM&t=12120s)
 
 ### Options drive the index
@@ -347,8 +353,12 @@ A reversal always shows a small stop, which is why it feels safe. The real quest
 **Watch:** [▶ 18-Sep 10:33](https://www.youtube.com/watch?v=EPh5qxWEUhU&t=5160s) · [▶ 18-Sep 11:08](https://www.youtube.com/watch?v=EPh5qxWEUhU&t=7260s)
 
 ### Stop size comes from structure, not a % of premium
-On 30-Sep he rejected a fixed-percentage stop: buying a ₹300 strike does not mean a ₹30 risk. The stop goes where the price action is proven wrong (below the base or the consolidation), and the quantity is sized to that. Compare 29-Sep, when he passed a trade because a ₹15 stop was too big a share of a ₹100 premium: the structure sets the stop, and the premium decides whether that stop is affordable.
-**Watch:** [▶ 30-Sep](https://www.youtube.com/watch?v=fGUAnwhNZkc&t=11040s)
+**What:** the stop goes where the price action is proven wrong, and he works out that stop *before* entering — if it is too large, he waits for the structure to give a nearer one instead of widening or skipping the rule.
+**Why it works:** on a fast expiry-day run the last candle's low is far from price, so buying the running candle means risking 25–30 points for 30–60 of reward. A two- or three-candle pause builds a small base right under price, and the stop can sit under that instead. The quantity is then sized to the stop, never the other way round.
+**Qualifies when:** the structural stop is about 10–15 points on a ~₹150 option (13-Oct: 159.79 / 144.47; 141.64 / 132.65) and the next zone pays at least about 2R. 30-Sep: he rejected a fixed-percentage stop outright — a ₹300 strike does not mean a ₹30 risk.
+**Disqualified when:** the stop the entry needs is 25–28 points (13-Oct 09:26: a 157 entry meant a 127 stop, "big risk"); the stop is 20–22 points against 40 of reward ("1:1.7, not even 1:2", 13-Oct 11:26); or the stop is too large a share of the premium (29-Sep: ₹15 on a ₹100 strike).
+**Trigger:** after the pause, the take-out of the small consolidation's high with the stop under its low — on 13-Oct the same 22350 CE he refused at 157 he took at 159.79 two candles later, and it paid +58.11.
+**Seen:** [▶ 30-Sep](https://www.youtube.com/watch?v=fGUAnwhNZkc&t=11040s) · [▶ 13-Oct 09:27 the refusal](https://www.youtube.com/watch?v=PoHdfFTi3y0&t=1080s) · [▶ 13-Oct 09:33 the entry](https://www.youtube.com/watch?v=PoHdfFTi3y0&t=1440s) · [▶ 13-Oct 11:26 the 1:1.7 pass](https://www.youtube.com/watch?v=PoHdfFTi3y0&t=8220s)
 
 ### Market phases (why sellers, buyers and jodis take turns)
 His history lesson: dead markets (2017–18) favoured option sellers who sold straddles and slept; momentum and high VIX (2020) favoured buyers and jodis; the last one to one-and-a-half months favoured expiry-day jodis until Thursday's premium melt-down. Pick the structure for the current phase instead of loyalty to one style.
@@ -520,3 +530,19 @@ He doesn't trade trendline breaks: he wants a real support or base close to pric
 **Disqualified when:** both are sideways ("same range for an hour"), or crude moves and Nifty refuses to follow — on 12-Oct afternoon crude "rocketed" and Nifty boxed, and he called the combination "upside down". He calls it a probability, not a rule; on 5-Oct it failed too (crude and Nifty fell together).
 **Trigger:** not stated.
 **Seen:** [▶ 12-Oct 09:19](https://www.youtube.com/watch?v=Yv82vH6iBzM&t=480s) · [▶ 11:47](https://www.youtube.com/watch?v=Yv82vH6iBzM&t=9360s)
+
+### Day-high break after a squeeze
+**What:** after a long squeeze under the day high, buy the call only above the day high, with the squeeze's low as the stop.
+**Why it works:** everyone who sold the range or shorted its top keeps a stop just above the day high, so a break turns them into buyers; the squeeze also gives a nearby low for a small stop.
+**Qualifies when:** a tight consolidation right under the day high with a stop of about 10–15 points (13-Oct: 197.41, SL 186.63), a target at the next distribution zone (229.21), and the day already trending that way.
+**Disqualified when:** the entry would be on a fast candle far above the base, with a stop of 25 or more; at 14:28 he declined a continuation entry near 205 even with an 8-point stop because it lacked conviction. Raw pokes of a range (A−) are 2W / 17L in the log; this is only different when the trigger is named and the trend is with it.
+**Trigger:** the first trade above the day high after the squeeze ("डे हाई के ऊपर ही"), stop under the consolidation's low.
+**Seen:** [▶ 13-Oct 14:17](https://www.youtube.com/watch?v=PoHdfFTi3y0&t=18540s) · [▶ 14:29 the pass](https://www.youtube.com/watch?v=PoHdfFTi3y0&t=19200s) · [▶ 14:41 target](https://www.youtube.com/watch?v=PoHdfFTi3y0&t=19920s)
+
+### No averaging losses on expiry day
+**What:** take the stop and wait for a fresh setup; never add cheaper lots to a losing option on expiry day.
+**Why it works:** on expiry an out-of-the-money option loses value every minute it is wrong, so averaging doubles the planned loss on exactly the day price does not turn, and the capital meant for the next setup is gone.
+**Qualifies when:** always, on expiry day; the stop is set at entry.
+**Disqualified when:** not stated.
+**Trigger:** not applicable (a risk rule); a re-entry needs its own setup.
+**Seen:** [▶ 13-Oct 10:16](https://www.youtube.com/watch?v=PoHdfFTi3y0&t=4020s) · [▶ 10:18](https://www.youtube.com/watch?v=PoHdfFTi3y0&t=4140s)
