@@ -1,0 +1,241 @@
+{
+ "date": "2026-10-15",
+ "sessions": [
+  "2026-10-08",
+  "2026-10-09",
+  "2026-10-12",
+  "2026-10-13",
+  "2026-10-14"
+ ],
+ "close": 22622.69921875,
+ "last_session": "2026-10-14",
+ "week_high": 22757.80078125,
+ "week_low": 22180.30078125,
+ "closes": {
+  "2026-10-08": 22231.8,
+  "2026-10-09": 22520.45,
+  "2026-10-12": 22363.35,
+  "2026-10-13": 22721.95,
+  "2026-10-14": 22622.7
+ },
+ "nifty_expiry": "2026-10-20",
+ "sensex_expiry": "2026-10-15",
+ "zones": [
+  {
+   "kind": "round",
+   "lo": 22900,
+   "hi": 22900,
+   "text": "round number 22,900",
+   "weight": 1,
+   "side": "above",
+   "distance": 277.3
+  },
+  {
+   "kind": "round",
+   "lo": 22800,
+   "hi": 22800,
+   "text": "round number 22,800",
+   "weight": 1,
+   "side": "above",
+   "distance": 177.3
+  },
+  {
+   "kind": "prev_high",
+   "lo": 22757.8,
+   "hi": 22757.8,
+   "text": "previous-day high (Wed 14 Oct)",
+   "weight": 3,
+   "side": "above",
+   "distance": 135.1
+  },
+  {
+   "kind": "range_high",
+   "lo": 22757.8,
+   "hi": 22757.8,
+   "text": "5-session high",
+   "weight": 2,
+   "side": "above",
+   "distance": 135.1
+  },
+  {
+   "kind": "old_high",
+   "lo": 22719.0,
+   "hi": 22719.0,
+   "text": "Tue 13 Oct high",
+   "weight": 1,
+   "side": "above",
+   "distance": 96.3
+  },
+  {
+   "kind": "round",
+   "lo": 22700,
+   "hi": 22700,
+   "text": "round number 22,700",
+   "weight": 1,
+   "side": "above",
+   "distance": 77.3
+  },
+  {
+   "kind": "old_high",
+   "lo": 22650.55,
+   "hi": 22650.55,
+   "text": "Mon 12 Oct high",
+   "weight": 1,
+   "side": "above",
+   "distance": 27.9
+  },
+  {
+   "kind": "prev_close",
+   "lo": 22622.7,
+   "hi": 22622.7,
+   "text": "previous-day close (Wed 14 Oct)",
+   "weight": 2,
+   "side": "below",
+   "distance": 0.0
+  },
+  {
+   "kind": "round",
+   "lo": 22600,
+   "hi": 22600,
+   "text": "round number 22,600",
+   "weight": 1,
+   "side": "below",
+   "distance": -22.7
+  },
+  {
+   "kind": "old_high",
+   "lo": 22599.05,
+   "hi": 22599.05,
+   "text": "Thu 08 Oct high",
+   "weight": 1,
+   "side": "below",
+   "distance": -23.6
+  },
+  {
+   "kind": "old_high",
+   "lo": 22580.5,
+   "hi": 22580.5,
+   "text": "Fri 09 Oct high",
+   "weight": 1,
+   "side": "below",
+   "distance": -42.2
+  },
+  {
+   "kind": "prev_low",
+   "lo": 22558.95,
+   "hi": 22558.95,
+   "text": "previous-day low (Wed 14 Oct)",
+   "weight": 3,
+   "side": "below",
+   "distance": -63.8
+  },
+  {
+   "kind": "fvg_bull",
+   "lo": 22529.85,
+   "hi": 22536.55,
+   "text": "open bull FVG from Tue 13 Oct 13:33",
+   "weight": 1,
+   "side": "below",
+   "distance": -89.5
+  },
+  {
+   "kind": "equal_lows",
+   "lo": 22517.85,
+   "hi": 22521.9,
+   "text": "untaken equal lows from Tue 13 Oct",
+   "weight": 3,
+   "side": "below",
+   "distance": -102.8
+  },
+  {
+   "kind": "fvg_bull",
+   "lo": 22493.75,
+   "hi": 22505.2,
+   "text": "open bull FVG from Tue 13 Oct 11:51",
+   "weight": 1,
+   "side": "below",
+   "distance": -123.2
+  },
+  {
+   "kind": "round",
+   "lo": 22500,
+   "hi": 22500,
+   "text": "round number 22,500",
+   "weight": 1,
+   "side": "below",
+   "distance": -122.7
+  },
+  {
+   "kind": "fvg_bull",
+   "lo": 22470.35,
+   "hi": 22476.45,
+   "text": "open bull FVG from Tue 13 Oct 09:32",
+   "weight": 1,
+   "side": "below",
+   "distance": -149.3
+  },
+  {
+   "kind": "fvg_bull",
+   "lo": 22438.6,
+   "hi": 22447.75,
+   "text": "open bull FVG from Tue 13 Oct 09:22",
+   "weight": 1,
+   "side": "below",
+   "distance": -179.5
+  },
+  {
+   "kind": "fvg_bull",
+   "lo": 22392.15,
+   "hi": 22426.25,
+   "text": "open bull FVG from Tue 13 Oct 09:17",
+   "weight": 1,
+   "side": "below",
+   "distance": -213.5
+  },
+  {
+   "kind": "round",
+   "lo": 22400,
+   "hi": 22400,
+   "text": "round number 22,400",
+   "weight": 1,
+   "side": "below",
+   "distance": -222.7
+  },
+  {
+   "kind": "fvg_bull",
+   "lo": 22374.2,
+   "hi": 22383.0,
+   "text": "open bull FVG from Tue 13 Oct 09:16",
+   "weight": 1,
+   "side": "below",
+   "distance": -244.1
+  },
+  {
+   "kind": "old_low",
+   "lo": 22304.45,
+   "hi": 22304.45,
+   "text": "Mon 12 Oct low",
+   "weight": 1,
+   "side": "below",
+   "distance": -318.2
+  },
+  {
+   "kind": "old_low",
+   "lo": 22295.2,
+   "hi": 22295.2,
+   "text": "Fri 09 Oct low",
+   "weight": 1,
+   "side": "below",
+   "distance": -327.5
+  },
+  {
+   "kind": "old_low",
+   "lo": 22288.7,
+   "hi": 22288.7,
+   "text": "Tue 13 Oct low",
+   "weight": 1,
+   "side": "below",
+   "distance": -334.0
+  }
+ ]
+}

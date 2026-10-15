@@ -1,0 +1,169 @@
+{
+ "date": "2026-10-15",
+ "sessions": [
+  "2026-10-08",
+  "2026-10-09",
+  "2026-10-12",
+  "2026-10-13",
+  "2026-10-14"
+ ],
+ "close": 72781.890625,
+ "last_session": "2026-10-14",
+ "week_high": 73193.890625,
+ "week_low": 71330.9765625,
+ "closes": {
+  "2026-10-08": 71566.4,
+  "2026-10-09": 72472.33,
+  "2026-10-12": 71924.68,
+  "2026-10-13": 73033.78,
+  "2026-10-14": 72781.89
+ },
+ "nifty_expiry": "2026-10-20",
+ "sensex_expiry": "2026-10-15",
+ "zones": [
+  {
+   "kind": "prev_high",
+   "lo": 73193.89,
+   "hi": 73193.89,
+   "text": "previous-day high (Wed 14 Oct)",
+   "weight": 3,
+   "side": "above",
+   "distance": 412.0
+  },
+  {
+   "kind": "range_high",
+   "lo": 73193.89,
+   "hi": 73193.89,
+   "text": "5-session high",
+   "weight": 2,
+   "side": "above",
+   "distance": 412.0
+  },
+  {
+   "kind": "old_high",
+   "lo": 73044.91,
+   "hi": 73044.91,
+   "text": "Tue 13 Oct high",
+   "weight": 1,
+   "side": "above",
+   "distance": 263.0
+  },
+  {
+   "kind": "round",
+   "lo": 73000,
+   "hi": 73000,
+   "text": "round number 73,000",
+   "weight": 1,
+   "side": "above",
+   "distance": 218.1
+  },
+  {
+   "kind": "round",
+   "lo": 72900,
+   "hi": 72900,
+   "text": "round number 72,900",
+   "weight": 1,
+   "side": "above",
+   "distance": 118.1
+  },
+  {
+   "kind": "old_high",
+   "lo": 72879.78,
+   "hi": 72879.78,
+   "text": "Mon 12 Oct high",
+   "weight": 1,
+   "side": "above",
+   "distance": 97.9
+  },
+  {
+   "kind": "round",
+   "lo": 72800,
+   "hi": 72800,
+   "text": "round number 72,800",
+   "weight": 1,
+   "side": "above",
+   "distance": 18.1
+  },
+  {
+   "kind": "prev_close",
+   "lo": 72781.89,
+   "hi": 72781.89,
+   "text": "previous-day close (Wed 14 Oct)",
+   "weight": 2,
+   "side": "below",
+   "distance": 0.0
+  },
+  {
+   "kind": "round",
+   "lo": 72700,
+   "hi": 72700,
+   "text": "round number 72,700",
+   "weight": 1,
+   "side": "below",
+   "distance": -81.9
+  },
+  {
+   "kind": "old_high",
+   "lo": 72693.97,
+   "hi": 72693.97,
+   "text": "Thu 08 Oct high",
+   "weight": 1,
+   "side": "below",
+   "distance": -87.9
+  },
+  {
+   "kind": "old_high",
+   "lo": 72668.67,
+   "hi": 72668.67,
+   "text": "Fri 09 Oct high",
+   "weight": 1,
+   "side": "below",
+   "distance": -113.2
+  },
+  {
+   "kind": "round",
+   "lo": 72600,
+   "hi": 72600,
+   "text": "round number 72,600",
+   "weight": 1,
+   "side": "below",
+   "distance": -181.9
+  },
+  {
+   "kind": "prev_low",
+   "lo": 72579.28,
+   "hi": 72579.28,
+   "text": "previous-day low (Wed 14 Oct)",
+   "weight": 3,
+   "side": "below",
+   "distance": -202.6
+  },
+  {
+   "kind": "round",
+   "lo": 72500,
+   "hi": 72500,
+   "text": "round number 72,500",
+   "weight": 1,
+   "side": "below",
+   "distance": -281.9
+  },
+  {
+   "kind": "old_low",
+   "lo": 71747.82,
+   "hi": 71747.82,
+   "text": "Fri 09 Oct low",
+   "weight": 1,
+   "side": "below",
+   "distance": -1034.1
+  },
+  {
+   "kind": "old_low",
+   "lo": 71712.6,
+   "hi": 71712.6,
+   "text": "Tue 13 Oct low",
+   "weight": 1,
+   "side": "below",
+   "distance": -1069.3
+  }
+ ]
+}

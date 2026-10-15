@@ -35,7 +35,7 @@ Add new concepts as streams are processed; add examples to existing ones rather 
 **Why it works:** a pullback is only tradeable when it returns to a zone that already *produced* a move — the base a breakout launched from, which he calls the **apex**. Buyers who were filled there once are willing again, and the people who chased the extended candle are now offside. A dip to nowhere in particular has neither.
 
 **Qualifies when:**
-- the move it is retracing was **aggressive**. A ~100-point spot move on 11-Sep was not enough, and he left it alone [▶](https://www.youtube.com/watch?v=qTDwaNEZ2RY&t=2280s).
+- the move it is retracing was **aggressive**. A ~100-point spot move on 11-Sep was not enough, and he left it alone [▶](https://www.youtube.com/watch?v=qTDwaNEZ2RY&t=2280s). On 14-Oct he put it as "a ball thrown low doesn't bounce high": the morning rally had not gone far, the 73200 CE bounce off its base ran only +27 and came back to cost [▶](https://www.youtube.com/watch?v=nSIAdI3_Gu8&t=2940s).
 - it returns to a zone he had **marked before** price got there — on 25-Aug the entry came just above a 268 base / ~286 breakout zone he had been watching for hours: "यह पुलबैक एंट्री मैं सुबह से ढूंढने की कोशिश कर रहा था" [▶](https://www.youtube.com/watch?v=DmPpZPOBuNA&t=13800s).
 - the resulting stop is **small**. The whole point is a cheaper entry than the breakout offered.
 
@@ -206,6 +206,7 @@ Don't cut your Sensex lots just because its premium is about double Nifty's. Onc
 ### Box days ("Test match" markets)
 Some days price coils in a tight range for hours. He stops forcing trades and mentally treats the session like a slow Test match rather than a T20: a few small losses are the acceptable cost of not overtrading. He also names the trap that makes box days expensive: after 30–60 minutes of watching nothing happen, you feel urgency to jump in the moment any candle moves, and repeated often enough that becomes a habit of impulsive entries.
 **18-Sep example:** the Nifty range stayed ~30–40 points all morning, the lowest delta he'd seen in a month, and the second half was equally dull. He took three trades (+~12.5, −7.6, ~−9), then stood aside from ~11:00 with no new trade by the 13:25 close. [▶ 18-Sep](https://www.youtube.com/watch?v=EPh5qxWEUhU&t=15480s)
+**Range-day rule (14-Oct, Sensex):** in a range he acts only at its top or bottom with a small-risk candle; in the middle there is no strength, writers "eat the premium" on both sides, and repeated stops are normal. After two losses and a scratch he took nothing from 11:21 to the end of the stream ("today is not the day"). [▶ 14-Oct](https://www.youtube.com/watch?v=nSIAdI3_Gu8&t=9780s)
 **Watch:** [▶ 27-Jul box day](https://www.youtube.com/watch?v=XYoKV_bXMD8&t=4320s) · [▶ 27-Jul idle-screen FOMO](https://www.youtube.com/watch?v=XYoKV_bXMD8&t=4680s)
 
 ### "Tappa": his word for a bounce
@@ -228,8 +229,12 @@ At a base, don't buy the first down-tick or the first green candle. Wait for a *
 **Watch:** [▶ 23-Jul](https://www.youtube.com/watch?v=Uu-LJo9Li30&t=8580s) · [▶ 17-Sep](https://www.youtube.com/watch?v=njvG_Pr9CpM&t=12120s)
 
 ### Options drive the index
-He flips the usual view: on a 1-minute chart it isn't the index moving the options but the options moving the index, because the option chart shows the buying and selling pressure first. It's the same reason he executes off the option chart and treats spot as context.
-**Watch:** [▶ 23-Jul](https://www.youtube.com/watch?v=Uu-LJo9Li30&t=21600s)
+**What:** on a 1-minute chart it isn't the index moving the options but the options moving the index, because the option chart shows the buying and selling pressure first.
+**Why it works:** option buyers and writers react before the cash index catches up; if writers are still defending a strike, the option will not confirm a spot move.
+**Qualifies when:** the option breaks its own earlier high in the same direction as spot's move — that is when he trusts the move.
+**Disqualified when:** spot and the option disagree. 14-Oct 11:24: Sensex made a fresh low but the 72800 PE had not broken its earlier high, so he read writers as still in control and did not buy the put [▶](https://www.youtube.com/watch?v=nSIAdI3_Gu8&t=8280s).
+**Trigger:** not stated beyond the option's own break; he executes off the option chart and treats spot as context.
+**Seen:** [▶ 23-Jul](https://www.youtube.com/watch?v=Uu-LJo9Li30&t=21600s) · [▶ 14-Oct](https://www.youtube.com/watch?v=nSIAdI3_Gu8&t=8280s)
 
 ### Pick the index whose expiry is next
 He doesn't commit to Nifty or Sensex. Each day he focuses on whichever index has its weekly expiry coming up next, since that's where premiums move fastest and liquidity concentrates. That's why some days are all-Sensex. One caveat he adds: choosing the right Sensex strike is trickier than Nifty because Nifty options are much more liquid.
@@ -355,10 +360,10 @@ A reversal always shows a small stop, which is why it feels safe. The real quest
 ### Stop size comes from structure, not a % of premium
 **What:** the stop goes where the price action is proven wrong, and he works out that stop *before* entering — if it is too large, he waits for the structure to give a nearer one instead of widening or skipping the rule.
 **Why it works:** on a fast expiry-day run the last candle's low is far from price, so buying the running candle means risking 25–30 points for 30–60 of reward. A two- or three-candle pause builds a small base right under price, and the stop can sit under that instead. The quantity is then sized to the stop, never the other way round.
-**Qualifies when:** the structural stop is about 10–15 points on a ~₹150 option (13-Oct: 159.79 / 144.47; 141.64 / 132.65) and the next zone pays at least about 2R. 30-Sep: he rejected a fixed-percentage stop outright — a ₹300 strike does not mean a ₹30 risk.
-**Disqualified when:** the stop the entry needs is 25–28 points (13-Oct 09:26: a 157 entry meant a 127 stop, "big risk"); the stop is 20–22 points against 40 of reward ("1:1.7, not even 1:2", 13-Oct 11:26); or the stop is too large a share of the premium (29-Sep: ₹15 on a ₹100 strike).
+**Qualifies when:** the structural stop is about 10–15 points on a ~₹150 option (13-Oct: 159.79 / 144.47; 141.64 / 132.65), or about 20–25 on a ~₹235 Sensex option (14-Oct: 235.22 / 210.19), and the next zone pays at least about 2R. 30-Sep: he rejected a fixed-percentage stop outright — a ₹300 strike does not mean a ₹30 risk.
+**Disqualified when:** the stop the entry needs is 25–28 points (13-Oct 09:26: a 157 entry meant a 127 stop, "big risk"); the stop is 20–22 points against 40 of reward ("1:1.7, not even 1:2", 13-Oct 11:26); or the stop is too large a share of the premium (29-Sep: ₹15 on a ₹100 strike). On Sensex, 14-Oct: a 5-minute breakout needing ~60 points and a post-candle entry needing ~80 were both refused ("we won't work with such a big stop"), and a setup he had conviction in was passed because risk 34 paid only ~40. The one trade that day that ignored this — a 54-point stop on the 72900 CE gap-up — lost the full stop.
 **Trigger:** after the pause, the take-out of the small consolidation's high with the stop under its low — on 13-Oct the same 22350 CE he refused at 157 he took at 159.79 two candles later, and it paid +58.11.
-**Seen:** [▶ 30-Sep](https://www.youtube.com/watch?v=fGUAnwhNZkc&t=11040s) · [▶ 13-Oct 09:27 the refusal](https://www.youtube.com/watch?v=PoHdfFTi3y0&t=1080s) · [▶ 13-Oct 09:33 the entry](https://www.youtube.com/watch?v=PoHdfFTi3y0&t=1440s) · [▶ 13-Oct 11:26 the 1:1.7 pass](https://www.youtube.com/watch?v=PoHdfFTi3y0&t=8220s)
+**Seen:** [▶ 30-Sep](https://www.youtube.com/watch?v=fGUAnwhNZkc&t=11040s) · [▶ 13-Oct 09:27 the refusal](https://www.youtube.com/watch?v=PoHdfFTi3y0&t=1080s) · [▶ 13-Oct 09:33 the entry](https://www.youtube.com/watch?v=PoHdfFTi3y0&t=1440s) · [▶ 13-Oct 11:26 the 1:1.7 pass](https://www.youtube.com/watch?v=PoHdfFTi3y0&t=8220s) · [▶ 14-Oct the 60/80-pt refusals](https://www.youtube.com/watch?v=nSIAdI3_Gu8&t=1740s) · [▶ 14-Oct 1:1 pass](https://www.youtube.com/watch?v=nSIAdI3_Gu8&t=7500s)
 
 ### Market phases (why sellers, buyers and jodis take turns)
 His history lesson: dead markets (2017–18) favoured option sellers who sold straddles and slept; momentum and high VIX (2020) favoured buyers and jodis; the last one to one-and-a-half months favoured expiry-day jodis until Thursday's premium melt-down. Pick the structure for the current phase instead of loyalty to one style.
