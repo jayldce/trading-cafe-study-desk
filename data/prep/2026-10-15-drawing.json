@@ -1,0 +1,212 @@
+{
+ "date": "2026-10-15",
+ "instrument": "nifty",
+ "symbol": "NSE-1:NIFTY 50",
+ "name": "Nifty",
+ "ref": 22622.69921875,
+ "open": null,
+ "last_session": "2026-10-14",
+ "pdh": 22757.80078125,
+ "pdl": 22558.94921875,
+ "pdc": 22622.69921875,
+ "trends": {
+  "D": "down",
+  "1H": "up",
+  "15m": "down"
+ },
+ "lines": [
+  {
+   "p": 22179.9,
+   "text": "\u200bPrev week low 22,179.90 \u00b7 2026 low (8-Oct)",
+   "color": "#089981",
+   "w": 2,
+   "style": 0,
+   "valign": "top",
+   "halign": "left"
+  },
+  {
+   "p": 22288.7,
+   "text": "\u200b1H swing low 22,288.70 (Tue)",
+   "color": "#089981",
+   "w": 1,
+   "style": 1,
+   "valign": "top",
+   "halign": "left"
+  },
+  {
+   "p": 22500.0,
+   "text": "\u200b22,500 round",
+   "color": "#9598a1",
+   "w": 1,
+   "style": 2,
+   "valign": "top",
+   "halign": "left"
+  },
+  {
+   "p": 22558.95,
+   "text": "\u200bPDL 22,558.95 (Wed low)",
+   "color": "#089981",
+   "w": 2,
+   "style": 0,
+   "valign": "top",
+   "halign": "left"
+  },
+  {
+   "p": 22600.0,
+   "text": "\u200b22,600 round",
+   "color": "#9598a1",
+   "w": 1,
+   "style": 2,
+   "valign": "top",
+   "halign": "left"
+  },
+  {
+   "p": 22622.7,
+   "text": "\u200bPDC 22,622.70 (Wed close)",
+   "color": "#2962ff",
+   "w": 1,
+   "style": 2,
+   "valign": "bottom",
+   "halign": "left"
+  },
+  {
+   "p": 22757.8,
+   "text": "\u200bPDH 22,757.80 (Wed high)",
+   "color": "#f23645",
+   "w": 2,
+   "style": 0,
+   "valign": "bottom",
+   "halign": "left"
+  },
+  {
+   "p": 22776.1,
+   "text": "\u200bPrev week high 22,776.10",
+   "color": "#f23645",
+   "w": 2,
+   "style": 0,
+   "valign": "bottom",
+   "halign": "left"
+  },
+  {
+   "p": 22800.0,
+   "text": "\u200b22,800 round",
+   "color": "#9598a1",
+   "w": 1,
+   "style": 2,
+   "valign": "bottom",
+   "halign": "left"
+  },
+  {
+   "p": 22809.3,
+   "text": "\u200b1H swing high 22,809.30 (Wed)",
+   "color": "#f23645",
+   "w": 1,
+   "style": 1,
+   "valign": "bottom",
+   "halign": "left"
+  },
+  {
+   "p": 22809.35,
+   "text": "\u200b1H swing high 22,809.35 (Wed)",
+   "color": "#f23645",
+   "w": 1,
+   "style": 1,
+   "valign": "bottom",
+   "halign": "center"
+  }
+ ],
+ "zones": [
+  {
+   "t0": 1791962100,
+   "t1": 1791971940,
+   "hi": 22708.75,
+   "lo": 22669.1,
+   "text": "\u200bR1 SUPPLY: 15m FVG + 22,700 + OTE (Wed)",
+   "color": "#f23645",
+   "alpha": 0.18
+  },
+  {
+   "t0": 1791960300,
+   "t1": 1791971940,
+   "hi": 22739.4,
+   "lo": 22720.55,
+   "text": "\u200bR2 SUPPLY: 15m OB (Wed)",
+   "color": "#f23645",
+   "alpha": 0.18
+  },
+  {
+   "t0": 1790581500,
+   "t1": 1791971940,
+   "hi": 22848.7,
+   "lo": 22820.85,
+   "text": "\u200bR3 SUPPLY: 1H OB (Mon)",
+   "color": "#f23645",
+   "alpha": 0.25
+  },
+  {
+   "t0": 1790567100,
+   "t1": 1791971940,
+   "hi": 23128.1,
+   "lo": 22865.8,
+   "text": "\u200bR4 SUPPLY: 1H FVG + 22,900 + 23,000 (Mon)",
+   "color": "#f23645",
+   "alpha": 0.25
+  },
+  {
+   "t0": 1791879300,
+   "t1": 1791971940,
+   "hi": 22554.8,
+   "lo": 22546.05,
+   "text": "\u200bS1 DEMAND: 15m OB (Tue)",
+   "color": "#089981",
+   "alpha": 0.18
+  },
+  {
+   "t0": 1791863100,
+   "t1": 1791971940,
+   "hi": 22480.8,
+   "lo": 22363.35,
+   "text": "\u200bS2 DEMAND: 1H FVG + 22,400 (Tue)",
+   "color": "#089981",
+   "alpha": 0.25
+  },
+  {
+   "t0": 1791863100,
+   "t1": 1791971940,
+   "hi": 22461.15,
+   "lo": 22363.35,
+   "text": "\u200bS3 DEMAND: 15m FVG + 22,400 (Tue)",
+   "color": "#089981",
+   "alpha": 0.18
+  },
+  {
+   "t0": 1791797400,
+   "t1": 1791971940,
+   "hi": 22333.15,
+   "lo": 22304.45,
+   "text": "\u200bS4 DEMAND: 15m OB (Mon)",
+   "color": "#089981",
+   "alpha": 0.18
+  },
+  {
+   "t0": 1791452700,
+   "t1": 1791971940,
+   "hi": 22288.7,
+   "lo": 22231.8,
+   "text": "\u200bS5 DEMAND: 1H FVG (Thu/Fri)",
+   "color": "#089981",
+   "alpha": 0.25
+  },
+  {
+   "t0": 1790567100,
+   "t1": 1791971940,
+   "hi": 23020.95,
+   "lo": 22809.35,
+   "text": "\u200bD bear FVG (28-Sep, unfilled part)",
+   "color": "#f23645",
+   "alpha": 0.08
+  }
+ ],
+ "daily_source": "cached Dhan daily",
+ "layout": "Lemonn Layout - Nifty 50"
+}
