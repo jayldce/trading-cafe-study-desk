@@ -1,0 +1,1291 @@
+{
+ "date": "2026-10-21",
+ "previous_session": "2026-10-19",
+ "open": 74337.93,
+ "high": 74682.19,
+ "high_time": "09:36",
+ "low": 73229.45,
+ "low_time": "14:47",
+ "close": 73709.69,
+ "range": 1452.7,
+ "gap": 485.0,
+ "pdh": 74849.75,
+ "pdl": 73708.54,
+ "pdc": 73852.9,
+ "or_high": 74548.69,
+ "or_low": 74149.89,
+ "day_type": "mixed day",
+ "equal_highs": [],
+ "equal_lows": [],
+ "pools": [
+  {
+   "name": "previous-day high",
+   "level": 74849.75,
+   "side": "above",
+   "event": null
+  },
+  {
+   "name": "previous-day low",
+   "level": 73708.54,
+   "side": "below",
+   "event": {
+    "time": "11:52",
+    "i": 157,
+    "extreme": 73704.3,
+    "beyond_by": 4.2,
+    "kind": "sweep",
+    "reversal": null
+   }
+  },
+  {
+   "name": "opening-range high",
+   "level": 74548.69,
+   "side": "above",
+   "event": {
+    "time": "09:30",
+    "i": 15,
+    "extreme": 74611.66,
+    "beyond_by": 63.0,
+    "kind": "break",
+    "failed": null,
+    "failed_i": null
+   }
+  },
+  {
+   "name": "opening-range low",
+   "level": 74149.89,
+   "side": "below",
+   "event": {
+    "time": "10:12",
+    "i": 57,
+    "extreme": 74080.96,
+    "beyond_by": 68.9,
+    "kind": "break",
+    "failed": "10:33",
+    "failed_i": 78
+   }
+  },
+  {
+   "name": "previous-day close (gap fill)",
+   "level": 73852.9,
+   "side": "below",
+   "event": {
+    "time": "11:34",
+    "i": 139,
+    "extreme": 73833.85,
+    "beyond_by": 19.0,
+    "kind": "poke",
+    "reversal": null
+   }
+  },
+  {
+   "name": "round number 73,500",
+   "level": 73500.0,
+   "side": "below",
+   "event": {
+    "time": "12:15",
+    "i": 180,
+    "extreme": 73462.51,
+    "beyond_by": 37.5,
+    "kind": "break",
+    "failed": "12:56",
+    "failed_i": 221
+   }
+  },
+  {
+   "name": "round number 74,000",
+   "level": 74000.0,
+   "side": "below",
+   "event": {
+    "time": "11:22",
+    "i": 127,
+    "extreme": 73940.7,
+    "beyond_by": 59.3,
+    "kind": "break",
+    "failed": null,
+    "failed_i": null
+   }
+  },
+  {
+   "name": "round number 74,500",
+   "level": 74500.0,
+   "side": "above",
+   "event": {
+    "time": "09:20",
+    "i": 5,
+    "extreme": 74547.63,
+    "beyond_by": 47.6,
+    "kind": "break",
+    "failed": null,
+    "failed_i": null
+   }
+  }
+ ],
+ "displacement": [
+  {
+   "i": 46,
+   "time": "10:01",
+   "dir": "up",
+   "range": 96.2,
+   "x_atr": 2.1,
+   "o": 74327.69,
+   "c": 74416.19,
+   "h": 74420.1,
+   "l": 74323.89
+  },
+  {
+   "i": 78,
+   "time": "10:33",
+   "dir": "up",
+   "range": 74.0,
+   "x_atr": 2.3,
+   "o": 74173.19,
+   "c": 74245.8,
+   "h": 74245.8,
+   "l": 74171.79
+  },
+  {
+   "i": 125,
+   "time": "11:20",
+   "dir": "down",
+   "range": 83.0,
+   "x_atr": 2.3,
+   "o": 74086.82,
+   "c": 74026.94,
+   "h": 74086.82,
+   "l": 74003.79
+  },
+  {
+   "i": 181,
+   "time": "12:16",
+   "dir": "up",
+   "range": 64.7,
+   "x_atr": 2.0,
+   "o": 73487.14,
+   "c": 73527.16,
+   "h": 73527.16,
+   "l": 73462.51
+  },
+  {
+   "i": 221,
+   "time": "12:56",
+   "dir": "up",
+   "range": 65.5,
+   "x_atr": 2.4,
+   "o": 73541.6,
+   "c": 73605.92,
+   "h": 73607.14,
+   "l": 73541.6
+  },
+  {
+   "i": 225,
+   "time": "13:00",
+   "dir": "down",
+   "range": 76.6,
+   "x_atr": 2.5,
+   "o": 73601.53,
+   "c": 73537.56,
+   "h": 73614.05,
+   "l": 73537.48
+  },
+  {
+   "i": 274,
+   "time": "13:49",
+   "dir": "up",
+   "range": 60.7,
+   "x_atr": 2.2,
+   "o": 73302.47,
+   "c": 73352.64,
+   "h": 73353.01,
+   "l": 73292.31
+  }
+ ],
+ "fvgs": [
+  {
+   "time": "09:20",
+   "i": 5,
+   "kind": "bull",
+   "lo": 74479.28,
+   "hi": 74496.99,
+   "size": 17.7,
+   "from_displacement": false,
+   "first_touch": "09:27",
+   "filled": "09:28"
+  },
+  {
+   "time": "09:34",
+   "i": 19,
+   "kind": "bull",
+   "lo": 74611.66,
+   "hi": 74644.56,
+   "size": 32.9,
+   "from_displacement": false,
+   "first_touch": "09:37",
+   "filled": "09:38"
+  },
+  {
+   "time": "09:37",
+   "i": 22,
+   "kind": "bear",
+   "lo": 74645.42,
+   "hi": 74660.13,
+   "size": 14.7,
+   "from_displacement": false,
+   "first_touch": "09:39",
+   "filled": "09:39"
+  },
+  {
+   "time": "09:45",
+   "i": 30,
+   "kind": "bear",
+   "lo": 74574.42,
+   "hi": 74597.34,
+   "size": 22.9,
+   "from_displacement": false,
+   "first_touch": null,
+   "filled": null
+  },
+  {
+   "time": "09:46",
+   "i": 31,
+   "kind": "bear",
+   "lo": 74554.19,
+   "hi": 74573.78,
+   "size": 19.6,
+   "from_displacement": false,
+   "first_touch": null,
+   "filled": null
+  },
+  {
+   "time": "09:49",
+   "i": 34,
+   "kind": "bear",
+   "lo": 74484.59,
+   "hi": 74523.29,
+   "size": 38.7,
+   "from_displacement": false,
+   "first_touch": null,
+   "filled": null
+  },
+  {
+   "time": "09:53",
+   "i": 38,
+   "kind": "bear",
+   "lo": 74401.84,
+   "hi": 74428.79,
+   "size": 26.9,
+   "from_displacement": false,
+   "first_touch": "09:55",
+   "filled": "09:55"
+  },
+  {
+   "time": "09:59",
+   "i": 44,
+   "kind": "bear",
+   "lo": 74380.17,
+   "hi": 74404.56,
+   "size": 24.4,
+   "from_displacement": false,
+   "first_touch": "10:01",
+   "filled": "10:01"
+  },
+  {
+   "time": "10:03",
+   "i": 48,
+   "kind": "bear",
+   "lo": 74316.14,
+   "hi": 74371.1,
+   "size": 55.0,
+   "from_displacement": false,
+   "first_touch": "10:35",
+   "filled": null
+  },
+  {
+   "time": "10:04",
+   "i": 49,
+   "kind": "bear",
+   "lo": 74279.78,
+   "hi": 74307.4,
+   "size": 27.6,
+   "from_displacement": false,
+   "first_touch": "10:06",
+   "filled": "10:35"
+  },
+  {
+   "time": "10:07",
+   "i": 52,
+   "kind": "bear",
+   "lo": 74208.44,
+   "hi": 74246.31,
+   "size": 37.9,
+   "from_displacement": false,
+   "first_touch": "10:09",
+   "filled": "10:34"
+  },
+  {
+   "time": "10:11",
+   "i": 56,
+   "kind": "bear",
+   "lo": 74167.07,
+   "hi": 74198.44,
+   "size": 31.4,
+   "from_displacement": false,
+   "first_touch": "10:15",
+   "filled": "10:16"
+  },
+  {
+   "time": "10:12",
+   "i": 57,
+   "kind": "bear",
+   "lo": 74124.9,
+   "hi": 74153.89,
+   "size": 29.0,
+   "from_displacement": false,
+   "first_touch": "10:14",
+   "filled": "10:15"
+  },
+  {
+   "time": "10:14",
+   "i": 59,
+   "kind": "bull",
+   "lo": 74124.9,
+   "hi": 74151.21,
+   "size": 26.3,
+   "from_displacement": false,
+   "first_touch": "10:18",
+   "filled": "10:19"
+  },
+  {
+   "time": "10:19",
+   "i": 64,
+   "kind": "bear",
+   "lo": 74115.39,
+   "hi": 74138.12,
+   "size": 22.7,
+   "from_displacement": false,
+   "first_touch": "10:22",
+   "filled": "10:22"
+  },
+  {
+   "time": "10:22",
+   "i": 67,
+   "kind": "bull",
+   "lo": 74106.33,
+   "hi": 74129.01,
+   "size": 22.7,
+   "from_displacement": false,
+   "first_touch": "10:25",
+   "filled": "11:19"
+  },
+  {
+   "time": "10:27",
+   "i": 72,
+   "kind": "bull",
+   "lo": 74169.86,
+   "hi": 74182.68,
+   "size": 12.8,
+   "from_displacement": false,
+   "first_touch": "10:29",
+   "filled": "10:31"
+  },
+  {
+   "time": "10:33",
+   "i": 78,
+   "kind": "bull",
+   "lo": 74185.27,
+   "hi": 74246.32,
+   "size": 61.1,
+   "from_displacement": true,
+   "first_touch": "10:38",
+   "filled": "10:58"
+  },
+  {
+   "time": "10:34",
+   "i": 79,
+   "kind": "bull",
+   "lo": 74245.8,
+   "hi": 74264.85,
+   "size": 19.1,
+   "from_displacement": false,
+   "first_touch": "10:36",
+   "filled": "10:38"
+  },
+  {
+   "time": "10:38",
+   "i": 83,
+   "kind": "bear",
+   "lo": 74237.56,
+   "hi": 74253.44,
+   "size": 15.9,
+   "from_displacement": false,
+   "first_touch": "10:41",
+   "filled": "10:41"
+  },
+  {
+   "time": "10:41",
+   "i": 86,
+   "kind": "bull",
+   "lo": 74235.79,
+   "hi": 74296.34,
+   "size": 60.6,
+   "from_displacement": false,
+   "first_touch": "10:43",
+   "filled": "10:44"
+  },
+  {
+   "time": "10:43",
+   "i": 88,
+   "kind": "bear",
+   "lo": 74276.28,
+   "hi": 74296.34,
+   "size": 20.1,
+   "from_displacement": false,
+   "first_touch": "10:46",
+   "filled": "10:49"
+  },
+  {
+   "time": "10:44",
+   "i": 89,
+   "kind": "bear",
+   "lo": 74243.77,
+   "hi": 74257.0,
+   "size": 13.2,
+   "from_displacement": false,
+   "first_touch": "10:46",
+   "filled": "10:46"
+  },
+  {
+   "time": "10:46",
+   "i": 91,
+   "kind": "bull",
+   "lo": 74243.77,
+   "hi": 74265.83,
+   "size": 22.1,
+   "from_displacement": false,
+   "first_touch": "10:50",
+   "filled": "10:51"
+  },
+  {
+   "time": "10:51",
+   "i": 96,
+   "kind": "bear",
+   "lo": 74235.35,
+   "hi": 74258.69,
+   "size": 23.3,
+   "from_displacement": false,
+   "first_touch": "10:53",
+   "filled": "10:53"
+  },
+  {
+   "time": "10:58",
+   "i": 103,
+   "kind": "bear",
+   "lo": 74205.31,
+   "hi": 74225.89,
+   "size": 20.6,
+   "from_displacement": false,
+   "first_touch": "11:00",
+   "filled": "11:00"
+  },
+  {
+   "time": "11:04",
+   "i": 109,
+   "kind": "bull",
+   "lo": 74253.65,
+   "hi": 74277.11,
+   "size": 23.5,
+   "from_displacement": false,
+   "first_touch": "11:06",
+   "filled": "11:06"
+  },
+  {
+   "time": "11:06",
+   "i": 111,
+   "kind": "bear",
+   "lo": 74252.47,
+   "hi": 74277.11,
+   "size": 24.6,
+   "from_displacement": false,
+   "first_touch": null,
+   "filled": null
+  },
+  {
+   "time": "11:07",
+   "i": 112,
+   "kind": "bear",
+   "lo": 74211.42,
+   "hi": 74243.59,
+   "size": 32.2,
+   "from_displacement": false,
+   "first_touch": null,
+   "filled": null
+  },
+  {
+   "time": "11:08",
+   "i": 113,
+   "kind": "bear",
+   "lo": 74184.65,
+   "hi": 74201.83,
+   "size": 17.2,
+   "from_displacement": false,
+   "first_touch": "11:14",
+   "filled": null
+  },
+  {
+   "time": "11:19",
+   "i": 124,
+   "kind": "bear",
+   "lo": 74086.82,
+   "hi": 74134.32,
+   "size": 47.5,
+   "from_displacement": false,
+   "first_touch": null,
+   "filled": null
+  },
+  {
+   "time": "11:20",
+   "i": 125,
+   "kind": "bear",
+   "lo": 74062.92,
+   "hi": 74093.98,
+   "size": 31.1,
+   "from_displacement": true,
+   "first_touch": null,
+   "filled": null
+  },
+  {
+   "time": "11:33",
+   "i": 138,
+   "kind": "bear",
+   "lo": 73910.13,
+   "hi": 73929.49,
+   "size": 19.4,
+   "from_displacement": false,
+   "first_touch": null,
+   "filled": null
+  },
+  {
+   "time": "11:39",
+   "i": 144,
+   "kind": "bear",
+   "lo": 73825.4,
+   "hi": 73843.75,
+   "size": 18.4,
+   "from_displacement": false,
+   "first_touch": null,
+   "filled": null
+  },
+  {
+   "time": "11:40",
+   "i": 145,
+   "kind": "bear",
+   "lo": 73775.47,
+   "hi": 73820.68,
+   "size": 45.2,
+   "from_displacement": false,
+   "first_touch": "11:42",
+   "filled": null
+  },
+  {
+   "time": "11:49",
+   "i": 154,
+   "kind": "bear",
+   "lo": 73780.07,
+   "hi": 73796.08,
+   "size": 16.0,
+   "from_displacement": false,
+   "first_touch": "11:55",
+   "filled": null
+  },
+  {
+   "time": "11:50",
+   "i": 155,
+   "kind": "bear",
+   "lo": 73741.1,
+   "hi": 73775.68,
+   "size": 34.6,
+   "from_displacement": false,
+   "first_touch": "11:52",
+   "filled": "11:54"
+  },
+  {
+   "time": "12:00",
+   "i": 165,
+   "kind": "bear",
+   "lo": 73706.63,
+   "hi": 73721.76,
+   "size": 15.1,
+   "from_displacement": false,
+   "first_touch": "12:03",
+   "filled": "12:04"
+  },
+  {
+   "time": "12:09",
+   "i": 174,
+   "kind": "bear",
+   "lo": 73657.22,
+   "hi": 73674.88,
+   "size": 17.7,
+   "from_displacement": false,
+   "first_touch": null,
+   "filled": null
+  },
+  {
+   "time": "12:11",
+   "i": 176,
+   "kind": "bear",
+   "lo": 73610.25,
+   "hi": 73642.13,
+   "size": 31.9,
+   "from_displacement": false,
+   "first_touch": "12:57",
+   "filled": null
+  },
+  {
+   "time": "12:12",
+   "i": 177,
+   "kind": "bear",
+   "lo": 73595.53,
+   "hi": 73608.71,
+   "size": 13.2,
+   "from_displacement": false,
+   "first_touch": "12:33",
+   "filled": "12:57"
+  },
+  {
+   "time": "12:13",
+   "i": 178,
+   "kind": "bear",
+   "lo": 73556.67,
+   "hi": 73587.46,
+   "size": 30.8,
+   "from_displacement": false,
+   "first_touch": "12:33",
+   "filled": "12:33"
+  },
+  {
+   "time": "12:14",
+   "i": 179,
+   "kind": "bear",
+   "lo": 73521.15,
+   "hi": 73552.85,
+   "size": 31.7,
+   "from_displacement": false,
+   "first_touch": "12:16",
+   "filled": "12:33"
+  },
+  {
+   "time": "12:29",
+   "i": 194,
+   "kind": "bull",
+   "lo": 73438.63,
+   "hi": 73470.38,
+   "size": 31.8,
+   "from_displacement": false,
+   "first_touch": "13:03",
+   "filled": "13:13"
+  },
+  {
+   "time": "12:30",
+   "i": 195,
+   "kind": "bull",
+   "lo": 73474.91,
+   "hi": 73516.65,
+   "size": 41.7,
+   "from_displacement": false,
+   "first_touch": "12:32",
+   "filled": "12:48"
+  },
+  {
+   "time": "12:33",
+   "i": 198,
+   "kind": "bull",
+   "lo": 73546.43,
+   "hi": 73573.44,
+   "size": 27.0,
+   "from_displacement": false,
+   "first_touch": "12:35",
+   "filled": "12:35"
+  },
+  {
+   "time": "12:35",
+   "i": 200,
+   "kind": "bear",
+   "lo": 73543.04,
+   "hi": 73573.44,
+   "size": 30.4,
+   "from_displacement": false,
+   "first_touch": "12:42",
+   "filled": "12:56"
+  },
+  {
+   "time": "12:49",
+   "i": 214,
+   "kind": "bull",
+   "lo": 73490.78,
+   "hi": 73516.4,
+   "size": 25.6,
+   "from_displacement": false,
+   "first_touch": "12:52",
+   "filled": "13:03"
+  },
+  {
+   "time": "12:55",
+   "i": 220,
+   "kind": "bull",
+   "lo": 73528.13,
+   "hi": 73541.6,
+   "size": 13.5,
+   "from_displacement": false,
+   "first_touch": "13:00",
+   "filled": "13:01"
+  },
+  {
+   "time": "12:56",
+   "i": 221,
+   "kind": "bull",
+   "lo": 73549.47,
+   "hi": 73597.1,
+   "size": 47.6,
+   "from_displacement": true,
+   "first_touch": "12:58",
+   "filled": "13:00"
+  },
+  {
+   "time": "13:00",
+   "i": 225,
+   "kind": "bear",
+   "lo": 73541.33,
+   "hi": 73575.03,
+   "size": 33.7,
+   "from_displacement": true,
+   "first_touch": "13:06",
+   "filled": null
+  },
+  {
+   "time": "13:02",
+   "i": 227,
+   "kind": "bear",
+   "lo": 73494.6,
+   "hi": 73524.91,
+   "size": 30.3,
+   "from_displacement": false,
+   "first_touch": "13:05",
+   "filled": "13:05"
+  },
+  {
+   "time": "13:05",
+   "i": 230,
+   "kind": "bull",
+   "lo": 73487.7,
+   "hi": 73522.91,
+   "size": 35.2,
+   "from_displacement": false,
+   "first_touch": "13:07",
+   "filled": "13:08"
+  },
+  {
+   "time": "13:13",
+   "i": 238,
+   "kind": "bear",
+   "lo": 73435.64,
+   "hi": 73452.33,
+   "size": 16.7,
+   "from_displacement": false,
+   "first_touch": "13:15",
+   "filled": "13:16"
+  },
+  {
+   "time": "13:17",
+   "i": 242,
+   "kind": "bull",
+   "lo": 73455.97,
+   "hi": 73469.74,
+   "size": 13.8,
+   "from_displacement": false,
+   "first_touch": "13:19",
+   "filled": "13:23"
+  },
+  {
+   "time": "13:24",
+   "i": 249,
+   "kind": "bull",
+   "lo": 73471.38,
+   "hi": 73484.66,
+   "size": 13.3,
+   "from_displacement": false,
+   "first_touch": "13:26",
+   "filled": "13:27"
+  },
+  {
+   "time": "13:38",
+   "i": 263,
+   "kind": "bear",
+   "lo": 73427.07,
+   "hi": 73444.51,
+   "size": 17.4,
+   "from_displacement": false,
+   "first_touch": "14:02",
+   "filled": "15:11"
+  },
+  {
+   "time": "13:39",
+   "i": 264,
+   "kind": "bear",
+   "lo": 73403.3,
+   "hi": 73418.97,
+   "size": 15.7,
+   "from_displacement": false,
+   "first_touch": "13:42",
+   "filled": "13:43"
+  },
+  {
+   "time": "13:45",
+   "i": 270,
+   "kind": "bear",
+   "lo": 73367.66,
+   "hi": 73397.4,
+   "size": 29.7,
+   "from_displacement": false,
+   "first_touch": "13:56",
+   "filled": "13:56"
+  },
+  {
+   "time": "13:46",
+   "i": 271,
+   "kind": "bear",
+   "lo": 73323.92,
+   "hi": 73361.62,
+   "size": 37.7,
+   "from_displacement": false,
+   "first_touch": "13:49",
+   "filled": "13:56"
+  },
+  {
+   "time": "13:47",
+   "i": 272,
+   "kind": "bear",
+   "lo": 73309.95,
+   "hi": 73326.45,
+   "size": 16.5,
+   "from_displacement": false,
+   "first_touch": "13:49",
+   "filled": "13:49"
+  },
+  {
+   "time": "13:49",
+   "i": 274,
+   "kind": "bull",
+   "lo": 73309.95,
+   "hi": 73340.38,
+   "size": 30.4,
+   "from_displacement": true,
+   "first_touch": "13:51",
+   "filled": "14:15"
+  },
+  {
+   "time": "13:56",
+   "i": 281,
+   "kind": "bull",
+   "lo": 73360.16,
+   "hi": 73387.29,
+   "size": 27.1,
+   "from_displacement": false,
+   "first_touch": "13:59",
+   "filled": "13:59"
+  },
+  {
+   "time": "14:01",
+   "i": 286,
+   "kind": "bull",
+   "lo": 73380.38,
+   "hi": 73397.67,
+   "size": 17.3,
+   "from_displacement": false,
+   "first_touch": "14:06",
+   "filled": "14:07"
+  },
+  {
+   "time": "14:06",
+   "i": 291,
+   "kind": "bear",
+   "lo": 73401.33,
+   "hi": 73414.51,
+   "size": 13.2,
+   "from_displacement": false,
+   "first_touch": "15:05",
+   "filled": "15:05"
+  },
+  {
+   "time": "14:32",
+   "i": 317,
+   "kind": "bull",
+   "lo": 73311.81,
+   "hi": 73327.27,
+   "size": 15.5,
+   "from_displacement": false,
+   "first_touch": "14:38",
+   "filled": "14:39"
+  },
+  {
+   "time": "14:38",
+   "i": 323,
+   "kind": "bear",
+   "lo": 73325.44,
+   "hi": 73348.39,
+   "size": 22.9,
+   "from_displacement": false,
+   "first_touch": "14:40",
+   "filled": "14:40"
+  },
+  {
+   "time": "14:40",
+   "i": 325,
+   "kind": "bull",
+   "lo": 73325.44,
+   "hi": 73348.76,
+   "size": 23.3,
+   "from_displacement": false,
+   "first_touch": "14:42",
+   "filled": "14:43"
+  },
+  {
+   "time": "14:42",
+   "i": 327,
+   "kind": "bear",
+   "lo": 73335.26,
+   "hi": 73348.76,
+   "size": 13.5,
+   "from_displacement": false,
+   "first_touch": "14:52",
+   "filled": "15:03"
+  },
+  {
+   "time": "14:46",
+   "i": 331,
+   "kind": "bear",
+   "lo": 73260.78,
+   "hi": 73290.91,
+   "size": 30.1,
+   "from_displacement": false,
+   "first_touch": "14:48",
+   "filled": "14:48"
+  },
+  {
+   "time": "14:51",
+   "i": 336,
+   "kind": "bull",
+   "lo": 73278.7,
+   "hi": 73305.71,
+   "size": 27.0,
+   "from_displacement": false,
+   "first_touch": "14:56",
+   "filled": null
+  },
+  {
+   "time": "14:52",
+   "i": 337,
+   "kind": "bull",
+   "lo": 73301.1,
+   "hi": 73322.79,
+   "size": 21.7,
+   "from_displacement": false,
+   "first_touch": "14:54",
+   "filled": "15:00"
+  },
+  {
+   "time": "15:02",
+   "i": 347,
+   "kind": "bull",
+   "lo": 73325.88,
+   "hi": 73343.37,
+   "size": 17.5,
+   "from_displacement": false,
+   "first_touch": null,
+   "filled": null
+  },
+  {
+   "time": "15:03",
+   "i": 348,
+   "kind": "bull",
+   "lo": 73340.36,
+   "hi": 73362.18,
+   "size": 21.8,
+   "from_displacement": false,
+   "first_touch": null,
+   "filled": null
+  },
+  {
+   "time": "15:04",
+   "i": 349,
+   "kind": "bull",
+   "lo": 73366.1,
+   "hi": 73384.23,
+   "size": 18.1,
+   "from_displacement": false,
+   "first_touch": null,
+   "filled": null
+  },
+  {
+   "time": "15:05",
+   "i": 350,
+   "kind": "bull",
+   "lo": 73388.14,
+   "hi": 73411.24,
+   "size": 23.1,
+   "from_displacement": false,
+   "first_touch": "15:07",
+   "filled": null
+  },
+  {
+   "time": "15:11",
+   "i": 356,
+   "kind": "bull",
+   "lo": 73429.38,
+   "hi": 73455.89,
+   "size": 26.5,
+   "from_displacement": false,
+   "first_touch": "15:13",
+   "filled": null
+  }
+ ],
+ "events": [
+  {
+   "i": 15,
+   "time": "09:30",
+   "price": 74611.66,
+   "text": "break of the opening-range high",
+   "score": 3,
+   "where": "above",
+   "n": 1
+  },
+  {
+   "i": 21,
+   "time": "09:36",
+   "price": 74682.19,
+   "text": "day high 74,682.19",
+   "score": 2,
+   "where": "above",
+   "n": 2
+  },
+  {
+   "i": 57,
+   "time": "10:12",
+   "price": 74080.96,
+   "text": "break of the opening-range low",
+   "score": 3,
+   "where": "below",
+   "n": 3
+  },
+  {
+   "i": 78,
+   "time": "10:33",
+   "price": 74245.8,
+   "text": "that break failed: back through the opening-range low; impulse candle up (74.0 pts, 2.3x normal)",
+   "score": 4.5,
+   "where": "above",
+   "n": 4
+  },
+  {
+   "i": 157,
+   "time": "11:52",
+   "price": 73704.3,
+   "text": "sweep of the previous-day low",
+   "score": 3,
+   "where": "below",
+   "n": 5
+  },
+  {
+   "i": 221,
+   "time": "12:56",
+   "price": 73607.14,
+   "text": "impulse candle up (65.5 pts, 2.4x normal)",
+   "score": 2,
+   "where": "above",
+   "n": 6
+  },
+  {
+   "i": 225,
+   "time": "13:00",
+   "price": 73537.48,
+   "text": "impulse candle down (76.6 pts, 2.5x normal)",
+   "score": 2,
+   "where": "below",
+   "n": 7
+  },
+  {
+   "i": 332,
+   "time": "14:47",
+   "price": 73229.45,
+   "text": "day low 73,229.45",
+   "score": 2,
+   "where": "below",
+   "n": 8
+  }
+ ],
+ "his_trades": [
+  {
+   "time": "09:32",
+   "option": "74500 CE 22-Oct",
+   "setup": "consolidation-breakout-followup",
+   "outcome": "unclear",
+   "pts": "~27",
+   "host": "chinmay",
+   "side": "PE"
+  },
+  {
+   "time": "09:57",
+   "option": "74400 PE 22-Oct",
+   "setup": "pullback-first-green-candle",
+   "outcome": "win",
+   "pts": "102",
+   "host": "chinmay",
+   "side": "PE"
+  },
+  {
+   "time": "10:33",
+   "option": "74200 CE 22-Oct",
+   "setup": "pullback-first-green-candle",
+   "outcome": "unclear",
+   "pts": "~63",
+   "host": "chinmay",
+   "side": "PE"
+  },
+  {
+   "time": "12:00",
+   "option": "73600 PE 22-Oct",
+   "setup": "consolidation-breakout-followup",
+   "outcome": "win",
+   "pts": "113.87",
+   "host": "chinmay",
+   "side": "PE"
+  },
+  {
+   "time": "13:21",
+   "option": "73600 PE 22-Oct",
+   "setup": "range-breakout-direct",
+   "outcome": "loss",
+   "pts": "~-37",
+   "host": "chinmay",
+   "side": "PE"
+  },
+  {
+   "time": "13:58",
+   "option": "73600 PE 22-Oct",
+   "setup": "pullback-first-green-candle",
+   "outcome": "loss",
+   "pts": "~-31",
+   "host": "chinmay",
+   "side": "PE"
+  }
+ ],
+ "signals": [
+  {
+   "code": "G",
+   "setup": "Gap (FVG) pullback",
+   "i": 105,
+   "time": "11:00",
+   "dir": "long",
+   "entry": 74206.91,
+   "stop": 74166.99,
+   "risk": 39.9,
+   "text": "pullback into the bull gap 74,185\u201374,246 (10:33), filled to 74,185 and confirmed by the 10:59 candle",
+   "result": "target",
+   "r": 2.0,
+   "exit": 74286.75,
+   "exit_time": "11:05",
+   "target": 74286.75,
+   "mfe_r": 2.16,
+   "r_by_target": {
+    "1": 1,
+    "2": 2,
+    "3": -1.0
+   },
+   "n": 1
+  },
+  {
+   "code": "S",
+   "setup": "Sweep reversal",
+   "i": 181,
+   "time": "12:16",
+   "dir": "long",
+   "entry": 73527.16,
+   "stop": 73459.31,
+   "risk": 67.9,
+   "text": "sweep of the round number 73,500, then a 64.7-pt reversal candle",
+   "result": "stop",
+   "r": -1.0,
+   "exit": 73459.31,
+   "exit_time": "12:19",
+   "target": 73662.86,
+   "mfe_r": 0.27,
+   "r_by_target": {
+    "1": -1.0,
+    "2": -1.0,
+    "3": -1.0
+   },
+   "n": 2
+  },
+  {
+   "code": "G",
+   "setup": "Gap (FVG) pullback",
+   "i": 230,
+   "time": "13:05",
+   "dir": "long",
+   "entry": 73489.3,
+   "stop": 73465.53,
+   "risk": 23.8,
+   "text": "pullback into the bull gap 73,549\u201373,597 (12:56), filled to 73,549 and confirmed by the 13:04 candle",
+   "result": "target",
+   "r": 2.0,
+   "exit": 73536.84,
+   "exit_time": "13:06",
+   "target": 73536.84,
+   "mfe_r": 2.23,
+   "r_by_target": {
+    "1": 1,
+    "2": 2,
+    "3": -1.0
+   },
+   "n": 3
+  },
+  {
+   "code": "G",
+   "setup": "Gap (FVG) pullback",
+   "i": 301,
+   "time": "14:16",
+   "dir": "long",
+   "entry": 73329.46,
+   "stop": 73306.59,
+   "risk": 22.9,
+   "text": "pullback into the bull gap 73,310\u201373,340 (13:49), filled to 73,310 and confirmed by the 14:15 candle",
+   "result": "stop",
+   "r": -1.0,
+   "exit": 73306.59,
+   "exit_time": "14:19",
+   "target": 73375.2,
+   "mfe_r": 0.11,
+   "r_by_target": {
+    "1": -1.0,
+    "2": -1.0,
+    "3": -1.0
+   },
+   "n": 4
+  }
+ ],
+ "rules": {
+  "fvg_min": 4.0,
+  "equal_tolerance": 0.0002,
+  "displacement": ">= 2.0x ATR14 and body >= 60%",
+  "target_r": 2.0,
+  "max_hold_min": 45,
+  "risk_points": [
+   12.8,
+   128.0
+  ],
+  "entry_window": [
+   "09:30",
+   "14:45"
+  ]
+ }
+}
