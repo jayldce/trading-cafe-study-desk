@@ -21,6 +21,7 @@ Add new concepts as streams are processed; add examples to existing ones rather 
 **How he uses it:** don't trade *inside* the barcode, because the range keeps shrinking and you get chopped. Wait for one side to win, then take the follow-up candle after the break (playbook setup A).
 **Watch:** [▶ 11-Sep 09:22](https://www.youtube.com/watch?v=qTDwaNEZ2RY&t=1200s) · [▶ 8-Sep barcode explained](https://www.youtube.com/watch?v=s3r5EJy4cw8&t=3420s)
 **Tall zigzag candles are the opposite (7-Oct):** a run of big alternating candles means fast moves, so he plans a small-risk entry in advance rather than chasing one. [▶ 11:44](https://www.youtube.com/watch?v=F-PdJ_DvsDY&t=9420s)
+**Big candles with no follow-up are a stand-aside (22-Oct):** on the expiry open the third and fourth large candles each came without a follow-up, so every breakout or continuation needed an ~80-pt one-candle stop. He called it a barcode market and waited for a candle that showed strength with a pullback stop of the 25–30 pts he treats as normal on Sensex. [▶ 09:39](https://www.youtube.com/watch?v=AuH5dwLyyx8&t=1740s) · [▶ 09:43](https://www.youtube.com/watch?v=AuH5dwLyyx8&t=1980s)
 
 ### Make-or-break zone
 **What:** a level where price was rejected several times (e.g. 176 on the CE, 162 on the PE). Whichever side breaks with an aggressive candle is the side to trade.
@@ -60,12 +61,14 @@ Add new concepts as streams are processed; add examples to existing ones rather 
 **How he trades it:** after the sweep, wait for a strong bullish close, enter on the first reversal sign, and keep the SL at the day low.
 **Watch:** [▶ 10:45](https://www.youtube.com/watch?v=qTDwaNEZ2RY&t=6240s) · frame `data/frames/qTDwaNEZ2RY/014340.jpg`
 **The full recipe, three times on one expiry (19-Oct):** a zone marked beforehand on the option (163 on the 22850 CE, the 117–129 order block on the 23200 PE, ~116 on the 23000 PE), stops taken just beyond it, then a pin bar or green candle, and entry above that candle's high or on a close above the named level. Risk was 8–18 option points against 34–120 made (+120.54, +62.24, +34.41). **Disqualified when:** there is no previous level nearby ("mid-way, I don't see a previous level"), the reversal candle is missing, or price closes below the zone before the trigger. [▶ 09:30](https://www.youtube.com/watch?v=dDZg2d5JxLk&t=520s) · [▶ 10:29](https://www.youtube.com/watch?v=dDZg2d5JxLk&t=4080s) · [▶ 14:57](https://www.youtube.com/watch?v=dDZg2d5JxLk&t=20100s)
+**Sweep into an option FVG, one candle of risk (22-Oct, Sensex expiry):** the 73100 CE dropped into a fair-value-gap zone it had left on the way up (~262–283), took the lows under it, and printed a good candle; he set the stop under that single candle (238.97) and entered above 279–280 on the follow-up, targeting the previous distribution zones (350, then ~452, then 562). It cleared 452 by 10:23. **Disqualified when** (same session, all named): the candle is still running ("chasing a running candle is meaningless"); big candles keep printing with no follow-up; the one-candle stop is 60–80 pts against ~60 of reward; or price only drifts slowly into the zone ("if it comes slowly, leave it") — he wants a pin bar that breaks the previous low and reverses, then the first green candle. [▶ 10:06](https://www.youtube.com/watch?v=AuH5dwLyyx8&t=3360s) · [▶ 10:13 recap](https://www.youtube.com/watch?v=AuH5dwLyyx8&t=3780s) · [▶ 10:48 slow-drift rule](https://www.youtube.com/watch?v=AuH5dwLyyx8&t=5880s)
 
 ### Fair value gap (FVG) on the option chart
 **What:** a zone price moved through too fast (an imbalance), left behind by a quick push to a fresh high or low. Price often returns to it.
 **His use:** if price falls back into the FVG, the move gets "dull" and late traders are trapped. You want an aggressive candle to clear it.
 **Watch:** [▶ 10:55](https://www.youtube.com/watch?v=qTDwaNEZ2RY&t=6780s)
 **7-Oct:** a viewer called a spot FVG mid-move; he said no — on his reading an FVG forms at a bottom after a strong move and a retest, and that move had not made one yet. [▶ 10:23](https://www.youtube.com/watch?v=F-PdJ_DvsDY&t=4560s)
+**22-Oct:** the FVG he traded sat *at the lows* of the 73100 CE, exactly where his 7-Oct definition puts one (a bottom after a strong move, then a retest); the sweep of the lows into it was the entry. [▶ 10:13](https://www.youtube.com/watch?v=AuH5dwLyyx8&t=3780s)
 
 ### Bounce strength
 After price falls from a level it usually bounces. If each bounce is **weaker**, expect a breakdown from that same zone. A strong bounce means buyers are defending. After two bounces, a **third test** rarely holds, so don't buy it; wait for the break.
@@ -373,6 +376,7 @@ After a consolidation makes a fresh low, the upper edge of that consolidation be
 ### Reversals are judged by reward vs risk
 A reversal always shows a small stop, which is why it feels safe. The real question is what the next distribution zone pays. A 13–14-pt stop needs a ~30-pt rally; 6 pts of risk against ~14 of reward (about 1:2) is borderline; 7–8 pts of reward isn't worth the trade.
 15-Oct added four refusals in one session: a 38-pt stop for a 31-pt first target, a 55-pt stop on a pin bar far from price, a ~1:1.5 at 14:41, and a 70-pt stop on a running candle. Every frame-checked win that day had a stop of 6–30 option points. [▶ 10:45](https://www.youtube.com/watch?v=Hvf-FA_DAE0&t=4200s)
+22-Oct repeated it for 50 minutes on a Sensex expiry: 60–80-pt one-candle stops against ~60 pts of reward were all declined (a 295 put trigger included); the one trade he took risked ~40 pts for a ~173-pt run to the previous distribution zone. [▶ 09:19](https://www.youtube.com/watch?v=AuH5dwLyyx8&t=540s) · [▶ 09:27](https://www.youtube.com/watch?v=AuH5dwLyyx8&t=1020s)
 **Watch:** [▶ 18-Sep 10:33](https://www.youtube.com/watch?v=EPh5qxWEUhU&t=5160s) · [▶ 18-Sep 11:08](https://www.youtube.com/watch?v=EPh5qxWEUhU&t=7260s)
 
 ### Stop size comes from structure, not a % of premium
@@ -399,6 +403,14 @@ He stopped trading futures after 2022–23 because the breakeven is about 16 poi
 ### No-trade is also a trade
 Declining to trade when conviction is missing is itself a decision, not a missed opportunity. He said it plainly through a dull morning on 21 Sep, while the market offered breakouts that kept failing. The discipline it protects is the one the trade log keeps proving: his losing setups cluster in chop (`range-breakout-direct` 0W/11L, `range-chop-scalps` 0W/3L). [▶ 21-Sep](https://www.youtube.com/watch?v=DrmIRaTPU-A&t=8580s)
 - 6-Oct: after the morning burst he sat out about two hours of mid-market chop, refused to re-enter in consolidation, and took the breakout of the zone he had marked at 12:00. On the same box the course's scanner fired six setups and lost all six. [▶ 12:07](https://www.youtube.com/watch?v=XnCas9JOTJI&t=11040s)
+
+### Max-pain drag on expiry morning
+**What:** on expiry day, while the index sits near the max-pain area (the strike where option writers lose least), premiums on both sides bleed without moving, which favours sellers.
+**Why it works:** writers defend the area because it is where their book pays most; a buyer there pays time decay for nothing.
+**Qualifies when (to wait):** price lingers around the max-pain area for a long time (22-Oct: 250–300 on the 73100 options).
+**Disqualified when:** price leaves the area and tags a clear zone on the option chart, with a sweep.
+**Trigger:** none of its own; it is a reason to wait for the zone touch rather than buy the drift.
+**Seen:** [▶ 22-Oct 09:59](https://www.youtube.com/watch?v=AuH5dwLyyx8&t=2940s)
 
 ### The last bull becomes the bear (capitulation)
 The worse the news gets *after* a long fall, the closer the market usually is to a real bottom — because bad news arriving late is what finally breaks the holdouts who have been buying all the way down. He drew the analogy from the COVID crash on 21 Sep. Treat it as a way of reading sentiment extremes, not a timing tool. [▶ 21-Sep](https://www.youtube.com/watch?v=DrmIRaTPU-A&t=16680s)
