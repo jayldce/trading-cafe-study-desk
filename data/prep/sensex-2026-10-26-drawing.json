@@ -1,0 +1,158 @@
+{
+ "date": "2026-10-26",
+ "instrument": "sensex",
+ "symbol": "BSE-6:BSE SENSEX",
+ "name": "Sensex",
+ "ref": 73123.83,
+ "open": null,
+ "last_session": "2026-10-23",
+ "pdh": 73766.51,
+ "pdl": 72452.37,
+ "pdc": 73123.83,
+ "trends": {
+  "D": "up",
+  "1H": "up",
+  "15m": "up"
+ },
+ "lines": [
+  {
+   "p": 71292.88,
+   "text": "\u200b2026 low 71,292.88 (1-Oct)",
+   "color": "#089981",
+   "w": 2,
+   "style": 0,
+   "valign": "top",
+   "halign": "left"
+  },
+  {
+   "p": 71327.75,
+   "text": "\u200bD swing low 71,327.75 (8-Oct)",
+   "color": "#089981",
+   "w": 1,
+   "style": 0,
+   "valign": "top",
+   "halign": "left"
+  },
+  {
+   "p": 72096.18,
+   "text": "\u200b1H swing low 72,096.18 (Thu)",
+   "color": "#089981",
+   "w": 1,
+   "style": 1,
+   "valign": "top",
+   "halign": "left"
+  },
+  {
+   "p": 72452.37,
+   "text": "\u200bPDL 72,452.37 (Fri low)",
+   "color": "#089981",
+   "w": 2,
+   "style": 0,
+   "valign": "top",
+   "halign": "left"
+  },
+  {
+   "p": 72500.0,
+   "text": "\u200b72,500 round",
+   "color": "#9598a1",
+   "w": 1,
+   "style": 2,
+   "valign": "top",
+   "halign": "left"
+  },
+  {
+   "p": 73000.0,
+   "text": "\u200b73,000 round",
+   "color": "#9598a1",
+   "w": 1,
+   "style": 2,
+   "valign": "top",
+   "halign": "left"
+  },
+  {
+   "p": 73123.83,
+   "text": "\u200bPDC 73,123.83 (Fri close)",
+   "color": "#2962ff",
+   "w": 1,
+   "style": 2,
+   "valign": "bottom",
+   "halign": "left"
+  },
+  {
+   "p": 73500.0,
+   "text": "\u200b73,500 round",
+   "color": "#9598a1",
+   "w": 1,
+   "style": 2,
+   "valign": "bottom",
+   "halign": "left"
+  },
+  {
+   "p": 73766.51,
+   "text": "\u200bPDH 73,766.51 (Fri high)",
+   "color": "#f23645",
+   "w": 2,
+   "style": 0,
+   "valign": "bottom",
+   "halign": "left"
+  },
+  {
+   "p": 74000.0,
+   "text": "\u200b74,000 round",
+   "color": "#9598a1",
+   "w": 1,
+   "style": 2,
+   "valign": "bottom",
+   "halign": "left"
+  },
+  {
+   "p": 74849.75,
+   "text": "\u200bPrev week high 74,849.75",
+   "color": "#f23645",
+   "w": 2,
+   "style": 0,
+   "valign": "bottom",
+   "halign": "left"
+  },
+  {
+   "p": 75038.93,
+   "text": "\u200bD swing high 75,038.93 (22-Sep)",
+   "color": "#f23645",
+   "w": 1,
+   "style": 0,
+   "valign": "bottom",
+   "halign": "left"
+  }
+ ],
+ "zones": [
+  {
+   "t0": 1792740600,
+   "t1": 1792749540,
+   "hi": 72610.25,
+   "lo": 72524.03,
+   "text": "\u200bS1 DEMAND: 15m OB tested (Fri)",
+   "color": "#089981",
+   "alpha": 0.18
+  },
+  {
+   "t0": 1791863100,
+   "t1": 1792749540,
+   "hi": 72096.18,
+   "lo": 71924.68,
+   "text": "\u200bS2 DEMAND: 1H FVG + 72,000 (Tue)",
+   "color": "#089981",
+   "alpha": 0.25
+  },
+  {
+   "t0": 1792749540,
+   "t1": 1792749540,
+   "hi": 72951.74,
+   "lo": 72728.34,
+   "text": "\u200bOTE 62-79% of Fri's leg (long side)",
+   "color": "#089981",
+   "alpha": 0.1
+  }
+ ],
+ "daily_source": "Dhan daily",
+ "layout": "Lemonn Layout - Nifty 50"
+}

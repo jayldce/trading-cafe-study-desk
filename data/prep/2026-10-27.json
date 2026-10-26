@@ -1,0 +1,331 @@
+{
+ "date": "2026-10-27",
+ "sessions": [
+  "2026-10-19",
+  "2026-10-21",
+  "2026-10-22",
+  "2026-10-23",
+  "2026-10-26"
+ ],
+ "close": 22753.2,
+ "last_session": "2026-10-26",
+ "week_high": 23175.099609375,
+ "week_low": 22372.0,
+ "closes": {
+  "2026-10-19": 22888.95,
+  "2026-10-21": 22811.35,
+  "2026-10-22": 22687.65,
+  "2026-10-23": 22600.0,
+  "2026-10-26": 22753.2
+ },
+ "nifty_expiry": "2026-10-27",
+ "sensex_expiry": "2026-10-29",
+ "zones": [
+  {
+   "kind": "fvg_bear",
+   "lo": 23079.5,
+   "hi": 23085.8,
+   "text": "open bear FVG from Wed 21 Oct 09:46",
+   "weight": 1,
+   "side": "above",
+   "distance": 329.5
+  },
+  {
+   "kind": "fvg_bear",
+   "lo": 23059.1,
+   "hi": 23069.8,
+   "text": "open bear FVG from Wed 21 Oct 09:49",
+   "weight": 1,
+   "side": "above",
+   "distance": 311.2
+  },
+  {
+   "kind": "fvg_bear",
+   "lo": 23041.55,
+   "hi": 23048.35,
+   "text": "open bear FVG from Wed 21 Oct 09:51",
+   "weight": 1,
+   "side": "above",
+   "distance": 291.7
+  },
+  {
+   "kind": "fvg_bear",
+   "lo": 23000.45,
+   "hi": 23017.75,
+   "text": "open bear FVG from Wed 21 Oct 10:03",
+   "weight": 1,
+   "side": "above",
+   "distance": 255.9
+  },
+  {
+   "kind": "round",
+   "lo": 23000,
+   "hi": 23000,
+   "text": "round number 23,000",
+   "weight": 1,
+   "side": "above",
+   "distance": 246.8
+  },
+  {
+   "kind": "fvg_bear",
+   "lo": 22989.05,
+   "hi": 22997.25,
+   "text": "open bear FVG from Wed 21 Oct 10:04",
+   "weight": 1,
+   "side": "above",
+   "distance": 240.0
+  },
+  {
+   "kind": "fvg_bear",
+   "lo": 22972.5,
+   "hi": 22982.0,
+   "text": "open bear FVG from Wed 21 Oct 11:06",
+   "weight": 1,
+   "side": "above",
+   "distance": 224.0
+  },
+  {
+   "kind": "fvg_bear",
+   "lo": 22959.1,
+   "hi": 22969.95,
+   "text": "open bear FVG from Wed 21 Oct 11:07",
+   "weight": 1,
+   "side": "above",
+   "distance": 211.3
+  },
+  {
+   "kind": "fvg_bear",
+   "lo": 22918.85,
+   "hi": 22930.5,
+   "text": "open bear FVG from Wed 21 Oct 11:19",
+   "weight": 1,
+   "side": "above",
+   "distance": 171.5
+  },
+  {
+   "kind": "round",
+   "lo": 22900,
+   "hi": 22900,
+   "text": "round number 22,900",
+   "weight": 1,
+   "side": "above",
+   "distance": 146.8
+  },
+  {
+   "kind": "old_low",
+   "lo": 22845.25,
+   "hi": 22845.25,
+   "text": "Mon 19 Oct low",
+   "weight": 1,
+   "side": "above",
+   "distance": 92.0
+  },
+  {
+   "kind": "daily_gap",
+   "lo": 22785.0,
+   "hi": 22811.35,
+   "text": "unfilled gap down of Thu 22 Oct",
+   "weight": 2,
+   "side": "above",
+   "distance": 45.0
+  },
+  {
+   "kind": "round",
+   "lo": 22800,
+   "hi": 22800,
+   "text": "round number 22,800",
+   "weight": 1,
+   "side": "above",
+   "distance": 46.8
+  },
+  {
+   "kind": "old_high",
+   "lo": 22787.25,
+   "hi": 22787.25,
+   "text": "Fri 23 Oct high",
+   "weight": 1,
+   "side": "above",
+   "distance": 34.0
+  },
+  {
+   "kind": "old_high",
+   "lo": 22785.0,
+   "hi": 22785.0,
+   "text": "Thu 22 Oct high",
+   "weight": 1,
+   "side": "above",
+   "distance": 31.8
+  },
+  {
+   "kind": "fvg_bear",
+   "lo": 22745.35,
+   "hi": 22769.8,
+   "text": "open bear FVG from Fri 23 Oct 09:18",
+   "weight": 1,
+   "side": "above",
+   "distance": 4.4
+  },
+  {
+   "kind": "prev_close",
+   "lo": 22753.2,
+   "hi": 22753.2,
+   "text": "previous-day close (Mon 26 Oct)",
+   "weight": 2,
+   "side": "below",
+   "distance": 0.0
+  },
+  {
+   "kind": "fvg_bear",
+   "lo": 22735.65,
+   "hi": 22744.0,
+   "text": "open bear FVG from Fri 23 Oct 09:28",
+   "weight": 1,
+   "side": "below",
+   "distance": -13.4
+  },
+  {
+   "kind": "prev_high",
+   "lo": 22721.15,
+   "hi": 22721.15,
+   "text": "previous-day high (Mon 26 Oct)",
+   "weight": 3,
+   "side": "below",
+   "distance": -32.0
+  },
+  {
+   "kind": "fvg_bull",
+   "lo": 22701.3,
+   "hi": 22708.85,
+   "text": "open bull FVG from Mon 26 Oct 15:08",
+   "weight": 2,
+   "side": "below",
+   "distance": -48.1
+  },
+  {
+   "kind": "round",
+   "lo": 22700,
+   "hi": 22700,
+   "text": "round number 22,700",
+   "weight": 1,
+   "side": "below",
+   "distance": -53.2
+  },
+  {
+   "kind": "fvg_bull",
+   "lo": 22652.2,
+   "hi": 22661.45,
+   "text": "open bull FVG from Mon 26 Oct 14:03",
+   "weight": 2,
+   "side": "below",
+   "distance": -96.4
+  },
+  {
+   "kind": "old_low",
+   "lo": 22649.9,
+   "hi": 22649.9,
+   "text": "Wed 21 Oct low",
+   "weight": 1,
+   "side": "below",
+   "distance": -103.3
+  },
+  {
+   "kind": "fvg_bull",
+   "lo": 22631.4,
+   "hi": 22640.6,
+   "text": "open bull FVG from Mon 26 Oct 13:19",
+   "weight": 2,
+   "side": "below",
+   "distance": -117.2
+  },
+  {
+   "kind": "round",
+   "lo": 22600,
+   "hi": 22600,
+   "text": "round number 22,600",
+   "weight": 1,
+   "side": "below",
+   "distance": -153.2
+  },
+  {
+   "kind": "equal_lows",
+   "lo": 22568.4,
+   "hi": 22572.55,
+   "text": "untaken equal lows from Mon 26 Oct",
+   "weight": 3,
+   "side": "below",
+   "distance": -182.7
+  },
+  {
+   "kind": "old_low",
+   "lo": 22554.85,
+   "hi": 22554.85,
+   "text": "Thu 22 Oct low",
+   "weight": 1,
+   "side": "below",
+   "distance": -198.4
+  },
+  {
+   "kind": "fvg_bull",
+   "lo": 22505.6,
+   "hi": 22528.65,
+   "text": "open bull FVG from Mon 26 Oct 09:53",
+   "weight": 2,
+   "side": "below",
+   "distance": -236.1
+  },
+  {
+   "kind": "fvg_bull",
+   "lo": 22497.0,
+   "hi": 22503.35,
+   "text": "open bull FVG from Mon 26 Oct 09:52",
+   "weight": 2,
+   "side": "below",
+   "distance": -253.0
+  },
+  {
+   "kind": "round",
+   "lo": 22500,
+   "hi": 22500,
+   "text": "round number 22,500",
+   "weight": 1,
+   "side": "below",
+   "distance": -253.2
+  },
+  {
+   "kind": "fvg_bull",
+   "lo": 22476.4,
+   "hi": 22489.3,
+   "text": "open bull FVG from Mon 26 Oct 09:51",
+   "weight": 2,
+   "side": "below",
+   "distance": -270.4
+  },
+  {
+   "kind": "fvg_bull",
+   "lo": 22464.0,
+   "hi": 22473.15,
+   "text": "open bull FVG from Mon 26 Oct 09:50",
+   "weight": 2,
+   "side": "below",
+   "distance": -284.6
+  },
+  {
+   "kind": "fvg_bull",
+   "lo": 22434.15,
+   "hi": 22441.3,
+   "text": "open bull FVG from Mon 26 Oct 09:42",
+   "weight": 2,
+   "side": "below",
+   "distance": -315.5
+  },
+  {
+   "kind": "prev_low",
+   "lo": 22387.35,
+   "hi": 22387.35,
+   "text": "previous-day low (Mon 26 Oct)",
+   "weight": 3,
+   "side": "below",
+   "distance": -365.9
+  }
+ ]
+}
