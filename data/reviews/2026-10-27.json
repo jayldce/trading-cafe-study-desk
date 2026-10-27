@@ -1,0 +1,928 @@
+{
+ "date": "2026-10-27",
+ "previous_session": "2026-10-26",
+ "open": 22707.55,
+ "high": 22829.75,
+ "high_time": "12:43",
+ "low": 22636.85,
+ "low_time": "14:17",
+ "close": 22749.75,
+ "range": 192.9,
+ "gap": -45.7,
+ "pdh": 22753.2,
+ "pdl": 22387.35,
+ "pdc": 22753.2,
+ "or_high": 22746.4,
+ "or_low": 22653.2,
+ "day_type": "range day",
+ "equal_highs": [
+  {
+   "side": "above",
+   "level": 22784.15,
+   "low": 22782.65,
+   "high": 22784.15,
+   "touches": [
+    "10:51",
+    "12:00"
+   ],
+   "taken": "12:38"
+  }
+ ],
+ "equal_lows": [
+  {
+   "side": "below",
+   "level": 22740.3,
+   "low": 22740.3,
+   "high": 22743.9,
+   "touches": [
+    "11:45",
+    "12:21"
+   ],
+   "taken": "13:08"
+  }
+ ],
+ "pools": [
+  {
+   "name": "previous-day high",
+   "level": 22753.2,
+   "side": "above",
+   "event": {
+    "time": "09:43",
+    "i": 28,
+    "extreme": 22767.45,
+    "beyond_by": 14.2,
+    "kind": "poke",
+    "reversal": null
+   }
+  },
+  {
+   "name": "previous-day low",
+   "level": 22387.35,
+   "side": "below",
+   "event": null
+  },
+  {
+   "name": "opening-range high",
+   "level": 22746.4,
+   "side": "above",
+   "event": {
+    "time": "09:30",
+    "i": 15,
+    "extreme": 22750.2,
+    "beyond_by": 3.8,
+    "kind": "sweep",
+    "reversal": null
+   }
+  },
+  {
+   "name": "opening-range low",
+   "level": 22653.2,
+   "side": "below",
+   "event": {
+    "time": "14:15",
+    "i": 300,
+    "extreme": 22636.85,
+    "beyond_by": 16.4,
+    "kind": "break",
+    "failed": "14:36",
+    "failed_i": 321
+   }
+  },
+  {
+   "name": "previous-day close (gap fill)",
+   "level": 22753.2,
+   "side": "above",
+   "event": {
+    "time": "09:43",
+    "i": 28,
+    "extreme": 22767.45,
+    "beyond_by": 14.2,
+    "kind": "poke",
+    "reversal": null
+   }
+  },
+  {
+   "name": "equal highs 22,782.7\u201322,784.2",
+   "level": 22784.15,
+   "side": "above",
+   "event": {
+    "time": "12:38",
+    "i": 203,
+    "extreme": 22794.9,
+    "beyond_by": 10.8,
+    "kind": "break",
+    "failed": "13:01",
+    "failed_i": 226
+   }
+  },
+  {
+   "name": "equal lows 22,740.3\u201322,743.9",
+   "level": 22740.3,
+   "side": "below",
+   "event": {
+    "time": "13:08",
+    "i": 233,
+    "extreme": 22709.5,
+    "beyond_by": 30.8,
+    "kind": "break",
+    "failed": null,
+    "failed_i": null
+   }
+  },
+  {
+   "name": "round number 22,600",
+   "level": 22600.0,
+   "side": "below",
+   "event": null
+  },
+  {
+   "name": "round number 22,700",
+   "level": 22700.0,
+   "side": "below",
+   "event": {
+    "time": "09:15",
+    "i": 0,
+    "extreme": 22664.4,
+    "beyond_by": 35.6,
+    "kind": "break",
+    "failed": "10:00",
+    "failed_i": 45
+   }
+  },
+  {
+   "name": "round number 22,800",
+   "level": 22800.0,
+   "side": "above",
+   "event": {
+    "time": "10:03",
+    "i": 48,
+    "extreme": 22804.5,
+    "beyond_by": 4.5,
+    "kind": "poke",
+    "reversal": null
+   }
+  }
+ ],
+ "displacement": [
+  {
+   "i": 45,
+   "time": "10:00",
+   "dir": "up",
+   "range": 36.5,
+   "x_atr": 2.8,
+   "o": 22747.3,
+   "c": 22778.6,
+   "h": 22782.4,
+   "l": 22745.9
+  },
+  {
+   "i": 63,
+   "time": "10:18",
+   "dir": "down",
+   "range": 25.1,
+   "x_atr": 2.2,
+   "o": 22761.6,
+   "c": 22742.85,
+   "h": 22764.9,
+   "l": 22739.85
+  },
+  {
+   "i": 65,
+   "time": "10:20",
+   "dir": "down",
+   "range": 57.5,
+   "x_atr": 4.5,
+   "o": 22748.9,
+   "c": 22696.75,
+   "h": 22751.45,
+   "l": 22694.0
+  },
+  {
+   "i": 66,
+   "time": "10:21",
+   "dir": "up",
+   "range": 33.4,
+   "x_atr": 2.1,
+   "o": 22695.0,
+   "c": 22715.1,
+   "h": 22717.95,
+   "l": 22684.55
+  },
+  {
+   "i": 150,
+   "time": "11:45",
+   "dir": "down",
+   "range": 13.8,
+   "x_atr": 2.0,
+   "o": 22760.7,
+   "c": 22749.35,
+   "h": 22762.45,
+   "l": 22748.7
+  },
+  {
+   "i": 196,
+   "time": "12:31",
+   "dir": "up",
+   "range": 14.5,
+   "x_atr": 2.1,
+   "o": 22761.9,
+   "c": 22771.75,
+   "h": 22774.85,
+   "l": 22760.35
+  },
+  {
+   "i": 207,
+   "time": "12:42",
+   "dir": "up",
+   "range": 26.0,
+   "x_atr": 3.3,
+   "o": 22794.05,
+   "c": 22811.1,
+   "h": 22817.55,
+   "l": 22791.6
+  },
+  {
+   "i": 226,
+   "time": "13:01",
+   "dir": "down",
+   "range": 20.4,
+   "x_atr": 2.1,
+   "o": 22771.4,
+   "c": 22752.1,
+   "h": 22771.9,
+   "l": 22751.55
+  },
+  {
+   "i": 233,
+   "time": "13:08",
+   "dir": "down",
+   "range": 36.6,
+   "x_atr": 3.6,
+   "o": 22762.25,
+   "c": 22738.6,
+   "h": 22765.55,
+   "l": 22728.9
+  },
+  {
+   "i": 299,
+   "time": "14:14",
+   "dir": "down",
+   "range": 20.5,
+   "x_atr": 2.1,
+   "o": 22676.35,
+   "c": 22657.6,
+   "h": 22676.35,
+   "l": 22655.8
+  },
+  {
+   "i": 321,
+   "time": "14:36",
+   "dir": "up",
+   "range": 27.0,
+   "x_atr": 2.1,
+   "o": 22690.3,
+   "c": 22708.25,
+   "h": 22713.5,
+   "l": 22686.55
+  }
+ ],
+ "fvgs": [
+  {
+   "time": "09:21",
+   "i": 6,
+   "kind": "bull",
+   "lo": 22679.0,
+   "hi": 22689.95,
+   "size": 11.0,
+   "from_displacement": false,
+   "first_touch": "09:25",
+   "filled": "09:25"
+  },
+  {
+   "time": "09:22",
+   "i": 7,
+   "kind": "bull",
+   "lo": 22694.8,
+   "hi": 22703.6,
+   "size": 8.8,
+   "from_displacement": false,
+   "first_touch": "09:24",
+   "filled": "09:24"
+  },
+  {
+   "time": "09:24",
+   "i": 9,
+   "kind": "bear",
+   "lo": 22695.5,
+   "hi": 22703.6,
+   "size": 8.1,
+   "from_displacement": false,
+   "first_touch": "09:26",
+   "filled": "09:27"
+  },
+  {
+   "time": "09:26",
+   "i": 11,
+   "kind": "bull",
+   "lo": 22695.5,
+   "hi": 22699.95,
+   "size": 4.5,
+   "from_displacement": false,
+   "first_touch": "10:20",
+   "filled": "10:20"
+  },
+  {
+   "time": "09:27",
+   "i": 12,
+   "kind": "bull",
+   "lo": 22700.65,
+   "hi": 22717.6,
+   "size": 16.9,
+   "from_displacement": false,
+   "first_touch": "09:32",
+   "filled": "10:20"
+  },
+  {
+   "time": "09:28",
+   "i": 13,
+   "kind": "bull",
+   "lo": 22722.4,
+   "hi": 22733.65,
+   "size": 11.2,
+   "from_displacement": false,
+   "first_touch": "09:30",
+   "filled": "09:32"
+  },
+  {
+   "time": "09:32",
+   "i": 17,
+   "kind": "bear",
+   "lo": 22716.2,
+   "hi": 22732.5,
+   "size": 16.3,
+   "from_displacement": false,
+   "first_touch": "09:34",
+   "filled": "09:36"
+  },
+  {
+   "time": "09:35",
+   "i": 20,
+   "kind": "bull",
+   "lo": 22722.1,
+   "hi": 22727.4,
+   "size": 5.3,
+   "from_displacement": false,
+   "first_touch": "09:37",
+   "filled": "09:39"
+  },
+  {
+   "time": "09:43",
+   "i": 28,
+   "kind": "bull",
+   "lo": 22743.65,
+   "hi": 22755.9,
+   "size": 12.2,
+   "from_displacement": false,
+   "first_touch": "09:45",
+   "filled": "09:46"
+  },
+  {
+   "time": "10:00",
+   "i": 45,
+   "kind": "bull",
+   "lo": 22748.75,
+   "hi": 22776.15,
+   "size": 27.4,
+   "from_displacement": true,
+   "first_touch": "10:07",
+   "filled": "10:18"
+  },
+  {
+   "time": "10:10",
+   "i": 55,
+   "kind": "bull",
+   "lo": 22777.15,
+   "hi": 22782.05,
+   "size": 4.9,
+   "from_displacement": false,
+   "first_touch": "10:12",
+   "filled": "10:12"
+  },
+  {
+   "time": "10:12",
+   "i": 57,
+   "kind": "bear",
+   "lo": 22776.25,
+   "hi": 22782.05,
+   "size": 5.8,
+   "from_displacement": false,
+   "first_touch": "10:14",
+   "filled": "10:52"
+  },
+  {
+   "time": "10:20",
+   "i": 65,
+   "kind": "bear",
+   "lo": 22717.95,
+   "hi": 22739.95,
+   "size": 22.0,
+   "from_displacement": true,
+   "first_touch": "10:22",
+   "filled": "10:34"
+  },
+  {
+   "time": "10:25",
+   "i": 70,
+   "kind": "bull",
+   "lo": 22706.15,
+   "hi": 22717.6,
+   "size": 11.4,
+   "from_displacement": false,
+   "first_touch": "10:27",
+   "filled": "13:13"
+  },
+  {
+   "time": "10:33",
+   "i": 78,
+   "kind": "bull",
+   "lo": 22728.95,
+   "hi": 22738.15,
+   "size": 9.2,
+   "from_displacement": false,
+   "first_touch": "11:15",
+   "filled": "11:20"
+  },
+  {
+   "time": "10:36",
+   "i": 81,
+   "kind": "bull",
+   "lo": 22747.4,
+   "hi": 22754.25,
+   "size": 6.8,
+   "from_displacement": false,
+   "first_touch": "10:38",
+   "filled": "11:10"
+  },
+  {
+   "time": "11:29",
+   "i": 134,
+   "kind": "bull",
+   "lo": 22739.2,
+   "hi": 22748.85,
+   "size": 9.6,
+   "from_displacement": false,
+   "first_touch": "11:45",
+   "filled": "13:08"
+  },
+  {
+   "time": "11:45",
+   "i": 150,
+   "kind": "bear",
+   "lo": 22751.45,
+   "hi": 22757.15,
+   "size": 5.7,
+   "from_displacement": true,
+   "first_touch": "11:47",
+   "filled": "11:48"
+  },
+  {
+   "time": "11:55",
+   "i": 160,
+   "kind": "bull",
+   "lo": 22762.9,
+   "hi": 22767.55,
+   "size": 4.6,
+   "from_displacement": false,
+   "first_touch": "11:57",
+   "filled": "12:05"
+  },
+  {
+   "time": "12:30",
+   "i": 195,
+   "kind": "bull",
+   "lo": 22755.1,
+   "hi": 22760.35,
+   "size": 5.2,
+   "from_displacement": false,
+   "first_touch": "13:01",
+   "filled": "13:01"
+  },
+  {
+   "time": "12:37",
+   "i": 202,
+   "kind": "bull",
+   "lo": 22775.8,
+   "hi": 22781.2,
+   "size": 5.4,
+   "from_displacement": false,
+   "first_touch": "12:39",
+   "filled": "12:56"
+  },
+  {
+   "time": "12:40",
+   "i": 205,
+   "kind": "bull",
+   "lo": 22784.25,
+   "hi": 22789.75,
+   "size": 5.5,
+   "from_displacement": false,
+   "first_touch": "12:52",
+   "filled": "12:52"
+  },
+  {
+   "time": "12:42",
+   "i": 207,
+   "kind": "bull",
+   "lo": 22794.9,
+   "hi": 22811.35,
+   "size": 16.4,
+   "from_displacement": true,
+   "first_touch": "12:46",
+   "filled": "12:47"
+  },
+  {
+   "time": "12:46",
+   "i": 211,
+   "kind": "bear",
+   "lo": 22806.0,
+   "hi": 22811.9,
+   "size": 5.9,
+   "from_displacement": false,
+   "first_touch": "12:49",
+   "filled": null
+  },
+  {
+   "time": "12:51",
+   "i": 216,
+   "kind": "bear",
+   "lo": 22796.95,
+   "hi": 22802.75,
+   "size": 5.8,
+   "from_displacement": false,
+   "first_touch": null,
+   "filled": null
+  },
+  {
+   "time": "13:00",
+   "i": 225,
+   "kind": "bear",
+   "lo": 22771.9,
+   "hi": 22776.55,
+   "size": 4.6,
+   "from_displacement": false,
+   "first_touch": "14:59",
+   "filled": "14:59"
+  },
+  {
+   "time": "13:01",
+   "i": 226,
+   "kind": "bear",
+   "lo": 22758.85,
+   "hi": 22768.75,
+   "size": 9.9,
+   "from_displacement": true,
+   "first_touch": "13:03",
+   "filled": "14:54"
+  },
+  {
+   "time": "13:08",
+   "i": 233,
+   "kind": "bear",
+   "lo": 22742.6,
+   "hi": 22752.3,
+   "size": 9.7,
+   "from_displacement": true,
+   "first_touch": "14:39",
+   "filled": "14:40"
+  },
+  {
+   "time": "13:12",
+   "i": 237,
+   "kind": "bear",
+   "lo": 22719.4,
+   "hi": 22724.3,
+   "size": 4.9,
+   "from_displacement": false,
+   "first_touch": "14:37",
+   "filled": "14:37"
+  },
+  {
+   "time": "13:57",
+   "i": 282,
+   "kind": "bear",
+   "lo": 22697.7,
+   "hi": 22703.55,
+   "size": 5.8,
+   "from_displacement": false,
+   "first_touch": "13:59",
+   "filled": "14:36"
+  },
+  {
+   "time": "14:03",
+   "i": 288,
+   "kind": "bear",
+   "lo": 22676.4,
+   "hi": 22683.2,
+   "size": 6.8,
+   "from_displacement": false,
+   "first_touch": "14:06",
+   "filled": "14:12"
+  },
+  {
+   "time": "14:14",
+   "i": 299,
+   "kind": "bear",
+   "lo": 22659.6,
+   "hi": 22674.95,
+   "size": 15.4,
+   "from_displacement": true,
+   "first_touch": "14:19",
+   "filled": "14:21"
+  },
+  {
+   "time": "14:15",
+   "i": 300,
+   "kind": "bear",
+   "lo": 22647.9,
+   "hi": 22655.8,
+   "size": 7.9,
+   "from_displacement": false,
+   "first_touch": "14:17",
+   "filled": "14:18"
+  },
+  {
+   "time": "14:18",
+   "i": 303,
+   "kind": "bull",
+   "lo": 22648.65,
+   "hi": 22654.95,
+   "size": 6.3,
+   "from_displacement": false,
+   "first_touch": "14:23",
+   "filled": null
+  },
+  {
+   "time": "14:19",
+   "i": 304,
+   "kind": "bull",
+   "lo": 22659.1,
+   "hi": 22663.2,
+   "size": 4.1,
+   "from_displacement": false,
+   "first_touch": "14:23",
+   "filled": "14:23"
+  },
+  {
+   "time": "14:36",
+   "i": 321,
+   "kind": "bull",
+   "lo": 22693.95,
+   "hi": 22706.75,
+   "size": 12.8,
+   "from_displacement": true,
+   "first_touch": null,
+   "filled": null
+  },
+  {
+   "time": "14:55",
+   "i": 340,
+   "kind": "bear",
+   "lo": 22745.5,
+   "hi": 22750.9,
+   "size": 5.4,
+   "from_displacement": false,
+   "first_touch": "14:57",
+   "filled": "14:57"
+  }
+ ],
+ "events": [
+  {
+   "i": 15,
+   "time": "09:30",
+   "price": 22750.2,
+   "text": "sweep of the opening-range high",
+   "score": 3,
+   "where": "above",
+   "n": 1
+  },
+  {
+   "i": 65,
+   "time": "10:20",
+   "price": 22694.0,
+   "text": "impulse candle down (57.5 pts, 4.5x normal)",
+   "score": 2,
+   "where": "below",
+   "n": 2
+  },
+  {
+   "i": 203,
+   "time": "12:38",
+   "price": 22794.9,
+   "text": "break of the equal highs 22,782.7\u201322,784.2",
+   "score": 3,
+   "where": "above",
+   "n": 3
+  },
+  {
+   "i": 207,
+   "time": "12:42",
+   "price": 22817.55,
+   "text": "impulse candle up (26.0 pts, 3.3x normal); day high 22,829.75",
+   "score": 2.5,
+   "where": "above",
+   "n": 4
+  },
+  {
+   "i": 226,
+   "time": "13:01",
+   "price": 22752.1,
+   "text": "that break failed: back through the equal highs 22,782.7\u201322,784.2",
+   "score": 4,
+   "where": "below",
+   "n": 5
+  },
+  {
+   "i": 233,
+   "time": "13:08",
+   "price": 22709.5,
+   "text": "break of the equal lows 22,740.3\u201322,743.9; impulse candle down (36.6 pts, 3.6x normal)",
+   "score": 3.5,
+   "where": "below",
+   "n": 6
+  },
+  {
+   "i": 300,
+   "time": "14:15",
+   "price": 22636.85,
+   "text": "break of the opening-range low; day low 22,636.85",
+   "score": 3.5,
+   "where": "below",
+   "n": 7
+  },
+  {
+   "i": 321,
+   "time": "14:36",
+   "price": 22708.25,
+   "text": "that break failed: back through the opening-range low",
+   "score": 4,
+   "where": "above",
+   "n": 8
+  }
+ ],
+ "his_trades": [],
+ "signals": [
+  {
+   "code": "S",
+   "setup": "Sweep reversal",
+   "i": 63,
+   "time": "10:18",
+   "dir": "short",
+   "entry": 22742.85,
+   "stop": 22765.9,
+   "risk": 23.1,
+   "text": "sweep of the previous-day high, then a 25.1-pt reversal candle",
+   "result": "target",
+   "r": 2.0,
+   "exit": 22696.75,
+   "exit_time": "10:20",
+   "target": 22696.75,
+   "mfe_r": 2.12,
+   "r_by_target": {
+    "1": 1,
+    "2": 2,
+    "3": -1.0
+   },
+   "n": 1
+  },
+  {
+   "code": "S",
+   "setup": "Sweep reversal",
+   "i": 66,
+   "time": "10:21",
+   "dir": "long",
+   "entry": 22715.1,
+   "stop": 22683.55,
+   "risk": 31.5,
+   "text": "sweep of the round number 22,700, then a 33.4-pt reversal candle",
+   "result": "target",
+   "r": 2.0,
+   "exit": 22778.2,
+   "exit_time": "10:52",
+   "target": 22778.2,
+   "mfe_r": 2.16,
+   "r_by_target": {
+    "1": 1,
+    "2": 2,
+    "3": 1.36
+   },
+   "n": 2
+  },
+  {
+   "code": "G",
+   "setup": "Gap (FVG) pullback",
+   "i": 214,
+   "time": "12:49",
+   "dir": "long",
+   "entry": 22805.55,
+   "stop": 22793.95,
+   "risk": 11.6,
+   "text": "pullback into the bull gap 22,795\u201322,811 (12:42), filled to 22,795 and confirmed by the 12:48 candle",
+   "result": "stop",
+   "r": -1.0,
+   "exit": 22793.95,
+   "exit_time": "12:51",
+   "target": 22828.75,
+   "mfe_r": 0.22,
+   "r_by_target": {
+    "1": -1.0,
+    "2": -1.0,
+    "3": -1.0
+   },
+   "n": 3
+  },
+  {
+   "code": "S",
+   "setup": "Sweep reversal",
+   "i": 226,
+   "time": "13:01",
+   "dir": "short",
+   "entry": 22752.1,
+   "stop": 22786.35,
+   "risk": 34.2,
+   "text": "sweep of the equal highs 22,782.7\u201322,784.2, then a 20.4-pt reversal candle",
+   "result": "target",
+   "r": 2.0,
+   "exit": 22683.6,
+   "exit_time": "13:29",
+   "target": 22683.6,
+   "mfe_r": 2.01,
+   "r_by_target": {
+    "1": 1,
+    "2": 2,
+    "3": 1.73
+   },
+   "n": 4
+  },
+  {
+   "code": "G",
+   "setup": "Gap (FVG) pullback",
+   "i": 308,
+   "time": "14:23",
+   "dir": "short",
+   "entry": 22663.75,
+   "stop": 22676.75,
+   "risk": 13.0,
+   "text": "pullback into the bear gap 22,660\u201322,675 (14:14), filled to 22,675 and confirmed by the 14:22 candle",
+   "result": "stop",
+   "r": -1.0,
+   "exit": 22676.75,
+   "exit_time": "14:27",
+   "target": 22637.75,
+   "mfe_r": 0.7,
+   "r_by_target": {
+    "1": -1.0,
+    "2": -1.0,
+    "3": -1.0
+   },
+   "n": 5
+  },
+  {
+   "code": "S",
+   "setup": "Sweep reversal",
+   "i": 321,
+   "time": "14:36",
+   "dir": "long",
+   "entry": 22708.25,
+   "stop": 22685.55,
+   "risk": 22.7,
+   "text": "sweep of the round number 22,700, then a 27.0-pt reversal candle",
+   "result": "target",
+   "r": 2.0,
+   "exit": 22753.65,
+   "exit_time": "14:40",
+   "target": 22753.65,
+   "mfe_r": 2.05,
+   "r_by_target": {
+    "1": 1,
+    "2": 2,
+    "3": 3
+   },
+   "n": 6
+  }
+ ],
+ "rules": {
+  "fvg_min": 4.0,
+  "equal_tolerance": 0.0002,
+  "displacement": ">= 2.0x ATR14 and body >= 60%",
+  "target_r": 2.0,
+  "max_hold_min": 45,
+  "risk_points": [
+   4.0,
+   40.0
+  ],
+  "entry_window": [
+   "09:30",
+   "14:45"
+  ]
+ }
+}
