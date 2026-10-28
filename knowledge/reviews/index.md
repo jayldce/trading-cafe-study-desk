@@ -38,6 +38,7 @@ These are studies of finished sessions, not calls for the next one. Everything i
 | Fri 23 Oct | +55 | mixed, down then failed-break rally | Thursday's high 22,785.00 | Swept by 2.2 at 09:16 — the day high; the opening-range low broke 09:31 and Thursday's low 10:07 | The 12:45 break of the midday equal lows 22,407 — low 22,372.00 at 12:51, failed at 13:32 (G3 +2R), then a 3.7× candle and 221 points back to Thursday's low |
 | Mon 26 Oct | −76 | trend up | Friday's low 22,372.00 | Not reached: the low 22,387.35 (09:26) held 15.35 above it, off a 12.5 poke of 22,400 | The 09:26 low — eight bull gaps 09:50–09:57, the OR high broke at 09:53, Friday's close at 09:57, 22,700 swept at 10:08 (318.8 points); the 09:53 gap held the 11:34 pullback |
 | Tue 27 Oct | −46 | range | Monday's 14:03 gap / opening-range high | The low came 09:19 inside Monday's gap; the OR high was swept at 09:30 and run to 22,804.50 (10:04), then the 4.5× candle at 10:20 | The failed breaks — equal highs broke 12:38 and failed 13:01, the OR low broke 14:15 and failed 14:36; all four sweep reversals reached 2R |
+| Wed 28 Oct | −72 | range | Tuesday's low 22,636.85 | Broken by the first candle by 80.9, with 22,600 and Monday's equal lows in the same minute; no turn | The 10:22 low, a 2.3-pt sweep of 22,500 inside Monday's 09:52 gap — six bull gaps 10:36–11:16, the OR high broke 12:44, Tuesday's close poked by 28.3 at 13:00 and rejected at 13:01 (S4, +2R) |
 
 ## What repeats across them
 
