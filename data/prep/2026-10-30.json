@@ -1,0 +1,214 @@
+{
+ "date": "2026-10-30",
+ "sessions": [
+  "2026-10-23",
+  "2026-10-26",
+  "2026-10-27",
+  "2026-10-28",
+  "2026-10-29"
+ ],
+ "close": 22936.75,
+ "last_session": "2026-10-29",
+ "week_high": 22961.95,
+ "week_low": 22372.0,
+ "closes": {
+  "2026-10-23": 22600.0,
+  "2026-10-26": 22753.2,
+  "2026-10-27": 22749.75,
+  "2026-10-28": 22698.85,
+  "2026-10-29": 22936.75
+ },
+ "nifty_expiry": "2026-11-03",
+ "sensex_expiry": "2026-11-05",
+ "zones": [
+  {
+   "kind": "round",
+   "lo": 23200,
+   "hi": 23200,
+   "text": "round number 23,200",
+   "weight": 1,
+   "side": "above",
+   "distance": 263.2
+  },
+  {
+   "kind": "round",
+   "lo": 23100,
+   "hi": 23100,
+   "text": "round number 23,100",
+   "weight": 1,
+   "side": "above",
+   "distance": 163.2
+  },
+  {
+   "kind": "round",
+   "lo": 23000,
+   "hi": 23000,
+   "text": "round number 23,000",
+   "weight": 1,
+   "side": "above",
+   "distance": 63.2
+  },
+  {
+   "kind": "prev_high",
+   "lo": 22961.95,
+   "hi": 22961.95,
+   "text": "previous-day high (Thu 29 Oct)",
+   "weight": 3,
+   "side": "above",
+   "distance": 25.2
+  },
+  {
+   "kind": "range_high",
+   "lo": 22961.95,
+   "hi": 22961.95,
+   "text": "5-session high",
+   "weight": 2,
+   "side": "above",
+   "distance": 25.2
+  },
+  {
+   "kind": "prev_close",
+   "lo": 22936.75,
+   "hi": 22936.75,
+   "text": "previous-day close (Thu 29 Oct)",
+   "weight": 2,
+   "side": "below",
+   "distance": 0.0
+  },
+  {
+   "kind": "fvg_bull",
+   "lo": 22908.05,
+   "hi": 22936.05,
+   "text": "open bull FVG from Thu 29 Oct 14:25",
+   "weight": 2,
+   "side": "below",
+   "distance": -14.7
+  },
+  {
+   "kind": "round",
+   "lo": 22900,
+   "hi": 22900,
+   "text": "round number 22,900",
+   "weight": 1,
+   "side": "below",
+   "distance": -36.8
+  },
+  {
+   "kind": "fvg_bull",
+   "lo": 22850.8,
+   "hi": 22858.75,
+   "text": "open bull FVG from Thu 29 Oct 13:33",
+   "weight": 2,
+   "side": "below",
+   "distance": -82.0
+  },
+  {
+   "kind": "fvg_bull",
+   "lo": 22832.0,
+   "hi": 22845.1,
+   "text": "open bull FVG from Thu 29 Oct 13:21",
+   "weight": 2,
+   "side": "below",
+   "distance": -98.2
+  },
+  {
+   "kind": "old_high",
+   "lo": 22829.75,
+   "hi": 22829.75,
+   "text": "Tue 27 Oct high",
+   "weight": 1,
+   "side": "below",
+   "distance": -107.0
+  },
+  {
+   "kind": "fvg_bull",
+   "lo": 22820.05,
+   "hi": 22829.65,
+   "text": "open bull FVG from Thu 29 Oct 12:58",
+   "weight": 2,
+   "side": "below",
+   "distance": -111.9
+  },
+  {
+   "kind": "round",
+   "lo": 22800,
+   "hi": 22800,
+   "text": "round number 22,800",
+   "weight": 1,
+   "side": "below",
+   "distance": -136.8
+  },
+  {
+   "kind": "old_high",
+   "lo": 22787.25,
+   "hi": 22787.25,
+   "text": "Fri 23 Oct high",
+   "weight": 1,
+   "side": "below",
+   "distance": -149.5
+  },
+  {
+   "kind": "old_high",
+   "lo": 22778.05,
+   "hi": 22778.05,
+   "text": "Wed 28 Oct high",
+   "weight": 1,
+   "side": "below",
+   "distance": -158.7
+  },
+  {
+   "kind": "fvg_bull",
+   "lo": 22730.75,
+   "hi": 22738.9,
+   "text": "open bull FVG from Thu 29 Oct 09:50",
+   "weight": 2,
+   "side": "below",
+   "distance": -201.9
+  },
+  {
+   "kind": "old_high",
+   "lo": 22721.15,
+   "hi": 22721.15,
+   "text": "Mon 26 Oct high",
+   "weight": 1,
+   "side": "below",
+   "distance": -215.6
+  },
+  {
+   "kind": "round",
+   "lo": 22700,
+   "hi": 22700,
+   "text": "round number 22,700",
+   "weight": 1,
+   "side": "below",
+   "distance": -236.8
+  },
+  {
+   "kind": "prev_low",
+   "lo": 22656.75,
+   "hi": 22656.75,
+   "text": "previous-day low (Thu 29 Oct)",
+   "weight": 3,
+   "side": "below",
+   "distance": -280.0
+  },
+  {
+   "kind": "old_low",
+   "lo": 22636.85,
+   "hi": 22636.85,
+   "text": "Tue 27 Oct low",
+   "weight": 1,
+   "side": "below",
+   "distance": -299.9
+  },
+  {
+   "kind": "fvg_bull",
+   "lo": 22592.05,
+   "hi": 22602.55,
+   "text": "open bull FVG from Wed 28 Oct 11:16",
+   "weight": 1,
+   "side": "below",
+   "distance": -339.5
+  }
+ ]
+}
