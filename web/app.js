@@ -1662,6 +1662,7 @@ async function viewLive(which) {
         <div class="lv-cols">
           <div class="lv-col">
             ${accountHTML(acct)}
+            ${tradeJournalHTML(acct)}
             <section><h2>Where ${idx === "nifty" ? "Nifty" : "Sensex"} is</h2>${whereHTML(st)}${indexChartSVG(st)}</section>
             <section><h2>Setup right now</h2>${setupHTML(st)}</section>
             ${armedHTML(st)}
@@ -1681,13 +1682,266 @@ async function viewLive(which) {
       </div>`;
     wireThumbs(app);
     wireCopyButtons(app, st.index_label);
+    app.querySelectorAll("[data-tj]").forEach((b) => b.addEventListener("click", () => {
+      const k = b.dataset.tj;
+      const live = b.dataset.live === "1";
+      const src = live ? (acct.positions || []).map((p) => ({ ...p, key: `${p.security_id}@${p.entry_time}` }))
+                       : (acct.trips || []);
+      const t = src.find((x) => x.key === k);
+      if (t) openTradeNote(st.day, t, live ? "open" : "exit");
+    }));
+    maybePrompt(st.day, acct);
   };
+  await loadNotes(new Date().toLocaleDateString("en-CA"));
+  await loadTradeCharts(new Date().toLocaleDateString("en-CA"));
   await render();
   liveTimer = setInterval(render, 3000); // a small local file; with the Dhan feed the price changes every few seconds
 }
 
 
 const rupees = (n) => `${n < 0 ? "−" : n > 0 ? "+" : ""}₹${Math.abs(Math.round(n)).toLocaleString("en-IN")}`;
+/* ---------------- per-trade journal (data/journal/notes-<date>.json; local only) ----------------
+   The point of this is the sentence you can only write while the trade is still in front of you. An hour later
+   you will reconstruct a reason instead of remembering one, and reconstructed reasons read back as evidence.
+   So the prompt arrives when the fill does. Like the sizing dialog, it lives in document.body rather than
+   inside #app, because the Live page rewrites its own HTML every 3 seconds and would close it mid-sentence. */
+let TRADE_NOTES = {};
+let NOTES_DAY = null;
+let PROMPTED = new Set();
+
+async function loadNotes(day) {
+  if (NOTES_DAY === day && Object.keys(TRADE_NOTES).length) return TRADE_NOTES;
+  NOTES_DAY = day;
+  try { TRADE_NOTES = await (await fetch(`data/journal/notes-${day}.json`, { cache: "no-store" })).json(); }
+  catch { TRADE_NOTES = {}; }
+  return TRADE_NOTES;
+}
+
+async function saveNote(day, key, patch) {
+  TRADE_NOTES[key] = { ...(TRADE_NOTES[key] || {}), ...patch };
+  try {
+    await fetch("/api/trade-note", { method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ date: day, key, ...patch }) });
+    return true;
+  } catch { return false; }
+}
+
+const NOTE_FIELDS = [
+  ["why", "Why did I take this trade?", "textarea",
+   "The level, the candle, the signal — whatever actually made you click. “No reason” is a valid answer and a useful one."],
+  ["plan", "What was the plan?", "text", "Stop and target you intended, before it moved."],
+  ["feel", "State of mind", "select", ["", "calm", "rushed", "revenge", "bored", "afraid of missing out"]],
+];
+const EXIT_FIELDS = [
+  ["exit_why", "Why did I exit here?", "textarea",
+   "Target, stop, or a decision. Over 97 logged trades you kept a median 49% of the best move — this field is where that shows up."],
+];
+
+/* The traded contract's own chart, with his entry and exit on it, and the open interest in that strike below.
+   Price alone says what happened; OI says who was doing it — rising OI into a rising premium is fresh writing
+   against him, falling OI is those writers covering, which is the move that runs. */
+let TRADE_CHARTS = null;
+async function loadTradeCharts(day) {
+  if (TRADE_CHARTS && TRADE_CHARTS._day === day) return TRADE_CHARTS;
+  try { TRADE_CHARTS = { ...(await (await fetch(`data/journal/charts-${day}.json`, { cache: "no-store" })).json()), _day: day }; }
+  catch { TRADE_CHARTS = { _day: day }; }
+  return TRADE_CHARTS;
+}
+
+function tradeChartSVG(series, trade) {
+  const c = (series && series.candles) || [];
+  if (c.length < 10) return "";
+  const W = 520, H = 170, OIH = 54, pad = 30, gap = 10;
+  const lo = Math.min(...c.map((r) => r[3])), hi = Math.max(...c.map((r) => r[2]));
+  const x = (i) => pad + (i / (c.length - 1)) * (W - pad - 8);
+  const y = (v) => H - 16 - ((v - lo) / ((hi - lo) || 1)) * (H - 34);
+  const idx = (t) => { const k = String(t || "").slice(0, 5); const i = c.findIndex((r) => r[0] === k); return i < 0 ? null : i; };
+  const bw = Math.max(1, (W - pad - 8) / c.length * 0.62);
+  const body = c.map((r, i) => {
+    const up = r[4] >= r[1], y1 = y(Math.max(r[1], r[4])), y2 = y(Math.min(r[1], r[4]));
+    return `<line class="oc-wick ${up ? "up" : "dn"}" x1="${x(i).toFixed(1)}" x2="${x(i).toFixed(1)}" y1="${y(r[2]).toFixed(1)}" y2="${y(r[3]).toFixed(1)}"/>`
+      + `<rect class="oc-body ${up ? "up" : "dn"}" x="${(x(i) - bw / 2).toFixed(1)}" y="${y1.toFixed(1)}" width="${bw.toFixed(1)}" height="${Math.max(1, y2 - y1).toFixed(1)}"/>`;
+  }).join("");
+  const mark = (t, px, cls, label) => {
+    const i = idx(t); if (i == null || px == null) return "";
+    return `<line class="tc-mark ${cls}" x1="${pad}" x2="${W - 8}" y1="${y(px).toFixed(1)}" y2="${y(px).toFixed(1)}"/>`
+      + `<circle class="tc-dot ${cls}" cx="${x(i).toFixed(1)}" cy="${y(px).toFixed(1)}" r="3.2"/>`
+      + `<text class="tc-lbl ${cls}" x="${pad + 2}" y="${(y(px) - 4).toFixed(1)}">${label} ₹${px}</text>`;
+  };
+  // open interest in this strike, under the price panel
+  const ois = c.map((r) => r[5]).filter((v) => v != null);
+  let oiPath = "";
+  if (ois.length > 10) {
+    const olo = Math.min(...ois), ohi = Math.max(...ois);
+    const oy = (v) => H + gap + OIH - 10 - ((v - olo) / ((ohi - olo) || 1)) * (OIH - 18);
+    oiPath = `<path class="tc-oi" d="${c.map((r, i) => r[5] == null ? "" : `${i ? "L" : "M"}${x(i).toFixed(1)},${oy(r[5]).toFixed(1)}`).join("")}"/>`
+      + `<text class="oc-axis" x="${pad}" y="${(H + gap + 10).toFixed(1)}">OI ${(ohi / 1e5).toFixed(1)}L</text>`
+      + `<text class="oc-axis" x="${pad}" y="${(H + gap + OIH - 1).toFixed(1)}">${(olo / 1e5).toFixed(1)}L</text>`;
+  }
+  const first = c[0][0], last = c[c.length - 1][0];
+  return `<svg class="tc" viewBox="0 0 ${W} ${H + gap + OIH}" role="img" aria-label="Option chart with entry and exit">
+    ${body}
+    ${mark(trade.entry_time, trade.entry, "in", "in")}
+    ${mark(trade.exit_time, trade.exit, "out", "out")}
+    <text class="oc-axis" x="${pad}" y="${H - 3}">${esc(first)}</text>
+    <text class="oc-axis" x="${W - 8}" y="${H - 3}" text-anchor="end">${esc(last)}</text>
+    <text class="oc-axis" x="${W - 8}" y="12" text-anchor="end">₹${hi.toFixed(1)}</text>
+    ${oiPath}</svg>`;
+}
+
+function oiReadout(series, trade) {
+  const c = (series && series.candles) || [];
+  const at = (t) => { const k = String(t || "").slice(0, 5); const r = c.find((x) => x[0] === k); return r && r[5]; };
+  const a = at(trade.entry_time), b = at(trade.exit_time) ?? (c.length ? c[c.length - 1][5] : null);
+  if (a == null || b == null) return "";
+  const d = b - a, pct = a ? (100 * d) / a : 0;
+  // which way the book moved while he held it
+  const up = (trade.points ?? 0) > 0;
+  const read = d > 0
+    ? (up ? "writers added into a rising premium — they were wrong and still there" : "writers added as it fell — they were right")
+    : (up ? "writers covered as it rose — that is the squeeze" : "writers closed out as it fell — they booked");
+  return `<p class="tc-oi-read">OI in this strike <b>${(a / 1e5).toFixed(2)}L → ${(b / 1e5).toFixed(2)}L</b>
+    <span class="${d > 0 ? "l" : "w"}">${d > 0 ? "+" : ""}${pct.toFixed(1)}%</span> · ${read}</p>`;
+}
+
+function tradeModal() {
+  let dlg = document.getElementById("trade-note-dialog");
+  if (dlg) return dlg;
+  dlg = document.createElement("dialog");
+  dlg.id = "trade-note-dialog";
+  dlg.innerHTML = `<form method="dialog" class="tn"><header class="tn-head">
+      <div><p class="eyebrow" id="tn-eyebrow"></p><h2 id="tn-title">Trade note</h2></div>
+      <button type="button" class="btn tn-skip">Later</button></header>
+    <div class="tn-auto" id="tn-auto"></div>
+    <div class="tn-chart" id="tn-chart"></div>
+    <div class="tn-body" id="tn-body"></div>
+    <footer class="tn-foot"><span class="tn-saved" id="tn-saved"></span>
+      <button type="button" class="btn primary tn-save">Save</button></footer></form>`;
+  document.body.appendChild(dlg);
+  dlg.querySelector(".tn-skip").addEventListener("click", () => dlg.close());
+  return dlg;
+}
+
+function openTradeNote(day, trade, stage) {
+  const dlg = tradeModal();
+  const key = trade.key;
+  const note = TRADE_NOTES[key] || {};
+  const fields = stage === "exit" ? EXIT_FIELDS : NOTE_FIELDS;
+  dlg.querySelector("#tn-eyebrow").textContent = stage === "exit" ? "Trade closed" : "Position opened";
+  dlg.querySelector("#tn-title").textContent = esc(trade.label || "Trade");
+  // everything the account already knows, so the only thing left to supply is the thinking
+  const auto = [["Entry", trade.entry != null ? `₹${trade.entry}` : "—"], ["Qty", trade.qty ?? "—"],
+    ["Time", esc(trade.entry_time || "—")]];
+  if (stage === "exit") {
+    auto.push(["Exit", trade.exit != null ? `₹${trade.exit}` : "—"],
+      ["Held", trade.minutes != null ? `${Math.round(trade.minutes)} min` : "—"],
+      ["P&L", trade.net != null ? rupees(trade.net) : "—"]);
+  }
+  dlg.querySelector("#tn-auto").innerHTML = auto.map(([k, v]) =>
+    `<div><span>${k}</span><b>${v}</b></div>`).join("");
+  const charts = TRADE_CHARTS || {};
+  const series = charts[String(trade.security_id)];
+  dlg.querySelector("#tn-chart").innerHTML = series
+    ? tradeChartSVG(series, trade) + oiReadout(series, trade)
+    : `<p class="caption">No cached chart for this contract yet — the monitor fetches it within five minutes of the fill.</p>`;
+  dlg.querySelector("#tn-body").innerHTML = fields.map(([f, label, type, extra]) => {
+    const val = note[f] || "";
+    if (type === "select") {
+      return `<label class="tn-f"><span>${label}</span><select data-nf="${f}">${extra.map((o) =>
+        `<option value="${esc(o)}"${o === val ? " selected" : ""}>${o ? esc(o) : "—"}</option>`).join("")}</select></label>`;
+    }
+    const input = type === "textarea"
+      ? `<textarea data-nf="${f}" rows="3" placeholder="${esc(extra)}">${esc(val)}</textarea>`
+      : `<input type="text" data-nf="${f}" value="${esc(val)}" placeholder="${esc(extra)}">`;
+    return `<label class="tn-f"><span>${label}</span>${input}</label>`;
+  }).join("");
+  const saved = dlg.querySelector("#tn-saved");
+  saved.textContent = "";
+  dlg.querySelector(".tn-save").onclick = async () => {
+    const patch = {};
+    dlg.querySelectorAll("[data-nf]").forEach((el) => { patch[el.dataset.nf] = el.value.trim(); });
+    patch.label = trade.label; patch.entry = trade.entry; patch.qty = trade.qty;
+    patch.entry_time = trade.entry_time;
+    if (stage === "exit") { patch.exit = trade.exit; patch.net = trade.net; patch.minutes = trade.minutes; }
+    saved.textContent = (await saveNote(day, key, patch)) ? "Saved" : "Couldn't save — is the server running?";
+    if (saved.textContent === "Saved") setTimeout(() => dlg.close(), 450);
+  };
+  if (!dlg.open) dlg.showModal();
+  const first = dlg.querySelector("[data-nf]");
+  if (first) first.focus();
+}
+
+// Only prompt for what just happened. Opening the page at lunchtime with eleven un-noted trades behind you
+// would otherwise queue eleven modals; older trades stay reachable from the Add button in the table.
+const PROMPT_WINDOW_MIN = 10;
+
+function minutesAgo(hms) {
+  if (!hms) return 1e9;
+  const [h, m] = String(hms).split(":").map(Number);
+  if (Number.isNaN(h)) return 1e9;
+  const now = new Date();
+  return (now.getHours() * 60 + now.getMinutes()) - (h * 60 + m);
+}
+
+// Prompt once per trade per stage: when the position opens, and again when it closes.
+function maybePrompt(day, acct) {
+  if (!acct || !LOCAL) return;
+  if (day !== new Date().toLocaleDateString("en-CA")) return;   // never prompt over a past day's page
+  for (const p of acct.positions || []) {
+    const key = `${p.security_id}@${p.entry_time}`;
+    const tag = `open:${key}`;
+    if (p.security_id && p.entry_time && !PROMPTED.has(tag) && !(TRADE_NOTES[key] || {}).why
+        && minutesAgo(p.entry_time) <= PROMPT_WINDOW_MIN) {
+      PROMPTED.add(tag);
+      openTradeNote(day, { ...p, key }, "open");
+      return;                      // one at a time; the next arrives on the next poll
+    }
+  }
+  for (const t of acct.trips || []) {
+    const tag = `exit:${t.key}`;
+    if (!PROMPTED.has(tag) && !(TRADE_NOTES[t.key] || {}).exit_why
+        && minutesAgo(t.exit_time) <= PROMPT_WINDOW_MIN) {
+      PROMPTED.add(tag);
+      openTradeNote(day, t, "exit");
+      return;
+    }
+  }
+}
+
+function tradeJournalHTML(acct) {
+  const trips = (acct && acct.trips) || [];
+  const open = (acct && acct.positions) || [];
+  if (!trips.length && !open.length) return "";
+  const row = (t, live) => {
+    const k = live ? `${t.security_id}@${t.entry_time}` : t.key;
+    const n = TRADE_NOTES[k] || {};
+    const pnl = live ? t.pnl_rs : t.net;
+    const pts = live ? t.pnl_pts : t.points;      // premium points, the unit his own targets are set in
+    // what the position actually tied up: premium x qty. On Rs 50,000 this is the number that decides whether
+    // a second trade can even be opened, and it is nowhere else on the page.
+    const used = t.entry != null && t.qty != null ? t.entry * t.qty : null;
+    return `<tr class="${live ? "tj-open" : ""}">
+      <td class="num">${esc(t.entry_time || "")}</td>
+      <td>${esc(t.label || "")}${live ? ' <span class="tj-live">open</span>' : ""}</td>
+      <td class="num">${t.qty ?? ""}</td>
+      <td class="num">₹${t.entry ?? ""}</td>
+      <td class="num">${used != null ? `₹${Math.round(used).toLocaleString("en-IN")}` : "—"}</td>
+      <td class="num">${live ? "—" : `₹${t.exit ?? ""}`}</td>
+      <td class="num ${(pts ?? 0) >= 0 ? "w" : "l"}">${pts != null ? `${pts > 0 ? "+" : ""}${Number(pts).toFixed(2)}` : "—"}</td>
+      <td class="num ${(pnl ?? 0) >= 0 ? "w" : "l"}">${pnl != null ? rupees(pnl) : "—"}</td>
+      <td class="tj-why">${n.why ? esc(n.why) : '<span class="muted">—</span>'}</td>
+      <td><button type="button" class="btn tj-edit" data-tj="${esc(k)}" data-live="${live ? 1 : 0}">${n.why ? "Edit" : "Add"}</button></td></tr>`;
+  };
+  const noted = trips.filter((t) => (TRADE_NOTES[t.key] || {}).why).length;
+  return `<section><h2>Today's trades</h2>
+    <p class="record"><b>${trips.length + open.length}</b> trades · <b>${noted}</b> with a reason written down</p>
+    <div class="tablewrap"><table class="bt tj">
+      <thead><tr><th>In</th><th>Contract</th><th>Qty</th><th>Entry</th><th>Capital</th><th>Exit</th><th>Points</th><th>P&amp;L</th><th>Why</th><th></th></tr></thead>
+      <tbody>${open.map((t) => row(t, true)).join("")}${trips.slice().reverse().map((t) => row(t, false)).join("")}</tbody>
+    </table></div>
+    <p class="caption">Written while the trade is in front of you, not reconstructed afterwards. Stays on this Mac.</p></section>`;
+}
+
 function accountHTML(acct) {
   if (!acct) return "";
   if (acct.error) return `<section><h2>Your positions</h2><p class="caption">Couldn't read your Dhan account: ${esc(acct.error)}</p></section>`;
