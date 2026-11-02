@@ -1908,6 +1908,13 @@ function maybePrompt(day, acct) {
   }
 }
 
+/* "NIFTY-Nov2026-23150-CE" -> "23150 CE". Index and expiry are the same all day; the strike is what you
+   read. The full name stays in the cell's title. */
+function shortContract(label) {
+  const m = /^([A-Z]+)-\w+-(\d+)-(CE|PE)$/.exec(String(label || ""));
+  return m ? `${Number(m[2]).toLocaleString("en-IN")} ${m[3]}` : String(label || "");
+}
+
 function tradeJournalHTML(acct) {
   const trips = (acct && acct.trips) || [];
   const open = (acct && acct.positions) || [];
@@ -1920,23 +1927,24 @@ function tradeJournalHTML(acct) {
     // what the position actually tied up: premium x qty. On Rs 50,000 this is the number that decides whether
     // a second trade can even be opened, and it is nowhere else on the page.
     const used = t.entry != null && t.qty != null ? t.entry * t.qty : null;
-    return `<tr class="${live ? "tj-open" : ""}">
-      <td class="num">${esc(t.entry_time || "")}</td>
-      <td>${esc(t.label || "")}${live ? ' <span class="tj-live">open</span>' : ""}</td>
+    return `<tr class="tj-head ${live ? "tj-open" : ""}">
+      <td class="num">${esc(String(t.entry_time || "").slice(0, 5))}</td>
+      <td class="tj-con" title="${esc(t.label || "")}">${esc(shortContract(t.label))}${live ? ' <span class="tj-live">open</span>' : ""}</td>
       <td class="num">${t.qty ?? ""}</td>
       <td class="num">₹${t.entry ?? ""}</td>
       <td class="num">${used != null ? `₹${Math.round(used).toLocaleString("en-IN")}` : "—"}</td>
       <td class="num">${live ? "—" : `₹${t.exit ?? ""}`}</td>
       <td class="num ${(pts ?? 0) >= 0 ? "w" : "l"}">${pts != null ? `${pts > 0 ? "+" : ""}${Number(pts).toFixed(2)}` : "—"}</td>
-      <td class="num ${(pnl ?? 0) >= 0 ? "w" : "l"}">${pnl != null ? rupees(pnl) : "—"}</td>
-      <td class="tj-why">${n.why ? esc(n.why) : '<span class="muted">—</span>'}</td>
-      <td><button type="button" class="btn tj-edit" data-tj="${esc(k)}" data-live="${live ? 1 : 0}">${n.why ? "Edit" : "Add"}</button></td></tr>`;
+      <td class="num ${(pnl ?? 0) >= 0 ? "w" : "l"}">${pnl != null ? rupees(pnl) : "—"}</td></tr>
+      <tr class="tj-note ${live ? "tj-open" : ""}"><td colspan="8">
+        ${n.why ? `<span class="tj-why">${esc(n.why)}</span>` : ""}
+        <button type="button" class="btn tj-edit" data-tj="${esc(k)}" data-live="${live ? 1 : 0}">${n.why ? "edit" : "add a reason"}</button></td></tr>`;
   };
   const noted = trips.filter((t) => (TRADE_NOTES[t.key] || {}).why).length;
   return `<section><h2>Today's trades</h2>
     <p class="record"><b>${trips.length + open.length}</b> trades · <b>${noted}</b> with a reason written down</p>
     <div class="tablewrap"><table class="bt tj">
-      <thead><tr><th>In</th><th>Contract</th><th>Qty</th><th>Entry</th><th>Capital</th><th>Exit</th><th>Points</th><th>P&amp;L</th><th>Why</th><th></th></tr></thead>
+      <thead><tr><th>In</th><th>Strike</th><th>Qty</th><th>Entry</th><th>Capital</th><th>Exit</th><th>Points</th><th>P&amp;L</th></tr></thead>
       <tbody>${open.map((t) => row(t, true)).join("")}${trips.slice().reverse().map((t) => row(t, false)).join("")}</tbody>
     </table></div>
     <p class="caption">Written while the trade is in front of you, not reconstructed afterwards. Stays on this Mac.</p></section>`;
@@ -2236,6 +2244,7 @@ const ROUTES = [
   [/^#\/live\/([a-z]+)$/, "live", (m) => viewLive(m[1])],
   [/^#\/risk$/, "risk", () => viewRisk()],
   [/^#\/backtest$/, "backtest", () => viewBacktest()],
+  [/^#\/flow$/, "flow", () => viewFlow()],
   [/^#\/journal$/, "journal", () => viewJournal()],
   [/^#\/journal\/(\d{4}-\d{2}-\d{2})$/, "journal", (m) => viewJournal(m[1])],
   [/^#\/prep$/, "prep", () => viewPrep()],
@@ -2340,6 +2349,124 @@ function equitySVG(curve, capital) {
     <text x="${pad}" y="${(y(capital) - 6).toFixed(1)}" class="bt-lbl">start ₹${capital.toLocaleString("en-IN")}</text>
     <text x="${W - pad}" y="${(y(curve[curve.length - 1]) - 6).toFixed(1)}" class="bt-lbl" text-anchor="end">₹${curve[curve.length - 1].toLocaleString("en-IN")}</text>
   </svg>`;
+}
+
+/* ---------------- Flow (data/live/futures-*.jsonl + flow-*.jsonl; local only) ----------------
+   The research log, made visible. Nothing on this page feeds a decision: it exists so the series being
+   collected can be eyeballed for sanity — does CVD trend with price, does the state label match what the
+   chart did, is `conflated` telling us Dhan is coalescing. The honest test comes later, against ~40 ARM
+   moments, and it is a number, not a picture. */
+async function loadJSONL(path) {
+  try {
+    const txt = await (await fetch(path, { cache: "no-store" })).text();
+    return txt.split("\n").filter(Boolean).map((l) => { try { return JSON.parse(l); } catch { return null; } }).filter(Boolean);
+  } catch { return []; }
+}
+
+function flowChart(fut, flow) {
+  if (fut.length < 5) return "";
+  const W = 760, H = 180, SUB = 70, gap = 12, pad = 46;
+  const px = fut.map((r) => r.close);
+  const lo = Math.min(...px), hi = Math.max(...px);
+  const x = (i) => pad + (i / (fut.length - 1)) * (W - pad - 10);
+  const y = (v) => H - 18 - ((v - lo) / ((hi - lo) || 1)) * (H - 34);
+  const line = fut.map((r, i) => `${i ? "L" : "M"}${x(i).toFixed(1)},${y(r.close).toFixed(1)}`).join("");
+  // cumulative OFI under it, on its own scale, aligned by clock time
+  const byAt = new Map(flow.map((r) => [r.at, r]));
+  const ofi = fut.map((r) => { const f = byAt.get(r.at); return f && f.ofi_cum != null ? f.ofi_cum : null; });
+  const have = ofi.filter((v) => v != null);
+  let sub = "";
+  if (have.length > 5) {
+    const olo = Math.min(...have, 0), ohi = Math.max(...have, 0);
+    const oy = (v) => H + gap + SUB - 12 - ((v - olo) / ((ohi - olo) || 1)) * (SUB - 22);
+    let d = "", started = false;
+    ofi.forEach((v, i) => { if (v == null) return; d += `${started ? "L" : "M"}${x(i).toFixed(1)},${oy(v).toFixed(1)}`; started = true; });
+    sub = `<line class="fl-zero" x1="${pad}" x2="${W - 10}" y1="${oy(0).toFixed(1)}" y2="${oy(0).toFixed(1)}"/>
+      <path class="fl-ofi" d="${d}"/>
+      <text class="oc-axis" x="4" y="${(H + gap + 14).toFixed(1)}">OFI ${Math.round(ohi).toLocaleString("en-IN")}</text>
+      <text class="oc-axis" x="4" y="${(H + gap + SUB - 2).toFixed(1)}">${Math.round(olo).toLocaleString("en-IN")}</text>`;
+  }
+  return `<svg class="fl" viewBox="0 0 ${W} ${H + gap + SUB}" role="img" aria-label="Futures price with cumulative order-flow imbalance">
+    <path class="fl-px" d="${line}"/>
+    <text class="oc-axis" x="4" y="14">${hi.toFixed(0)}</text>
+    <text class="oc-axis" x="4" y="${H - 20}">${lo.toFixed(0)}</text>
+    <text class="oc-axis" x="${pad}" y="${H - 3}">${esc(fut[0].at)}</text>
+    <text class="oc-axis" x="${W - 10}" y="${H - 3}" text-anchor="end">${esc(fut[fut.length - 1].at)}</text>
+    ${sub}</svg>`;
+}
+
+async function viewFlow() {
+  if (!LOCAL) {
+    app.innerHTML = `<div class="page-head"><div><p class="eyebrow">Local only</p><h1>Flow</h1></div></div>
+      <p class="lede">Order-flow and futures logs stay on your Mac.</p>`;
+    return;
+  }
+  const day = new Date().toLocaleDateString("en-CA");
+  const [fut, flow] = await Promise.all([
+    loadJSONL(`data/live/futures-${day}.jsonl`), loadJSONL(`data/live/flow-${day}.jsonl`)]);
+  if (!fut.length && !flow.length) {
+    app.innerHTML = `<div class="page-head"><div><p class="eyebrow">Local only · research</p><h1>Flow</h1></div></div>
+      <p class="lede">Nothing logged for ${esc(day)} yet. The monitor writes these during the session.</p>`;
+    return;
+  }
+  const f = flow[flow.length - 1] || {};
+  const u = fut[fut.length - 1] || {};
+  const states = {};
+  fut.forEach((r) => { if (r.state) states[r.state] = (states[r.state] || 0) + 1; });
+  const spikes = fut.filter((r) => r.spike);
+  const tile = (k, v, cls) => `<div><span class="bt-k">${k}</span><span class="bt-v ${cls || ""}">${v}</span></div>`;
+  const n = (v) => v == null ? "—" : Number(v).toLocaleString("en-IN");
+  app.innerHTML = `<div class="page-head"><div><p class="eyebrow">Local only · research log · nothing reads this</p>
+      <h1>Flow</h1></div></div>
+    <p class="lede">Front-month futures and order flow for ${esc(day)}, as collected. Two families from the same
+      packets: <b>tick-rule delta</b> (an estimate — Dhan carries no aggressor flag) and <b>OFI</b> on the best
+      bid and ask, the measure the order-flow literature actually validated.</p>
+
+    <div class="bt-stats">
+      ${tile("Futures", n(u.close))}
+      ${tile("State", esc(u.state || "—"))}
+      ${tile("VWAP", n(u.vwap))}
+      ${tile("From VWAP", (u.from_vwap ?? 0) >= 0 ? `+${n(u.from_vwap)}` : n(u.from_vwap), (u.from_vwap ?? 0) >= 0 ? "w" : "l")}
+      ${tile("Open interest", n(u.oi))}
+    </div>
+    <div class="bt-stats">
+      ${tile("CVD", n(f.cvd), (f.cvd ?? 0) >= 0 ? "w" : "l")}
+      ${tile("OFI (cum)", n(f.ofi_cum), (f.ofi_cum ?? 0) >= 0 ? "w" : "l")}
+      ${tile("OFI 1 min", n(f.ofi_1m), (f.ofi_1m ?? 0) >= 0 ? "w" : "l")}
+      ${tile("Spread", f.spread != null ? f.spread.toFixed(2) : "—")}
+      ${tile("Book imbalance", f.book_imbalance != null ? `${(f.book_imbalance * 100).toFixed(1)}%` : "—",
+             (f.book_imbalance ?? 0) >= 0 ? "w" : "l")}
+      ${tile("Conflated", n(f.conflated), "l")}
+    </div>
+
+    ${flowChart(fut, flow)}
+    <p class="caption">Futures close above, cumulative OFI below. They should broadly agree — when they do not,
+      that is the coalescing showing through.</p>
+
+    <h2>Price and open interest together</h2>
+    <div class="tablewrap"><table class="bt">
+      <thead><tr><th>State</th><th>Bars</th><th>What it means</th></tr></thead><tbody>
+      ${[["long buildup", "fresh money long — strongest bullish"],
+         ["short buildup", "fresh money short — strongest bearish"],
+         ["short covering", "forced buying, fast but exhausting"],
+         ["long unwinding", "holders leaving, weaker"]].map(([k, why]) =>
+        `<tr><td>${k}</td><td class="num">${states[k] || 0}</td><td class="muted">${why}</td></tr>`).join("")}
+      </tbody></table></div>
+
+    <h2>Volume spikes <small class="muted">${spikes.length} today</small></h2>
+    ${spikes.length ? `<div class="tablewrap"><table class="bt">
+      <thead><tr><th>Time</th><th>State</th><th>vs expected</th><th>Δ price</th><th>Δ OI</th></tr></thead>
+      <tbody>${spikes.slice(-12).reverse().map((r) => `<tr><td class="num">${esc(r.at)}</td><td>${esc(r.state)}</td>
+        <td class="num">${r.vol_rel}×</td>
+        <td class="num ${(r.d_price ?? 0) >= 0 ? "w" : "l"}">${(r.d_price ?? 0) >= 0 ? "+" : ""}${r.d_price}</td>
+        <td class="num ${(r.d_oi ?? 0) >= 0 ? "w" : "l"}">${n(r.d_oi)}</td></tr>`).join("")}</tbody></table></div>`
+      : `<p class="caption">None yet.</p>`}
+
+    <p class="caveat"><b>Nothing here feeds a decision.</b> It is collected so that in a few weeks one question
+      can be answered with a number: does delta or OFI at the ARM moment separate the setups that worked from
+      the ones that did not? Expect a weak answer — in 60 seconds of live packets we saw 38 ticks and 71 OFI
+      events while <code>conflated</code> reached 8,060, so this is a heavily sampled view of a book that
+      updates far more often than we are told about.</p>`;
 }
 
 async function viewBacktest() {

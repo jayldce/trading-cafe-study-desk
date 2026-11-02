@@ -544,7 +544,10 @@ table.signals.prep tr.strong td { font-weight: 600; }
 
 /* wide screens: the map and the setup on the left, the option chain and the running timeline on the right */
 .lv-cols { display: grid; gap: 22px; align-items: start; }
-.lv-col { display: grid; gap: 22px; align-content: start; min-width: 0; }
+/* grid-template-columns, not the implicit auto track: an auto track takes its minimum from the widest
+   child's min-content, so one wide table (the trades journal, 754px of columns) made every section in the
+   column 754px and they all spilled under the timeline. minmax(0,1fr) pins the track to the column. */
+.lv-col { display: grid; grid-template-columns: minmax(0, 1fr); gap: 22px; align-content: start; min-width: 0; }
 @media (min-width: 1100px) {
   .lv-cols { grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 30px; }
   /* The left column runs long - chart, setups, rule table, option charts - while the right one ends after the
@@ -820,10 +823,15 @@ dialog#lightbox .close, .lb-caption { font: 13px var(--mono); color: #e3eaee; ba
 .tn-foot { display: flex; align-items: center; justify-content: flex-end; gap: 12px; margin-top: 16px; }
 .tn-saved { font: 500 12px var(--mono); color: var(--ink-2); }
 .tj td, .tj th { padding: .45rem .55rem; font-size: .92rem; }
-.tj .tj-why { max-width: 280px; color: var(--ink-2); }
+/* the reason is prose; it gets its own line under the numbers instead of a ninth column squeezed
+   between them, which is also the only way the eight numeric columns fit the left column. */
+.tj .tj-head > td { border-bottom: 0; }
+.tj .tj-note > td { padding-top: 0; padding-left: .55rem; }
+.tj .tj-why { color: var(--ink-2); }
+.tj .tj-con { white-space: nowrap; }
 .tj-open td { background: color-mix(in srgb, var(--accent) 7%, transparent); }
 .tj-live { font: 500 10px var(--mono); text-transform: uppercase; color: var(--accent); }
-.tj-edit { min-height: 0; padding: 3px 10px; font: 500 12px var(--mono); border-radius: 999px; }
+.tj-edit { min-height: 0; margin-left: 8px; padding: 2px 9px; font: 500 11px var(--mono); border-radius: 999px; vertical-align: 1px; }
 /* trade chart inside the note modal */
 .tn-chart { margin: 14px 0 2px; }
 .tc { width: 100%; height: auto; background: var(--card); border: 1px solid var(--rule); border-radius: 8px; }
@@ -835,3 +843,8 @@ dialog#lightbox .close, .lb-caption { font: 13px var(--mono); color: #e3eaee; ba
 .tc-oi { fill: none; stroke: var(--mark); stroke-width: 1.4; opacity: .9; }
 .tc-oi-read { margin: 6px 0 0; font: 400 12px var(--body); color: var(--ink-2); }
 .tc-oi-read b { color: var(--ink); font-variant-numeric: tabular-nums; }
+/* Flow tab (research log) */
+.fl { width: 100%; height: auto; background: var(--card); border: 1px solid var(--rule); border-radius: 8px; margin: 10px 0 4px; }
+.fl-px { fill: none; stroke: var(--ink); stroke-width: 1.4; }
+.fl-ofi { fill: none; stroke: var(--mark); stroke-width: 1.4; }
+.fl-zero { stroke: var(--rule); stroke-width: 1; stroke-dasharray: 3 3; }

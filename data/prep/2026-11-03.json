@@ -1,0 +1,160 @@
+{
+ "date": "2026-11-03",
+ "sessions": [
+  "2026-10-27",
+  "2026-10-28",
+  "2026-10-29",
+  "2026-10-30",
+  "2026-11-02"
+ ],
+ "close": 23440.8,
+ "last_session": "2026-11-02",
+ "week_high": 23360.5,
+ "week_low": 22497.7,
+ "closes": {
+  "2026-10-27": 22749.75,
+  "2026-10-28": 22698.85,
+  "2026-10-29": 22936.75,
+  "2026-10-30": 23053.1,
+  "2026-11-02": 23440.8
+ },
+ "nifty_expiry": "2026-11-03",
+ "sensex_expiry": "2026-11-05",
+ "zones": [
+  {
+   "kind": "round",
+   "lo": 23700,
+   "hi": 23700,
+   "text": "round number 23,700",
+   "weight": 1,
+   "side": "above",
+   "distance": 259.2
+  },
+  {
+   "kind": "round",
+   "lo": 23600,
+   "hi": 23600,
+   "text": "round number 23,600",
+   "weight": 1,
+   "side": "above",
+   "distance": 159.2
+  },
+  {
+   "kind": "round",
+   "lo": 23500,
+   "hi": 23500,
+   "text": "round number 23,500",
+   "weight": 1,
+   "side": "above",
+   "distance": 59.2
+  },
+  {
+   "kind": "prev_close",
+   "lo": 23440.8,
+   "hi": 23440.8,
+   "text": "previous-day close (Mon 02 Nov)",
+   "weight": 2,
+   "side": "below",
+   "distance": 0.0
+  },
+  {
+   "kind": "round",
+   "lo": 23400,
+   "hi": 23400,
+   "text": "round number 23,400",
+   "weight": 1,
+   "side": "below",
+   "distance": -40.8
+  },
+  {
+   "kind": "prev_high",
+   "lo": 23360.5,
+   "hi": 23360.5,
+   "text": "previous-day high (Mon 02 Nov)",
+   "weight": 3,
+   "side": "below",
+   "distance": -80.3
+  },
+  {
+   "kind": "range_high",
+   "lo": 23360.5,
+   "hi": 23360.5,
+   "text": "5-session high",
+   "weight": 2,
+   "side": "below",
+   "distance": -80.3
+  },
+  {
+   "kind": "fvg_bull",
+   "lo": 23299.2,
+   "hi": 23308.95,
+   "text": "open bull FVG from Mon 02 Nov 14:36",
+   "weight": 2,
+   "side": "below",
+   "distance": -136.7
+  },
+  {
+   "kind": "round",
+   "lo": 23300,
+   "hi": 23300,
+   "text": "round number 23,300",
+   "weight": 1,
+   "side": "below",
+   "distance": -140.8
+  },
+  {
+   "kind": "fvg_bull",
+   "lo": 23239.8,
+   "hi": 23246.1,
+   "text": "open bull FVG from Mon 02 Nov 13:57",
+   "weight": 2,
+   "side": "below",
+   "distance": -197.9
+  },
+  {
+   "kind": "fvg_bull",
+   "lo": 23216.05,
+   "hi": 23225.55,
+   "text": "open bull FVG from Mon 02 Nov 13:41",
+   "weight": 2,
+   "side": "below",
+   "distance": -220.0
+  },
+  {
+   "kind": "prev_low",
+   "lo": 23207.05,
+   "hi": 23207.05,
+   "text": "previous-day low (Mon 02 Nov)",
+   "weight": 3,
+   "side": "below",
+   "distance": -233.8
+  },
+  {
+   "kind": "daily_gap",
+   "lo": 23053.1,
+   "hi": 23207.05,
+   "text": "unfilled gap up of Mon 02 Nov",
+   "weight": 2,
+   "side": "below",
+   "distance": -310.7
+  },
+  {
+   "kind": "round",
+   "lo": 23200,
+   "hi": 23200,
+   "text": "round number 23,200",
+   "weight": 1,
+   "side": "below",
+   "distance": -240.8
+  },
+  {
+   "kind": "old_high",
+   "lo": 23118.1,
+   "hi": 23118.1,
+   "text": "Fri 30 Oct high",
+   "weight": 1,
+   "side": "below",
+   "distance": -322.7
+  }
+ ]
+}
