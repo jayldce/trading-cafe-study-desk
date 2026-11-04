@@ -1,0 +1,124 @@
+{
+ "date": "2026-11-05",
+ "sessions": [
+  "2026-10-29",
+  "2026-10-30",
+  "2026-11-02",
+  "2026-11-03",
+  "2026-11-04"
+ ],
+ "close": 77301.3984375,
+ "last_session": "2026-11-04",
+ "week_high": 77394.3515625,
+ "week_low": 73188.2421875,
+ "closes": {
+  "2026-10-29": 74151.04,
+  "2026-10-30": 74459.53,
+  "2026-11-02": 75692.78,
+  "2026-11-03": 76917.85,
+  "2026-11-04": 77301.4
+ },
+ "nifty_expiry": "2026-11-10",
+ "sensex_expiry": "2026-11-05",
+ "zones": [
+  {
+   "kind": "round",
+   "lo": 77600,
+   "hi": 77600,
+   "text": "round number 77,600",
+   "weight": 1,
+   "side": "above",
+   "distance": 298.6
+  },
+  {
+   "kind": "round",
+   "lo": 77500,
+   "hi": 77500,
+   "text": "round number 77,500",
+   "weight": 1,
+   "side": "above",
+   "distance": 198.6
+  },
+  {
+   "kind": "round",
+   "lo": 77400,
+   "hi": 77400,
+   "text": "round number 77,400",
+   "weight": 1,
+   "side": "above",
+   "distance": 98.6
+  },
+  {
+   "kind": "prev_high",
+   "lo": 77394.35,
+   "hi": 77394.35,
+   "text": "previous-day high (Wed 04 Nov)",
+   "weight": 3,
+   "side": "above",
+   "distance": 93.0
+  },
+  {
+   "kind": "range_high",
+   "lo": 77394.35,
+   "hi": 77394.35,
+   "text": "5-session high",
+   "weight": 2,
+   "side": "above",
+   "distance": 93.0
+  },
+  {
+   "kind": "prev_close",
+   "lo": 77301.4,
+   "hi": 77301.4,
+   "text": "previous-day close (Wed 04 Nov)",
+   "weight": 2,
+   "side": "below",
+   "distance": 0.0
+  },
+  {
+   "kind": "round",
+   "lo": 77300,
+   "hi": 77300,
+   "text": "round number 77,300",
+   "weight": 1,
+   "side": "below",
+   "distance": -1.4
+  },
+  {
+   "kind": "round",
+   "lo": 77200,
+   "hi": 77200,
+   "text": "round number 77,200",
+   "weight": 1,
+   "side": "below",
+   "distance": -101.4
+  },
+  {
+   "kind": "round",
+   "lo": 77100,
+   "hi": 77100,
+   "text": "round number 77,100",
+   "weight": 1,
+   "side": "below",
+   "distance": -201.4
+  },
+  {
+   "kind": "old_high",
+   "lo": 76779.66,
+   "hi": 76779.66,
+   "text": "Tue 03 Nov high",
+   "weight": 1,
+   "side": "below",
+   "distance": -521.7
+  },
+  {
+   "kind": "prev_low",
+   "lo": 76616.15,
+   "hi": 76616.15,
+   "text": "previous-day low (Wed 04 Nov)",
+   "weight": 3,
+   "side": "below",
+   "distance": -685.2
+  }
+ ]
+}

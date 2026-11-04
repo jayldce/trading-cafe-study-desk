@@ -1630,6 +1630,16 @@ async function viewLive(which) {
     // your Dhan account is one account, written by whichever monitor holds the lock — never per index
     let acct = st && st.account;
     try { const a = await fetch("data/live/account.json", { cache: "no-store" }); if (a.ok) acct = await a.json(); } catch { /* keep what the state had */ }
+    // account.json is only written on a successful Dhan read, so when Dhan is down it holds the LAST GOOD day.
+    // On 3 Nov that was yesterday's 14 trades and −₹7,910, shown as today's: at the trade cap and 11 losses
+    // down, none of it real. A stamped file must carry today's date; an unstamped one (written before the
+    // stamp existed) is only trusted while the monitor's own live read is succeeding.
+    if (acct && !acct.error) {
+      const stErr = st && st.account && st.account.error;
+      if (acct.day_date ? acct.day_date !== new Date().toLocaleDateString("en-CA") : stErr) {
+        acct = { error: acct.day_date ? `the last account read was ${acct.day_date}, not today` : String(stErr) };
+      }
+    }
     const opened = new Set($$("details[data-key][open]", app).map((d) => d.dataset.key));
     const today = new Date().toLocaleDateString("en-CA");
     const updated = st ? new Date(st.updated) : null;
@@ -1658,6 +1668,7 @@ async function viewLive(which) {
               : `Open ${fmtPx(st.open)} · High ${fmtPx(st.high)} · Low ${fmtPx(st.low)}`}${vixHTML(st.vix)}</p></div>
           <div class="lv-headright">${tabs}<button type="button" class="btn sizing-btn" data-open-sizing="${idx}">Sizing</button><span class="lv-pill ${mode}">● ${pill}</span></div>
         </header>
+        ${dhanDownHTML(st, acct)}
         ${optionsHTML(st.options)}
         <div class="lv-cols">
           <div class="lv-col">
@@ -1950,9 +1961,35 @@ function tradeJournalHTML(acct) {
     <p class="caption">Written while the trade is in front of you, not reconstructed afterwards. Stays on this Mac.</p></section>`;
 }
 
+/* When the Dhan token dies mid-session the page still looks normal — index candles keep coming from Yahoo —
+   while the account, the chain, the VIX and the base-reversal scan are all silently gone, and with the
+   account go every guardrail (stop reminder, time stop, trade cap, loss limit). On 3 Nov that ran 37 minutes
+   into the session before anyone noticed, because the only sign was one grey line under "Your positions".
+   A dead broker connection is the loudest thing on this page now, and it names what is off. */
+function dhanDownHTML(st, acct) {
+  const down = [];
+  if (acct && acct.error) down.push("your positions, fills and P&amp;L — and with them the stop reminder, time stop, trade cap and loss limit");
+  if (st && st.options && st.options.error) down.push("the option chain — no CE/PE premiums, no OI walls, so setup alerts carry no strike");
+  if (st && st.vix && st.vix.error) down.push("India VIX");
+  if (st && !(st.base_setups || []).length && st.option_charts && !Object.keys(st.option_charts).length) {
+    down.push("the base-reversal scan — it reads option candles, so it is not running");
+  }
+  if (!down.length) return "";
+  const err = (acct && acct.error) || (st.options && st.options.error) || "";
+  const invalid = /DH-906|Invalid Token|808|credentials/i.test(String(err));
+  return `<div class="lv-down" role="alert">
+    <p class="lv-down-head">Dhan is not answering — this page is running on index candles alone</p>
+    <ul>${down.map((d) => `<li>${d}</li>`).join("")}</ul>
+    <p class="lv-down-fix">${invalid
+      ? "The access token is being rejected (<code>Invalid Token</code>). Renew it on your phone — the Shortcut is the only renewer — then this clears on the next poll."
+      : `Dhan said: <code>${esc(String(err).slice(0, 120))}</code>`}</p>
+    <p class="caption">Index levels, sweeps, FVGs and the scanner still work; they come from the index bars${st && st.source ? ` (${esc(st.source)})` : ""}.</p>
+  </div>`;
+}
+
 function accountHTML(acct) {
   if (!acct) return "";
-  if (acct.error) return `<section><h2>Your positions</h2><p class="caption">Couldn't read your Dhan account: ${esc(acct.error)}</p></section>`;
+  if (acct.error) return "";    // the banner at the top of the page says it, louder
   const d = acct.day || {};
   // Charges in the headline, not buried. Measured over 97 logged trades: the two 21-trade sessions paid
   // ₹1,982 and ₹1,977, which was 39% of gross on those days, while the two best days were 6 and 9 trades.

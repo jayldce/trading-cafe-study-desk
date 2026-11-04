@@ -224,7 +224,9 @@ a.ts:hover { background: color-mix(in srgb, var(--accent) 12%, transparent); }
 /* ---------- cards / lists ---------- */
 .page-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 12px 24px; margin-bottom: 18px; max-width: 1040px; }
 .page-head h1 { margin: 0; }
-.day-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; max-width: 1040px; }
+/* explicit track, same reason as .lv-col: an implicit auto track took its size from the rows' three-column
+   inner grid and resolved to 883px inside a 722px container, so every row hung off the right of the page. */
+.day-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; max-width: 1040px; }
 .day-list a {
   display: grid; grid-template-columns: 112px minmax(0, 1fr) minmax(160px, 260px); gap: 18px; align-items: center;
   text-decoration: none; color: var(--ink); background: var(--card); border: 1px solid var(--rule); border-radius: 12px; padding: 12px 18px;
@@ -848,3 +850,13 @@ dialog#lightbox .close, .lb-caption { font: 13px var(--mono); color: #e3eaee; ba
 .fl-px { fill: none; stroke: var(--ink); stroke-width: 1.4; }
 .fl-ofi { fill: none; stroke: var(--mark); stroke-width: 1.4; }
 .fl-zero { stroke: var(--rule); stroke-width: 1; stroke-dasharray: 3 3; }
+
+/* Dhan down: the broker connection failing is not a caption-sized event — the guardrails go with it. */
+.lv-down { margin: 16px 0 18px; padding: 14px 16px; border: 1px solid color-mix(in srgb, var(--loss) 45%, var(--rule)); border-left: 4px solid var(--loss);
+  border-radius: var(--radius); background: color-mix(in srgb, var(--loss) 9%, var(--card)); }
+.lv-down-head { margin: 0; font-weight: 650; color: var(--loss); letter-spacing: -.01em; }
+.lv-down ul { margin: 8px 0 0; padding-left: 18px; }
+.lv-down li { margin: 3px 0; color: var(--ink-2); font-size: .94rem; }
+.lv-down-fix { margin: 10px 0 0; font-size: .94rem; }
+.lv-down code { font: 500 .88em var(--mono); padding: 1px 5px; border-radius: 4px; background: var(--rule); }
+.lv-down .caption { margin: 8px 0 0; }
