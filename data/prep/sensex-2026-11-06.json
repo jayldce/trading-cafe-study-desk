@@ -1,0 +1,115 @@
+{
+ "date": "2026-11-06",
+ "sessions": [
+  "2026-10-30",
+  "2026-11-02",
+  "2026-11-03",
+  "2026-11-04",
+  "2026-11-05"
+ ],
+ "close": 79310.01,
+ "last_session": "2026-11-05",
+ "week_high": 79470.03,
+ "week_low": 74082.3125,
+ "closes": {
+  "2026-10-30": 74459.53,
+  "2026-11-02": 75692.78,
+  "2026-11-03": 76917.85,
+  "2026-11-04": 77301.4,
+  "2026-11-05": 79310.01
+ },
+ "nifty_expiry": "2026-11-10",
+ "sensex_expiry": "2026-11-12",
+ "zones": [
+  {
+   "kind": "round",
+   "lo": 79600,
+   "hi": 79600,
+   "text": "round number 79,600",
+   "weight": 1,
+   "side": "above",
+   "distance": 290.0
+  },
+  {
+   "kind": "round",
+   "lo": 79500,
+   "hi": 79500,
+   "text": "round number 79,500",
+   "weight": 1,
+   "side": "above",
+   "distance": 190.0
+  },
+  {
+   "kind": "prev_high",
+   "lo": 79470.03,
+   "hi": 79470.03,
+   "text": "previous-day high (Thu 05 Nov)",
+   "weight": 3,
+   "side": "above",
+   "distance": 160.0
+  },
+  {
+   "kind": "range_high",
+   "lo": 79470.03,
+   "hi": 79470.03,
+   "text": "5-session high",
+   "weight": 2,
+   "side": "above",
+   "distance": 160.0
+  },
+  {
+   "kind": "round",
+   "lo": 79400,
+   "hi": 79400,
+   "text": "round number 79,400",
+   "weight": 1,
+   "side": "above",
+   "distance": 90.0
+  },
+  {
+   "kind": "prev_close",
+   "lo": 79310.01,
+   "hi": 79310.01,
+   "text": "previous-day close (Thu 05 Nov)",
+   "weight": 2,
+   "side": "below",
+   "distance": 0.0
+  },
+  {
+   "kind": "round",
+   "lo": 79300,
+   "hi": 79300,
+   "text": "round number 79,300",
+   "weight": 1,
+   "side": "below",
+   "distance": -10.0
+  },
+  {
+   "kind": "round",
+   "lo": 79200,
+   "hi": 79200,
+   "text": "round number 79,200",
+   "weight": 1,
+   "side": "below",
+   "distance": -110.0
+  },
+  {
+   "kind": "round",
+   "lo": 79100,
+   "hi": 79100,
+   "text": "round number 79,100",
+   "weight": 1,
+   "side": "below",
+   "distance": -210.0
+  },
+  {
+   "kind": "prev_low",
+   "lo": 78520.56,
+   "hi": 78520.56,
+   "text": "previous-day low (Thu 05 Nov)",
+   "weight": 3,
+   "side": "below",
+   "distance": -789.4
+  }
+ ]
+}
