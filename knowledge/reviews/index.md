@@ -45,6 +45,7 @@ These are studies of finished sessions, not calls for the next one. Everything i
 | Tue 3 Nov | +141 (≈ +251 vs Monday's last trade) | the tool says trend up; 146 pts after 09:30, and a 79-pt closing print | Round 23,500 / 23,600 | Both swept in the first candle; range high poked by 3.8 at 09:30 | The 09:25 gap, never filled; the 12:10 6.7× candle gave two hours back and all three G signals were stopped |
 | Wed 4 Nov | −77 (≈ +2 vs Tuesday's last trade) | the tool says trend up; a V in the bars, with a 49-pt closing print | Yesterday's high / close (the same print) | Broken by the second candle; range high swept 09:30 by 3.5, no reversal | The 09:30 high: S1 and G2 shorts after 23,900 broke at 10:16 both +2R; the 12:15 low, 8.65 under Tuesday's high, then 192.4 back with no signal |
 | Thu 5 Nov | **+418** | mixed, one-way grind up | None in reach — the open was 378 above the prep's first pool (24,000) | Nothing on the map was touched all session; the only sweep was 24,300 by 3.7 in the first minute, which was the day low | The opening range, broken 09:45: 24,400 at 09:46, 24,500 at 13:32, high 24,579.90 at 13:48, failed again 14:51 (equal highs untaken); one scanner signal all day, G1 +2R at 14:25 after the trend had stopped |
+| Fri 6 Nov | +2 (open = Thursday's close; the first candle fell 130) | trend up, with a 91-pt closing print | 24,400 / Thursday's equal highs 24,576–24,580 | 24,400 swept by 12.0 at 09:16 — the day low 24,388.05; Thursday's high swept by 2.1 at 09:36 and retested from above at 11:00 (low 24,563.35, 16.55 under it, recovered) | That first-minute sweep — the OR high broke 09:34, 24,700 capped a box from 10:29 to 13:12 (equal highs 24,700–24,703), its break ran to 24,949.85 at 15:08; five G signals, one +2R, net −2.00R |
 
 ## What repeats across them
 
@@ -71,22 +72,23 @@ Every setup is then scored the same way: a **2R target**, the stop, or a **time 
 ```review-summary
 ```
 
-### What the scanner teaches so far (37 reviewed sessions, 145 setups)
+### What the scanner teaches so far (38 reviewed sessions, 150 setups)
 
 The rules were rebuilt on 21 Sep after a 41-session test showed they lost money. The old set ran **−38.6R over 186
 setups** (−0.21R each). Two changes fixed the bleeding, and both came from his own playbook rather than from tuning:
 
 | Rule | Setups | Total | Per trade | Hit 2R | Stopped |
 |---|---|---|---|---|---|
-| **G** Gap (FVG) pullback *(rewritten)* | 102 | **+9.0R** | **+0.09R** | 35% | 63% |
+| **G** Gap (FVG) pullback *(rewritten)* | 107 | **+7.0R** | **+0.07R** | 35% | 64% |
 | **S** Sweep reversal | 43 | **+25.8R** | **+0.60R** | 44% | 35% |
-| **All** | 145 | **+34.8R** | **+0.24R** | 38% | 54% |
+| **All** | 150 | **+32.8R** | **+0.22R** | 37% | 55% |
 
-*Counts recomputed from the review JSONs on 5 Nov, the same way the rendered table above computes them; the
+*Counts recomputed from the review JSONs on 6 Nov, the same way the rendered table above computes them; the
 previous copy of this table had drifted out of date (it claimed 135 setups with S at −1.9R). **The ranking has
 flipped since it was written:** S, the rule that was losing, is now the better of the two at +0.60R over 43
-setups, while G — the rewrite that was supposed to be the fix — has faded to +0.09R over 102 and is stopped 63%
-of the time. Two rules, 145 setups, one index, in hindsight and before costs: not an edge, and not stable
+setups, while G — the rewrite that was supposed to be the fix — has faded to +0.07R over 107 and is stopped 64%
+of the time. 6 Nov added five G signals and no S: four stopped, one 2R, net −2.0R, on a 562-point trend day where
+the gaps that mattered were the ones that never got revisited. Two rules, 145 setups, one index, in hindsight and before costs: not an edge, and not stable
 enough to lean on. **T (failed break) has no setups in the current JSONs at all**, so it is no longer listed.*
 
 **1. G now waits, the way he waits.** It used to buy the gap's near edge the moment price touched it — 135 setups,

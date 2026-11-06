@@ -410,6 +410,7 @@ A reversal always shows a small stop, which is why it feels safe. The real quest
 15-Oct added four refusals in one session: a 38-pt stop for a 31-pt first target, a 55-pt stop on a pin bar far from price, a ~1:1.5 at 14:41, and a 70-pt stop on a running candle. Every frame-checked win that day had a stop of 6–30 option points. [▶ 10:45](https://www.youtube.com/watch?v=Hvf-FA_DAE0&t=4200s)
 22-Oct repeated it for 50 minutes on a Sensex expiry: 60–80-pt one-candle stops against ~60 pts of reward were all declined (a 295 put trigger included); the one trade he took risked ~40 pts for a ~173-pt run to the previous distribution zone. [▶ 09:19](https://www.youtube.com/watch?v=AuH5dwLyyx8&t=540s) · [▶ 09:27](https://www.youtube.com/watch?v=AuH5dwLyyx8&t=1020s)
 23-Oct (Nifty) added three refusals in numbers: a 25-pt stop for a 38-pt move (10:51), 22 pts for 40 (14:01) and a 1:1 with 15 pts of risk (13:31); he waited for one or two small candles to shrink the stop to 5–15. A 4–6-pt stop was acceptable only for a quick 14-pt target in a slow midday [▶ 10:51](https://www.youtube.com/watch?v=XLVGnIzQs6U&t=6060s) · [▶ 12:13](https://www.youtube.com/watch?v=XLVGnIzQs6U&t=11040s).
+6-Nov is the trend-day version: viewers kept asking for puts "because it has fallen so much" (the option, not the index); he refused all day — "put is not part of my setup right now", a falling knife whose premium had gone from ~400 to ~90 — because a reversal needs accumulation first, not one red candle. The one put he did take (a follow-up at 11:19) was stopped. [▶ 10:49](https://www.youtube.com/watch?v=1zd7Hk4lSqY&t=4740s) · [▶ 14:54](https://www.youtube.com/watch?v=1zd7Hk4lSqY&t=19440s)
 **Watch:** [▶ 18-Sep 10:33](https://www.youtube.com/watch?v=EPh5qxWEUhU&t=5160s) · [▶ 18-Sep 11:08](https://www.youtube.com/watch?v=EPh5qxWEUhU&t=7260s)
 
 ### Stop size comes from structure, not a % of premium
@@ -553,6 +554,7 @@ He doesn't trade trendline breaks: he wants a real support or base close to pric
 **Why it works:** the break is the crowded trade. A strong pullback right after a higher high takes the stops of everyone who bought it, and the move then continues without them; on 19-Oct a viewer who bought at 195 with no stop "became liquidity".
 **Qualifies when:** he can name the pullback level (195 on the 23100 PE; 127–128 on the 22750 CE) and put a one-candle stop under it.
 **Disqualified when:** price never comes back (he accepts missing it: "if it runs before, nothing to do"), the stop would be large, or the zone has already been touched twice. 27-Oct gave the reason in one line: "if the pullback doesn't come and you take the higher high, your stop is far, so the setup has no validity" — on the 22900 PE at 10:19 he preferred a dip to ~182 that never came [▶ 10:24](https://www.youtube.com/watch?v=az8Ezg6JWks&t=4800s).
+**A consolidation break is not the pullback (6-Nov).** On a trend day he refused four consolidation breaks on the call (10:07, 13:58, 14:07, 14:27): "yeh wo pullback nahi hai jo main dekhta hoon — yeh bas consolidation breakout hai", "continuation mujhe trade nahi karna hai, mujhe pullback ka wait karna hai". A continuation entry's stop sat 15–18 points under it; the pullback entries he did take had 8–11. The market kept running without him each time — the cost of the rule is the moves it lets go. [▶ 10:07](https://www.youtube.com/watch?v=1zd7Hk4lSqY&t=2220s) · [▶ 10:21](https://www.youtube.com/watch?v=1zd7Hk4lSqY&t=3060s) · [▶ 14:27](https://www.youtube.com/watch?v=1zd7Hk4lSqY&t=17820s)
 **Trigger:** the first green candle or pin bar at the pullback level, then above its high.
 **Tension with "Enter above the higher high":** that concept takes the higher high when a rejection wick makes the stop small; this one refuses it when the stop is not. The plotted higher-high put he offered anyway at 12:55 (above 200, SL 183) lost −17.33 on a reversal wick.
 **Seen:** [▶ 12:59](https://www.youtube.com/watch?v=dDZg2d5JxLk&t=13020s) · [▶ 13:30](https://www.youtube.com/watch?v=dDZg2d5JxLk&t=14940s) · [▶ 14:03](https://www.youtube.com/watch?v=dDZg2d5JxLk&t=16860s)
@@ -709,6 +711,7 @@ He doesn't trade trendline breaks: he wants a real support or base close to pric
 **Qualifies when:** the stop is still about 10–15 points and a structure is present. He took the 23400 PE at 11:24 on a stop under 10 points.
 **Disqualified when:** the stop is 18–22 points, or the candles are spiking — at 12:23 he stopped on a spike candle, "mostly news-flow candles".
 **Trigger:** not stated.
+**6-Nov:** the one loss of the day was in this window — a follow-up put above 150 at 11:19, stopped in eight minutes. Afterwards he said mid-market "price ke triggers aane abhi bhi baaki hai" and stood aside until about 13:00, explaining that an expansion is more valid the more solid the contraction before it. His next entry, at 13:06, was the day's biggest win. [▶ 11:48](https://www.youtube.com/watch?v=1zd7Hk4lSqY&t=8280s) · [▶ 12:07](https://www.youtube.com/watch?v=1zd7Hk4lSqY&t=9420s)
 **Sample warning:** on 2-Nov his biggest win came at 12:58 and four of his seven trades came after 11:00, so this is a stated preference, not a time filter. The project's own tests also removed time filters from the live alerts.
 **Seen:** [▶ 11:23](https://www.youtube.com/watch?v=-PUOjmEdvHQ&t=8220s) · [▶ 12:23](https://www.youtube.com/watch?v=-PUOjmEdvHQ&t=11820s)
 
@@ -717,8 +720,8 @@ He doesn't trade trendline breaks: he wants a real support or base close to pric
 **Why it works:** with no candle you are buying a falling option, and the stop sits wherever you hope, often 25 points away. The green candle shows someone is defending the zone and puts the stop 10–12 points under the entry. That is his own reason ("if you are wrong you should know how small"), and the trapped party here is unstated.
 **Qualifies when:** the zone follows an aggressive prior move; the candle is green and not a doji; its stop is 10–12 points; the first target is at least 20–30 points (the CE at 146, stop 130–134, first target ~169).
 **Disqualified when:** the candle closes under the zone ("under 130, ignore it"); stop to target is near 1:1 (19:24 at 153 on the CE); no green candle prints ("no green candle, no re-entry"); the zone has been bounced from already.
-**Trigger:** above the green candle's high (146 on the CE, 161 on the PE).
-**Seen:** [▶ 11:04](https://www.youtube.com/watch?v=9bp-8w-Hx9w&t=7080s) · [▶ 11:07](https://www.youtube.com/watch?v=9bp-8w-Hx9w&t=7260s) · [▶ 11:10](https://www.youtube.com/watch?v=9bp-8w-Hx9w&t=7440s) · [▶ 14:21](https://www.youtube.com/watch?v=9bp-8w-Hx9w&t=18900s)
+**Trigger:** above the green candle's high (146 on the CE, 161 on the PE). 6-Nov: "a green candle first" at the 24550 CE's 150–155 zone, stop under 139 (+~30); and at 13:04–13:06 on the 24650 CE, "abhi entry mat lo, ek green candle ka wait karo", then "green candle ke just upar 160" with a stop of 148, 8–9 points of risk (+~78, frame).
+**Seen:** [▶ 6-Nov 09:38](https://www.youtube.com/watch?v=1zd7Hk4lSqY&t=480s) · [▶ 6-Nov 13:05](https://www.youtube.com/watch?v=1zd7Hk4lSqY&t=12900s) · [▶ 11:04](https://www.youtube.com/watch?v=9bp-8w-Hx9w&t=7080s) · [▶ 11:07](https://www.youtube.com/watch?v=9bp-8w-Hx9w&t=7260s) · [▶ 11:10](https://www.youtube.com/watch?v=9bp-8w-Hx9w&t=7440s) · [▶ 14:21](https://www.youtube.com/watch?v=9bp-8w-Hx9w&t=18900s)
 
 ### Cross-check the opposite option before the call triggers
 **What:** a call setup is cancelled if the *put* on the same underlying closes strongly above its own base zone before the call's trigger is reached.
@@ -752,3 +755,28 @@ He doesn't trade trendline breaks: he wants a real support or base close to pric
 **Trigger:** the gap-up open above the level, then early-morning thrust.
 **Seen:** [▶ 4-Nov 14:52](https://www.youtube.com/watch?v=hTZOk8Z1ysg&t=21120s) · [▶ 4-Nov 14:53](https://www.youtube.com/watch?v=hTZOk8Z1ysg&t=21180s)
 **What happened next, recorded after the fact:** Sensex opened 5-Nov at 78,910.94, **1,609.5 points above** the previous close, and ran all day to 79,470.03. The mechanism he described fits what followed — but this is one instance, documented afterwards, and the knowledge base has twice asked whether option positioning predicts the next move and twice answered no (8 sessions on direction; 288 wall touches on hold-vs-break). **Read it as an explanation of a move that already happened, never as a forecast of one.**
+
+### Shake-out before the breakout: where stops are stacked
+**What:** before a real break, price often throws one strong candle *below* the base where the late buyers' stops sit, then reverses just as fast; that reversal, not the first break, is the entry.
+**Why it works:** the buyers who bought the consolidation put their stops just under it. A fast candle into those stops forces them to sell, and that selling is the liquidity bigger buyers fill against. Once it is absorbed the zone has no sellers left, and when price returns to it the stacked buy orders reject it again.
+**Qualifies when:** a 3–4-candle base, a sharp wick or candle under it that takes the stops, and an immediate strong candle back above the base. On 6-Nov he named the entry above 214 with the stop under the shake-out at ~207–209, a 17–18-point box he still called large.
+**Disqualified when:** the break happens without first taking the liquidity under the base ("90% of breakouts trap people"), or the stop needed is wider than his band.
+**Trigger:** the confirmation candle closing back above the base, then above its high.
+**Seen:** [▶ 6-Nov 10:22 "liquidity = a strong candle under where your stops are"](https://www.youtube.com/watch?v=1zd7Hk4lSqY&t=3120s) · [▶ 6-Nov 10:27 "wait for a shake-out"](https://www.youtube.com/watch?v=1zd7Hk4lSqY&t=3420s) · [▶ 6-Nov 10:30](https://www.youtube.com/watch?v=1zd7Hk4lSqY&t=3600s)
+
+### Who is trapped: sellers inside a red-volume up candle
+**What:** a one-minute option candle where sell volume beats buy volume (he read **300 against 180**) yet price closes higher means the sellers are trapped; that candle's base becomes a zone price comes back to.
+**Why it works:** those sellers are now offside above the candle's base. When price returns to it they are the ones forced to buy back, so the zone holds.
+**Qualifies when:** sell volume exceeds buy volume on the candle and the candle still closes up ("market sell hone ke baad bhi upar gaya hua hai — to kaun atka hua hai? seller").
+**Disqualified when:** used as an entry on its own — he called order flow "thoda advance" and only extra confirmation for a pullback that already qualifies.
+**Trigger:** not an entry; it adds weight to a first-green-candle pullback at that base.
+**Caution:** the project's own order-flow work (`tools/orderflow.py`) finds Dhan coalesces ticks heavily and carries no aggressor flag, so any buy/sell split is an estimate. Read this as his reasoning, not as a measured signal.
+**Seen:** [▶ 6-Nov 12:35](https://www.youtube.com/watch?v=1zd7Hk4lSqY&t=11100s)
+
+### A global sell-off is not a short signal (Trade Circuit)
+**What:** a big overnight fall in US markets is not, by itself, a reason to buy puts on Nifty.
+**Why it works:** when everyone has read the same headline, the crowd is already positioned for the fall, and the move it expects is the one least likely to come cleanly.
+**Qualifies when:** not stated as a trade condition; he named US30 down ~5% and US100 down up to 7% as the case not to act on.
+**Disqualified when:** stated the other way round: Nifty had already run 2.5–3% the day before and the daily trend was up, so the bias stayed bullish until the chart said otherwise.
+**Trigger:** none — watch the first reaction and keep stops small. On 6-Nov the first candle fell ~130 points and was fully reclaimed by 09:34; the day rose 562 points.
+**Seen:** [▶ 6-Nov 09:16](https://www.youtube.com/watch?v=7-2R_vPJQcc&t=180s) · [▶ 6-Nov 09:22](https://www.youtube.com/watch?v=7-2R_vPJQcc&t=540s)
