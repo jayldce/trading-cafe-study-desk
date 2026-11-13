@@ -46,6 +46,8 @@ These are studies of finished sessions, not calls for the next one. Everything i
 | Wed 4 Nov | −77 (≈ +2 vs Tuesday's last trade) | the tool says trend up; a V in the bars, with a 49-pt closing print | Yesterday's high / close (the same print) | Broken by the second candle; range high swept 09:30 by 3.5, no reversal | The 09:30 high: S1 and G2 shorts after 23,900 broke at 10:16 both +2R; the 12:15 low, 8.65 under Tuesday's high, then 192.4 back with no signal |
 | Thu 5 Nov | **+418** | mixed, one-way grind up | None in reach — the open was 378 above the prep's first pool (24,000) | Nothing on the map was touched all session; the only sweep was 24,300 by 3.7 in the first minute, which was the day low | The opening range, broken 09:45: 24,400 at 09:46, 24,500 at 13:32, high 24,579.90 at 13:48, failed again 14:51 (equal highs untaken); one scanner signal all day, G1 +2R at 14:25 after the trend had stopped |
 | Fri 6 Nov | +2 (open = Thursday's close; the first candle fell 130) | trend up, with a 91-pt closing print | 24,400 / Thursday's equal highs 24,576–24,580 | 24,400 swept by 12.0 at 09:16 — the day low 24,388.05; Thursday's high swept by 2.1 at 09:36 and retested from above at 11:00 (low 24,563.35, 16.55 under it, recovered) | That first-minute sweep — the OR high broke 09:34, 24,700 capped a box from 10:29 to 13:12 (equal highs 24,700–24,703), its break ran to 24,949.85 at 15:08; five G signals, one +2R, net −2.00R |
+| Wed 11 Nov | **+293** (after the Tue 10 Nov holiday; open 254 above Monday's high) | the tool says range; in the bars a gap-up that faded 329 pts, with a 125-pt closing print | Opening-range high 25,399.10 / 25,400 | Broke 09:37 by 7.7; the day high 25,424.35 came at 09:45 and three bear gaps followed by 09:54 | That failed break — equal highs 25,394–25,398 held three times (11:15–11:57), the 13:31 3.9× candle broke the OR low and equal lows together; G2 into its gap +2R; low 25,095.35 at 15:12, 11.3 above Monday's high, gap unfilled |
+| Thu 12 Nov | −42 (≈ +84 vs Wednesday's last trade) | mixed: a first-hour rally, then a range (a 24-pt closing print) | Wednesday's 14:57 gap / 25,200 | Both taken by the first candle, which was the day low 25,142.95; Wednesday's print retaken at 09:16 | That first-minute low — the OR high broke 09:36, the high 25,384.80 came at 10:00, 9.45 under Wednesday's equal highs, and the break failed at 10:10 (G2 into its gap +2R); nine of ten gaps filled; scanner 4 signals, net −1.00R |
 
 ## What repeats across them
 
@@ -72,18 +74,21 @@ Every setup is then scored the same way: a **2R target**, the stop, or a **time 
 ```review-summary
 ```
 
-### What the scanner teaches so far (38 reviewed sessions, 150 setups)
+### What the scanner teaches so far (41 analysed sessions, 161 setups)
 
 The rules were rebuilt on 21 Sep after a 41-session test showed they lost money. The old set ran **−38.6R over 186
 setups** (−0.21R each). Two changes fixed the bleeding, and both came from his own playbook rather than from tuning:
 
 | Rule | Setups | Total | Per trade | Hit 2R | Stopped |
 |---|---|---|---|---|---|
-| **G** Gap (FVG) pullback *(rewritten)* | 107 | **+7.0R** | **+0.07R** | 35% | 64% |
-| **S** Sweep reversal | 43 | **+25.8R** | **+0.60R** | 44% | 35% |
-| **All** | 150 | **+32.8R** | **+0.22R** | 37% | 55% |
+| **G** Gap (FVG) pullback *(rewritten)* | 115 | **+14.0R** | **+0.12R** | 37% | 62% |
+| **S** Sweep reversal | 46 | **+22.8R** | **+0.49R** | 41% | 39% |
+| **All** | 161 | **+36.8R** | **+0.23R** | 38% | 55% |
 
-*Counts recomputed from the review JSONs on 6 Nov, the same way the rendered table above computes them; the
+*Counts recomputed from the review JSONs on 12 Nov (41 sessions). 12 Nov added two G (G2 +2R into the failed-break gap, G3 stopped) and two S (both stopped), net −1.0R: all three S signals of 11–12 Nov were stopped. The 11 Nov note follows. Counts recomputed on 11 Nov (40 sessions, including 9 Nov, whose JSON exists but whose
+written review does not yet). 9 Nov added four G signals (three +2R, one stopped) and 11 Nov two G and one S
+(G2 +2R, G1 and S3 stopped, net 0.0R) — G has recovered a little, S is unchanged in rank. The 6 Nov note follows.
+Counts recomputed from the review JSONs on 6 Nov, the same way the rendered table above computes them; the
 previous copy of this table had drifted out of date (it claimed 135 setups with S at −1.9R). **The ranking has
 flipped since it was written:** S, the rule that was losing, is now the better of the two at +0.60R over 43
 setups, while G — the rewrite that was supposed to be the fix — has faded to +0.07R over 107 and is stopped 64%

@@ -1,0 +1,158 @@
+{
+ "date": "2026-11-11",
+ "instrument": "nifty",
+ "symbol": "NSE-1:NIFTY 50",
+ "name": "Nifty",
+ "ref": 25044.65,
+ "open": null,
+ "last_session": "2026-11-09",
+ "pdh": 25084.05,
+ "pdl": 24838.75,
+ "pdc": 25044.65,
+ "trends": {
+  "D": "up",
+  "1H": "up",
+  "15m": "up"
+ },
+ "lines": [
+  {
+   "p": 24800.0,
+   "text": "\u200b24,800 round",
+   "color": "#9598a1",
+   "w": 1,
+   "style": 2,
+   "valign": "top",
+   "halign": "left"
+  },
+  {
+   "p": 24838.75,
+   "text": "\u200bPDL 24,838.75 (Mon low)",
+   "color": "#089981",
+   "w": 2,
+   "style": 0,
+   "valign": "top",
+   "halign": "left"
+  },
+  {
+   "p": 24900.0,
+   "text": "\u200b24,900 round",
+   "color": "#9598a1",
+   "w": 1,
+   "style": 2,
+   "valign": "top",
+   "halign": "left"
+  },
+  {
+   "p": 25044.65,
+   "text": "\u200bPDC 25,044.65 (Mon close)",
+   "color": "#2962ff",
+   "w": 1,
+   "style": 2,
+   "valign": "bottom",
+   "halign": "left"
+  },
+  {
+   "p": 25084.05,
+   "text": "\u200bPDH 25,084.05 (Mon high)",
+   "color": "#f23645",
+   "w": 2,
+   "style": 0,
+   "valign": "bottom",
+   "halign": "left"
+  },
+  {
+   "p": 25100.0,
+   "text": "\u200b25,100 round",
+   "color": "#9598a1",
+   "w": 1,
+   "style": 2,
+   "valign": "bottom",
+   "halign": "left"
+  },
+  {
+   "p": 25131.85,
+   "text": "\u200bPrev week high 25,131.85",
+   "color": "#f23645",
+   "w": 2,
+   "style": 0,
+   "valign": "bottom",
+   "halign": "left"
+  },
+  {
+   "p": 25200.0,
+   "text": "\u200b25,200 round",
+   "color": "#9598a1",
+   "w": 1,
+   "style": 2,
+   "valign": "bottom",
+   "halign": "left"
+  },
+  {
+   "p": 25300.0,
+   "text": "\u200b25,300 round",
+   "color": "#9598a1",
+   "w": 1,
+   "style": 2,
+   "valign": "bottom",
+   "halign": "left"
+  }
+ ],
+ "zones": [
+  {
+   "t0": 1794213900,
+   "t1": 1794218340,
+   "hi": 25003.65,
+   "lo": 24993.2,
+   "text": "\u200bS1 DEMAND: 1H FVG + 25,000 + OTE (Mon)",
+   "color": "#089981",
+   "alpha": 0.25
+  },
+  {
+   "t0": 1794213000,
+   "t1": 1794218340,
+   "hi": 24970.15,
+   "lo": 24951.1,
+   "text": "\u200bS2 DEMAND: 15m FVG (Mon)",
+   "color": "#089981",
+   "alpha": 0.18
+  },
+  {
+   "t0": 1794212100,
+   "t1": 1794218340,
+   "hi": 24923.9,
+   "lo": 24915.65,
+   "text": "\u200bS3 DEMAND: 15m FVG (Mon)",
+   "color": "#089981",
+   "alpha": 0.18
+  },
+  {
+   "t0": 1793951100,
+   "t1": 1794218340,
+   "hi": 24787.9,
+   "lo": 24726.55,
+   "text": "\u200bS4 DEMAND: 1H FVG + 15m FVG (Fri)",
+   "color": "#089981",
+   "alpha": 0.25
+  },
+  {
+   "t0": 1793947500,
+   "t1": 1794218340,
+   "hi": 24713.25,
+   "lo": 24662.2,
+   "text": "\u200bS5 DEMAND: 1H FVG + 15m FVG + 24,700 (Fri)",
+   "color": "#089981",
+   "alpha": 0.25
+  },
+  {
+   "t0": 1793936700,
+   "t1": 1794218340,
+   "hi": 24838.75,
+   "lo": 24579.9,
+   "text": "\u200bD bull FVG (6-Nov, unfilled part)",
+   "color": "#089981",
+   "alpha": 0.08
+  }
+ ],
+ "daily_source": "Dhan daily",
+ "layout": "Lemonn Layout - Nifty 50"
+}

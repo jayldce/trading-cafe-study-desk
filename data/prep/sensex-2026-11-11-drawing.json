@@ -1,0 +1,140 @@
+{
+ "date": "2026-11-11",
+ "instrument": "sensex",
+ "symbol": "BSE-6:BSE SENSEX",
+ "name": "Sensex",
+ "ref": 81106.65,
+ "open": null,
+ "last_session": "2026-11-09",
+ "pdh": 81339.41,
+ "pdl": 80519.31,
+ "pdc": 81106.65,
+ "trends": {
+  "D": "up",
+  "1H": "up",
+  "15m": "up"
+ },
+ "lines": [
+  {
+   "p": 80519.31,
+   "text": "\u200bPDL 80,519.31 (Mon low)",
+   "color": "#089981",
+   "w": 2,
+   "style": 0,
+   "valign": "top",
+   "halign": "left"
+  },
+  {
+   "p": 81000.0,
+   "text": "\u200b81,000 round",
+   "color": "#9598a1",
+   "w": 1,
+   "style": 2,
+   "valign": "top",
+   "halign": "left"
+  },
+  {
+   "p": 81106.65,
+   "text": "\u200bPDC 81,106.65 (Mon close)",
+   "color": "#2962ff",
+   "w": 1,
+   "style": 2,
+   "valign": "bottom",
+   "halign": "left"
+  },
+  {
+   "p": 81339.41,
+   "text": "\u200bPDH 81,339.41 (Mon high)",
+   "color": "#f23645",
+   "w": 2,
+   "style": 0,
+   "valign": "bottom",
+   "halign": "left"
+  },
+  {
+   "p": 81442.11,
+   "text": "\u200bPrev week high 81,442.11",
+   "color": "#f23645",
+   "w": 2,
+   "style": 0,
+   "valign": "bottom",
+   "halign": "left"
+  },
+  {
+   "p": 81500.0,
+   "text": "\u200b81,500 round",
+   "color": "#9598a1",
+   "w": 1,
+   "style": 2,
+   "valign": "bottom",
+   "halign": "left"
+  },
+  {
+   "p": 82000.0,
+   "text": "\u200b82,000 round",
+   "color": "#9598a1",
+   "w": 1,
+   "style": 2,
+   "valign": "bottom",
+   "halign": "left"
+  }
+ ],
+ "zones": [
+  {
+   "t0": 1794213900,
+   "t1": 1794218340,
+   "hi": 81064.68,
+   "lo": 81023.44,
+   "text": "\u200bS1 DEMAND: 1H FVG + OTE (Mon)",
+   "color": "#089981",
+   "alpha": 0.25
+  },
+  {
+   "t0": 1794210300,
+   "t1": 1794218340,
+   "hi": 80974.99,
+   "lo": 80883.87,
+   "text": "\u200bS2 DEMAND: 1H FVG + 15m FVG (Mon)",
+   "color": "#089981",
+   "alpha": 0.25
+  },
+  {
+   "t0": 1794212100,
+   "t1": 1794218340,
+   "hi": 80803.12,
+   "lo": 80765.34,
+   "text": "\u200bS3 DEMAND: 15m FVG (Mon)",
+   "color": "#089981",
+   "alpha": 0.18
+  },
+  {
+   "t0": 1793955600,
+   "t1": 1794218340,
+   "hi": 80519.31,
+   "lo": 80479.88,
+   "text": "\u200bS4 DEMAND: 15m FVG + 80,500 (Fri)",
+   "color": "#089981",
+   "alpha": 0.18
+  },
+  {
+   "t0": 1793951100,
+   "t1": 1794218340,
+   "hi": 80343.61,
+   "lo": 80135.93,
+   "text": "\u200bS5 DEMAND: 1H FVG + 15m FVG (Fri)",
+   "color": "#089981",
+   "alpha": 0.25
+  },
+  {
+   "t0": 1793936700,
+   "t1": 1794218340,
+   "hi": 80519.31,
+   "lo": 79470.03,
+   "text": "\u200bD bull FVG (6-Nov, unfilled part)",
+   "color": "#089981",
+   "alpha": 0.08
+  }
+ ],
+ "daily_source": "Dhan daily",
+ "layout": "Lemonn Layout - Nifty 50"
+}
