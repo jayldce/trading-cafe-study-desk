@@ -790,3 +790,41 @@ He doesn't trade trendline breaks: he wants a real support or base close to pric
 **Disqualified when:** stated the other way round: Nifty had already run 2.5–3% the day before and the daily trend was up, so the bias stayed bullish until the chart said otherwise.
 **Trigger:** none — watch the first reaction and keep stops small. On 6-Nov the first candle fell ~130 points and was fully reclaimed by 09:34; the day rose 562 points.
 **Seen:** [▶ 6-Nov 09:16](https://www.youtube.com/watch?v=7-2R_vPJQcc&t=180s) · [▶ 6-Nov 09:22](https://www.youtube.com/watch?v=7-2R_vPJQcc&t=540s)
+
+### Trade where breakout traders' stops sit (13-Nov)
+**What:** don't buy the breakout; buy the pullback to the breakout candle's base, where breakout buyers' stops are.
+**Why it works:** sellers push the retest to shake out breakout longs; once those stops are cleared, buyers return and the stop you carry is small.
+**Qualifies when:** a strong breakout candle with a known base (he cited ~170–173 on the option), a pullback to that base, a small green or pin-bar candle, risk 6–10 points.
+**Disqualified when:** no pullback comes, the stop would be 16–20 points, or price is mid-move ("hawa mein"). He refused the raw 171 breakout at 09:37 (stop too far) and at 10:34 ("everyone sees this breakout").
+**Trigger:** just above the small green candle after the pullback; stop under it. 13:21 PE 168.25 → 199 (+31); the 14:40 repeat with a ~4-pt stop lost ~5.
+**Seen:** [▶ 13:21](https://www.youtube.com/watch?v=DJPTZMQLHD8&t=14880s) · [▶ 09:37](https://www.youtube.com/watch?v=DJPTZMQLHD8&t=2340s) · [▶ 10:34](https://www.youtube.com/watch?v=DJPTZMQLHD8&t=4860s)
+
+### VIX pull-off day: spot moves, options don't (13-Nov)
+**What:** when IV falls while spot trends, an option buyer keeps only a fraction of the spot move.
+**Why it works:** option sellers keep premium collapsing as IV drops, so delta gains are cancelled.
+**Qualifies when:** he said spot had moved ~116 points yet the option needed 70–80 points for a fair return, with expiry (Tue 17 Nov) still days away.
+**Disqualified when:** he skips entries with stops above ~14 points on the ₹150 strike and any entry mid-move; he shortens holds, part-books at ~10 points and trails to cost.
+**Trigger:** not stated.
+**Seen:** [▶ 09:51](https://www.youtube.com/watch?v=DJPTZMQLHD8&t=2280s) · [▶ 11:56](https://www.youtube.com/watch?v=DJPTZMQLHD8&t=9360s)
+
+### Repeatedly tested resistance: tight candles under it (13-Nov)
+**What:** a level tested 3–4 times weakens; enter only when candles beneath it are small, so the stop is tiny.
+**Why it works:** contraction then expansion; late buyers above get trapped when it breaks and sellers there cover.
+**Qualifies when:** price returns to the same resistance repeatedly and candles are small.
+**Disqualified when:** a pin bar forms at the level, or the stop would be ~16 points.
+**Trigger:** a strong close above the level, then the follow-up candle.
+**Seen:** [▶ 12:16](https://www.youtube.com/watch?v=DJPTZMQLHD8&t=8160s)
+
+### Who is trapped: sellers under a held first-candle high (13-Nov)
+**What:** if the first-candle high survives on the call, sellers positioned at the open sit offside and must cover.
+**Why it works:** a 5-minute close above it makes them panic, so every pullback becomes an entry.
+**Qualifies when:** first-candle high held and a 5-minute candle closes above it (he pointed at ~163–165 on the CE).
+**Disqualified when:** not stated.
+**Trigger:** pullback green candle on the CE.
+**Seen:** [▶ 09:34](https://www.youtube.com/watch?v=DJPTZMQLHD8&t=2070s)
+
+### Cut, then leave (13-Nov)
+**What:** a stop is a decision; step aside and re-enter only on fresh structure.
+**Disqualified when:** re-entering immediately ("baar-baar re-entry mat karna").
+**Trigger:** a new green-candle confirmation. After the 09:21 PE stop he refused to short again: "a big stop early morning is not sensible."
+**Seen:** [▶ 09:25](https://www.youtube.com/watch?v=DJPTZMQLHD8&t=720s) · [▶ 02:44](https://www.youtube.com/watch?v=DJPTZMQLHD8&t=9840s)
