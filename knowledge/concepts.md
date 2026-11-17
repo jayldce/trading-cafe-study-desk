@@ -828,3 +828,36 @@ He doesn't trade trendline breaks: he wants a real support or base close to pric
 **Disqualified when:** re-entering immediately ("baar-baar re-entry mat karna").
 **Trigger:** a new green-candle confirmation. After the 09:21 PE stop he refused to short again: "a big stop early morning is not sensible."
 **Seen:** [▶ 09:25](https://www.youtube.com/watch?v=DJPTZMQLHD8&t=720s) · [▶ 02:44](https://www.youtube.com/watch?v=DJPTZMQLHD8&t=9840s)
+
+### Premium not rising = the breakout is a trap (16-Nov)
+**What:** if the index makes new highs but the call premium does not, treat the break as a trap and wait for the reversal.
+**Why it works:** buyers who entered on the break are offside when the premium cannot rise; their stops fuel the drop.
+**Qualifies when:** spot breaks highs, CE fails to break its own high; then a big red 15-min candle (10:03); a counter-trend put zone 122–125 with a one-candle spot stop.
+**Disqualified when:** chasing at 128+, or a fresh put after the run with a 13–14 pt stop; premium confirms by breaking its line.
+**Trigger:** pullback into 122–125 after the red candle (25350 PE 125.10, +~28).
+**Seen:** [▶ 00:31](https://www.youtube.com/watch?v=P0p1jjiYdlI&t=1860s) · [▶ 01:11](https://www.youtube.com/watch?v=P0p1jjiYdlI&t=4260s)
+
+### Call support flips into put resistance (17-Nov)
+**What:** a call zone that broke (141–142) becomes resistance and lets the put run.
+**Why it works:** call buyers who defended 141–142 are now offside and their exits add to put momentum.
+**Qualifies when:** CE loses 141–142 (spot under 25,300); put above ~135 with a stop near the 121 zone. Later the same read: CE 25300 below 160 + PE holding ~145 → put above 146, stop 137.
+**Disqualified when:** CE regains strength above 142; the stop would be the full ~31 pts to the 115 low (he refused it); a pin bar at an order block he calls "very weak" (14:53, −7.4).
+**Trigger:** a selling candle closes on the put, entry just above it (140.02 → 172.15).
+**Seen:** [▶ 00:16](https://www.youtube.com/watch?v=_veaoignXMQ&t=960s) · [▶ 02:57:00](https://www.youtube.com/watch?v=_zTIpmgNH-Q&t=10620s)
+
+### Stop-entry cluster breakout (17-Nov)
+**What:** buy a 1-minute close above a level where many traders have buy stop-entries stacked, with a 10–12 pt stop.
+**Why it works:** the break forces those stop-entries in at once, so the move is fast.
+**Qualifies when:** CE consolidating 159–164 under 165; one candle closes above 165; targets 173 then 231.
+**Disqualified when:** price falls first; no close above 165; stop larger than 10–12 pts. He personally prefers pullbacks, so this is a momentum-day exception.
+**Trigger:** the candle close above 165 (25300 CE 163.62 → 216.14, +52.5).
+**Seen:** [▶ 00:19](https://www.youtube.com/watch?v=_zTIpmgNH-Q&t=1140s)
+
+### Cheap strike = small points, same percentage (17-Nov)
+**What:** a Rs ~94 strike gave 18-pt moves where the Rs ~150 strike would have given ~25.
+**Why it works:** a smaller premium moves fewer points for the same index move, so a Rs 6 stop buys a +96.8 only on a long run.
+**Qualifies when:** pin bar then follow-up out of a two-sided consolidation, stop Rs 6 below 87.
+**Disqualified when:** expiry-day ATM near Rs 50 (he advises Rs 150+ unless capital is tiny).
+**Trigger:** follow-up candle after the pin bar (93.54 → 190.34).
+**Seen:** [▶ 02:11:00](https://www.youtube.com/watch?v=_zTIpmgNH-Q&t=7860s) · [▶ 01:52:00](https://www.youtube.com/watch?v=_veaoignXMQ&t=6720s)
+
